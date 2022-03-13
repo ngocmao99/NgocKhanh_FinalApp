@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="#f6f6f6">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_title_signup"
+        android:fontFamily="@font/robotoslab_variablefont_wght"
+        android:layout_gravity="left"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="30dp"
+        android:textColor="#3367ee"
+        android:textSize="20dp"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_NameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Name"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:endIconCheckable="true"
+        app:endIconMode="clear_text"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/edittext"
+        android:inputType="textEmailAddress"
+        android:id="@+id/tiet_nameInput"
+
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_EmailRegisterInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        app:startIconDrawable="@drawable/ic_baseline_mail_24"
+        app:endIconCheckable="true"
+        app:endIconMode="clear_text"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/edittext"
+            android:inputType="textEmailAddress"
+            android:id="@+id/tiet_emailRegisterInput"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_PasswordRegisterInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:endIconMode="password_toggle"
+        android:inputType="textPassword"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/edittext"
+            android:inputType="textPassword"
+            android:id="@+id/tiet_passwordRegisterInput"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="325dp"
+        android:layout_height="70dp"
+        android:text="Create account"
+        android:fontFamily="@font/nunito_black"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/loginbutton"
+        android:backgroundTint="#316e6b"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/Under_login2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_title_login2"
+            android:fontFamily="@font/robotoslab_variablefont_wght"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="40dp"
+
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/sign_in"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/Under_login2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_black"
+            android:textSize="20dp"
+            android:text="@string/signin_link"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

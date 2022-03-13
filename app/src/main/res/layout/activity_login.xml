@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="#f6f6f6">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_title_login"
+        android:fontFamily="@font/robotoslab_variablefont_wght"
+        android:layout_gravity="left"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="30dp"
+        android:textColor="#3367ee"
+        android:textSize="20dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        app:startIconDrawable="@drawable/ic_baseline_mail_24"
+        app:endIconCheckable="true"
+        app:endIconMode="clear_text"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/edittext"
+            android:inputType="textEmailAddress"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:endIconMode="password_toggle"
+        android:inputType="textPassword"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/edittext"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="325dp"
+        android:layout_height="70dp"
+        android:text="Login"
+        android:fontFamily="@font/nunito_black"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/loginbutton"
+        android:backgroundTint="#316e6b"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/Underlogin1"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/robotoslab_variablefont_wght"
+            android:gravity="center_vertical"
+            android:paddingLeft="40dp"
+            android:text="@string/txt_title_login2"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/signup"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/Underlogin1"
+            android:fontFamily="@font/nunito_black"
+            android:text="@string/signup_link"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

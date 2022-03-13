@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Final Project</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="txt_title_login">Log In</string>
+    <string name="txt_title_login2">Already have a account or </string>
+    <string name="signup_link">Sign Up</string>
+    <string name="menu_dashboard">Home</string>
+    <string name="menu_upload">Add</string>
+    <string name="menu_profile">Profile</string>
+    <string name="txt_title_signup">Sign Up</string>
+    <string name="Name">Name</string>
+    <!--top_app_bar -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+    <string name="signin_link">Sign In</string>
+    <string name="slogan">Find your dream Home</string>
+    <string name="slogan1">Your desire is our priority</string>
+    <!--    Onbroading-->
+    <string name="app_intro_skip_button">SKIP</string>
+    <string name="app_intro_next_button" tools:ignore="MissingTranslation">NEXT</string>
+    <string name="app_intro_back_button" tools:ignore="MissingTranslation">BACK</string>
+    <string name="app_intro_done_button">DONE</string>
+    <string name="app_intro_image_content_description" tools:ignore="MissingTranslation">graphics</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_app_bar">Hehe</string>
+    <string name="menu_feed">Feed</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favorite">Favorite</string>
+</resources>
