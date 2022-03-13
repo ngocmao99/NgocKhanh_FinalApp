@@ -3,7 +3,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="txt_title_login">Log In</string>
-    <string name="txt_title_login2">Already have a account or </string>
+    <string name="txt_title_login2">Don\'t have an account?</string>
     <string name="signup_link">Sign Up</string>
     <string name="menu_dashboard">Home</string>
     <string name="menu_upload">Add</string>
@@ -28,4 +28,7 @@
     <string name="menu_feed">Feed</string>
     <string name="menu_home">Home</string>
     <string name="menu_favorite">Favorite</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_forget_password">Forget password?</string>
+    <string name="olw">Or login with</string>
 </resources>

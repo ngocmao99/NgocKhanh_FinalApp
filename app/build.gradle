@@ -50,6 +50,11 @@ dependencies {
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
     //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0'
+
+    //picassp
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //blurry layout
+    implementation 'io.alterac.blurkit:blurkit:1.1.0'
 
 }

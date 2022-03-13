@@ -19,11 +19,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import io.alterac.blurkit.BlurLayout;
+
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText LoginEmail;
     TextInputEditText LoginPassword;
-    Button SignUp;
+    TextView SignUp;
     Button btnLogin;
+    BlurLayout blurLayout;
 
     FirebaseAuth mAuth;
 
@@ -35,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         LoginEmail = findViewById(R.id.tiet_emailInput);
         LoginPassword = findViewById(R.id.tiet_passwordInput);
         SignUp = findViewById(R.id.signup);
-        btnLogin = findViewById(R.id.btnlogin);
+        btnLogin = findViewById(R.id.btnLogin);
+        blurLayout = findViewById(R.id.lo_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,6 +49,18 @@ public class LoginActivity extends AppCompatActivity {
         SignUp.setOnClickListener(view ->{
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout.startBlur();
+    }
+
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
     }
 
     private void loginUser(){
