@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,12 +8,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.finalproject.view.activity.menu.Fragment_Feed;
+import com.example.finalproject.view.activity.menu.Fragment_Home;
+import com.example.finalproject.view.activity.menu.Fragment_Profile;
+import com.example.finalproject.models.Item;
+import com.example.finalproject.R;
+import com.example.finalproject.view.adapter.RandomNumListAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

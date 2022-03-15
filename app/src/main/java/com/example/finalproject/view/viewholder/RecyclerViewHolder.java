@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.viewholder;
 
 import android.view.View;
 import android.widget.TextView;

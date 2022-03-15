@@ -37,4 +37,7 @@
     <string name="error_input_password_notmatch_signup">Password and confirmation password do not match.</string>
     <string name="error_name_signup">Name cannot be empty.</string>
     <string name="error_name_unique_signup">Name cannot contain unique letters.</string>
+    <string name="error_input_email_empty">Email cannot be empty.</string>
+    <string name="error_invalid_email">Invalid email address.</string>
+    <string name="error_password_less_than_six_letters">Must be at least six characters.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity.onboardingfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.finalproject.R;
+import com.example.finalproject.view.activity.LoginActivity;
 
 
 public class OnboardingFragment3 extends Fragment {
@@ -32,7 +35,7 @@ public class OnboardingFragment3 extends Fragment {
        btnGetStart.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent intent = new Intent(getActivity(),LoginActivity.class);
+               Intent intent = new Intent(getActivity(), LoginActivity.class);
                getActivity().startActivity(intent);
            }
        });

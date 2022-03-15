@@ -1,18 +1,15 @@
-package com.example.finalproject;
+package com.example.finalproject.view.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.example.finalproject.R;
+import com.example.finalproject.view.viewholder.RecyclerViewHolder;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomNumListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {

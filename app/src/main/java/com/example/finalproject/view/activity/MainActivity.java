@@ -1,20 +1,17 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.finalproject.R;
+import com.example.finalproject.view.adapter.ViewPagerAdapter;
 
 import me.relex.circleindicator.CircleIndicator;
 

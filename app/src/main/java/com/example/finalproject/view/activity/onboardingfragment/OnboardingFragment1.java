@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity.onboardingfragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.finalproject.R;
 
 
 public class OnboardingFragment1 extends Fragment {

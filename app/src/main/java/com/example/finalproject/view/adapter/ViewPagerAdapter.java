@@ -1,9 +1,13 @@
-package com.example.finalproject;
+package com.example.finalproject.view.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.finalproject.view.activity.onboardingfragment.OnboardingFragment1;
+import com.example.finalproject.view.activity.onboardingfragment.OnboardingFragment2;
+import com.example.finalproject.view.activity.onboardingfragment.OnboardingFragment3;
 
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {

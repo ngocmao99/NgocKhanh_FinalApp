@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-    tools:context=".OnboardingFragment2">
+    tools:context=".view.activity.onboardingfragment.OnboardingFragment2">
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"

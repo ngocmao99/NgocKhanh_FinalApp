@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity.menu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalproject.R;
+import com.example.finalproject.view.adapter.RandomNumListAdapter;
 
 public class Fragment_Home extends Fragment {
     // Add RecyclerView member
