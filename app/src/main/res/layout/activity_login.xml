@@ -9,25 +9,41 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/iv_login"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:fitsSystemWindows="true"
-        android:scaleType="fitXY"
-        android:layout_marginBottom="300dp"
-        android:src="@drawable/firstpicture" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <io.alterac.blurkit.BlurLayout
+        <ImageView
+            android:id="@+id/iv_login"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="300dp"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/firstpicture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_title_login"
+            android:textColor="@color/first"
+            android:textSize="45sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="30dp"
+            />
+
+    </FrameLayout>
+
+
+    <FrameLayout
         android:id="@+id/lo_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="250dp"
         android:background="@drawable/lefttopround"
-        app:blk_blurRadius="12"
-        app:blk_fps="5"
         android:elevation="50dp">
         <!--        app:blk_downscaleFactor="0.12"-->
 
@@ -37,12 +53,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:paddingTop="40dp">
+            android:paddingTop="60dp">
 
             <!--Email-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_emailInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -50,16 +66,23 @@
                 android:hint="@string/email"
                 app:endIconCheckable="true"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_baseline_mail_24">
+                app:startIconDrawable="@drawable/ic_baseline_mail_24"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_emailInput"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:background="@drawable/edittext"
                     android:fontFamily="@font/poppins"
                     android:inputType="textEmailAddress"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
 
                     />
 
@@ -68,7 +91,7 @@
             <!--Password-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_passwordInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -76,8 +99,16 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 app:endIconMode="password_toggle"
-
-                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                app:counterMaxLength="50"
+                app:counterEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_passwordInput"
@@ -86,7 +117,7 @@
                     android:background="@drawable/edittext"
                     android:fontFamily="@font/poppins"
                     android:inputType="textPassword"
-                    android:textSize="20sp" />
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +128,7 @@
                 android:layout_marginEnd="35sp"
                 android:fontFamily="@font/poppins_light"
                 android:text="@string/txt_forget_password"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <!--Login Button-->
             <Button
@@ -112,41 +143,12 @@
                 android:textAllCaps="false"
                 android:textSize="25sp" />
 
-            <RelativeLayout
-                android:id="@+id/lo_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/underLogin1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="@string/txt_title_login2"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/signup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_toEndOf="@id/underLogin1"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/signup_link"
-                    android:textAllCaps="false"
-                    android:textColor="@color/first"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lo_signup"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -165,7 +167,8 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:text="@string/olw"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -178,18 +181,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_facebook" />
+                    android:src="@drawable/ic_facebook"
+                    />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -199,10 +204,41 @@
                     android:src="@drawable/ic_google" />
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/lo_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:layout_marginBottom="40dp">
+
+                <TextView
+                    android:id="@+id/underLogin1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/txt_title_login2"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/underLogin1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/signup_link"
+                    android:textAllCaps="false"
+                    android:textColor="@color/first"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+
         </LinearLayout>
 
 
-    </io.alterac.blurkit.BlurLayout>
+    </FrameLayout>
 
 
 </RelativeLayout>

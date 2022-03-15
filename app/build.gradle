@@ -14,6 +14,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //Turn on viewBinding
         viewBinding{
             enabled = true
         }
@@ -56,5 +58,6 @@ dependencies {
 
     //blurry layout
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
+
 
 }

@@ -31,4 +31,10 @@
     <string name="btn_login">Login</string>
     <string name="txt_forget_password">Forget password?</string>
     <string name="olw">Or login with</string>
+    <string name="txt_title_login3">Adready have an account?</string>
+    <string name="error_input_password_signup">Password cannot be empty</string>
+    <string name="error_input_confirm_password_signup">Confirm password cannot be empty.</string>
+    <string name="error_input_password_notmatch_signup">Password and confirmation password do not match.</string>
+    <string name="error_name_signup">Name cannot be empty.</string>
+    <string name="error_name_unique_signup">Name cannot contain unique letters.</string>
 </resources>

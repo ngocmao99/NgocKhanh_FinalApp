@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,59 +26,54 @@ import com.google.firebase.auth.FirebaseUser;
 import io.alterac.blurkit.BlurLayout;
 
 public class LoginActivity extends AppCompatActivity {
-    TextInputEditText LoginEmail;
-    TextInputEditText LoginPassword;
-    TextView SignUp;
-    Button btnLogin;
-    BlurLayout blurLayout;
+    //Declare viewBinding alternative for findViewById
+    private ActivityLoginBinding binding;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Turn off header bar of android
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        LoginEmail = findViewById(R.id.tiet_emailInput);
-        LoginPassword = findViewById(R.id.tiet_passwordInput);
-        SignUp = findViewById(R.id.signup);
-        btnLogin = findViewById(R.id.btnLogin);
-        blurLayout = findViewById(R.id.lo_login);
-
+        //apply viewbindings
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         mAuth = FirebaseAuth.getInstance();
 
-        btnLogin.setOnClickListener(view -> {
-            loginUser();
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
         });
-        SignUp.setOnClickListener(view ->{
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+
+        binding.signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+            }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        blurLayout.startBlur();
-    }
-
-    @Override
-    protected void onStop() {
-        blurLayout.pauseBlur();
-        super.onStop();
     }
 
     private void loginUser(){
-        String email = LoginEmail.getText().toString();
-        String password = LoginPassword.getText().toString();
+        String email = binding.tietEmailInput.getText().toString();
+        String password = binding.tietPasswordInput.getText().toString();
 
         if (TextUtils.isEmpty(email)){
-            TextInputLayout til = findViewById(R.id.til_emailInput);
-            til.setError("Email cannot be empty");
-            til.requestFocus();
+            binding.tilEmailInput.setErrorEnabled(true);
+            binding.tilEmailInput.setError("Email cannot be empty");
+            binding.tilEmailInput.requestFocus();
         }else if (TextUtils.isEmpty(password)){
-            TextInputLayout til = findViewById(R.id.til_passwordInput);
-            til.setError("Password cannot be empty");
-            til.requestFocus();
+            binding.tilPasswordInput.setErrorEnabled(true);
+            binding.tilPasswordInput.setError("Password cannot be empty");
+            binding.tilPasswordInput.requestFocus();
         }else{
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
