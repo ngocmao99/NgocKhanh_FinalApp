@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Final Project</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="txt_title_login">Log In</string>
+    <string name="txt_title_login2">Don\'t have an account?</string>
+    <string name="signup_link">Sign Up</string>
+    <string name="menu_dashboard">Home</string>
+    <string name="menu_upload">Add</string>
+    <string name="menu_profile">Profile</string>
+    <string name="txt_title_signup">Sign Up</string>
+    <string name="Name">Name</string>
+    <!--top_app_bar -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+    <string name="signin_link">Sign In</string>
+    <string name="slogan">Find your dream Home</string>
+    <string name="slogan1">Your desire is our priority</string>
+    <!--    Onbroading-->
+    <string name="app_intro_skip_button">SKIP</string>
+    <string name="app_intro_next_button" tools:ignore="MissingTranslation">NEXT</string>
+    <string name="app_intro_back_button" tools:ignore="MissingTranslation">BACK</string>
+    <string name="app_intro_done_button">DONE</string>
+    <string name="app_intro_image_content_description" tools:ignore="MissingTranslation">graphics</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_app_bar">Hehe</string>
+    <string name="menu_feed">Feed</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_forget_password">Forget password?</string>
+    <string name="olw">Or login with</string>
+    <string name="txt_title_login3">Adready have an account?</string>
+    <string name="error_input_password_signup">Password cannot be empty</string>
+    <string name="error_input_confirm_password_signup">Confirm password cannot be empty.</string>
+    <string name="error_input_password_notmatch_signup">Password and confirmation password do not match.</string>
+    <string name="error_name_signup">Name cannot be empty.</string>
+    <string name="error_name_unique_signup">Name cannot contain unique letters.</string>
+    <string name="error_input_email_empty">Email cannot be empty.</string>
+    <string name="error_invalid_email">Invalid email address.</string>
+    <string name="error_password_less_than_six_letters">Must be at least six characters.</string>
+</resources>

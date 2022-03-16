@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_password_less_than_six">Must be at least 6 characters.</string>
+    <string name="error_password_less_than_six_letters">Must be at least six characters.</string>
+</resources>
