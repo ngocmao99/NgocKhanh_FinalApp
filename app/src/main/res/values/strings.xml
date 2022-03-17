@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Final Project</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email">Email*</string>
+    <string name="password">Password*</string>
     <string name="txt_title_login">Log In</string>
     <string name="txt_title_login2">Don\'t have an account?</string>
     <string name="signup_link">Sign Up</string>
@@ -9,7 +9,7 @@
     <string name="menu_upload">Add</string>
     <string name="menu_profile">Profile</string>
     <string name="txt_title_signup">Sign Up</string>
-    <string name="Name">Name</string>
+    <string name="Name">Fullname*</string>
     <!--top_app_bar -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">close navigation drawer</string>
@@ -31,16 +31,25 @@
     <string name="btn_login">Login</string>
     <string name="txt_forget_password">Forget password?</string>
     <string name="olw">Or login with</string>
-    <string name="txt_title_login3">Adready have an account?</string>
+    <string name="txt_title_login3">Already have an account?</string>
     <string name="error_input_password_signup">Password cannot be empty</string>
     <string name="error_input_confirm_password_signup">Confirm password cannot be empty.</string>
-    <string name="error_input_password_notmatch_signup">Password and confirmation password do not match.</string>
-    <string name="error_name_signup">Name cannot be empty.</string>
+    <string name="error_input_password_unmatch_signup">Mismatch between the password and the confirmation password.</string>
+    <string name="error_name_signup">The fullname cannot be left blank.</string>
     <string name="error_name_unique_signup">Name cannot contain unique letters.</string>
     <string name="error_input_email_empty">Email cannot be empty.</string>
     <string name="error_invalid_email">Invalid email address.</string>
     <string name="error_password_less_than_six_letters">Must be at least eight characters.</string>
     <string name="txt_title_progress_bar">Please wait...</string>
-    <string name="ta_successfull_registration">Registered successfully. Please check your email for verification.</string>
+    <string name="ta_successful_registration">Registration was successful. Please check your email for verification.</string>
     <string name="error_verification_by_email_failure">"Registration Error: "</string>
+    <string name="error_empty_credential">Empty credential. Please fill out required fields to log in.</string>
+    <string name="error_not_verified_email">Please check your email to verify your account.</string>
+    <string name="title_forgot_your_password">Forgot Your Password?</string>
+    <string name="content_forgot_your_password">Enter your Registered Email and we will mail you a link to reset password.</string>
+    <string name="txt_email">Your email</string>
+    <string name="btn_send_email">Send Email</string>
+    <string name="txt_successful_sending_email">Sent Successfully!</string>
+    <string name="txt_sub_title_sending_email">Please check your email for a link to reset your password.</string>
+    <string name="txt_failed_sending_email">Send failed!</string>
 </resources>
