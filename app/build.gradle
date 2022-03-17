@@ -59,5 +59,8 @@ dependencies {
     //blurry layout
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
 
+    //Progress dialog
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+
 
 }

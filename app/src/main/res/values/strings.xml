@@ -39,5 +39,8 @@
     <string name="error_name_unique_signup">Name cannot contain unique letters.</string>
     <string name="error_input_email_empty">Email cannot be empty.</string>
     <string name="error_invalid_email">Invalid email address.</string>
-    <string name="error_password_less_than_six_letters">Must be at least six characters.</string>
+    <string name="error_password_less_than_six_letters">Must be at least eight characters.</string>
+    <string name="txt_title_progress_bar">Please wait...</string>
+    <string name="ta_successfull_registration">Registered successfully. Please check your email for verification.</string>
+    <string name="error_verification_by_email_failure">"Registration Error: "</string>
 </resources>

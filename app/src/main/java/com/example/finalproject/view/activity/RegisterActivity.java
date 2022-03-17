@@ -19,10 +19,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -30,6 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
 
     private FirebaseAuth mAuth;
+
+    private DatabaseReference mDatabase;
+
+    private KProgressHUD alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +57,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
         textChangeWatcher();
 
         binding.btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createUser();
+                validateSignup();
             }
         });
 
@@ -77,15 +92,43 @@ public class RegisterActivity extends AppCompatActivity {
     private void textChangeWatcher() {
         binding.tietNameInput.addTextChangedListener(tw_name);
         binding.tietEmailRegisterInput.addTextChangedListener(tw_email);
+        binding.tietPasswordRegisterInput.addTextChangedListener(tw_passwords);
 
     }
-    // Validate password. The passwords regex includes:
-    //(?=.*[0-9])       # a digit must occur at least once
-    //(?=.*[a-z])       # a lower case letter must occur at least once
-    //(?=.*[A-Z])       # an upper case letter must occur at least once
-    //(?=.*[@#$%^&+=])  # a special character must occur at least once you can replace with your special characters
-    //(?=\\S+$)          # no whitespace allowed in the entire string
-    // .{4,}             # anything, at least six places though
+
+    //TextWatcher: validation confirmation passwords of signup screen
+    private final TextWatcher tw_confirmPassword = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            String password = binding.tietPasswordRegisterInput.getText().toString().trim();
+            String confirmPassword = editable.toString().trim();
+
+            if (editable.length() == 0) {
+                binding.tilPasswordConfirmInput.setErrorEnabled(true);
+                binding.tilPasswordConfirmInput.setError(getString(R.string.error_input_confirm_password_signup));
+                binding.tilPasswordConfirmInput.requestFocus();
+            }
+
+            if (!confirmPassword.equals(password)) {
+                binding.tilPasswordConfirmInput.setErrorEnabled(true);
+                binding.tilPasswordConfirmInput.setError(getString(R.string.error_input_password_notmatch_signup));
+                binding.tilPasswordConfirmInput.requestFocus();
+            } else {
+                binding.tilPasswordConfirmInput.setErrorEnabled(false);
+            }
+
+        }
+    };
 
     private final TextWatcher tw_passwords = new TextWatcher() {
         @Override
@@ -100,19 +143,20 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            String password = editable.toString().trim();
-            if(editable.length() == 0){
+            if (editable.length() == 0) {
                 binding.tilPasswordRegisterInput.setErrorEnabled(true);
                 binding.tilPasswordRegisterInput.setError(getString(R.string.error_input_password_signup));
                 binding.tilPasswordRegisterInput.requestFocus();
             }
 
-            if(editable.length() >=0 && editable.length() < 6){
+            if (editable.length() >= 0 && editable.length() < 8) {
                 binding.tilPasswordRegisterInput.setErrorEnabled(true);
                 binding.tilPasswordRegisterInput.setError(getString(R.string.error_password_less_than_six_letters));
+                binding.tilPasswordRegisterInput.requestFocus();
+            } else {
+                binding.tilPasswordRegisterInput.setErrorEnabled(false);
+
             }
-
-
 
         }
     };
@@ -185,21 +229,39 @@ public class RegisterActivity extends AppCompatActivity {
 
     };
 
-    private void createUser() {
+    private void startLoadingDialog() {
+        alertDialog = KProgressHUD.create(RegisterActivity.this)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel(getString(R.string.txt_title_progress_bar))
+                .setCancellable(true)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.5f)
+                .show();
+    }
+
+    private void dismissDialog() {
+        alertDialog.dismiss();
+
+    }
+
+    private void validateSignup() {
         String name = Objects.requireNonNull(binding.tietNameInput.getText().toString());
         String email = Objects.requireNonNull(binding.tietEmailRegisterInput.getText().toString());
         String password = Objects.requireNonNull(binding.tietPasswordRegisterInput.getText().toString());
         String confirmPass = Objects.requireNonNull(binding.tietPasswordConfirm.getText().toString());
+
         if (TextUtils.isEmpty(name)) {
             binding.tilName.setErrorEnabled(true);
             binding.tilName.setError("Name cannot be empty");
             binding.tilName.requestFocus();
         }
+
         if (TextUtils.isEmpty(email)) {
             binding.tilEmailRegisterInput.setErrorEnabled(true);
             binding.tilEmailRegisterInput.setError("Email cannot be empty");
             binding.tilEmailRegisterInput.requestFocus();
         }
+
         if (TextUtils.isEmpty(password)) {
             binding.tilPasswordRegisterInput.setErrorEnabled(true);
             binding.tilPasswordRegisterInput.setError(getString(R.string.error_input_password_signup));
@@ -211,30 +273,87 @@ public class RegisterActivity extends AppCompatActivity {
             binding.tilPasswordConfirmInput.setError(getString(R.string.error_input_confirm_password_signup));
             binding.tilPasswordConfirmInput.requestFocus();
         }
+
         if (!password.equals(confirmPass)) {
-            binding.tilPasswordRegisterInput.setErrorEnabled(true);
-            binding.tilPasswordRegisterInput.setError(getString(R.string.error_input_password_notmatch_signup));
             binding.tilPasswordConfirmInput.setErrorEnabled(true);
             binding.tilPasswordConfirmInput.setError(getString(R.string.error_input_password_notmatch_signup));
             binding.tilPasswordConfirmInput.requestFocus();
 
         }
+
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPass) ||
                 !password.equals(confirmPass)) {
             Toast.makeText(RegisterActivity.this, "Please fill out the required field!!!", Toast.LENGTH_SHORT).show();
         } else {
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    } else {
-                        Toast.makeText(RegisterActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            registerUser(name, email, password);
         }
     }
 
+    private void registerUser(final String name, final String email, final String password) {
+        startLoadingDialog();
+
+        mAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                HashMap<String, Object> userInfo = new HashMap<>();
+                userInfo.put("fullName",name);
+                userInfo.put("email",email);
+                userInfo.put("userImgId","");
+                userInfo.put("dob","");
+                userInfo.put("phoneNumber","");
+                userInfo.put("gender","");
+
+                userInfo.put("userId",Objects.requireNonNull(mAuth.getCurrentUser().getUid()));
+
+                mDatabase.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name).build();
+                            Objects.requireNonNull(user).updateProfile(profileChangeRequest);
+
+                            //Sending verification link to email of clients
+                            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        dismissDialog();
+                                        Toast.makeText(RegisterActivity.this,getString(R.string.ta_successfull_registration),Toast.LENGTH_SHORT)
+                                                .show();
+                                        startActivity(new Intent(RegisterActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
+                                                Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                        finish();
+                                    }
+                                    else {
+                                        dismissDialog();
+                                        Toast.makeText(RegisterActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                    }
+
+
+                                }
+                            });
+
+
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        dismissDialog();
+                        Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                dismissDialog();
+                Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 }

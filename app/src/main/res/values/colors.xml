@@ -13,4 +13,5 @@
     <color name="gray">#80949090</color>
     <color name="primary_color">#1186EC</color>
     <color name="white_500">#A2FFFFFF</color>
+    <color name="black_500">#7C000000</color>
 </resources>
