@@ -55,4 +55,8 @@
     <string name="btn_negative">Cancle</string>
     <string name="btn_positive">OK</string>
     <string name="txt_try_again">Try Again</string>
+    <string name="txt_title_congratulation">Congratulation!!!</string>
+    <string name="txt_sub_title_sign_in_google">Your account created successful. Please check your email for a link to reset your password.</string>
+    <string name="txt_title_logged_failed">Logged Failed.</string>
+    <string name="sub_title_logged_failed">Logged with Google link failed.</string>
 </resources>

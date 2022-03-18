@@ -201,7 +201,8 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_google"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    android:id="@+id/googleSignInBtn"/>
             </LinearLayout>
 
             <RelativeLayout

@@ -10,6 +10,7 @@ public class Constants {
 
     public static final String NAME_REGEX1= "^[a-zA-Z\\s]+$";
     public static final String NAME_REGEX2="[0-9]";
-    public static final String LABLE_DIALOG = "Please wait...";
+    public static final int RC_SING_IN = 100;
+    public static final String TAG = "GOOGLE_SIGN_IN_TAG";
 
 }
