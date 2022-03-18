@@ -1,6 +1,5 @@
-package com.example.finalproject.view.dialog;
+package com.example.finalproject.view.activity.dialog;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;

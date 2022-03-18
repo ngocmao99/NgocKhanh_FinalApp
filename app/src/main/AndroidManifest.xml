@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
-            android:name=".ForgetPassword"
+            android:name=".view.activity.ForgetPassword"
             android:exported="false" />
         <activity
             android:name=".view.activity.MainActivity"

@@ -52,4 +52,7 @@
     <string name="txt_successful_sending_email">Sent Successfully!</string>
     <string name="txt_sub_title_sending_email">Please check your email for a link to reset your password.</string>
     <string name="txt_failed_sending_email">Send failed!</string>
+    <string name="btn_negative">Cancle</string>
+    <string name="btn_positive">OK</string>
+    <string name="txt_try_again">Try Again</string>
 </resources>

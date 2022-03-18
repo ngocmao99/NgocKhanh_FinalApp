@@ -1,29 +1,26 @@
-package com.example.finalproject.view.dialog;
+package com.example.finalproject.view.activity.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.LayoutInflater;
 
-import androidx.core.content.ContextCompat;
-
-import com.example.finalproject.R;
 import com.example.finalproject.databinding.AlertDialogBinding;
 
-public class AlertDialog {
-    private AlertDialogBinding binding;
+public class DialogCustom {
     private final Context context;
     private Dialog dialog;
 
-    public AlertDialog(Context context) {
+    public DialogCustom(Context context) {
         this.context = context;
     }
 
     public void showLoadingDialog(Drawable image, String title, String subTitle, int color) {
         dialog = new Dialog(context);
-        binding = AlertDialogBinding.inflate(LayoutInflater.from(dialog.getContext()));
+        com.example.finalproject.databinding.AlertDialogBinding binding = AlertDialogBinding.inflate(LayoutInflater.from(dialog.getContext()));
         dialog.setContentView(binding.getRoot());
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -38,5 +35,10 @@ public class AlertDialog {
 
     public void hideLoadingDialog() {
         dialog.dismiss();
+    }
+
+    public void hideLoadingDialogTime(int time){
+        Handler handler = new Handler();
+        handler.postDelayed(() -> dialog.dismiss(),time);
     }
 }

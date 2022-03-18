@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.finalproject.ForgetPassword;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityLoginBinding;
-import com.example.finalproject.view.dialog.LoadingDialogCustom;
+import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        //apply viewbindings
+        //apply view binding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textWatcher();
 
+        //Declare loading dialog custom
         loadDialog = new LoadingDialogCustom(LoginActivity.this);
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
-
+                Animatoo.animateSlideLeft(LoginActivity.this);
             }
         });
 
@@ -71,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, ForgetPassword.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
                         Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                Animatoo.animateSlideRight(LoginActivity.this);
             }
         });
 
@@ -181,7 +183,10 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else{
                         loadDialog.hideLoadingDialog();
-                        Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        //TODO: turn off note mode for startActivity() move to Home Activity.
+//                        startActivity(new Intent(LoginActivity.this,HomeActivity.class).addFlags(
+//                                Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//                        Animatoo.animateSlideLeft(LoginActivity.this);
                     }
 
                 }else{

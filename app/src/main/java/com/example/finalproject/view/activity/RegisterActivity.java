@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityRegisterBinding;
-import com.example.finalproject.view.dialog.LoadingDialogCustom;
+import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
