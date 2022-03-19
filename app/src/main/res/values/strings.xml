@@ -59,4 +59,13 @@
     <string name="txt_sub_title_sign_in_google">Your account created successful. Please check your email for a link to reset your password.</string>
     <string name="txt_title_logged_failed">Logged Failed.</string>
     <string name="sub_title_logged_failed">Logged with Google link failed.</string>
+
+    <!--Facebook-->
+
+    <string name="facebook_app_id">287321126848740</string>
+    <string name="fb_login_protocol_scheme">fb287321126848740</string>
+    <string name="facebook_client_token">1593741a72bcac5efec43fc58a297af0</string>
+    <string name="sub_title_logged_failed_facebook">Loggin with Facebook link failed.</string>
+
+
 </resources>
