@@ -498,7 +498,8 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     loadDialog.hideLoadingDialog();
                     //TODO: turn off note mode for startActivity() move to Home Activity.
-//                        moveToHome();
+                        moveToHome();
+                    Toast.makeText(LoginActivity.this,"Success",Toast.LENGTH_SHORT).show();
 
                 }
 

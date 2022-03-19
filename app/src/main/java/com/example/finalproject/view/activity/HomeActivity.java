@@ -30,8 +30,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     private RecyclerView recyclerView;
-    private Item mitem;
-    private ArrayList<Item> listitem;
+
     private RandomNumListAdapter mitemAdapter;
     private static final int Fragment_Home =1;
     private static final int Fragment_Feed=2;
