@@ -16,13 +16,9 @@ import android.view.MenuItem;
 import com.example.finalproject.view.activity.menu.Fragment_Feed;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
-import com.example.finalproject.models.Item;
 import com.example.finalproject.R;
-import com.example.finalproject.view.adapter.RandomNumListAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FirebaseAuth mAuth;
@@ -31,7 +27,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     private RecyclerView recyclerView;
 
-    private RandomNumListAdapter mitemAdapter;
+
     private static final int Fragment_Home =1;
     private static final int Fragment_Feed=2;
     private static final int Fragment_Profile=3;
