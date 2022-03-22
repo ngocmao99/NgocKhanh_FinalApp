@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="6dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@color/cardview_shadow_start_color"
+    >
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="@color/com_facebook_button_background_color_disabled"
+        >
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="22dp">
+
+                <ImageView
+                    android:id="@+id/img_category2"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/house_1" />
+
+            </ImageView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:padding="6dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:text="House 1"/>
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
