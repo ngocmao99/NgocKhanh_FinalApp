@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@android:color/transparent"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="300dp"
+                android:layout_height="160dp"
+                android:backgroundTint="@color/white"
+                android:elevation="5dp"
+                app:cardCornerRadius="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.99"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.177">
+
+
+                <LinearLayout
+                    android:layout_width="273dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="vertical">
+
+                    <!--First Line-->
+                    <LinearLayout
+                        android:id="@+id/lo_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_character"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="$"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/propertyPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text=" Price"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/perMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/poppins"
+                            android:gravity="center_vertical"
+                            android:text=" Per Month"
+                            android:textColor="@color/black_500"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/propertyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/property_name"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="@string/property_address"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+
+                    <!--Info item-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <!--Area-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgArea"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_are" />
+
+                            <TextView
+                                android:id="@+id/txtArea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="658 sqft"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <!--Room-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgRooms"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_bed" />
+
+                            <TextView
+                                android:id="@+id/txtRoom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="2 rooms"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                        <!--Bathroom-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgBedroom"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_bathroom" />
+
+                            <TextView
+                                android:id="@+id/txtBedroo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="2 rooms"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Property Image-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="137dp"
+            android:layout_height="160dp"
+            style="@style/CustomCardViewStyle"
+            android:elevation="30dp"
+            android:layout_marginTop="15dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgProperty"
+                android:layout_width="139dp"
+                android:layout_height="160dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/firstpicture"
+                 />
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="9dp"
+            android:textColor="@color/white"
+            android:text="@string/rentNow"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="148dp"
+            android:layout_marginStart="135dp"
+            android:background="@drawable/custom_btn_rent"
+            android:gravity="center"/>
+
+    </FrameLayout>
+
+
+
+</androidx.cardview.widget.CardView>

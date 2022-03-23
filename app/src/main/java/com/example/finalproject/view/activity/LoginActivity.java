@@ -1,6 +1,7 @@
 package com.example.finalproject.view.activity;
 
 import static com.example.finalproject.utils.Constants.EMAIL_REGEX;
+import static com.example.finalproject.utils.Constants.FB_TAG;
 import static com.example.finalproject.utils.Constants.RC_SING_IN;
 import static com.example.finalproject.utils.Constants.TAG;
 
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +25,14 @@ import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityLoginBinding;
 import com.example.finalproject.view.activity.dialog.DialogCustom;
 import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,12 +40,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -55,8 +67,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private DialogCustom dialogCustom;
 
+    private CallbackManager mCallbackManager;
+
+    private FirebaseUser mUser;
+
+    private FirebaseAuth.AuthStateListener authStateListener;
+
+    private AccessTokenTracker accessTokenTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Enable softInputMode PAN
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         //Turn off header bar of android
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -74,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
         //init DatabaseReference
         mRef = FirebaseDatabase.getInstance().getReference();
 
+        //init Facebook SDK
+        FacebookSdk.sdkInitialize(LoginActivity.this);
+
         textWatcher();
 
         //Declare loading dialog custom
@@ -81,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Declare  dialog custom
         dialogCustom = new DialogCustom(LoginActivity.this);
-
         binding.btnLogin.setOnClickListener(view1 -> validateInput());
 
         binding.signup.setOnClickListener(view12 -> {
@@ -105,9 +129,98 @@ public class LoginActivity extends AppCompatActivity {
 
         signInGoogle();
 
+        signInFacebook();
 
 
 
+
+    }
+
+    private void signInFacebook() {
+        binding.facebookSignInBtn.setOnClickListener(v -> {
+            //Init Facebook login button
+            mCallbackManager = CallbackManager.Factory.create();
+            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
+                    Arrays.asList("email", "public_profile"));
+            LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    Log.d(FB_TAG, "onSuccess: " + loginResult);
+                    handleFacebookAccessToken(loginResult.getAccessToken());
+                }
+
+                @Override
+                public void onCancel() {
+                    Log.d(FB_TAG, "onCancel");
+
+                }
+
+                @Override
+                public void onError(@NonNull FacebookException e) {
+                    Log.d(FB_TAG, "onError: " + e.getMessage());
+
+                }
+            });
+        });
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void handleFacebookAccessToken(AccessToken accessToken) {
+        Log.d(FB_TAG, "handleFacebookToken: " + accessToken);
+
+        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        mAuth.signInWithCredential(authCredential).addOnSuccessListener(authResult -> {
+                loadDialog.showLoadingDialog();
+                mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                //get user information through FirebaseUser
+                String userID = Objects.requireNonNull(mUser.getUid());
+                String email = Objects.requireNonNull(mUser.getEmail());
+                String fullName = Objects.requireNonNull(mUser.getDisplayName());
+
+                //check if user is new or existing
+                if (authResult.getAdditionalUserInfo().isNewUser()){
+                    //user is new -- Account Created
+
+                    HashMap<String, Object> userProfile = new HashMap<>();
+
+                    userProfile.put("fullName",fullName);
+                    userProfile.put("email",email);
+                    userProfile.put("userImgId","");
+                    userProfile.put("dob","");
+                    userProfile.put("phoneNumber","");
+                    userProfile.put("gender","");
+
+                    userProfile.put("userId",userID);
+
+                    mRef.child("Users").child(userID).setValue(userProfile)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()){
+                                    mAuth.getCurrentUser().sendEmailVerification()
+                                            .addOnCompleteListener(task1 -> {
+                                                loadDialog.hideLoadingDialog();
+                                                dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
+                                                        getString(R.string.txt_title_congratulation),
+                                                        getString(R.string.txt_sub_title_sign_in_google),
+                                                        getResources().getColor(R.color.green));
+                                            });
+                                }
+
+                            });
+
+                }
+                else {
+                    loadDialog.hideLoadingDialog();
+                    Toast.makeText(LoginActivity.this,"Existing User with email: "+email,Toast.LENGTH_SHORT)
+                            .show();
+                }
+                moveToHome();
+        }).addOnFailureListener(e -> {
+            loadDialog.hideLoadingDialog();
+            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),
+                    getString(R.string.txt_title_logged_failed),
+                    e.getMessage(),getResources().getColor(R.color.red));
+        });
     }
 
     @SuppressWarnings("deprecation")
@@ -120,11 +233,37 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            updateUI(currentUser);
+        }
+
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        if (mUser != null) {
+            Log.d(FB_TAG, "onSuccess: FULLNAME:  " + mUser.getDisplayName());
+            Log.d(FB_TAG, "onSuccess: EMAIL: " + mUser.getEmail());
+            if (mUser.getPhotoUrl() != null) {
+                String photoUrl = mUser.getPhotoUrl().toString();
+                //Set up for using Picasso library to set the user photo url
+                //photoUrl = photoUrl+"?type=large";
+                //Picasso.get().load(photoUrl).into(...);
+                Log.d(FB_TAG, "onSuccess: PHOTO URL" + photoUrl);
+            } else {
+                Log.d(FB_TAG, "onSuccess: PHOTO URL: NONE");
+            }
+        }
+    }
+
     //Handle result of intent at line 112
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
         //Result returned from launching the intent at line 112- from GoogleSignInApi.getSignInIntent(...);
@@ -163,7 +302,7 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseUser mUser = mAuth.getCurrentUser();
 
             //get user Information
-            String uId = Objects.requireNonNull(Objects.requireNonNull(mUser).getUid());
+            String uId = Objects.requireNonNull(mUser).getUid();
             String email = Objects.requireNonNull(mUser.getEmail());
             String fullName = Objects.requireNonNull(mUser.getDisplayName());
 
@@ -206,9 +345,8 @@ public class LoginActivity extends AppCompatActivity {
                 //existing user -- Logged In
                 Log.d(TAG,"onSuccess: Existing User...\n"+email);
             }
-            //Start move to Home Activity
-            //TODO: turn off note mode for startActivity() move to Home Activity.
-//                moveToHome();
+            //Start move to Home Activityy.
+                moveToHome();
 
 
         }).addOnFailureListener(e -> {
@@ -323,8 +461,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     loadDialog.hideLoadingDialog();
-                    //TODO: turn off note mode for startActivity() move to Home Activity.
-//                        moveToHome();
+                        moveToHome();
 
                 }
 

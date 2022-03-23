@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,48 +9,56 @@
     android:orientation="vertical"
     tools:context=".view.activity.LoginActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_login"
+        android:layout_width="285dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/firstpicture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="ContentDescription"
+        android:layout_marginBottom="260dp"/>
 
-        <ImageView
-            android:id="@+id/iv_login"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="300dp"
-            android:fitsSystemWindows="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/firstpicture"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="120dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/txt_title_login"
-            android:textColor="@color/first"
-            android:textSize="45sp" />
-
-    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/txt_title_login"
+        android:textColor="@color/first"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <FrameLayout
+    <ScrollView
         android:id="@+id/lo_login"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="250dp"
         android:background="@drawable/lefttopround"
-        android:elevation="50dp">
+        android:elevation="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
         <!--        app:blk_downscaleFactor="0.12"-->
 
         <LinearLayout
             android:id="@+id/lo_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
             android:paddingTop="60dp">
@@ -188,6 +196,7 @@
                 android:paddingEnd="20dp">
 
                 <ImageButton
+                    android:id="@+id/facebookSignInBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -196,13 +205,13 @@
                     tools:ignore="ContentDescription" />
 
                 <ImageButton
+                    android:id="@+id/googleSignInBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_google"
-                    tools:ignore="ContentDescription"
-                    android:id="@+id/googleSignInBtn"/>
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
 
             <RelativeLayout
@@ -239,7 +248,7 @@
         </LinearLayout>
 
 
-    </FrameLayout>
+    </ScrollView>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
