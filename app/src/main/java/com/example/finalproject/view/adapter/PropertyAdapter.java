@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.databinding.ItemPropertyBinding;
 import com.example.finalproject.models.Property;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
 
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
         holder.propertyImage.setImageResource(property.getPropertyImage());
         holder.propertyName.setText(property.getPropertyName());
 
+
     }
 
 
@@ -51,7 +54,7 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
     }
 
     public class PropertyViewHolder extends RecyclerView.ViewHolder{
-        private final ImageView propertyImage;
+        private final ShapeableImageView propertyImage;
         private final TextView propertyName;
 
         public PropertyViewHolder(@NonNull ItemPropertyBinding itemView) {
