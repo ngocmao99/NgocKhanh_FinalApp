@@ -68,8 +68,12 @@
     <string name="sub_title_logged_failed_facebook">Loggin with Facebook link failed.</string>
     <string name="txt_content_iv_back_button">Back Button</string>
     <string name="btn_create_account">Create Account</string>
-    <string name="txt_category_name">Category Name</string>
+    <string name="txt_category_name">CatName</string>
     <string name="property_name">Name</string>
     <string name="property_address">Address</string>
     <string name="rentNow">Rent Now</string>
+    <string name="txt_title_category">Categories</string>
+    <string name="txt_price">Price</string>
+    <string name="txt_per_month">Per Month</string>
+    <string name="txt_hint_search_box">Search Best Place...</string>
 </resources>

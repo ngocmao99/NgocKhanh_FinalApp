@@ -52,7 +52,7 @@ public class Fragment_Home extends Fragment {
         categoryAdapter = new CategoryAdapter();
 
         //Init gridviews
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(homeActivity,1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(homeActivity,3);
         binding.rcvCategory1.setLayoutManager(gridLayoutManager);
         binding.rcvCategory1.setFocusable(false);
         binding.rcvCategory1.setNestedScrollingEnabled(true);
@@ -81,9 +81,9 @@ public class Fragment_Home extends Fragment {
 
     private List<Category> getListCategory() {
         List<Category> mList = new ArrayList<>();
-        mList.add(new Category("1",getString(R.string.txt_category_name),"motel",R.drawable.ic_motel));
-        mList.add(new Category("2",getString(R.string.txt_category_name),"motel",R.drawable.ic_check));
-        mList.add(new Category("3",getString(R.string.txt_category_name),"motel",R.drawable.ic_error));
+        mList.add(new Category("1","Motel","motel",R.drawable.ic_motel_white));
+        mList.add(new Category("2","Apartment","motel",R.drawable.ic_townhouse_white));
+        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
         return mList;
     }
 

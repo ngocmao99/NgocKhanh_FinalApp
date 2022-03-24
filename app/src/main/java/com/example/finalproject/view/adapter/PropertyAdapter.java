@@ -7,12 +7,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.finalproject.databinding.ItemPropertyBinding;
 import com.example.finalproject.models.Property;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.google.android.material.shape.CornerFamily;
+
 
 import java.util.List;
 
@@ -39,6 +41,10 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
             return;
         }
         holder.propertyImage.setImageResource(property.getPropertyImage());
+        //Example using Glide lib in View Holder
+//        Glide.with(holder.itemView.getContext()).load(property.getPropertyImage())
+//                .fitCenter()
+//                .into(holder.propertyImage);
         holder.propertyName.setText(property.getPropertyName());
 
 
@@ -57,10 +63,13 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.Proper
         private final ShapeableImageView propertyImage;
         private final TextView propertyName;
 
+
         public PropertyViewHolder(@NonNull ItemPropertyBinding itemView) {
             super(itemView.getRoot());
             propertyImage = itemView.imgProperty;
             propertyName = itemView.propertyName;
+
+
         }
     }
 }

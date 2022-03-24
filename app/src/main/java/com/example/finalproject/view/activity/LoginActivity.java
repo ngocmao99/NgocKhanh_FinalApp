@@ -263,7 +263,7 @@ public class LoginActivity extends AppCompatActivity {
     //Handle result of intent at line 112
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+
         super.onActivityResult(requestCode, resultCode, data);
 
         //Result returned from launching the intent at line 112- from GoogleSignInApi.getSignInIntent(...);
@@ -278,6 +278,9 @@ public class LoginActivity extends AppCompatActivity {
                 //failed Google SignIn
                 Log.d(TAG,"onActivityResult: "+e.getMessage());
             }
+        }
+        else{
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
