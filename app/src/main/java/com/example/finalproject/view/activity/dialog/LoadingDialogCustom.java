@@ -8,7 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import com.example.finalproject.R;
 
 public class LoadingDialogCustom {
-    private Context context;
+    private final Context context;
     Dialog dialog;
 
     public LoadingDialogCustom(Context context) {

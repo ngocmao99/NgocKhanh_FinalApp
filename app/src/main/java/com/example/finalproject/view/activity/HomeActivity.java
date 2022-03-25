@@ -1,5 +1,9 @@
 package com.example.finalproject.view.activity;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.WindowManager;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,18 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.WindowManager;
-
+import com.example.finalproject.R;
 import com.example.finalproject.view.activity.menu.Fragment_Feed;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
-import com.example.finalproject.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FirebaseAuth mAuth;

@@ -333,13 +333,15 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
                             loadDialog.hideLoadingDialog();
+
+                            //Show dialog
                             dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),getString(R.string.txt_title_congratulation),
                                     getString(R.string.txt_sub_title_sign_in_google),getResources().getColor(R.color.green));
+                            dialogCustom.hideLoadingDialogTime(3000);
+                            moveToHome();
+
                         });
                     }
-
-
-
 
                 });
             }
@@ -347,11 +349,9 @@ public class LoginActivity extends AppCompatActivity {
             else {
                 //existing user -- Logged In
                 Log.d(TAG,"onSuccess: Existing User...\n"+email);
-            }
-            //Start move to Home Activityy.
+                    loadDialog.hideLoadingDialog();
                 moveToHome();
-
-
+            }
         }).addOnFailureListener(e -> {
             //login failed
             Log.d(TAG,"onFailed: Logged Failed "+e.getMessage());
