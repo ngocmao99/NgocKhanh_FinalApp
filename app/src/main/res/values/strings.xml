@@ -76,4 +76,6 @@
     <string name="txt_price">Price</string>
     <string name="txt_per_month">Per Month</string>
     <string name="txt_hint_search_box">Search Best Place...</string>
+    <string name="txt_for_you">For You</string>
+    <string name="txt_view_all">View all</string>
 </resources>

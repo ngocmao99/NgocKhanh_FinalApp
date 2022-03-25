@@ -52,18 +52,19 @@ public class Fragment_Home extends Fragment {
         categoryAdapter = new CategoryAdapter();
 
         //Init gridviews
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(homeActivity,3);
-        binding.rcvCategory1.setLayoutManager(gridLayoutManager);
-        binding.rcvCategory1.setFocusable(false);
-        binding.rcvCategory1.setNestedScrollingEnabled(true);
+        LinearLayoutManager mLinearManager = new LinearLayoutManager(homeActivity,LinearLayoutManager.HORIZONTAL,
+                false);
+        binding.rcvCategory1.setLayoutManager(mLinearManager);
+        binding.rcvCategory1.setFocusable(true);
+        binding.rcvCategory1.setNestedScrollingEnabled(false);
         categoryAdapter.setData(getListCategory());
         binding.rcvCategory1.setAdapter(categoryAdapter);
 
         //property
         propertyAdapter = new PropertyAdapter();
         Context context;
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(homeActivity);
-        binding.rcvCategory2.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(homeActivity,1);
+        binding.rcvCategory2.setLayoutManager(gridLayoutManager);
         binding.rcvCategory2.setFocusable(false);
         binding.rcvCategory2.setNestedScrollingEnabled(false);
         propertyAdapter.setData(getListProperty());
@@ -76,6 +77,8 @@ public class Fragment_Home extends Fragment {
         mList.add(new Property("1","Fluffy","Motel","123 NorthWay",R.drawable.firstpicture));
         mList.add(new Property("2","Nancy","Villa","123 NorthWay",R.drawable.firstpicture));
         mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
+        mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
+        mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
         return mList;
     }
 
@@ -83,6 +86,8 @@ public class Fragment_Home extends Fragment {
         List<Category> mList = new ArrayList<>();
         mList.add(new Category("1","Motel","motel",R.drawable.ic_motel_white));
         mList.add(new Category("2","Apartment","motel",R.drawable.ic_townhouse_white));
+        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
+        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
         mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
         return mList;
     }

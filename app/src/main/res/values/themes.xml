@@ -47,4 +47,14 @@
         <item name="cornerSizeBottomLeft">18dp</item>
     </style>
 
+    <!-- Customize Filter Image-->
+    <style name="CustomeFilterImage" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+    </style>
+
 </resources>

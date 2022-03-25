@@ -1,48 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg_home"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--Top-->
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <!--Content-->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="380dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="40dp">
+                android:layout_height="match_parent">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="140dp"
+                    android:background="@drawable/custome_background_home"
+                    android:fitsSystemWindows="true">
 
                     <LinearLayout
-                        android:layout_width="380dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="15dp"
+                        android:paddingTop="40dp">
+
+                        <!--Category-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/txt_title_category"
+                            android:textColor="@color/first"
+                            android:textSize="18sp" />
+
+                        <!-- Recycler view Category-->
+                        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="5dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rcv_category1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                app:layout_anchorGravity="center"
+                                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                        <!--Property- For you-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:gravity="center_vertical"
+                                android:text="@string/txt_for_you"
+                                android:textColor="@color/first"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="end|center_vertical"
+                                android:text="@string/txt_view_all"
+                                android:textColor="@color/black_500"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rcv_category2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_anchorGravity="center"
+                                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    </LinearLayout>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                <!--Search Bar-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="110dp"
+                    android:backgroundTint="@color/black_500"
+                    android:outlineAmbientShadowColor="@color/black_500"
+                    android:outlineSpotShadowColor="@color/black"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    tools:ignore="UnusedAttribute">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:orientation="horizontal">
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                            android:layout_width="340dp"
+                            android:layout_width="0dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:hint="@string/txt_hint_search_box"
                             app:boxBackgroundColor="@color/white"
                             app:boxStrokeWidth="0dp"
@@ -62,14 +142,14 @@
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
+                            android:elevation="20dp"
                             android:outlineAmbientShadowColor="@color/black_500"
-                            android:outlineSpotShadowColor="@color/black"
-                            app:cardElevation="20dp"
-                            app:cardUseCompatPadding="false">
+                            android:outlineSpotShadowColor="@color/black">
 
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                style="@style/CustomeFilterImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:src="@drawable/ic_filter" />
 
@@ -79,68 +159,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="15dp">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="@string/txt_title_category"
-                        android:textColor="@color/first"
-                        android:textSize="18sp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_category1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_bold"
-                            android:gravity="center_vertical"
-                            android:text="For you"
-                            android:textColor="@color/first"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="end|center_vertical"
-                            android:text="View all"
-                            android:textColor="@color/black_500"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_category2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"/>
-    </LinearLayout>
-
-</LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+</RelativeLayout>
