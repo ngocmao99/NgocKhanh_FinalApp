@@ -17,6 +17,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.databinding.HomefragmentBinding;
 import com.example.finalproject.models.Category;
 import com.example.finalproject.models.Property;
+
 import com.example.finalproject.view.activity.HomeActivity;
 import com.example.finalproject.view.adapter.CategoryAdapter;
 import com.example.finalproject.view.adapter.PropertyAdapter;

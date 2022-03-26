@@ -14,6 +14,7 @@
         android:layout_width="285dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
+        android:layout_marginBottom="260dp"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
         android:src="@drawable/firstpicture"
@@ -23,8 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ContentDescription"
-        android:layout_marginBottom="260dp"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -89,6 +89,7 @@
                     android:layout_height="70dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="textEmailAddress"
+                    android:maxLength="35"
                     android:textSize="14sp"
 
                     />
@@ -124,6 +125,7 @@
                     android:background="@drawable/edittext"
                     android:fontFamily="@font/poppins"
                     android:inputType="textPassword"
+                    android:maxLength="35"
                     android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
