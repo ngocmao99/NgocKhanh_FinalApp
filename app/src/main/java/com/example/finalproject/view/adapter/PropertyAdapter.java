@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+
 import com.example.finalproject.databinding.ItemPropertyBinding;
 import com.example.finalproject.models.Property;
 import com.google.android.material.imageview.ShapeableImageView;
