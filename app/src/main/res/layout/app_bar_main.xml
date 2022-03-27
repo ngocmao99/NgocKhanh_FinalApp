@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/tool"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tool:context=".HomeActivity"
+    xmlns:tool="http://schemas.android.com/tool"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <androidx.appcompat.widget.Toolbar
-            app:layout_scrollFlags="scroll"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:backgroundTint="@android:color/transparent"
-            app:popupTheme="@style/Theme.FinalProject.PopupOverlay"
-            app:titleTextColor="@android:color/transparent"/>
-    <include layout="@layout/content_main"/>
+    android:layout_height="match_parent"
+    tool:context=".HomeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_scrollFlags="scroll"
+        app:popupTheme="@style/Theme.FinalProject.PopupOverlay"
+        app:titleTextColor="@android:color/transparent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/nav_bottom_menu"
+        app:backgroundTint="@color/white"
+        app:elevation="30dp"
+        app:itemIconTint="@color/gray"/>
+
+    <include layout="@layout/content_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

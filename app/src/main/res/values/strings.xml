@@ -86,4 +86,8 @@
     <string name="txt_user_full_name">Username</string>
     <string name="txt_user_email">User email</string>
     <string name="txt_log_out">Log Out</string>
+    <string name="item_profile">Profile</string>
+    <string name="item_review">Review</string>
+    <string name="item_favorite">Favorite</string>
+    <string name="item_home">Home</string>
 </resources>

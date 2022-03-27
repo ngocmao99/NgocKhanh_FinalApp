@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/itemHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/item_home"/>
+
+    <item android:id="@+id/itemFavorite"
+        android:enabled="true"
+        android:title="@string/item_favorite"
+        android:icon="@drawable/ic_fav"/>
+
+    <item android:id="@+id/itemRev"
+        android:enabled="true"
+        android:title="@string/item_review"
+        android:icon="@drawable/ic_rev"/>
+
+    <item android:id="@+id/itemProf"
+        android:enabled="true"
+        android:title="@string/item_profile"
+        android:icon="@drawable/ic_prof"/>
+
+</menu>
