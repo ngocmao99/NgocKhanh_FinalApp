@@ -1,17 +1,23 @@
 package com.example.finalproject.base;
 
+
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.dialog.LoadingDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -25,9 +31,46 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    private final FirebaseAuth.AuthStateListener mHandlerAuthStateListener =
+            new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (user != null){
+                        //Since the user object is non-null, the current user is now signed in.
+                        BaseActivity.this.handleUserSignIn(user);
+                    }else{
+                        //Since the user object is null, the current user is now signed out.
+                        BaseActivity.this.handleUserSignOut(user);
+                    }
+                }
+            };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //Start listening for Firebase Auth state changes
+        FirebaseAuth.getInstance().addAuthStateListener(mHandlerAuthStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        //Stop listening for Firebase Auth state changes
+        FirebaseAuth.getInstance().removeAuthStateListener(mHandlerAuthStateListener);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Turn off header bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //initial loading dialog
         loadingDialog = new LoadingDialog(this);
     }
 
@@ -57,4 +100,34 @@ public class BaseActivity extends AppCompatActivity {
     protected void hideLoading() {
         loadingDialog.dismiss();
     }
+
+    /** Determines and the returns whether or not the current user signed in
+     *
+     * @return true if the current user is signed into this app false otherwise.
+     */
+    protected boolean currentUserIsSignedIn(){
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
+    }
+
+    /**
+     * Handle when the user sign in
+     *
+     * Override in subclasses to respond to this authentication state change
+     *
+     * @param mUser The user who is signed in now
+     */
+    protected void handleUserSignIn(FirebaseUser mUser){
+
+    }
+
+    /**
+     * Handle when the user signs out
+     *
+     * Override in subclasses to respond to this authentication state change
+     *
+     */
+    protected void handleUserSignOut(FirebaseUser mUser){
+    }
+
+
 }
