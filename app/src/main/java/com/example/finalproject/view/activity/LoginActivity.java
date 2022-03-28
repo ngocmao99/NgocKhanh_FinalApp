@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     private FirebaseAuth mAuth;
-    
+
     private LoadingDialogCustom loadDialog;
 
     //Declare GoogleSignInClient variable.
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.txtForgetPassword.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, ForgetPassword.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
+            startActivity(new Intent(LoginActivity.this, ForgetPassword.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_CLEAR_TOP));
             Animatoo.animateSlideRight(LoginActivity.this);
         });
@@ -125,13 +125,11 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail().build();
 
         //Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this,gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
 
         signInGoogle();
 
         signInFacebook();
-
-
 
 
     }
@@ -170,56 +168,55 @@ public class LoginActivity extends AppCompatActivity {
 
         AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
         mAuth.signInWithCredential(authCredential).addOnSuccessListener(authResult -> {
-                loadDialog.showLoadingDialog();
-                mUser = FirebaseAuth.getInstance().getCurrentUser();
+            loadDialog.showLoadingDialog();
+            mUser = FirebaseAuth.getInstance().getCurrentUser();
 
-                //get user information through FirebaseUser
-                String userID = Objects.requireNonNull(mUser.getUid());
-                String email = Objects.requireNonNull(mUser.getEmail());
-                String fullName = Objects.requireNonNull(mUser.getDisplayName());
+            //get user information through FirebaseUser
+            String userID = Objects.requireNonNull(mUser.getUid());
+            String email = Objects.requireNonNull(mUser.getEmail());
+            String fullName = Objects.requireNonNull(mUser.getDisplayName());
 
-                //check if user is new or existing
-                if (authResult.getAdditionalUserInfo().isNewUser()){
-                    //user is new -- Account Created
+            //check if user is new or existing
+            if (authResult.getAdditionalUserInfo().isNewUser()) {
+                //user is new -- Account Created
 
-                    HashMap<String, Object> userProfile = new HashMap<>();
+                HashMap<String, Object> userProfile = new HashMap<>();
 
-                    userProfile.put("fullName",fullName);
-                    userProfile.put("email",email);
-                    userProfile.put("userImgId","");
-                    userProfile.put("dob","");
-                    userProfile.put("phoneNumber","");
-                    userProfile.put("gender","");
+                userProfile.put("fullName", fullName);
+                userProfile.put("email", email);
+                userProfile.put("userImgId", "");
+                userProfile.put("dob", "");
+                userProfile.put("phoneNumber", "");
+                userProfile.put("gender", "");
 
-                    userProfile.put("userId",userID);
+                userProfile.put("userId", userID);
 
-                    mRef.child("Users").child(userID).setValue(userProfile)
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
-                                    mAuth.getCurrentUser().sendEmailVerification()
-                                            .addOnCompleteListener(task1 -> {
-                                                loadDialog.hideLoadingDialog();
-                                                dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
-                                                        getString(R.string.txt_title_congratulation),
-                                                        getString(R.string.txt_sub_title_sign_in_google),
-                                                        getResources().getColor(R.color.green));
-                                            });
-                                }
+                mRef.child("Users").child(userID).setValue(userProfile)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                mAuth.getCurrentUser().sendEmailVerification()
+                                        .addOnCompleteListener(task1 -> {
+                                            loadDialog.hideLoadingDialog();
+                                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
+                                                    getString(R.string.txt_title_congratulation),
+                                                    getString(R.string.txt_sub_title_sign_in_google),
+                                                    getResources().getColor(R.color.green));
+                                        });
+                            }
 
-                            });
+                        });
 
-                }
-                else {
-                    loadDialog.hideLoadingDialog();
-                    Toast.makeText(LoginActivity.this,"Existing User with email: "+email,Toast.LENGTH_SHORT)
-                            .show();
-                }
-                moveToHome();
+            } else {
+                loadDialog.hideLoadingDialog();
+                Toast.makeText(LoginActivity.this, "Existing User with email: " + email, Toast.LENGTH_SHORT)
+                        .show();
+            }
+            moveToHome();
         }).addOnFailureListener(e -> {
             loadDialog.hideLoadingDialog();
             dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),
                     getString(R.string.txt_title_logged_failed),
-                    e.getMessage(),getResources().getColor(R.color.red));
+                    e.getMessage(), getResources().getColor(R.color.red));
         });
     }
 
@@ -227,9 +224,9 @@ public class LoginActivity extends AppCompatActivity {
     private void signInGoogle() {
         binding.googleSignInBtn.setOnClickListener(v -> {
             //begin Google Sign In
-            Log.d(TAG,"onClick: begin Google Sign In");
+            Log.d(TAG, "onClick: begin Google Sign In");
             Intent intent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(intent,RC_SING_IN);
+            startActivityForResult(intent, RC_SING_IN);
         });
     }
 
@@ -267,24 +264,23 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         //Result returned from launching the intent at line 112- from GoogleSignInApi.getSignInIntent(...);
-        if(requestCode == RC_SING_IN){
-            Log.d(TAG,"onActivityResult: Google SignIn intent result");
+        if (requestCode == RC_SING_IN) {
+            Log.d(TAG, "onActivityResult: Google SignIn intent result");
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 //Google SignIn success, auth with Firebase
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
                 firebaseAuthWithGoogleAccount(account);
-            }catch (Exception e){
+            } catch (Exception e) {
                 //failed Google SignIn
-                Log.d(TAG,"onActivityResult: "+e.getMessage());
+                Log.d(TAG, "onActivityResult: " + e.getMessage());
             }
-        }
-        else{
+        } else {
             mCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
-    private void moveToHome(){
+    private void moveToHome() {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class).addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
         Animatoo.animateSlideLeft(LoginActivity.this);
@@ -293,13 +289,13 @@ public class LoginActivity extends AppCompatActivity {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
-        Log.d(TAG,"firebaseAuthWithGoogleAccount: begin firebase auth with google account");
+        Log.d(TAG, "firebaseAuthWithGoogleAccount: begin firebase auth with google account");
         GoogleSignInAccount googleSignInAccount;
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential).addOnSuccessListener(authResult -> {
             loadDialog.showLoadingDialog();
             //login successful
-            Log.d(TAG,"onSuccess: Logged In");
+            Log.d(TAG, "onSuccess: Logged In");
 
             //get logged in user
             FirebaseUser mUser = mAuth.getCurrentUser();
@@ -309,34 +305,34 @@ public class LoginActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(mUser.getEmail());
             String fullName = Objects.requireNonNull(mUser.getDisplayName());
 
-            Log.d(TAG,"onSuccess: EMAIL: "+email);
-            Log.d(TAG,"onSuccess: UID: "+uId);
+            Log.d(TAG, "onSuccess: EMAIL: " + email);
+            Log.d(TAG, "onSuccess: UID: " + uId);
 
             //check if user is new or existing
 
-            if (Objects.requireNonNull(authResult.getAdditionalUserInfo()).isNewUser()){
+            if (Objects.requireNonNull(authResult.getAdditionalUserInfo()).isNewUser()) {
                 //user is new -- Account Created
-                Log.d(TAG,"onSuccess: Account Created...\n"+email);
-                Toast.makeText(LoginActivity.this, "Account Created..."+email, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onSuccess: Account Created...\n" + email);
+                Toast.makeText(LoginActivity.this, "Account Created..." + email, Toast.LENGTH_SHORT).show();
 
                 HashMap<String, Object> userInfo = new HashMap<>();
-                userInfo.put("fullName",fullName);
-                userInfo.put("email",email);
-                userInfo.put("userImgId","");
-                userInfo.put("dob","");
-                userInfo.put("phoneNumber","");
-                userInfo.put("gender","");
+                userInfo.put("fullName", fullName);
+                userInfo.put("email", email);
+                userInfo.put("userImgId", "");
+                userInfo.put("dob", "");
+                userInfo.put("phoneNumber", "");
+                userInfo.put("gender", "");
 
-                userInfo.put("userId",uId);
+                userInfo.put("userId", uId);
 
                 mRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userInfo).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
                             loadDialog.hideLoadingDialog();
 
                             //Show dialog
-                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),getString(R.string.txt_title_congratulation),
-                                    getString(R.string.txt_sub_title_sign_in_google),getResources().getColor(R.color.green));
+                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check), getString(R.string.txt_title_congratulation),
+                                    getString(R.string.txt_sub_title_sign_in_google), getResources().getColor(R.color.green));
                             dialogCustom.hideLoadingDialogTime(3000);
                             moveToHome();
 
@@ -344,20 +340,18 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                 });
-            }
-
-            else {
+            } else {
                 //existing user -- Logged In
-                Log.d(TAG,"onSuccess: Existing User...\n"+email);
-                    loadDialog.hideLoadingDialog();
+                Log.d(TAG, "onSuccess: Existing User...\n" + email);
+                loadDialog.hideLoadingDialog();
                 moveToHome();
             }
         }).addOnFailureListener(e -> {
             //login failed
-            Log.d(TAG,"onFailed: Logged Failed "+e.getMessage());
+            Log.d(TAG, "onFailed: Logged Failed " + e.getMessage());
             loadDialog.hideLoadingDialog();
-            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),getString(R.string.txt_title_logged_failed),
-                    getString(R.string.sub_title_logged_failed),getResources().getColor(R.color.red));
+            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error), getString(R.string.txt_title_logged_failed),
+                    getString(R.string.sub_title_logged_failed), getResources().getColor(R.color.red));
         });
     }
 
@@ -366,6 +360,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.tietPasswordInput.addTextChangedListener(tw_passwords);
 
     }
+
     private final TextWatcher tw_passwords = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -396,7 +391,7 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     };
-    
+
     private final TextWatcher tw_email = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -430,45 +425,43 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
-    private void validateInput(){
+    private void validateInput() {
         String email = Objects.requireNonNull(Objects.requireNonNull(binding.tietEmailInput.getText()).toString());
         String password = Objects.requireNonNull(Objects.requireNonNull(binding.tietPasswordInput.getText()).toString());
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             binding.tilEmailInput.setErrorEnabled(true);
             binding.tilEmailInput.setError(getString(R.string.error_input_email_empty));
             binding.tilEmailInput.requestFocus();
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             binding.tilPasswordInput.setErrorEnabled(true);
             binding.tilPasswordInput.setError(getString(R.string.error_input_password_signup));
             binding.tilPasswordInput.requestFocus();
         }
-        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
-            Toast.makeText(LoginActivity.this,getText(R.string.error_empty_credential),Toast.LENGTH_SHORT).show();
-        }
-        else{
-            loginWithCheck(email,password);
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(LoginActivity.this, getText(R.string.error_empty_credential), Toast.LENGTH_SHORT).show();
+        } else {
+            loginWithCheck(email, password);
         }
     }
 
     private void loginWithCheck(String email, String password) {
         loadDialog.showLoadingDialog();
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
 
-                if(!Objects.requireNonNull(mAuth.getCurrentUser()).isEmailVerified()){
+                if (!Objects.requireNonNull(mAuth.getCurrentUser()).isEmailVerified()) {
                     loadDialog.hideLoadingDialog();
-                    Toast.makeText(LoginActivity.this,getText(R.string.error_not_verified_email), Toast.LENGTH_SHORT).show();
-                }
-                else{
+                    Toast.makeText(LoginActivity.this, getText(R.string.error_not_verified_email), Toast.LENGTH_SHORT).show();
+                } else {
                     loadDialog.hideLoadingDialog();
-                        moveToHome();
+                    moveToHome();
 
                 }
 
-            }else{
+            } else {
                 loadDialog.hideLoadingDialog();
                 Toast.makeText(LoginActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }

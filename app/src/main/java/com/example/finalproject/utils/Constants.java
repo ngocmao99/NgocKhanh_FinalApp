@@ -14,4 +14,12 @@ public class Constants {
     public static final String TAG = "GOOGLE_SIGN_IN_TAG";
     public static final String FB_TAG = "FACEBOOK_SIGN_IN_TAG";
 
+    public static final int FM_HOME =1;
+    public static final int FM_ABOUT_APP =2;
+    public static final int FM_HELP = 3;
+    public static final int FM_FEED=4;
+    public static final int FM_PROFILE=5;
+    public static final int FM_FAVORITE=6;
+
+
 }

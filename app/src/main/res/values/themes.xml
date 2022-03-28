@@ -57,4 +57,36 @@
         <item name="cornerSizeBottomLeft">10dp</item>
     </style>
 
+    <!-- Customize Profile Image-->
+    <style name="CustomeProfileImage" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">50dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">50dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">50dp</item>
+    </style>
+
+    <!-- Customize Card View Profile-->
+    <style name="CustomCardViewProfile" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_profile_custom_corners</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay_card_profile_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">65dp</item>
+        <item name="cornerSizeTopLeft">65dp</item>
+        <item name="cornerSizeBottomRight">65dp</item>
+        <item name="cornerSizeBottomLeft">65dp</item>
+    </style>
+
+    <!-- Custom font family for text in nav drawer-->
+    <style name="PoppinsTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+
 </resources>

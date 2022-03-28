@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/custome_background_home_gradient"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:elevation="20dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView_image"
+            style="@style/CustomCardViewProfile"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgProperty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                app:shapeAppearanceOverlay="@style/CustomeProfileImage"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fitsSystemWindows="true"
+            android:fontFamily="@font/poppins_bold"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="15sp"
+            android:textColor="@color/black_500"
+            android:text="@string/txt_user_full_name"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fitsSystemWindows="true"
+            android:fontFamily="@font/poppins"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/black_500"
+            android:text="@string/txt_user_email"
+            android:gravity="center_horizontal"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginBottom="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="100dp"
+        android:layout_marginBottom="20dp">
+
+    <RadioButton
+        android:id="@+id/rbtn_gender_any"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/header_nav_drawer_radio_button_tenant"
+        android:button="@null"
+        android:checked="true"
+        android:fontFamily="@font/nunito_regular"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/rBtnTenant"
+        android:elevation="100dp"
+        android:textColor="@drawable/header_nav_drawer_textcolor_radio_button" />
+
+    <RadioButton
+        android:id="@+id/radio_gender_male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/header_nav_drawer_radio_button_owner"
+        android:button="@null"
+        android:fontFamily="@font/nunito_regular"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/rBtnOwner"
+        android:textColor="@drawable/header_nav_drawer_textcolor_radio_button" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginBottom="20dp"/>
+
+
+
+
+
+</LinearLayout>

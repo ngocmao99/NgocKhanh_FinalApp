@@ -40,7 +40,7 @@
     <string name="error_input_email_empty">Email cannot be empty.</string>
     <string name="error_invalid_email">Invalid email address.</string>
     <string name="error_password_less_than_six_letters">Must be at least eight characters.</string>
-    <string name="txt_title_progress_bar">Please wait...</string>
+    <string name="txt_title_progress_bar">Please wait…</string>
     <string name="ta_successful_registration">Registration was successful. Please check your email for verification.</string>
     <string name="error_verification_by_email_failure">"Registration Error: "</string>
     <string name="error_empty_credential">Empty credential. Please fill out required fields to log in.</string>
@@ -65,7 +65,7 @@
     <string name="facebook_app_id">287321126848740</string>
     <string name="fb_login_protocol_scheme">fb287321126848740</string>
     <string name="facebook_client_token">1593741a72bcac5efec43fc58a297af0</string>
-    <string name="sub_title_logged_failed_facebook">Loggin with Facebook link failed.</string>
+    <string name="sub_title_logged_failed_facebook">Login with Facebook link failed.</string>
     <string name="txt_content_iv_back_button">Back Button</string>
     <string name="btn_create_account">Create Account</string>
     <string name="txt_category_name">CatName</string>
@@ -75,7 +75,15 @@
     <string name="txt_title_category">Categories</string>
     <string name="txt_price">Price</string>
     <string name="txt_per_month">Per Month</string>
-    <string name="txt_hint_search_box">Search Best Place...</string>
+    <string name="txt_hint_search_box">Search Best Place…</string>
     <string name="txt_for_you">For You</string>
     <string name="txt_view_all">View all</string>
+    <string name="menuI_item_role">Role</string>
+    <string name="txt_about_app">About App</string>
+    <string name="txt_help">Help</string>
+    <string name="rBtnOwner">Owner</string>
+    <string name="rBtnTenant">Tenant</string>
+    <string name="txt_user_full_name">Username</string>
+    <string name="txt_user_email">User email</string>
+    <string name="txt_log_out">Log Out</string>
 </resources>

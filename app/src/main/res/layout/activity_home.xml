@@ -1,28 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.HomeActivity"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    android:id="@+id/drawer_layout">
+    tools:context=".view.activity.HomeActivity"
+    tools:openDrawer="start">
+
     <include
         android:id="@+id/app_bar_main"
         layout="@layout/app_bar_main"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.google.android.material.navigation.NavigationView
-        android:fitsSystemWindows="true"
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        android:background="@drawable/custome_nav_view"
+        android:elevation="40dp"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_drawer"
+        app:itemIconTint="@color/first"
+        app:itemTextAppearance="@style/PoppinsTextViewStyle"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/navigation_item_drawer"
+        tools:visibility="gone">
 
-
-
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogOut"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start|center_vertical"
+            android:text="@string/txt_log_out"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_logout"
+            app:iconPadding="10dp" />
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

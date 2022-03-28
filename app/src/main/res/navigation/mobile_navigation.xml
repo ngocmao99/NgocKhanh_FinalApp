@@ -9,7 +9,7 @@
         android:id="@+id/nav_Feed"
         android:name="com.example.finalproject.view.activity.menu.Fragment_Feed"
         android:label="@string/menu_feed"
-        tools:layout="@layout/feedfragment" />
+        tools:layout="@layout/feed_fragment" />
 
     <fragment
         android:id="@+id/nav_home"
@@ -26,5 +26,5 @@
         android:id="@+id/nav_Favorite"
         android:name="com.example.finalproject.view.activity.menu.Fragment_Favorite"
         android:label="@string/menu_favorite"
-        tools:layout="@layout/favoritefragment" />
+        tools:layout="@layout/favorite_fragment" />
 </navigation>
