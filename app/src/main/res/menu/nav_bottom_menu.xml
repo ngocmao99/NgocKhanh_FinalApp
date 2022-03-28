@@ -21,4 +21,13 @@
         android:title="@string/item_profile"
         android:icon="@drawable/ic_prof"/>
 
+    <!-- Our invisible item -->
+
+    <item
+        android:id="@+id/invisible"
+        android:visible="false"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_feed" />
+
+
 </menu>

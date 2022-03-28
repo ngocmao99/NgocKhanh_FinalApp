@@ -4,8 +4,10 @@ import static com.example.finalproject.utils.Constants.FM_ABOUT_APP;
 import static com.example.finalproject.utils.Constants.FM_HELP;
 import static com.example.finalproject.utils.Constants.FM_HOME;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -21,9 +23,14 @@ import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.databinding.HeaderDrawerBinding;
 import com.example.finalproject.view.activity.menu.AboutAppFragment;
+import com.example.finalproject.view.activity.menu.Fragment_Favorite;
+import com.example.finalproject.view.activity.menu.Fragment_Feed;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
+import com.example.finalproject.view.activity.menu.Fragment_Profile;
 import com.example.finalproject.view.activity.menu.HelpFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.MaterialShapeDrawable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -57,6 +64,72 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         replaceframent(new Fragment_Home());
 
         handleLogOutButton();
+
+        roundedBotNav();
+
+        handleBottomNavigation();
+
+    }
+
+    private void handleBottomNavigation() {
+        binding.appBarMain.navBottom.setSelectedItemId(R.id.itemHome);
+
+        handleNavBottomSelectedItem();
+
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    private void handleNavBottomSelectedItem() {
+        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.itemHome:
+                    fragment = new Fragment_Home();
+                    break;
+
+                case R.id.itemFavorite:
+                    fragment = new Fragment_Favorite();
+                    break;
+
+                case R.id.itemRev:
+                    fragment = new Fragment_Feed();
+                    break;
+
+                case R.id.itemProf:
+                    fragment = new Fragment_Profile();
+                    break;
+
+            }
+            unCheckAllMenuItems(binding.navView.getMenu());
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            return true;
+        });
+    }
+
+    private void unCheckAllMenuItems(@NonNull final Menu menu) {
+        int size = menu.size();
+        for (int i = 0; i < size; i++) {
+            final MenuItem item = menu.getItem(i);
+            if (item.hasSubMenu()) {
+                // Un check sub menu items
+                unCheckAllMenuItems(item.getSubMenu());
+            } else {
+                item.setChecked(false);
+            }
+        }
+    }
+
+    private void roundedBotNav() {
+        //Corner radius
+        float radius = 40.0F;
+
+        MaterialShapeDrawable bottomBarBackground = (MaterialShapeDrawable) binding.appBarMain.navBottom.getBackground();
+        bottomBarBackground.setShapeAppearanceModel(
+                bottomBarBackground.getShapeAppearanceModel()
+                        .toBuilder()
+                        .setTopRightCorner(CornerFamily.ROUNDED, radius)
+                        .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+                        .build());
     }
 
     private void handleLogOutButton() {
@@ -103,14 +176,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         int id = item.getItemId();
-        if (id == R.id.nav_home) {
-            if (FM_HOME != currentFragment) {
-                replaceframent(new Fragment_Home());
-                currentFragment = FM_HOME;
-            }
-        } else if (id == R.id.itemAboutApp) {
+        if (id == R.id.itemAboutApp) {
             if (FM_ABOUT_APP != currentFragment) {
                 replaceframent(new AboutAppFragment());
                 currentFragment = FM_ABOUT_APP;
@@ -123,10 +190,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 item.setChecked(true);
             }
         }
-
+        unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     private void replaceframent(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

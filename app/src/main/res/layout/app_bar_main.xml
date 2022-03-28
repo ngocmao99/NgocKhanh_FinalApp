@@ -17,14 +17,17 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bottom"
-        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_gravity="bottom"
         app:menu="@menu/nav_bottom_menu"
-        app:backgroundTint="@color/white"
-        app:elevation="30dp"
-        app:itemIconTint="@color/gray"/>
+        app:elevation="24dp"
+        app:itemTextAppearanceInactive="@color/gray"
+        app:itemTextAppearanceActive="@color/first"
+        app:itemIconTint="@drawable/nav_selector_color"
+        android:clipChildren="false"
+        app:labelVisibilityMode="unlabeled"
+        />
 
     <include layout="@layout/content_main" />
 

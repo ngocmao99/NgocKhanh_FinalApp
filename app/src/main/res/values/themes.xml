@@ -88,5 +88,20 @@
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 
+    <!-- Custom nav bottom app bar-->
+    <style name="CustomBottomNavigationBar" parent="">
+        <item name="shapeAppearance">@style/ShapeAppearance_CustomBotNavRounded</item>
+        <item name="background">@color/white</item>
+        <item name="elevationOverlayEnabled">true</item>
+        <item name="elevation">50dp</item>
+    </style>
+
+    <style name="ShapeAppearance_CustomBotNavRounded" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">32dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">32dp</item>
+    </style>
+
 
 </resources>
