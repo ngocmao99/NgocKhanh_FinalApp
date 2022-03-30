@@ -22,9 +22,55 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_teal"
+            android:background="@color/light_teal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="20dp"
             android:orientation="vertical"
             android:gravity="center">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bedsit"
+                    android:elevation="10dp"
+                    android:button="@color/teal_200"
+                    android:fontFamily="@font/nunito_italic"
+                    android:padding="16dp"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/text_color"
+                    android:layout_margin="16dp"/>
+
+                <RadioButton
+                    android:elevation="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apartment"
+                    android:button="@color/teal_200"
+                    android:fontFamily="@font/nunito_italic"
+                    android:padding="16dp"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/text_color"
+                    android:layout_margin="16dp"/>
+                <RadioButton
+                    android:elevation="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Townhouse"
+                    android:button="@color/teal_200"
+                    android:fontFamily="@font/nunito_italic"
+                    android:padding="16dp"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/text_color"
+                    android:layout_margin="16dp"/>
+
+            </RadioGroup>
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +78,7 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motel"
+                    android:text="Bungalow"
                     android:elevation="10dp"
                     android:button="@color/teal_200"
                     android:fontFamily="@font/nunito_italic"
@@ -44,7 +90,7 @@
                     android:elevation="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motel"
+                    android:text="Duplex"
                     android:button="@color/teal_200"
                     android:fontFamily="@font/nunito_italic"
                     android:padding="16dp"
@@ -55,7 +101,7 @@
                     android:elevation="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Motel"
+                    android:text="Vila"
                     android:button="@color/teal_200"
                     android:fontFamily="@font/nunito_italic"
                     android:padding="16dp"
@@ -67,6 +113,7 @@
 
 
         </LinearLayout>
+</LinearLayout>
     </androidx.cardview.widget.CardView>
 
 
