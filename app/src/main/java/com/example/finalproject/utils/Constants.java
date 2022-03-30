@@ -21,5 +21,8 @@ public class Constants {
     public static final int FM_PROFILE=5;
     public static final int FM_FAVORITE=6;
 
+    public static final String FB_LINK = "https://www.facebook.com/ngockhanh.nguyen.944023";
+    public static final String GITHUB_LINK = "https://github.com/ngocmao99/NgocKhanh_FinalApp";
+
 
 }

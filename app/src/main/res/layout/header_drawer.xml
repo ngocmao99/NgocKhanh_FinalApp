@@ -73,7 +73,7 @@
         android:layout_marginBottom="20dp"/>
 
     <RadioGroup
-        android:id="@+id/gender"
+        android:id="@+id/role"
         android:layout_width="match_parent"
         android:layout_height="35sp"
         android:gravity="center"
@@ -83,7 +83,7 @@
         android:layout_marginBottom="20dp">
 
     <RadioButton
-        android:id="@+id/rbtn_gender_any"
+        android:id="@+id/tenant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -98,7 +98,7 @@
         android:textColor="@drawable/header_nav_drawer_textcolor_radio_button" />
 
     <RadioButton
-        android:id="@+id/radio_gender_male"
+        android:id="@+id/owner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

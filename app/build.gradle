@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         //Turn on viewBinding
-        viewBinding{
+        viewBinding {
             enabled = true
         }
     }
@@ -99,12 +99,12 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.4.1"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.4.1"
 
+    //About us
+    implementation 'io.github.medyo:android-about-page:2.0.0'
+    implementation 'com.github.Shashank02051997:FancyAboutPage-Android:2.8'
 
-
-
-
-
-
+    //Circle Image View
+    implementation 'com.mikhaellopez:circularimageview:3.0.2'
 
 
 }

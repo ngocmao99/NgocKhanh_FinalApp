@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.finalproject.R;
+import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.HomefragmentBinding;
 import com.example.finalproject.models.Category;
 import com.example.finalproject.models.Property;
@@ -25,7 +26,7 @@ import com.example.finalproject.view.adapter.PropertyAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_Home extends Fragment {
+public class Fragment_Home extends BaseFragment {
     //using view binding in fragment
     private HomefragmentBinding binding;
 
