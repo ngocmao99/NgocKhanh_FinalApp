@@ -90,4 +90,10 @@
     <string name="item_review">Review</string>
     <string name="item_favorite">Favorite</string>
     <string name="item_home">Home</string>
+    <string name="txt_name_dev">Khanh Nguyen</string>
+    <string name="fluffy_home">Fluffy Home</string>
+    <string name="app_description">Fluffy Home is a Android Application, which buid for support the user can find their house in Viet Nam.</string>
+    <string name="email_link">ngocmao99@gmail.com</string>
+    <string name="description_myself">My name is Nguyen Ngoc Khanh - a student of University of Greenwich. My skill focus on APS.NET, but with I am trying with new skill Android Application with Fluffy Home for my Final Project.</string>
+    <string name="item_property">My Prơperty</string>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:id="@+id/itemProperty"
+            android:enabled="true"
+            android:icon="@drawable/ic_property"
+            android:title="@string/item_property"/>
+
+        <item android:id="@+id/itemProf"
+            android:enabled="true"
+            android:title="@string/item_profile"
+            android:icon="@drawable/ic_prof"/>
+
+
+</menu>

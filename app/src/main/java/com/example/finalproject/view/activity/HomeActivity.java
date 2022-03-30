@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.finalproject.PropertyFragment;
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
@@ -80,29 +82,67 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @SuppressLint("NonConstantResourceId")
     private void handleNavBottomSelectedItem() {
-        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
-            Fragment fragment = null;
-            switch (item.getItemId()) {
-                case R.id.itemHome:
-                    fragment = new Fragment_Home();
-                    break;
+        headerBinding.role.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.tenant:
+                        binding.appBarMain.navBottom.getMenu().clear();
+                        binding.appBarMain.navBottom.inflateMenu(R.menu.nav_bottom_menu);
+                        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemHome).setChecked(true);
+                        replaceframent(new Fragment_Home());
 
-                case R.id.itemFavorite:
-                    fragment = new Fragment_Favorite();
-                    break;
+                        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
+                            Fragment fragment = null;
+                            switch (item.getItemId()) {
+                                case R.id.itemHome:
+                                    fragment = new Fragment_Home();
+                                    break;
 
-                case R.id.itemRev:
-                    fragment = new Fragment_Feed();
-                    break;
+                                case R.id.itemFavorite:
+                                    fragment = new Fragment_Favorite();
+                                    break;
 
-                case R.id.itemProf:
-                    fragment = new Fragment_Profile();
-                    break;
+                                case R.id.itemRev:
+                                    fragment = new Fragment_Feed();
+                                    break;
 
+                                case R.id.itemProf:
+                                    fragment = new Fragment_Profile();
+                                    break;
+
+                            }
+                            unCheckAllMenuItems(binding.navView.getMenu());
+                            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                            return true;
+                        });
+
+                        break;
+
+                    case R.id.owner:
+                        binding.appBarMain.navBottom.getMenu().clear();
+                        binding.appBarMain.navBottom.inflateMenu(R.menu.menu_nav_bot_owner);
+                        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemProperty).setChecked(true);
+                        replaceframent(new PropertyFragment());
+                        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
+                            Fragment fragment = null;
+                            switch (item.getItemId()) {
+                                case R.id.itemProperty:
+                                    fragment = new PropertyFragment();
+                                    break;
+
+                                case R.id.itemProf:
+                                    fragment = new Fragment_Profile();
+                                    break;
+
+                            }
+                            unCheckAllMenuItems(binding.navView.getMenu());
+                            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                            return true;
+                        });
+                        break;
+                }
             }
-            unCheckAllMenuItems(binding.navView.getMenu());
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            return true;
         });
     }
 
@@ -156,7 +196,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         String userName = mUser.getDisplayName();
         String email = mUser.getEmail();
 
-        //Set user name 
+        //Set user name
         headerBinding.userName.setText(userName);
         headerBinding.userEmail.setText(email);
 
@@ -182,15 +222,16 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 replaceframent(new AboutAppFragment());
                 currentFragment = FM_ABOUT_APP;
                 item.setChecked(true);
+                unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
             }
         } else if (id == R.id.itemHelp) {
             if (FM_HELP != currentFragment) {
                 replaceframent(new HelpFragment());
                 currentFragment = FM_HELP;
                 item.setChecked(true);
+                unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
             }
         }
-        unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
         binding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
