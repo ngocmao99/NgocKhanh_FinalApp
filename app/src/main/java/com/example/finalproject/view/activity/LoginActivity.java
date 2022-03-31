@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Declare  dialog custom
         dialogCustom = new DialogCustom(LoginActivity.this);
+
         binding.btnLogin.setOnClickListener(view1 -> validateInput());
 
         binding.signup.setOnClickListener(view12 -> {

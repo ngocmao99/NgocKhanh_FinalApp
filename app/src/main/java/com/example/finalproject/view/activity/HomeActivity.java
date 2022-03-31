@@ -3,6 +3,7 @@ package com.example.finalproject.view.activity;
 import static com.example.finalproject.utils.Constants.FM_ABOUT_APP;
 import static com.example.finalproject.utils.Constants.FM_HELP;
 import static com.example.finalproject.utils.Constants.FM_HOME;
+import static com.example.finalproject.utils.Constants.RB_V;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -37,9 +38,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends BaseActivity{
-    private int currentFragment = FM_HOME;
     private ActivityHomeBinding binding;
     private HeaderDrawerBinding headerBinding;
+    private int currentFragment = FM_HOME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,68 +73,112 @@ public class HomeActivity extends BaseActivity{
 
         handleBottomNavigation();
 
-        handNavView();
+        handleNavDrawer();
+
 
     }
 
-    private void handleBottomNavigation() {
-                if (headerBinding.tenant.isChecked()){
-                    binding.appBarMain.navBottom.getMenu().clear();
-                    binding.appBarMain.navBottom.inflateMenu(R.menu.nav_bottom_menu);
-                    binding.appBarMain.navBottom.getMenu().findItem(R.id.itemHome).setChecked(true);
-                    replaceframent(new Fragment_Home());
+    private void handleNavDrawer() {
+        binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.itemAboutApp:
+                        replaceframent(new AboutAppFragment());
+                        currentFragment = FM_ABOUT_APP;
+                        break;
 
-                    binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
-                        Fragment fragment = null;
-                        switch (item.getItemId()) {
-                            case R.id.itemHome:
-                                fragment = new Fragment_Home();
-                                break;
-
-                            case R.id.itemFavorite:
-                                fragment = new Fragment_Favorite();
-                                break;
-
-                            case R.id.itemRev:
-                                fragment = new Fragment_Feed();
-                                break;
-
-                            case R.id.itemProf:
-                                fragment = new Fragment_Profile();
-                                break;
-
-                        }
-                        replaceframent(fragment);
-                        unCheckAllMenuItems(binding.navView.getMenu());
-                        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-                        return true;
-                    });
-
-                }else {
-                        headerBinding.owner.setChecked(true);
-                        headerBinding.tenant.setChecked(false);
-                        binding.appBarMain.navBottom.getMenu().clear();
-                        binding.appBarMain.navBottom.inflateMenu(R.menu.menu_nav_bot_owner);
-                        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemProperty).setChecked(true);
-                        replaceframent(new PropertyFragment());
-                        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
-                            Fragment fragment = null;
-                            switch (item.getItemId()) {
-                                case R.id.itemProperty:
-                                    fragment = new PropertyFragment();
-                                    break;
-
-                                case R.id.itemProf:
-                                    fragment = new Fragment_Profile();
-                                    break;
-
-                            }
-                            replaceframent(fragment);
-                            unCheckAllMenuItems(binding.navView.getMenu());
-                            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-                            return true;
-                        });
+                    case R.id.itemHelp:
+                        replaceframent(new HelpFragment());
+                        currentFragment = FM_HELP;
+                        break;
                 }
+
+                unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
+                return true;
+            }
+        });
+    }
+
+    private void handleBottomNavigation() {
+        tenantRole();
+        headerBinding.role.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (group.getCheckedRadioButtonId() == RB_V) {
+                    headerBinding.tenant.setChecked(true);
+                    tenantRole();
+                }
+                switch (checkedId) {
+                    case R.id.tenant:
+                        tenantRole();
+                        break;
+
+                    case R.id.owner:
+                        ownerRole();
+                        break;
+
+                }
+            }
+        });
+    }
+
+    private void ownerRole() {
+        binding.appBarMain.navBottom.getMenu().clear();
+        binding.appBarMain.navBottom.inflateMenu(R.menu.menu_nav_bot_owner);
+        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemProperty).setChecked(true);
+        replaceframent(new PropertyFragment());
+        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.itemProperty:
+                    fragment = new PropertyFragment();
+                    break;
+
+                case R.id.itemProf:
+                    fragment = new Fragment_Profile();
+                    break;
+
+            }
+            replaceframent(fragment);
+            unCheckAllMenuItems(binding.navView.getMenu());
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            return true;
+        });
+
+    }
+
+    private void tenantRole() {
+        binding.appBarMain.navBottom.getMenu().clear();
+        binding.appBarMain.navBottom.inflateMenu(R.menu.nav_bottom_menu);
+        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemHome).setChecked(true);
+        replaceframent(new Fragment_Home());
+
+        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.itemHome:
+                    fragment = new Fragment_Home();
+                    break;
+
+                case R.id.itemFavorite:
+                    fragment = new Fragment_Favorite();
+                    break;
+
+                case R.id.itemRev:
+                    fragment = new Fragment_Feed();
+                    break;
+
+                case R.id.itemProf:
+                    fragment = new Fragment_Profile();
+                    break;
+
+            }
+            replaceframent(fragment);
+            unCheckAllMenuItems(binding.navView.getMenu());
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            return true;
+        });
     }
 
     private void unCheckAllMenuItems(@NonNull final Menu menu) {
@@ -204,35 +249,13 @@ public class HomeActivity extends BaseActivity{
         }
     }
 
-    public void handNavView(){
-        binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
-                switch (item.getItemId()){
-                    case R.id.itemAboutApp:
-                        fragment = new AboutAppFragment();
-                        replaceframent(fragment);
-                        break;
-
-                    case R.id.itemHelp:
-                        fragment = new HelpFragment();
-                        replaceframent(fragment);
-                        break;
-
-                }
-                unCheckAllMenuItems(binding.appBarMain.navBottom.getMenu());
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });
-    }
-
     private void replaceframent(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, fragment);
         fragmentTransaction.commit();
     }
+
+
 }
 
 

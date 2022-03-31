@@ -10,12 +10,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.finalproject.R;
+import com.example.finalproject.base.BaseFragment;
+import com.example.finalproject.databinding.ProfilefragmentBinding;
 
-public class Fragment_Profile extends Fragment {
+public class Fragment_Profile extends BaseFragment {
+    private ProfilefragmentBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profilefragment,container,false);
+
+        binding = ProfilefragmentBinding.inflate(inflater,container,false);
+        return binding.getRoot();
+
+
     }
 }

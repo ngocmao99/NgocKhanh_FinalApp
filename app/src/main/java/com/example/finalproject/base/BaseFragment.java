@@ -23,4 +23,5 @@ public abstract class BaseFragment extends Fragment {
         Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }
 
+
 }

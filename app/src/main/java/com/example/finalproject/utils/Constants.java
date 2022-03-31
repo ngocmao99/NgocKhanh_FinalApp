@@ -23,6 +23,7 @@ public class Constants {
 
     public static final String FB_LINK = "https://www.facebook.com/ngockhanh.nguyen.944023";
     public static final String GITHUB_LINK = "https://github.com/ngocmao99/NgocKhanh_FinalApp";
+    public static final int RB_V = -1;
 
 
 }

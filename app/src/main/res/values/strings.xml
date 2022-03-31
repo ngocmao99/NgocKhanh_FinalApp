@@ -96,4 +96,7 @@
     <string name="email_link">ngocmao99@gmail.com</string>
     <string name="description_myself">My name is Nguyen Ngoc Khanh - a student of University of Greenwich. My skill focus on APS.NET, but with I am trying with new skill Android Application with Fluffy Home for my Final Project.</string>
     <string name="item_property">My Prơperty</string>
+    <string name="txt_edit_profile">Edit Profile</string>
+    <string name="txt_profile">Profile</string>
+    <string name="txt_change_pass">Change Password</string>
 </resources>
