@@ -2,9 +2,9 @@ package com.example.finalproject.view.activity.menu;
 
 import static com.example.finalproject.utils.Constants.FULLNAME;
 import static com.example.finalproject.utils.Constants.PATH_USER;
-import static com.example.finalproject.utils.Constants.USER_EMAIL;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +12,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-import com.example.finalproject.R;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.finalproject.view.activity.EditProfileActivity;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.ProfilefragmentBinding;
-import com.example.finalproject.view.activity.InfoFragment;
-import com.example.finalproject.view.activity.PasswordChangeFragment;
 import com.example.finalproject.view.adapter.TabAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +35,7 @@ public class Fragment_Profile extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        binding = ProfilefragmentBinding.inflate(inflater,container,false);
+        binding = ProfilefragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -52,12 +50,19 @@ public class Fragment_Profile extends BaseFragment {
         //Method getUserProfile - get username, user email, user id, user image;
         getUserProfile();
 
+        //handle edit profile buttons
+        binding.editProfileBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+            startActivity(intent);
+            Animatoo.animateSlideLeft(getActivity());
+        });
+
     }
 
     private void handleTabLayout() {
         binding.viewPager.beginFakeDrag();
 
-        binding.viewPager.setAdapter( new TabAdapter(getChildFragmentManager(),binding.tabLayoutProfile.getTabCount()));
+        binding.viewPager.setAdapter(new TabAdapter(getChildFragmentManager(), binding.tabLayoutProfile.getTabCount()));
 
         binding.tabLayoutProfile.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -80,11 +85,7 @@ public class Fragment_Profile extends BaseFragment {
 
 
     private void getUserProfile() {
-        /** Is user signed in
-         *
-         * if true => get user information
-         */
-        if (currentUserIsSignedIn()){
+        if (currentUserIsSignedIn()) {
             mAuth = FirebaseAuth.getInstance();
 
             //get user Id
@@ -100,16 +101,16 @@ public class Fragment_Profile extends BaseFragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //handle the user date get from database
-                    if (snapshot.exists()){
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    if (snapshot.exists()) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             //get the data
                             String userName = dataSnapshot.child(FULLNAME).getValue(String.class);
 
                             //Loading data into the UI
                             binding.userName.setText(userName);
                         }
-                    }else {
-                        showToast("The data with "+uId+"doesn't existing");
+                    } else {
+                        showToast("The data with " + uId + "doesn't existing");
                     }
                 }
 
@@ -119,8 +120,7 @@ public class Fragment_Profile extends BaseFragment {
                 }
             });
 
-        }
-        else {
+        } else {
             showToast("User is not signed");
         }
 

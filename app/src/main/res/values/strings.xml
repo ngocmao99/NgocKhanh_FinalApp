@@ -121,4 +121,10 @@
     <string name="txt_city">City</string>
     <string name="txt_user_city">User city</string>
     <string name="txt_user_province">User province</string>
+    <string name="rbtn_nonselect">Please select at least one options...!</string>
+    <string name="fullName">Fullname</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="other">Other</string>
+    <string name="btnUpdateInfo">Update Infomation</string>
 </resources>

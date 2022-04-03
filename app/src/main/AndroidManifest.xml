@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject.NoActionBar">
         <activity
+            android:name=".view.activity.EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.ForgetPassword"
             android:exported="false" />
         <activity
@@ -36,7 +39,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
