@@ -25,5 +25,19 @@ public class Constants {
     public static final String GITHUB_LINK = "https://github.com/ngocmao99/NgocKhanh_FinalApp";
     public static final int RB_V = -1;
 
+    //Declare a constant variable for Users path on Firebase Database
+    public static final String PATH_USER = "Users";
+
+    //Declare a constant variable for Users ID of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String USER_ID = "userId";
+
+    //Declare a constant variable for Users name of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String FULLNAME = "fullName";
+
+    //Declare a constant variable for Users email of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String USER_EMAIL = "email";
+
+
+
 
 }

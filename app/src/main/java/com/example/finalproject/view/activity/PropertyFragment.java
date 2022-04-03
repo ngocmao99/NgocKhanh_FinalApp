@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.view.activity;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.finalproject.R;
 import com.example.finalproject.base.BaseFragment;
 
 public class PropertyFragment extends BaseFragment {

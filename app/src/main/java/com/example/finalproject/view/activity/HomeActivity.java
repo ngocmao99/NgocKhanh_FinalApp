@@ -5,7 +5,6 @@ import static com.example.finalproject.utils.Constants.FM_HELP;
 import static com.example.finalproject.utils.Constants.FM_HOME;
 import static com.example.finalproject.utils.Constants.RB_V;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.example.finalproject.PropertyFragment;
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;

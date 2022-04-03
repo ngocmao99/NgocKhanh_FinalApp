@@ -1,171 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:id="@+id/app_bar"
+        android:fitsSystemWindows="true"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView_image"
-            style="@style/CustomCardViewProfile"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="?attr/actionBarSize"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="false"
-            android:layout_gravity="center"
-            app:strokeColor="@color/first"
-            app:strokeWidth="2dp">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgProperty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_baseline_account_circle_24"
-                app:shapeAppearanceOverlay="@style/CustomeProfileImage"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/userName"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:fontFamily="@font/poppins_bold"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="@string/txt_user_full_name"
-            android:gravity="center_horizontal"
-            />
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-        <TextView
-            android:id="@+id/userEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:fontFamily="@font/poppins"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/black_500"
-            android:text="@string/txt_user_email"
-            android:gravity="center_horizontal"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/txt_edit_profile"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            app:elevation="8dp"
-            android:background="@drawable/loginbutton"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:elevation="24dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="50dp"
-            app:cardCornerRadius="25dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:id="@+id/totalProperty"
-                        android:textColor="@color/first"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="20sp"
-                        android:gravity="center"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Property"
-                        android:id="@+id/tit_totalProperty"
-                        android:textColor="@color/first"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="13sp"
-                        android:gravity="center"/>
-                </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/headerFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <TextView
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Profile Avatar-->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/simAvatar"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
+
+                    <LinearLayout
+                        android:id="@+id/rightHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:id="@+id/totalReview"
-                        android:textColor="@color/first"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="20sp"
-                        android:gravity="center"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Review"
-                        android:id="@+id/tit_totalReview"
-                        android:textColor="@color/first"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="13sp"
-                        android:gravity="center"/>
+                        android:orientation="vertical">
+
+                        <!-- Username -->
+                        <TextView
+                            android:id="@+id/userName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/txt_user_full_name"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal">
+
+                            <!-- User's properties-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/totalProperty"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="center"
+                                    android:text="@string/txt_amount_default"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/tit_totalProperty"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:gravity="center"
+                                    android:text="@string/txt_properties"
+                                    android:textColor="@color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <!-- User's properties-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/totalReviewPoint"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="center"
+                                    android:text="@string/txt_amount_default"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/tit_totalReviewPoint"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:gravity="center"
+                                    android:text="@string/txt_review_point"
+                                    android:textColor="@color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/editProfileBtn"
+                    style="@style/CustomButtonOutLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/txt_edit_profile"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutProfile"
+                    style="@style/Widget.MaterialComponents.TabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    app:tabMode="fixed">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/ic_user_info" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:icon="@drawable/ic_change_pass" />
+
+                </com.google.android.material.tabs.TabLayout>
 
             </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayoutSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            app:tabMode="fixed">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_profile" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_change_pass" />
-
-        </com.google.android.material.tabs.TabLayout>
-
+            
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
+            android:layout_marginBottom="?attr/actionBarSize"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-
-
-
-
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
