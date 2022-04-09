@@ -3,6 +3,8 @@ package com.example.finalproject.base;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,12 +18,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.dialog.LoadingDialog;
+import com.example.finalproject.view.activity.dialog.DialogCustom;
+import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class BaseActivity extends AppCompatActivity {
-    private LoadingDialog loadingDialog;
+    private LoadingDialogCustom loadingDialog;
+    private DialogCustom dialogCustom;
 
     protected void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -71,7 +76,10 @@ public class BaseActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //initial loading dialog
-        loadingDialog = new LoadingDialog(this);
+        loadingDialog = new LoadingDialogCustom(this);
+
+        //initial dialog custom
+        dialogCustom = new DialogCustom(this);
     }
 
     @Override
@@ -94,11 +102,19 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void showLoading() {
-        loadingDialog.show();
+        loadingDialog.showLoadingDialog();
     }
 
     protected void hideLoading() {
-        loadingDialog.dismiss();
+        loadingDialog.hideLoadingDialog();
+    }
+
+    protected void showDialog(Drawable image, String title, String subTitle, int color){
+        dialogCustom.showLoadingDialog(image,title,subTitle,color);
+    }
+
+    protected void hideDialog(){
+        dialogCustom.hideLoadingDialog();
     }
 
     /** Determines and the returns whether or not the current user signed in
@@ -128,6 +144,4 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void handleUserSignOut(FirebaseUser mUser){
     }
-
-
 }

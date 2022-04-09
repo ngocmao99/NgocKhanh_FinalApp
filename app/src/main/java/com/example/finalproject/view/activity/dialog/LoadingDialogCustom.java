@@ -26,4 +26,5 @@ public class LoadingDialogCustom {
     public void hideLoadingDialog(){
         dialog.dismiss();
     }
+
 }

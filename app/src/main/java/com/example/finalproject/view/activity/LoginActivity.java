@@ -2,6 +2,7 @@ package com.example.finalproject.view.activity;
 
 import static com.example.finalproject.utils.Constants.EMAIL_REGEX;
 import static com.example.finalproject.utils.Constants.FB_TAG;
+import static com.example.finalproject.utils.Constants.OTHER;
 import static com.example.finalproject.utils.Constants.RC_SING_IN;
 import static com.example.finalproject.utils.Constants.TAG;
 
@@ -188,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
                 userProfile.put("userImgId", "");
                 userProfile.put("dob", "");
                 userProfile.put("phoneNumber", "");
-                userProfile.put("gender", "");
+                userProfile.put("gender",OTHER);
 
                 userProfile.put("userId", userID);
 

@@ -127,4 +127,8 @@
     <string name="male">Male</string>
     <string name="other">Other</string>
     <string name="btnUpdateInfo">Update Infomation</string>
+    <string name="txt_empty_field">Empty field...!</string>
+    <string name="error_over_character">Full name just include less than 100 letters.</string>
+    <string name="error_empty_phoneNumber">Phonenumer cannot be empty...!</string>
+    <string name="error_not_match_pattern_phone">Invalid phonenumber...!</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.finalproject.view.activity;
 import static com.example.finalproject.utils.Constants.EMAIL_REGEX;
 import static com.example.finalproject.utils.Constants.NAME_REGEX1;
 import static com.example.finalproject.utils.Constants.NAME_REGEX2;
+import static com.example.finalproject.utils.Constants.OTHER;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -267,7 +268,7 @@ public class RegisterActivity extends AppCompatActivity {
             userInfo.put("userImgId","");
             userInfo.put("dob","");
             userInfo.put("phoneNumber","");
-            userInfo.put("gender","");
+            userInfo.put("gender",OTHER);
 
             userInfo.put("userId",Objects.requireNonNull(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()));
 

@@ -10,6 +10,9 @@ public class Constants {
 
     public static final String NAME_REGEX1= "^[a-zA-Z\\s]+$";
     public static final String NAME_REGEX2="[0-9]";
+    public static final String PHONE_REGEX="[^0\\d{9}$]";
+    public static final String DATE_FORMAT ="dd/MM/yyyy";
+
     public static final int RC_SING_IN = 100;
     public static final String TAG = "GOOGLE_SIGN_IN_TAG";
     public static final String FB_TAG = "FACEBOOK_SIGN_IN_TAG";
@@ -36,6 +39,32 @@ public class Constants {
 
     //Declare a constant variable for Users email of Users tree on Firebase Database, the value depends on the user Model on Model package.
     public static final String USER_EMAIL = "email";
+
+    //Declare a constant variable for Users avatar of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String AVATAR ="userImgId";
+
+    //Declare a constant variable for Users birthday of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String DOB ="dob";
+
+    //Declare a constant variable for Users phone number of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String PHONE_NUMBER = "phoneNumber";
+
+    //Declare a constant variable for Users gender of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String GENDER ="gender";
+
+
+    //Declare a request code to open gallery of device
+    public static final int RC_IMAGE = 100;
+
+    public static final String FEMALE ="Female";
+    public static final String MALE ="Male";
+    public static final String OTHER = "Other";
+
+    //Google Map
+    public static final int RC_REPERMISSION = 44;
+    public static final int MAX_RESULT =1;
+    public static final int POSITION_ADDRESS = 0;
+
 
 
 

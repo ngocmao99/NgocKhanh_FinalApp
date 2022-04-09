@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.EditProfileActivity">
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolBar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,27 +24,26 @@
 
             <!--User avatar-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvAvatar"
-                    style="@style/CustomCardViewProfile"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    app:cardElevation="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    android:layout_gravity="center_horizontal"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/first">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvAvatar"
+                style="@style/CustomCardViewProfile"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_horizontal"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="false"
+                app:strokeColor="@color/first"
+                app:strokeWidth="1dp">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/userImg"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_baseline_photo_camera_24"
-                        app:shapeAppearanceOverlay="@style/CustomeProfileImage"
-                        />
-                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_baseline_photo_camera_24"
+                    app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
+            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -212,15 +213,33 @@
                 android:background="@color/first" />
 
             <!--Address-->
-            <TextView
-                android:id="@+id/address_tv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/txt_address"
-                android:textColor="@color/first"
-                android:textSize="20sp" />
+                android:id="@+id/addressBar"
+                android:orientation="horizontal"
+                android:layout_weight="10"
+                android:layout_marginTop="25dp">
+                <TextView
+                    android:id="@+id/address_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/txt_address"
+                    android:textColor="@color/first"
+                    android:textSize="20sp"
+                    android:layout_weight="9"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_current_location"
+                    android:id="@+id/btnGetCurrentLocation"/>
+
+            </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilProvince"
@@ -320,18 +339,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnUpdateInfo"
+                android:id="@+id/btnUpdate"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="25dp"
-                style="@style/Widget.MaterialComponents.Button"
-                android:text="@string/btnUpdateInfo"
                 android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="@string/btnUpdateInfo"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:padding="10dp"/>
+                android:textSize="18sp" />
 
 
         </LinearLayout>
