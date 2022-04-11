@@ -198,12 +198,8 @@
                     android:id="@+id/tiet_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:cursorVisible="false"
                     android:enabled="false"
-                    android:focusable="false"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="none"
-                    android:singleLine="true" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <View
@@ -235,56 +231,31 @@
                     android:layout_height="30dp"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_current_location"
-                    android:id="@+id/btnGetCurrentLocation"/>
+                    android:src="@drawable/ic_map"
+                    android:id="@+id/btnMap"/>
 
             </LinearLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilProvince"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
                 android:hint="@string/txt_province"
                 app:boxStrokeColor="@color/first"
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="1dp"
-                app:endIconMode="dropdown_menu"
                 app:hintTextColor="@color/first">
 
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/mactvProvince"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:enabled="false"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="none"
-                    android:textSize="15sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilCity"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="@string/txt_city"
-                app:boxStrokeColor="@color/first"
-                app:boxStrokeErrorColor="@color/red"
-                app:boxStrokeWidth="1dp"
-                app:endIconMode="dropdown_menu"
-                app:hintTextColor="@color/first">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/mactvCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="none"
-                    android:textSize="15sp" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- District-->
@@ -304,6 +275,29 @@
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactv_dist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="none"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilWard"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="@string/txt_ward"
+                app:boxStrokeColor="@color/first"
+                app:boxStrokeErrorColor="@color/red"
+                app:boxStrokeWidth="1dp"
+                app:endIconMode="dropdown_menu"
+                app:hintTextColor="@color/first">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/mactvWard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"

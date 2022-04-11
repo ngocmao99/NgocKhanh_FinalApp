@@ -110,5 +110,8 @@ dependencies {
     //Google play service
     implementation 'com.google.android.gms:play-services-location:19.0.1'
 
+    //enable request permission
+    implementation 'com.karumi:dexter:6.2.3'
+
 
 }

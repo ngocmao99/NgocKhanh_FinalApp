@@ -1,9 +1,26 @@
 package com.example.finalproject.view.activity;
 
+import static com.example.finalproject.utils.Constants.AVATAR;
+import static com.example.finalproject.utils.Constants.DEFAULT_RED_CODE;
+import static com.example.finalproject.utils.Constants.DEFAULT_VALUE;
+import static com.example.finalproject.utils.Constants.DISTRICT;
+import static com.example.finalproject.utils.Constants.DOB;
 import static com.example.finalproject.utils.Constants.EMAIL_REGEX;
+import static com.example.finalproject.utils.Constants.FULLNAME;
+import static com.example.finalproject.utils.Constants.GENDER;
+import static com.example.finalproject.utils.Constants.HOUSE_NUMBER;
+import static com.example.finalproject.utils.Constants.LATITUDE;
+import static com.example.finalproject.utils.Constants.LONGITUDE;
 import static com.example.finalproject.utils.Constants.NAME_REGEX1;
 import static com.example.finalproject.utils.Constants.NAME_REGEX2;
 import static com.example.finalproject.utils.Constants.OTHER;
+import static com.example.finalproject.utils.Constants.PATH_USER;
+import static com.example.finalproject.utils.Constants.PHONE_NUMBER;
+import static com.example.finalproject.utils.Constants.POSTAL_CODE;
+import static com.example.finalproject.utils.Constants.PROVINCE;
+import static com.example.finalproject.utils.Constants.USER_EMAIL;
+import static com.example.finalproject.utils.Constants.USER_ID;
+import static com.example.finalproject.utils.Constants.WARD;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -262,17 +279,24 @@ public class RegisterActivity extends AppCompatActivity {
         dialogLoading.showLoadingDialog();
 
         mAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(authResult -> {
-            HashMap<String, Object> userInfo = new HashMap<>();
-            userInfo.put("fullName",name);
-            userInfo.put("email",email);
-            userInfo.put("userImgId","");
-            userInfo.put("dob","");
-            userInfo.put("phoneNumber","");
-            userInfo.put("gender",OTHER);
+            HashMap<String, Object> userProfile = new HashMap<>();
+            userProfile.put(FULLNAME, name);
+            userProfile.put(USER_EMAIL, email);
+            userProfile.put(AVATAR, DEFAULT_VALUE);
+            userProfile.put(DOB, DEFAULT_VALUE);
+            userProfile.put(PHONE_NUMBER, DEFAULT_VALUE);
+            userProfile.put(GENDER,OTHER);
+            userProfile.put(LATITUDE,DEFAULT_RED_CODE);
+            userProfile.put(LONGITUDE,DEFAULT_RED_CODE);
+            userProfile.put(PROVINCE,DEFAULT_VALUE);
+            userProfile.put(POSTAL_CODE,DEFAULT_VALUE);
+            userProfile.put(DISTRICT,DEFAULT_VALUE);
+            userProfile.put(WARD,DEFAULT_VALUE);
+            userProfile.put(HOUSE_NUMBER,DEFAULT_VALUE);
 
-            userInfo.put("userId",Objects.requireNonNull(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()));
+            userProfile.put(USER_ID,Objects.requireNonNull(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()));
 
-            mDatabase.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userInfo).addOnCompleteListener(task -> {
+            mDatabase.child(PATH_USER).child(mAuth.getCurrentUser().getUid()).setValue(userProfile).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()

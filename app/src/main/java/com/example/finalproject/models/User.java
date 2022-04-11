@@ -8,12 +8,21 @@ public class User {
     private String dob;
     private String phoneNumber;
     private String gender;
+    private double latitude;
+    private double longitude;
+    private String province;
+    private String postalCode;
+    private String district;
+    private String ward;
+    private String houseNumber;
 
     //Initial constructor
     public User() {
     }
 
-    public User(String userId, String fullName, String email, String userImgId, String dob, String phoneNumber, String gender) {
+    public User(String userId, String fullName, String email, String userImgId, String dob,
+                String phoneNumber, String gender, double latitude, double longitude, String province,
+                String postalCode, String district, String ward, String houseNumber) {
         this.userId = userId;
         this.fullName = fullName;
         this.email = email;
@@ -21,6 +30,21 @@ public class User {
         this.dob = dob;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.province = province;
+        this.postalCode = postalCode;
+        this.district = district;
+        this.ward = ward;
+        this.houseNumber = houseNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getUserId() {
@@ -77,5 +101,53 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
     }
 }

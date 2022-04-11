@@ -52,6 +52,29 @@ public class Constants {
     //Declare a constant variable for Users gender of Users tree on Firebase Database, the value depends on the user Model on Model package.
     public static final String GENDER ="gender";
 
+    //Declare a constant variable for Users latitude of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String LATITUDE ="latitude";
+
+    //Declare a constant variable for Users longitude of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String LONGITUDE ="longitude";
+
+    //Declare a constant variable for Users province of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String PROVINCE ="province";
+
+    //Declare a constant variable for Users district of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String DISTRICT ="district";
+
+    //Declare a constant variable for Users gender of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String WARD ="ward";
+
+    //Declare a constant variable for Users house number of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String HOUSE_NUMBER ="houseNumber";
+
+    //Declare a constant variable for Users house number of Users tree on Firebase Database, the value depends on the user Model on Model package.
+    public static final String POSTAL_CODE ="postCode";
+
+    public static final String DEFAULT_VALUE ="";
+
 
     //Declare a request code to open gallery of device
     public static final int RC_IMAGE = 100;
@@ -60,10 +83,11 @@ public class Constants {
     public static final String MALE ="Male";
     public static final String OTHER = "Other";
 
-    //Google Map
+    //Google Location
     public static final int RC_REPERMISSION = 44;
     public static final int MAX_RESULT =1;
     public static final int POSITION_ADDRESS = 0;
+    public static final double DEFAULT_RED_CODE = 0.0d;
 
 
 

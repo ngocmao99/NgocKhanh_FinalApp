@@ -1,18 +1,31 @@
 package com.example.finalproject.view.activity;
 
+import static com.example.finalproject.utils.Constants.AVATAR;
 import static com.example.finalproject.utils.Constants.DATE_FORMAT;
+import static com.example.finalproject.utils.Constants.DEFAULT_RED_CODE;
+import static com.example.finalproject.utils.Constants.DISTRICT;
+import static com.example.finalproject.utils.Constants.DOB;
 import static com.example.finalproject.utils.Constants.FEMALE;
+import static com.example.finalproject.utils.Constants.FULLNAME;
+import static com.example.finalproject.utils.Constants.GENDER;
+import static com.example.finalproject.utils.Constants.HOUSE_NUMBER;
+import static com.example.finalproject.utils.Constants.LATITUDE;
+import static com.example.finalproject.utils.Constants.LONGITUDE;
 import static com.example.finalproject.utils.Constants.MALE;
 import static com.example.finalproject.utils.Constants.MAX_RESULT;
 import static com.example.finalproject.utils.Constants.NAME_REGEX1;
 import static com.example.finalproject.utils.Constants.NAME_REGEX2;
 import static com.example.finalproject.utils.Constants.OTHER;
 import static com.example.finalproject.utils.Constants.PATH_USER;
+import static com.example.finalproject.utils.Constants.PHONE_NUMBER;
 import static com.example.finalproject.utils.Constants.PHONE_REGEX;
 import static com.example.finalproject.utils.Constants.POSITION_ADDRESS;
+import static com.example.finalproject.utils.Constants.POSTAL_CODE;
+import static com.example.finalproject.utils.Constants.PROVINCE;
 import static com.example.finalproject.utils.Constants.RC_IMAGE;
 import static com.example.finalproject.utils.Constants.RC_REPERMISSION;
 import static com.example.finalproject.utils.Constants.USER_ID;
+import static com.example.finalproject.utils.Constants.WARD;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -26,6 +39,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -58,9 +72,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -91,6 +112,12 @@ public class EditProfileActivity extends BaseActivity {
 
     //Declare FusedLocationProviderClient
     private FusedLocationProviderClient fLocation;
+
+    private boolean isPermissionGrant;
+
+    private double latitude;
+    private double longitude;
+    private String postalCode;
 
 
     @Override
@@ -126,30 +153,50 @@ public class EditProfileActivity extends BaseActivity {
 
         validatePhone();
 
-        getCurrentLocation();
+        auditPermission(); // Check ACCESS_FINE_LOCATION status: granted or not granted
+
+        handleMapButton();
+
 
     }
 
-
-    private void getCurrentLocation() {
-        binding.btnGetCurrentLocation.setOnClickListener(new View.OnClickListener() {
+    private void handleMapButton() {
+        binding.btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showLoading();
-                if (ActivityCompat.checkSelfPermission(EditProfileActivity.this,
-                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    //when permission granted
-                    getUserLocation();
-                } else {
-                    //When permission denied
-                    ActivityCompat.requestPermissions(EditProfileActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            RC_REPERMISSION);
-                }
+            public void onClick(View v) {
+                startActivity(new Intent(EditProfileActivity.this,MapActivity.class));
+                Animatoo.animateSlideLeft(EditProfileActivity.this);
+            }
+        });
+    }
+
+    private void auditPermission() {
+        Dexter.withContext(EditProfileActivity.this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                isPermissionGrant = true;
+                showToast("Permission Granted...!");
+                getUserLocation();
 
             }
 
-    });
-}
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("package",getPackageName(),"");
+                intent.setData(uri);
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+
+            }
+        }).check();
+    }
 
     @SuppressLint("MissingPermission")
     private void getUserLocation() {
@@ -169,10 +216,18 @@ public class EditProfileActivity extends BaseActivity {
                         //Init address list
                         List<Address> addressList = gc.getFromLocation(userLocation.getLatitude(), userLocation.getLongitude(), MAX_RESULT);
 
-                        showToast("Latitude: " + addressList.get(POSITION_ADDRESS).getLatitude()
-                                + "\nLongitude: " + addressList.get(POSITION_ADDRESS).getLongitude() +
-                                "\nZipcode: " + addressList.get(POSITION_ADDRESS).getPostalCode()
-                                + "\nPovince/City: " + addressList.get(POSITION_ADDRESS).getAdminArea());
+                        String userAddress = addressList.get(POSITION_ADDRESS).getAddressLine(POSITION_ADDRESS);
+
+                        //handle user address - Assign userAddress into an array by split method
+                        String[] addressItems = userAddress.split("\\s*,\\s*");
+
+                        binding.mactvProvince.setText(addressList.get(POSITION_ADDRESS).getAdminArea());
+                        binding.mactvDist.setText(addressItems[2]);
+                        binding.mactvWard.setText(addressItems[1]);
+                        binding.tietHNumber.setText(addressItems[0]);
+                        postalCode = addressList.get(POSITION_ADDRESS).getPostalCode();
+                        latitude = addressList.get(POSITION_ADDRESS).getLatitude();
+                        longitude = addressList.get(POSITION_ADDRESS).getLongitude();
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -187,18 +242,6 @@ public class EditProfileActivity extends BaseActivity {
         });
 
 
-    }
-
-    private boolean isGPSEnable() {
-        LocationManager locationManager = null;
-        boolean isEnable = false;
-
-        if (locationManager == null) {
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        }
-
-        isEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        return isEnable;
     }
 
     private void showUserInfo() {
@@ -260,6 +303,11 @@ public class EditProfileActivity extends BaseActivity {
                         } else {
                             binding.rgGender.check(R.id.other);
                         }
+
+                        //handle address tab
+                        if(cUser.getLatitude() == DEFAULT_RED_CODE && cUser.getLongitude() == DEFAULT_RED_CODE){
+                            getUserLocation();
+                        }
                     }
 
                     hideLoading();
@@ -279,6 +327,7 @@ public class EditProfileActivity extends BaseActivity {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showLoading();
 
                 //handle main validate
                 //first user full name
@@ -306,7 +355,6 @@ public class EditProfileActivity extends BaseActivity {
 
                 } else {
                     showToast("Successful validate");
-                    showLoading();
                     handleUploadUserInfo();
                 }
 
@@ -318,11 +366,48 @@ public class EditProfileActivity extends BaseActivity {
         if (imageUri != null && !userImageId.equals(imageName)) {
             putImageInStorage();
             deletePreviousAvatar();
+            hideLoading();
             showToast("Image uri existing");
         } else {
+            uploadInfoWithoutImage();
             hideLoading();
+
             showToast("Image uri isn't existing");
         }
+    }
+
+    private void uploadInfoWithoutImage() {
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        HashMap<String, Object> uUser = new HashMap<>();
+        uUser.put(FULLNAME, binding.tietFullName.getText().toString().trim());
+        uUser.put(DOB, binding.mactvDob.getText().toString().trim());
+        uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
+        uUser.put(GENDER, getUserGender());
+        uUser.put(AVATAR, userImageId);
+        uUser.put(LATITUDE,latitude);
+        uUser.put(LONGITUDE,longitude);
+        uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
+        uUser.put(POSTAL_CODE,postalCode);
+        uUser.put(DISTRICT,binding.mactvDist.getText().toString().trim());
+        uUser.put(WARD,binding.mactvWard.getText().toString().trim());
+        uUser.put(HOUSE_NUMBER,binding.tietHNumber.getText().toString().trim());
+
+        mPath.child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    hideLoading();
+                    showToast("Updated successful...!");
+                } else {
+                    hideLoading();
+                    showToast("Update failed..!");
+                }
+            }
+        });
+
+
+
     }
 
     private void deletePreviousAvatar() {
@@ -346,11 +431,18 @@ public class EditProfileActivity extends BaseActivity {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         HashMap<String, Object> uUser = new HashMap<>();
-        uUser.put("fullName", binding.tietFullName.getText().toString().trim());
-        uUser.put("dob", binding.mactvDob.getText().toString().trim());
-        uUser.put("phoneNumber", binding.tietPhoneNumber.getText().toString().trim());
-        uUser.put("gender", getUserGender());
-        uUser.put("userImgId", imageName);
+        uUser.put(FULLNAME, binding.tietFullName.getText().toString().trim());
+        uUser.put(DOB, binding.mactvDob.getText().toString().trim());
+        uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
+        uUser.put(GENDER, getUserGender());
+        uUser.put(AVATAR, imageName);
+        uUser.put(LATITUDE,latitude);
+        uUser.put(LONGITUDE,longitude);
+        uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
+        uUser.put(POSTAL_CODE,postalCode);
+        uUser.put(DISTRICT,binding.mactvDist.getText().toString().trim());
+        uUser.put(WARD,binding.mactvWard.getText().toString().trim());
+        uUser.put(HOUSE_NUMBER,binding.tietHNumber.getText().toString().trim());
 
         mPath.child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
