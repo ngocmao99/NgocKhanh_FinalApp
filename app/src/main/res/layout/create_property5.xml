@@ -11,207 +11,24 @@
         android:fontFamily="@font/nunito_black"
         android:text="Property Detail :"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="120dp"
-        android:textSize="20dp" />
+        android:layout_marginLeft="90dp"
+        android:textSize="30dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="40dp"
         android:layout_marginTop="10dp">
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_teal"
-            android:orientation="vertical">
-            <!-- checkbox1  -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:orientation="vertical"
-            android:paddingRight="60dp"
-            >
+            android:background="@drawable/custom_bg_create">
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_photo"
-                    android:layout_gravity="center_vertical">
-
-                </ImageView>
-            <CheckBox
-                android:id="@+id/checkbox_bedroom"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"
-                android:padding="5dp"
-                android:text="Bedroom"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-            <CheckBox
-                android:id="@+id/checkbox_kitchen"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Kitchen"
-                android:padding="5dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"/>
-            <CheckBox
-                android:id="@+id/checkbox_balcony"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"
-                android:padding="5dp"
-                android:text="Balcony"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:orientation="vertical"
-            >
-            <CheckBox
-                android:id="@+id/checkbox_bathroom"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"
-                android:padding="5dp"
-                android:text="Bathroom"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-            <CheckBox
-                android:id="@+id/checkbox_living_room"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Living room"
-                android:padding="5dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"/>
-            <CheckBox
-                android:id="@+id/checkbox_garage"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox"
-                android:padding="5dp"
-                android:text="Garage"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        </LinearLayout>
-
-            <!-- Furnishing  -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:orientation="vertical"
-
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Furnishing"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:paddingBottom="15dp">
-
-                </TextView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    android:layout_marginLeft="10dp">
-                <RadioGroup
-                    android:layout_width="360dp"
-
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/teal_200">
-                    <RadioButton
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Full furnishing"
-                        android:paddingLeft="20dp"
-                        android:button="@color/teal_200"
-                        android:fontFamily="@font/nunito_italic"
-
-                        android:background="@drawable/radio_selector"
-                        android:textColor="@drawable/text_color"
-
-                        />
-                    <RadioButton
-
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Semi-furnishing"
-                        android:button="@color/teal_200"
-                        android:fontFamily="@font/nunito_italic"
-                        android:paddingLeft="10dp"
-                        android:background="@drawable/radio_selector"
-                        android:textColor="@drawable/text_color"
-                        />
-                    <RadioButton
-                        android:paddingLeft="20dp"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Unfurnishing"
-                        android:button="@color/teal_200"
-                        android:fontFamily="@font/nunito_italic"
-
-                        android:background="@drawable/radio_selector"
-                        android:textColor="@drawable/text_color"
-                        />
-
-
-                </RadioGroup>
-    </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <!-- Amenities  -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Amenities"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:paddingBottom="15dp">
-                </TextView>
-                <!-- checkbox2  -->
+                <!-- checkbox1  -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,33 +37,70 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:paddingLeft="20dp"
                         android:orientation="vertical"
-                        android:paddingRight="60dp"
+                        android:paddingRight="40dp"
                         >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_baseline_king_bed_24"/>
+
+                            </LinearLayout>
+                            <CheckBox
+                                android:id="@+id/checkbox_bedroom"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"
+                                android:padding="5dp"
+                                android:text="Bedroom"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg_color"
+                                android:layout_gravity="center_vertical">
+                            </ImageView>
+                            <CheckBox
+                                android:id="@+id/checkbox_kitchen"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Kitchen"
+                                android:padding="5dp"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"/>
+                        </LinearLayout>
                         <CheckBox
-                            android:id="@+id/checkbox_gym"
+                            android:id="@+id/checkbox_balcony"
                             android:layout_width="130dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:button="@null"
                             android:drawableRight="@drawable/checkbox"
                             android:padding="5dp"
-                            android:text="Gym"
-                            android:textSize="15dp"
+                            android:text="Balcony"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
-                        <CheckBox
-                            android:id="@+id/checkbox_fuel_station"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Fuel Station"
-                            android:padding="5dp"
-                            android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-
 
                     </LinearLayout>
                     <LinearLayout
@@ -256,56 +110,225 @@
                         android:orientation="vertical"
                         >
                         <CheckBox
-                            android:id="@+id/checkbox_car_parking"
+                            android:id="@+id/checkbox_bathroom"
                             android:layout_width="130dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:button="@null"
                             android:drawableRight="@drawable/checkbox"
                             android:padding="5dp"
-                            android:text="Car Parking"
-                            android:textSize="15dp"
+                            android:text="Bathroom"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
-
-
+                        <CheckBox
+                            android:id="@+id/checkbox_living_room"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Living room"
+                            android:padding="5dp"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"/>
+                        <CheckBox
+                            android:id="@+id/checkbox_garage"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"
+                            android:padding="5dp"
+                            android:text="Garage"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-            </LinearLayout>
-            <!-- Neighbourhood  -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:orientation="vertical">
-                <TextView
+
+                <!-- Furnishing  -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Neighbourhood"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:paddingBottom="15dp">
-                </TextView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="350dp"
-                    android:layout_height="350dp"
-                    app:cardCornerRadius="10dp"
+                    android:paddingLeft="20dp"
+                    android:orientation="vertical"
+
                     >
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="350dp"
-                        android:background="#D3D3D3"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Furnishing"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:paddingBottom="15dp">
+
+                    </TextView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="360dp"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp"
+                        android:layout_marginLeft="10dp">
+                        <RadioGroup
+                            android:layout_width="360dp"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/teal_200">
+                            <RadioButton
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:text="Full furnishing"
+                                android:paddingLeft="10dp"
+                                android:button="@color/black"
+                                android:fontFamily="@font/nunito_black"
+
+                                android:background="@drawable/radio_selector"
+                                android:textColor="@drawable/text_color"
+
+                                />
+                            <RadioButton
+
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:text="Semi-furnishing"
+                                android:button="@color/teal_200"
+                                android:fontFamily="@font/nunito_black"
+                                android:paddingLeft="5dp"
+                                android:background="@drawable/radio_selector"
+                                android:textColor="@drawable/text_color"
+                                />
+                            <RadioButton
+                                android:paddingLeft="10dp"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:text="Unfurnishing"
+                                android:button="@color/teal_200"
+                                android:fontFamily="@font/nunito_black"
+
+                                android:background="@drawable/radio_selector"
+                                android:textColor="@drawable/text_color"
+                                />
+
+
+                        </RadioGroup>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+                <!-- Floor  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Floor"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:layout_margin="5dp"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         >
+                        <AutoCompleteTextView
+
+                            android:id="@+id/auto_complete_txt_Floor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                <!-- Amenities  -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amenities"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:paddingBottom="15dp">
+                    </TextView>
+                    <!-- checkbox2  -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="vertical"
+                            android:paddingRight="40dp"
+                            >
+                            <CheckBox
+                                android:id="@+id/checkbox_gym"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"
+                                android:padding="5dp"
+                                android:text="Gym"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+                            <CheckBox
+                                android:id="@+id/checkbox_fuel_station"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Fuel Station"
+                                android:padding="5dp"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"/>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="vertical"
+                            >
+                            <CheckBox
+                                android:id="@+id/checkbox_car_parking"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"
+                                android:padding="5dp"
+                                android:text="Car Parking"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
+
+        </ScrollView>
+
     </androidx.cardview.widget.CardView>
 
 

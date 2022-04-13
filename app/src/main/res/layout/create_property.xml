@@ -11,8 +11,8 @@
         android:fontFamily="@font/nunito_black"
         android:text="Select Type Of Property :"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="70dp"
-        android:textSize="20dp" />
+        android:layout_marginLeft="20dp"
+        android:textSize="30dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,6 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/light_teal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,6 +50,7 @@
                     android:padding="16dp"
                     android:background="@drawable/radio_selector"
                     android:textColor="@drawable/text_color"
+
                     android:layout_margin="16dp"/>
 
                 <RadioButton
@@ -113,6 +119,14 @@
 
 
         </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="300dp"
+                android:layout_marginLeft="160dp"
+                android:text="Next"
+                android:id="@+id/btn_next_1"></Button>
+            </LinearLayout>
 </LinearLayout>
     </androidx.cardview.widget.CardView>
 
