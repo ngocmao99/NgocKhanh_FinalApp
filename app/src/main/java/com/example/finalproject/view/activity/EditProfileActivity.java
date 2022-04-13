@@ -177,7 +177,6 @@ public class EditProfileActivity extends BaseActivity {
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                 isPermissionGrant = true;
                 showToast("Permission Granted...!");
-                getUserLocation();
 
             }
 
@@ -306,7 +305,13 @@ public class EditProfileActivity extends BaseActivity {
                         }
 
                         //handle address tab
-                        if (cUser.getLatitude() == DEFAULT_RED_CODE && cUser.getLongitude() == DEFAULT_RED_CODE) {
+                        //if latitude and longitude have value are 0.0d, then implements getUserLocation()
+                        if (cUser.getLatitude() != DEFAULT_RED_CODE && cUser.getLongitude() != DEFAULT_RED_CODE) {
+                            binding.mactvProvince.setText(cUser.getProvince().trim());
+                            binding.mactvDist.setText(cUser.getDistrict().trim());
+                            binding.mactvWard.setText(cUser.getWard().trim());
+                            binding.tietHNumber.setText(cUser.getHouseNumber().trim());
+                        }else{
                             getUserLocation();
                         }
                     }
