@@ -25,7 +25,6 @@ import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.databinding.HeaderDrawerBinding;
 import com.example.finalproject.view.activity.menu.AboutAppFragment;
 import com.example.finalproject.view.activity.menu.Fragment_Favorite;
-import com.example.finalproject.view.activity.menu.Fragment_Feed;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
 import com.example.finalproject.view.activity.menu.HelpFragment;
@@ -164,7 +163,7 @@ public class HomeActivity extends BaseActivity{
                     break;
 
                 case R.id.itemRev:
-                    fragment = new Fragment_Feed();
+                    fragment = new CreateFragment();
                     break;
 
                 case R.id.itemProf:

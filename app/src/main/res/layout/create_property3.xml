@@ -11,8 +11,8 @@
         android:fontFamily="@font/nunito_black"
         android:text="Photos :"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="150dp"
-        android:textSize="20dp" />
+        android:layout_marginLeft="120dp"
+        android:textSize="30dp" />
     <androidx.cardview.widget.CardView
         android:layout_width="260dp"
         android:layout_height="260dp"

@@ -8,132 +8,149 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_black"
-
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
         android:text="Address :"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="150dp"
-        android:textSize="20dp" />
+        android:layout_marginLeft="130dp"
+        android:textSize="30dp" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="40dp"
         android:layout_marginTop="10dp">
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_teal"
+            android:background="@drawable/custom_bg_create">
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Province/City *"/>
+
+            <!--Provinces & cities-->
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="30dp"
+                android:id="@+id/tilCreateCity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:hint="@string/txt_province_city"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidth="1dp"
+                app:endIconMode="dropdown_menu"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/first"
                 >
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt_province"
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/province"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="none"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <!--District-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/tilDistrict"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="District *"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                >
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt_district"
+                    android:hint="@string/txt_district"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:boxStrokeColor="@color/white"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="dropdown_menu"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/first"
+                    >
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/mactvDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="none"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Ward-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/tilWard"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ward *"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                >
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt_ward"
+                    android:hint="@string/txt_ward"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:boxStrokeColor="@color/white"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="dropdown_menu"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/first"
+                    >
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/mactvWard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="none"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--House Number-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/tilHouseNumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Street *"/>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/auto_complete_txt_street"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="House number *"/>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/auto_complete_txt_House_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/txt_houseNumber"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:boxStrokeColor="@color/white"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="dropdown_menu"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/first"
+                    >
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/houseNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="none"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
         </LinearLayout>
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 
