@@ -6,13 +6,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.Settings;
+
+import androidx.annotation.NonNull;
 
 import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityMapBinding;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -20,7 +24,7 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-public class MapActivity extends BaseActivity {
+public class MapActivity extends BaseActivity implements OnMapReadyCallback {
     private ActivityMapBinding binding;
 
     private GoogleMap googleMap;
@@ -38,11 +42,64 @@ public class MapActivity extends BaseActivity {
         if (isPermissionGrant = true) {
             if(checkGooglePlayService()){
                 showToast("Google Play Service available");
+
+                binding.mapView.getMapAsync(this);
+
+                binding.mapView.onCreate(savedInstanceState);
             }
             else {
                 showToast("Google Play is unavailable");
             }
         }
+    }
+    //The method of map view must have
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        binding.mapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        binding.mapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        binding.mapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        binding.mapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        binding.mapView.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        binding.mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        binding.mapView.onLowMemory();
     }
 
     private boolean checkGooglePlayService() {
@@ -90,5 +147,10 @@ public class MapActivity extends BaseActivity {
 
             }
         }).check();
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
     }
 }
