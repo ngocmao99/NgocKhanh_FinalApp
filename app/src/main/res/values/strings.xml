@@ -131,4 +131,9 @@
     <string name="error_over_character">Full name just include less than 100 letters.</string>
     <string name="error_empty_phoneNumber">Phonenumer cannot be empty...!</string>
     <string name="error_not_match_pattern_phone">Invalid phonenumber...!</string>
+    <string name="error_blank_required_fields">Please fill out the required fields...!</string>
+    <string name="error_invalid_format">Your input is invalid. Please check and update your infomation...!</string>
+    <string name="title_confirm_update">Confirmation Update</string>
+    <string name="sub_title_update_info">Are you sure you want to update your personal information? If yes, select \"Yes\" to proceed, or Cancel to return to correct incorrect information.</string>
+    <string name="my_map_api">AIzaSyDjsVdKBlJfc4EAVAGv5ZRT1E-tKg3pNyA</string>
 </resources>

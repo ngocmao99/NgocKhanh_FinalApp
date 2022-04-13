@@ -113,5 +113,9 @@ dependencies {
     //enable request permission
     implementation 'com.karumi:dexter:6.2.3'
 
+    //Google Map SDK
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+
 
 }

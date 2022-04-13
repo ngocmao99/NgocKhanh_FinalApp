@@ -23,20 +23,17 @@ import static com.example.finalproject.utils.Constants.POSITION_ADDRESS;
 import static com.example.finalproject.utils.Constants.POSTAL_CODE;
 import static com.example.finalproject.utils.Constants.PROVINCE;
 import static com.example.finalproject.utils.Constants.RC_IMAGE;
-import static com.example.finalproject.utils.Constants.RC_REPERMISSION;
 import static com.example.finalproject.utils.Constants.USER_ID;
 import static com.example.finalproject.utils.Constants.WARD;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -49,7 +46,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
@@ -81,7 +77,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -119,12 +114,16 @@ public class EditProfileActivity extends BaseActivity {
     private double longitude;
     private String postalCode;
 
+    //alert dialog
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         //init Firebase Storage
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -135,7 +134,8 @@ public class EditProfileActivity extends BaseActivity {
         //Init FusedLocationProviderClient
         fLocation = LocationServices.getFusedLocationProviderClient(EditProfileActivity.this);
 
-        setContentView(binding.getRoot());
+        //Init Alert Dialog;
+        //TODO: ALert dialog to confirmation update user information
 
         handleBackButton();
 
@@ -143,6 +143,7 @@ public class EditProfileActivity extends BaseActivity {
 
         showUserInfo();
 
+        //inside this method contain some method to handle upload avatar and upload information of user
         validate();
 
         validateFullName();
@@ -164,7 +165,7 @@ public class EditProfileActivity extends BaseActivity {
         binding.btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EditProfileActivity.this,MapActivity.class));
+                startActivity(new Intent(EditProfileActivity.this, MapActivity.class));
                 Animatoo.animateSlideLeft(EditProfileActivity.this);
             }
         });
@@ -184,7 +185,7 @@ public class EditProfileActivity extends BaseActivity {
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                 Intent intent = new Intent();
                 intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Uri uri = Uri.fromParts("package",getPackageName(),"");
+                Uri uri = Uri.fromParts("package", getPackageName(), "");
                 intent.setData(uri);
                 startActivity(intent);
 
@@ -305,7 +306,7 @@ public class EditProfileActivity extends BaseActivity {
                         }
 
                         //handle address tab
-                        if(cUser.getLatitude() == DEFAULT_RED_CODE && cUser.getLongitude() == DEFAULT_RED_CODE){
+                        if (cUser.getLatitude() == DEFAULT_RED_CODE && cUser.getLongitude() == DEFAULT_RED_CODE) {
                             getUserLocation();
                         }
                     }
@@ -346,15 +347,17 @@ public class EditProfileActivity extends BaseActivity {
                     binding.tilPhoneNumber.setError(getString(R.string.error_empty_phoneNumber));
                     binding.tilPhoneNumber.requestFocus();
                 } else if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(phoneNumber)) {
-                    showToast("Please fill out the required fields");
+                    showToast(getString(R.string.error_blank_required_fields));
                     binding.tietPhoneNumber.requestFocus();
                 } else if ((!fullName.matches(NAME_REGEX1) || fullName.matches(NAME_REGEX2)) || fullName.length() >= 100
                         || (phoneNumber.length() > 0 && phoneNumber.length() < 10) || phoneNumber.matches(PHONE_REGEX)) {
-                    showToast("Your input is invalid.");
+                    showToast(getString(R.string.error_invalid_format));
                     binding.tilFullName.requestFocus();
 
                 } else {
-                    showToast("Successful validate");
+                    //TODO: Dialog
+
+                    // method check case imageUri and userImageId
                     handleUploadUserInfo();
                 }
 
@@ -362,13 +365,18 @@ public class EditProfileActivity extends BaseActivity {
         });
     }
 
+
     private void handleUploadUserInfo() {
         if (imageUri != null && !userImageId.equals(imageName)) {
+            //method upload avatar and info if user provide imageUri
             putImageInStorage();
+            // when user provide an new imageUri, the old imageUri that formatted and assigned the old imageName variable- put on Firebase Storage
+            //previous will delete and update new imageName
             deletePreviousAvatar();
             hideLoading();
             showToast("Image uri existing");
         } else {
+            //method upload avatar and info if users don't provide imageUri
             uploadInfoWithoutImage();
             hideLoading();
 
@@ -376,6 +384,7 @@ public class EditProfileActivity extends BaseActivity {
         }
     }
 
+    //method upload avatar and info if users don't provide imageUri
     private void uploadInfoWithoutImage() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -385,13 +394,13 @@ public class EditProfileActivity extends BaseActivity {
         uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
         uUser.put(GENDER, getUserGender());
         uUser.put(AVATAR, userImageId);
-        uUser.put(LATITUDE,latitude);
-        uUser.put(LONGITUDE,longitude);
+        uUser.put(LATITUDE, latitude);
+        uUser.put(LONGITUDE, longitude);
         uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
-        uUser.put(POSTAL_CODE,postalCode);
-        uUser.put(DISTRICT,binding.mactvDist.getText().toString().trim());
-        uUser.put(WARD,binding.mactvWard.getText().toString().trim());
-        uUser.put(HOUSE_NUMBER,binding.tietHNumber.getText().toString().trim());
+        uUser.put(POSTAL_CODE, postalCode);
+        uUser.put(DISTRICT, binding.mactvDist.getText().toString().trim());
+        uUser.put(WARD, binding.mactvWard.getText().toString().trim());
+        uUser.put(HOUSE_NUMBER, binding.tietHNumber.getText().toString().trim());
 
         mPath.child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -405,7 +414,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             }
         });
-
 
 
     }
@@ -436,13 +444,13 @@ public class EditProfileActivity extends BaseActivity {
         uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
         uUser.put(GENDER, getUserGender());
         uUser.put(AVATAR, imageName);
-        uUser.put(LATITUDE,latitude);
-        uUser.put(LONGITUDE,longitude);
+        uUser.put(LATITUDE, latitude);
+        uUser.put(LONGITUDE, longitude);
         uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
-        uUser.put(POSTAL_CODE,postalCode);
-        uUser.put(DISTRICT,binding.mactvDist.getText().toString().trim());
-        uUser.put(WARD,binding.mactvWard.getText().toString().trim());
-        uUser.put(HOUSE_NUMBER,binding.tietHNumber.getText().toString().trim());
+        uUser.put(POSTAL_CODE, postalCode);
+        uUser.put(DISTRICT, binding.mactvDist.getText().toString().trim());
+        uUser.put(WARD, binding.mactvWard.getText().toString().trim());
+        uUser.put(HOUSE_NUMBER, binding.tietHNumber.getText().toString().trim());
 
         mPath.child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -606,6 +614,7 @@ public class EditProfileActivity extends BaseActivity {
 
     }
 
+    //Access the gallery of device
     private void selectImage() {
 
         //Create a intent to access gallery of device
