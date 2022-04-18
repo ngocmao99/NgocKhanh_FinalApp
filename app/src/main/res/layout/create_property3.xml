@@ -11,22 +11,22 @@
         android:fontFamily="@font/nunito_black"
         android:text="Photos :"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="140dp"
         android:textSize="30dp" />
     <androidx.cardview.widget.CardView
-        android:layout_width="260dp"
+        android:layout_width="280dp"
         android:layout_height="260dp"
         android:layout_marginLeft="60dp"
-        android:backgroundTint="#F0F8FF"
+        android:backgroundTint="@color/gray"
         app:cardCornerRadius="10dp">
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_margin="30dp"
-        android:layout_gravity="center_vertical"
-        android:src="@drawable/ic_photo"/>
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="200dp"
+            android:layout_margin="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_photo"/>
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,26 +35,50 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_teal"
+            android:background="@drawable/custom_bg_create"
             android:orientation="vertical"
-            android:gravity="center">
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:textSize="20dp"
-            android:fontFamily="@font/nunito_italic"
-            android:textColor="@color/black"
-            android:text="You need to post at least 3 picture."/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="50dp"
-            android:text="please provide picture including bedroom, living room, kitchen and balcony(if any)"/>
+            android:gravity="center"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@color/black"
+                android:text="You need to post at least 3 picture."/>
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="50dp"
+                android:text="please provide picture including bedroom, living room, kitchen and balcony(if any)"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="choose image"
+                android:background="@drawable/loginbutton"
+                android:id="@+id/btn_choose_image"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="upload image"
+                android:background="@drawable/loginbutton"
+                android:id="@+id/btn_upload_image"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="alert"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:id="@+id/alert_image"/>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>
