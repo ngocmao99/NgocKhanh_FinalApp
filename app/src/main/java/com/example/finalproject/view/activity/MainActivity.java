@@ -11,11 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.finalproject.R;
+import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.view.adapter.ViewPagerAdapter;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private TextView tvSkip;
     private ViewPager viewPager;
     private RelativeLayout layoutBottom;

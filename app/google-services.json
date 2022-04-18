@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "278485215034",
+    "firebase_url": "https://finalapp-85068-default-rtdb.firebaseio.com",
     "project_id": "finalapp-85068",
     "storage_bucket": "finalapp-85068.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:278485215034:android:3ad8137db822694d675203",
+        "mobilesdk_app_id": "1:278485215034:android:9f3b33057ce22170675203",
         "android_client_info": {
           "package_name": "com.example.finalproject"
         }
@@ -20,7 +21,50 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDxv9XepzfMhoWEdHxdDZSkFoQiL06HX9Q"
+          "current_key": "AIzaSyAoHUd3SewDPeal55kPlsWuQnrYqZIml5U"
+        },
+        {
+          "current_key": "AIzaSyBI37wdejF5sNKfKiORa4vNHU5oyN2aSiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278485215034-ign6u7h6fhcbagrmag4hbrrnicm4mu71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278485215034:android:44198c48b2ed1569675203",
+        "android_client_info": {
+          "package_name": "com.excample.finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278485215034-o92j945k3ovcj08jt220ctmcrader1ff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.excample.finalproject",
+            "certificate_hash": "bdc5edd24a8b48c222d0a59a65b8ec034ac421a3"
+          }
+        },
+        {
+          "client_id": "278485215034-ign6u7h6fhcbagrmag4hbrrnicm4mu71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoHUd3SewDPeal55kPlsWuQnrYqZIml5U"
+        },
+        {
+          "current_key": "AIzaSyBI37wdejF5sNKfKiORa4vNHU5oyN2aSiI"
         }
       ],
       "services": {

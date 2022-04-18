@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -77,6 +79,8 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
         auditPermission();
 
+        configPositionCurrentButton();
+
         if (isPermissionGrant = true) {
             if (checkGooglePlayService()) {
                 showToast("Google Play Service available");
@@ -88,6 +92,17 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
                 showToast("Google Play is unavailable");
             }
         }
+
+
+    }
+
+    private void configPositionCurrentButton(){
+        View locationButton = ((View) binding.mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+        RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();
+        // position on right bottom
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        rlp.setMargins(0, 180, 180, 0);
     }
 
     private void getUserLocationCode() {
