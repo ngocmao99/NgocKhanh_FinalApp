@@ -35,7 +35,7 @@ import java.util.HashMap;
 
 public class CreateProperty3 extends BaseFragment {
     private View mView;
-    private Button btnchooseimage;
+    private Button itemimg;
     private Button btnuploadimage;
     private TextView alertimage;
     private ProgressDialog progressDialog;
@@ -52,14 +52,14 @@ public class CreateProperty3 extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView =  inflater.inflate(R.layout.fragment_onboarding3, container, false);
+        mView =  inflater.inflate(R.layout.create_property3, container, false);
 
         alertimage = mView.findViewById(R.id.alert_image);
-        btnchooseimage = mView.findViewById(R.id.btn_choose_image);
+        itemimg = mView.findViewById(R.id.item_img);
         btnuploadimage = mView.findViewById(R.id.btn_upload_image);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Image uploading Please wait ...........");
-        btnchooseimage.setOnClickListener(new View.OnClickListener() {
+        itemimg.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
@@ -128,7 +128,7 @@ public class CreateProperty3 extends BaseFragment {
                     }
                     alertimage.setVisibility(View.VISIBLE);
                     alertimage.setText("you have Selected"+ ImageList.size()+" Images");
-                    btnchooseimage.setVisibility(View.GONE);
+                    itemimg.setVisibility(View.GONE);
 
 
 

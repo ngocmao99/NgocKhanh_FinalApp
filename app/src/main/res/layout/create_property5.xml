@@ -28,20 +28,22 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
-                <!-- checkbox1  -->
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:paddingBottom="10dp"
                     >
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:orientation="vertical"
-                        android:paddingRight="40dp"
                         >
+                        <!--bedroom-->
                         <LinearLayout
+                            android:layout_marginTop="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <LinearLayout
@@ -57,91 +59,189 @@
                                     android:background="@drawable/ic_baseline_king_bed_24"/>
 
                             </LinearLayout>
-                            <CheckBox
-                                android:id="@+id/checkbox_bedroom"
-                                android:layout_width="130dp"
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:button="@null"
-                                android:drawableRight="@drawable/checkbox"
-                                android:padding="5dp"
-                                android:text="Bedroom"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <ImageView
+                                android:text="bed room"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:background="@drawable/bg_color"
-                                android:layout_gravity="center_vertical">
-                            </ImageView>
-                            <CheckBox
-                                android:id="@+id/checkbox_kitchen"
-                                android:layout_width="130dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:text="Kitchen"
-                                android:padding="5dp"
-                                android:textSize="20dp"
-                                android:textStyle="bold"
-                                android:button="@null"
-                                android:drawableRight="@drawable/checkbox"/>
+                                android:background="@drawable/edittext"/>
                         </LinearLayout>
-                        <CheckBox
-                            android:id="@+id/checkbox_balcony"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"
-                            android:padding="5dp"
-                            android:text="Balcony"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
+                        <!--kitchen-->
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_kitchen"/>
+
+                            </LinearLayout>
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="Kitchen"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext"/>
+                        </LinearLayout>
+                        <!--Balcony-->
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_balcony"/>
+
+                            </LinearLayout>
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="Balcony"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext"/>
+                        </LinearLayout>
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:paddingLeft="10dp"
                         android:orientation="vertical"
+
                         >
-                        <CheckBox
-                            android:id="@+id/checkbox_bathroom"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"
-                            android:padding="5dp"
-                            android:text="Bathroom"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-                        <CheckBox
-                            android:id="@+id/checkbox_living_room"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Living room"
-                            android:padding="5dp"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-                        <CheckBox
-                            android:id="@+id/checkbox_garage"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"
-                            android:padding="5dp"
-                            android:text="Garage"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
+                        <!--Bathroom-->
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_bathroom"/>
+
+                            </LinearLayout>
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="Bathroom"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext"/>
+                        </LinearLayout>
+                        <!--kitchen-->
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_livingroom"/>
+
+                            </LinearLayout>
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="Living Room"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext"/>
+                        </LinearLayout>
+                        <!--Balcony-->
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bedroom"
+                                android:layout_gravity="center_vertical"
+
+                                >
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/ic_gara"/>
+
+                            </LinearLayout>
+                            <TextView
+                                android:paddingLeft="5dp"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="Garage"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext"/>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -234,11 +334,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="20dp"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         >
                         <AutoCompleteTextView
+
 
                             android:id="@+id/auto_complete_txt_Floor"
                             android:layout_width="match_parent"
@@ -248,7 +349,7 @@
                 </LinearLayout>
                 <!-- Amenities  -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
@@ -266,63 +367,99 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
+                        android:background="@drawable/edittext"
                         >
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:orientation="horizontal"
 
-                            android:orientation="vertical"
-                            android:paddingRight="40dp"
                             >
                             <CheckBox
+
+
                                 android:id="@+id/checkbox_gym"
-                                android:layout_width="130dp"
+                                android:layout_width="170dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:button="@null"
                                 android:drawableRight="@drawable/checkbox"
                                 android:padding="5dp"
+                                android:textStyle="bold"
                                 android:text="Gym"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
+                                android:textSize="16dp"
+                                android:fontFamily="@font/poppins"
+                                />
                             <CheckBox
                                 android:id="@+id/checkbox_fuel_station"
-                                android:layout_width="130dp"
+                                android:layout_width="170dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:text="Fuel Station"
                                 android:padding="5dp"
-                                android:textSize="20dp"
+                                android:textSize="16dp"
                                 android:textStyle="bold"
                                 android:button="@null"
-                                android:drawableRight="@drawable/checkbox"/>
+                                android:drawableRight="@drawable/checkbox"
+                                android:fontFamily="@font/poppins"/>
 
 
                         </LinearLayout>
                         <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_gravity="center"/>
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:orientation="horizontal"
 
-                            android:orientation="vertical"
                             >
                             <CheckBox
-                                android:id="@+id/checkbox_car_parking"
-                                android:layout_width="130dp"
+
+
+                                android:id="@+id/checkbox_school"
+                                android:layout_width="170dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:button="@null"
                                 android:drawableRight="@drawable/checkbox"
                                 android:padding="5dp"
-                                android:text="Car Parking"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
+                                android:text="School"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins"/>
+                            <CheckBox
+                                android:id="@+id/checkbox_hospital"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Hospital"
+                                android:padding="5dp"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox"
+                                android:fontFamily="@font/poppins"/>
 
 
                         </LinearLayout>
 
                     </LinearLayout>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/nextcreatebtn"
+                        android:id="@+id/btn_next_c1"
+                        android:text="Next"/>
                 </LinearLayout>
 
             </LinearLayout>

@@ -104,6 +104,13 @@
     <string name="txt_ward_create">Ward*</string>
     <string name="txt_houseNumber_create">House Number*</string>
     <!--Province/City-->
+    <string-array name="floor">
+        <item>1 floor</item>
+        <item>2 floor</item>
+        <item>3 floor</item>
+        <item>3 to 5 floor</item>
+        <item>more than 5 floor</item>
+    </string-array>
     <string-array name="city_array">
         <item>An Giang</item>
         <item>Bà Rịa - Vũng Tàu</item>
@@ -1111,4 +1118,6 @@
     <!-- Google Map API Key-->
     <string name="my_map_api">AIzaSyBI37wdejF5sNKfKiORa4vNHU5oyN2aSiI</string>
     <string name="txt_search_here">Search here</string>
+    <string name="txt_area">Area</string>
+    <string name="txt_rent">Rent price</string>
 </resources>

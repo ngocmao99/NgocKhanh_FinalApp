@@ -20,6 +20,7 @@
         android:backgroundTint="@color/gray"
         app:cardCornerRadius="10dp">
         <ImageView
+            android:id="@+id/item_img"
             android:layout_width="220dp"
             android:layout_height="200dp"
             android:layout_margin="30dp"
@@ -41,6 +42,8 @@
             >
 
             <TextView
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -49,26 +52,13 @@
                 android:textColor="@color/black"
                 android:text="You need to post at least 3 picture."/>
             <TextView
+                android:textAlignment="center"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="50dp"
                 android:text="please provide picture including bedroom, living room, kitchen and balcony(if any)"/>
-            <Button
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="choose image"
-                android:background="@drawable/loginbutton"
-                android:id="@+id/btn_choose_image"/>
-            <Button
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="upload image"
-                android:background="@drawable/loginbutton"
-                android:id="@+id/btn_upload_image"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,6 +67,14 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:id="@+id/alert_image"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="create property"
+                android:background="@drawable/loginbutton"
+                android:id="@+id/btn_upload_image"/>
+
 
         </LinearLayout>
 
