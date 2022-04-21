@@ -1,5 +1,6 @@
 package com.example.finalproject.view.activity;
 
+import static com.example.finalproject.utils.Constants.AUTOCOMPLETE_REQUEST_CODE;
 import static com.example.finalproject.utils.Constants.PATH_USER;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.example.finalproject.R;
@@ -24,15 +26,20 @@ import com.example.finalproject.databinding.ActivityMapBinding;
 import com.example.finalproject.models.User;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,10 +54,13 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MapActivity extends BaseActivity implements OnMapReadyCallback {
     private ActivityMapBinding binding;
 
-    private GoogleMap googleMap;
+    private GoogleMap map;
 
     private boolean isPermissionGrant;
 
@@ -81,6 +91,12 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
         configPositionCurrentButton();
 
+        //Initialize the SDK
+        Places.initialize(getApplicationContext(),getString(R.string.my_map_api));
+
+        //Create a new PlacesClient instance
+        PlacesClient placesClient = Places.createClient(MapActivity.this);
+
         if (isPermissionGrant = true) {
             if (checkGooglePlayService()) {
                 showToast("Google Play Service available");
@@ -93,8 +109,44 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
             }
         }
 
+//        handlePlaceAutocomplete();
+
 
     }
+
+    private void handlePlaceAutocomplete() {
+        binding.inputLocation.setOnClickListener(v -> {
+            // Set the fields to specify which types of places data to return after the user has made a selection
+            List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS,Place.Field.LAT_LNG, Place.Field.NAME);
+
+            //Start the autocomplete intent using Autocomplete.IntentBuilder
+            Intent i = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fields).build(MapActivity.this);
+            startActivityForResult(i, AUTOCOMPLETE_REQUEST_CODE);
+        });
+
+    }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == 100 && resultCode == RESULT_OK){
+//            //When success, innit place
+//            Place place = Autocomplete.getPlaceFromIntent(data);
+//
+//            //Show location information
+//            showToast("Location information "+"\nAddress: "+ place.getAddress()
+//            +"Lat log: "+place.getLatLng() +"/n Address name: "+place.getName());
+//        }
+//        else if (resultCode == AutocompleteActivity.RESULT_ERROR){
+//            //When error
+//            //Init status
+//            Status status = Autocomplete.getStatusFromIntent(data);
+//
+//            //Display toast
+//            showToast(status.getStatusMessage());
+//        }
+//    }
 
     private void configPositionCurrentButton(){
         View locationButton = ((View) binding.mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
@@ -185,12 +237,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
         if (result == ConnectionResult.SUCCESS) {
             return true;
         } else if (googleApiAvailability.isUserResolvableError(result)) {
-            Dialog dialog = googleApiAvailability.getErrorDialog(MapActivity.this, result, 201, new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialog) {
-                    showToast("User cancelled dialog");
-                }
-            });
+            Dialog dialog = googleApiAvailability.getErrorDialog(MapActivity.this, result, 201, dialog1 -> showToast("User cancelled dialog"));
             dialog.show();
         }
 
@@ -226,37 +273,37 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        googleMap = googleMap;
+        map = googleMap;
 
         showToast("Latitude: " + lat + "\nLongitude: " + lng);
 
-        LatLng userPostition = new LatLng(lat, lng);
+        LatLng userPosition = new LatLng(lat, lng);
 
-        //inite Marker options
+        //init Marker options
         MarkerOptions markerOptions = new MarkerOptions();
 
-        googleMap.addMarker(markerOptions.position(userPostition)
+        map.addMarker(markerOptions.position(userPosition)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                 .title("User Location"));
 
         //Animation
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userPostition, 15);
-        googleMap.animateCamera(cameraUpdate);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userPosition, 15);
+        map.animateCamera(cameraUpdate);
 
         //Zoom Controller
-        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        map.getUiSettings().setZoomControlsEnabled(true);
 
         //Compass
-        googleMap.getUiSettings().setCompassEnabled(true);
+        map.getUiSettings().setCompassEnabled(true);
 
         //Zoom Gesture
-        googleMap.getUiSettings().setZoomGesturesEnabled(true);
+        map.getUiSettings().setZoomGesturesEnabled(true);
 
         //Scroll Gesture
-        googleMap.getUiSettings().setScrollGesturesEnabled(true);
+        map.getUiSettings().setScrollGesturesEnabled(true);
 
         //Rotate Gesture
-        googleMap.getUiSettings().setRotateGesturesEnabled(true);
+        map.getUiSettings().setRotateGesturesEnabled(true);
 
         //Current Location
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -269,7 +316,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        googleMap.setMyLocationEnabled(true);
+        map.setMyLocationEnabled(true);
 
 
     }

@@ -20,9 +20,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseFragment;
-import com.example.finalproject.databinding.CreateProperty2Binding;
-import com.example.finalproject.databinding.CreateProperty3Binding;
-import com.example.finalproject.view.activity.LoginActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,7 +49,7 @@ public class CreateProperty3 extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView =  inflater.inflate(R.layout.fragment_onboarding3, container, false);
+        mView =  inflater.inflate(R.layout.create_property3, container, false);
 
         alertimage = mView.findViewById(R.id.alert_image);
         btnchooseimage = mView.findViewById(R.id.btn_choose_image);

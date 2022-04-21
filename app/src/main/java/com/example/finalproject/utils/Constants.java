@@ -89,6 +89,10 @@ public class Constants {
     public static final int POSITION_ADDRESS = 0;
     public static final double DEFAULT_RED_CODE = 0.0d;
 
+    //Places Autocomplete
+    public static final int AUTOCOMPLETE_REQUEST_CODE =100;
+
+
 
 
 
