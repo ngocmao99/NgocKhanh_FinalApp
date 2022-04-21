@@ -1120,4 +1120,16 @@
     <string name="txt_search_here">Search here</string>
     <string name="txt_area">Area</string>
     <string name="txt_rent">Rent price</string>
+    <string name="titlle_property_details">Property Detail :</string>
+    <string name="bedroom_des">Bedroom icon</string>
+    <string name="bedroom">Bedroom</string>
+    <string name="txt_default_describe">Default description.</string>
+    <string name="txt_balcony">Balcony</string>
+    <string name="txt_bathroom">Bathroom</string>
+    <string name="txt_livingroom">Living room</string>
+    <string name="txt_garage">Garage</string>
+    <string name="txt_furnishing">Furnishing</string>
+    <string name="txt_full_furnishing">Full furnishing</string>
+    <string name="txt_semi_furnishing">Semi-furnishing</string>
+    <string name="txt_unfurnished">Unfurnished</string>
 </resources>

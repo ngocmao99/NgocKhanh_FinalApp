@@ -12,29 +12,29 @@
         android:layout_height="match_parent" />
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="35dp">
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginHorizontal="5dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        app:cardCornerRadius="35dp">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputLocation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:background="@android:color/transparent"
-            android:cursorVisible="false"
-            android:drawableEnd="@drawable/ic_search"
-            android:focusable="false"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:hint="@string/txt_search_here"
-            android:inputType="none"
-            android:textSize="14sp" />
-    </androidx.cardview.widget.CardView>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputLocation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginHorizontal="20dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:cursorVisible="false"-->
+<!--            android:drawableEnd="@drawable/ic_search"-->
+<!--            android:focusable="false"-->
+<!--            android:fontFamily="@font/poppins"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="@string/txt_search_here"-->
+<!--            android:inputType="none"-->
+<!--            android:textSize="14sp" />-->
+<!--    </androidx.cardview.widget.CardView>-->
 
 
 </FrameLayout>
