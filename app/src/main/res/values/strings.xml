@@ -1077,6 +1077,15 @@
         <item>Phu Tan</item>
         <item>Ngoc Hien</item>
     </string-array>
+    <string-array name="Type">
+        <item>Bedsit</item>
+        <item>Apartment</item>
+        <item>Balcony</item>
+        <item>Duplex</item>
+        <item>Villa</item>
+        <item>Town House</item>
+
+    </string-array>
 
     <string name="txt_properties">Properties</string>
     <string name="txt_amount_default">0</string>
@@ -1132,4 +1141,13 @@
     <string name="txt_full_furnishing">Full furnishing</string>
     <string name="txt_semi_furnishing">Semi-furnishing</string>
     <string name="txt_unfurnished">Unfurnished</string>
+    <string name="OBD1">Search your desire places</string>
+    <string name="txt_floor">floor</string>
+    <string name="txt_edit_property">Edit Property</string>
+    <string name="txt_delete_property">Delete Property</string>
+    <string name="OBD2">Simple to use</string>
+    <string name="txt_type_property">Type</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_summit">Submit</string>
+    <string name="txt_submit">submit</string>
 </resources>

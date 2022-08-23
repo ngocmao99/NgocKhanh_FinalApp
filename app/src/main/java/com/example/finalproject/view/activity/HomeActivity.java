@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -53,11 +54,11 @@ public class HomeActivity extends BaseActivity{
         View headerView = binding.navView.getHeaderView(0);
         headerBinding = HeaderDrawerBinding.bind(headerView);
 
-        setSupportActionBar(binding.appBarMain.toolbar);
+        setSupportActionBar(binding.appBarMain.Toolbar);
 
         binding.navView.bringToFront();
         ActionBarDrawerToggle toggle = new
-                ActionBarDrawerToggle(this, binding.drawerLayout, binding.appBarMain.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                ActionBarDrawerToggle(this, binding.drawerLayout, binding.appBarMain.Toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -156,6 +157,8 @@ public class HomeActivity extends BaseActivity{
             switch (item.getItemId()) {
                 case R.id.itemHome:
                     fragment = new Fragment_Home();
+                    FragmentManager manager = getSupportFragmentManager();
+
                     break;
 
                 case R.id.itemFavorite:

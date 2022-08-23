@@ -1,55 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.activity.CreateFragment"
+    xmlns:layout="http://schemas.android.com/tools"
     android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutCreate"
-        style="@style/Widget.MaterialComponents.TabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        app:tabMode="fixed">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--image-->
+                <ImageView
+                    android:background="@color/gray"
+                    android:id="@+id/image_create"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/ic_baseline_image_24"
+                    />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_photo"
-            android:clickable="false"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="30dp">
+                    <!--Type-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCreateCity"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/txt_type_property"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="20dp"
+                        app:boxStrokeColor="@color/white"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="dropdown_menu"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/first"
+                        app:startIconDrawable="@drawable/ic_rev"
+                        >
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/Type"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--Address-->
+                    <LinearLayout
+                        android:layout_margin="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addressBar"
+                        android:orientation="horizontal"
+                        android:layout_weight="10"
+                        android:layout_marginTop="25dp">
+                        <TextView
+                            android:id="@+id/address_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/txt_address"
+                            android:textColor="@color/first"
+                            android:textSize="20sp"
+                            android:layout_weight="9"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_photo" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_photo" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_photo" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_photo" />
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_map"
+                            android:id="@+id/btnMap"/>
 
-    </com.google.android.material.tabs.TabLayout>
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager_create"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        app:layout_anchorGravity="bottom"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-</LinearLayout>
+                    </LinearLayout>
+
+                    <!--Price-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/tilCreatePrice"
+                    app:boxStrokeWidth="1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:hint="@string/txt_price"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/ic_money">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:id="@+id/propertyPrice"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--Area-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:padding="10dp"
+                        android:id="@+id/tilCreateArea"
+                        app:boxStrokeWidth="1dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="20dp"
+                        android:hint="@string/txt_area"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconDrawable="@drawable/ic_baseline_square_foot_24">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:id="@+id/propertyArea"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--Description-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:padding="10dp"
+                        android:id="@+id/tilCreateDescription"
+                        app:boxStrokeWidth="1dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="20dp"
+                        android:hint="@string/txt_description"
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:id="@+id/propertyDescription"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_submit"
+                    android:layout_gravity="center"
+                    android:id="@+id/submit_create"/>
+                </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_baseline_photo_camera_24"
+                    android:tint="@color/white"
+                    app:layout_anchor="@id/image_create"
+                    app:layout_anchorGravity="bottom|right|end"/>
+
+
+
+
+
+
+
+
+
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

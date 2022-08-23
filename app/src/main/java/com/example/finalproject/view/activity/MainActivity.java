@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity {
                 viewPager.setCurrentItem(2);
             }
         });
+
         layoutNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

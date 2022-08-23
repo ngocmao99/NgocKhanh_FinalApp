@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference();
 
         //init Facebook SDK
-        FacebookSdk.sdkInitialize(LoginActivity.this);
+//        FacebookSdk.sdkInitialize(LoginActivity.this);
 
         textWatcher();
 

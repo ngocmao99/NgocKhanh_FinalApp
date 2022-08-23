@@ -5,16 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tool:context=".HomeActivity">
-
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:backgroundTint="@android:color/transparent"
         app:layout_scrollFlags="scroll"
         app:popupTheme="@style/Theme.FinalProject.PopupOverlay"
         app:titleTextColor="@android:color/transparent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bottom"
         android:layout_width="match_parent"
@@ -28,7 +26,6 @@
         android:clipChildren="false"
         app:labelVisibilityMode="unlabeled"
         />
-
     <include layout="@layout/content_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
