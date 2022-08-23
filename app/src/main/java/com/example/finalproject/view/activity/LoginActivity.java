@@ -44,9 +44,6 @@ import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -113,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference();
 
         //init Facebook SDK
-        FacebookSdk.sdkInitialize(LoginActivity.this);
+//        FacebookSdk.sdkInitialize(LoginActivity.this);
 
         textWatcher();
 
@@ -144,106 +141,106 @@ public class LoginActivity extends AppCompatActivity {
         //Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
 
-        signInGoogle();
+//        signInGoogle();
 
-        signInFacebook();
+//        signInFacebook();
 
 
     }
 
-    private void signInFacebook() {
-        binding.facebookSignInBtn.setOnClickListener(v -> {
-            //Init Facebook login button
-            mCallbackManager = CallbackManager.Factory.create();
-            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
-                    Arrays.asList("email", "public_profile"));
-            LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    Log.d(FB_TAG, "onSuccess: " + loginResult);
-                    handleFacebookAccessToken(loginResult.getAccessToken());
-                }
+//    private void signInFacebook() {
+//        binding.facebookSignInBtn.setOnClickListener(v -> {
+//            //Init Facebook login button
+//            mCallbackManager = CallbackManager.Factory.create();
+//            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
+//                    Arrays.asList("email", "public_profile"));
+//            LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+//                @Override
+//                public void onSuccess(LoginResult loginResult) {
+//                    Log.d(FB_TAG, "onSuccess: " + loginResult);
+//                    handleFacebookAccessToken(loginResult.getAccessToken());
+//                }
+//
+//                @Override
+//                public void onCancel() {
+//                    Log.d(FB_TAG, "onCancel");
+//
+//                }
+//
+//                @Override
+//                public void onError(@NonNull FacebookException e) {
+//                    Log.d(FB_TAG, "onError: " + e.getMessage());
+//
+//                }
+//            });
+//        });
+//    }
 
-                @Override
-                public void onCancel() {
-                    Log.d(FB_TAG, "onCancel");
-
-                }
-
-                @Override
-                public void onError(@NonNull FacebookException e) {
-                    Log.d(FB_TAG, "onError: " + e.getMessage());
-
-                }
-            });
-        });
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private void handleFacebookAccessToken(AccessToken accessToken) {
-        Log.d(FB_TAG, "handleFacebookToken: " + accessToken);
-
-        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        mAuth.signInWithCredential(authCredential).addOnSuccessListener(authResult -> {
-            loadDialog.showLoadingDialog();
-            mUser = FirebaseAuth.getInstance().getCurrentUser();
-
-            //get user information through FirebaseUser
-            String userID = Objects.requireNonNull(mUser.getUid());
-            String email = Objects.requireNonNull(mUser.getEmail());
-            String fullName = Objects.requireNonNull(mUser.getDisplayName());
-
-            //check if user is new or existing
-            if (authResult.getAdditionalUserInfo().isNewUser()) {
-                //user is new -- Account Created
-
-                HashMap<String, Object> userProfile = new HashMap<>();
-
-                userProfile.put(FULLNAME, fullName);
-                userProfile.put(USER_EMAIL, email);
-                userProfile.put(AVATAR, DEFAULT_VALUE);
-                userProfile.put(DOB, DEFAULT_VALUE);
-                userProfile.put(PHONE_NUMBER, DEFAULT_VALUE);
-                userProfile.put(GENDER,OTHER);
-                userProfile.put(LATITUDE,DEFAULT_RED_CODE);
-                userProfile.put(LONGITUDE,DEFAULT_RED_CODE);
-                userProfile.put(PROVINCE,DEFAULT_VALUE);
-                userProfile.put(POSTAL_CODE,DEFAULT_VALUE);
-                userProfile.put(DISTRICT,DEFAULT_VALUE);
-                userProfile.put(WARD,DEFAULT_VALUE);
-                userProfile.put(HOUSE_NUMBER,DEFAULT_VALUE);
-
-
-                userProfile.put("userId", userID);
-
-                mRef.child("Users").child(userID).setValue(userProfile)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                mAuth.getCurrentUser().sendEmailVerification()
-                                        .addOnCompleteListener(task1 -> {
-                                            loadDialog.hideLoadingDialog();
-                                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
-                                                    getString(R.string.txt_title_congratulation),
-                                                    getString(R.string.txt_sub_title_sign_in_google),
-                                                    getResources().getColor(R.color.green));
-                                        });
-                            }
-
-                        });
-
-            } else {
-                loadDialog.hideLoadingDialog();
-                Toast.makeText(LoginActivity.this, "Existing User with email: " + email, Toast.LENGTH_SHORT)
-                        .show();
-            }
-            moveToHome();
-        }).addOnFailureListener(e -> {
-            loadDialog.hideLoadingDialog();
-            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),
-                    getString(R.string.txt_title_logged_failed),
-                    e.getMessage(), getResources().getColor(R.color.red));
-        });
-    }
+//    @SuppressLint("UseCompatLoadingForDrawables")
+//    private void handleFacebookAccessToken(AccessToken accessToken) {
+//        Log.d(FB_TAG, "handleFacebookToken: " + accessToken);
+//
+//        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
+//        mAuth.signInWithCredential(authCredential).addOnSuccessListener(authResult -> {
+//            loadDialog.showLoadingDialog();
+//            mUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//            //get user information through FirebaseUser
+//            String userID = Objects.requireNonNull(mUser.getUid());
+//            String email = Objects.requireNonNull(mUser.getEmail());
+//            String fullName = Objects.requireNonNull(mUser.getDisplayName());
+//
+//            //check if user is new or existing
+//            if (authResult.getAdditionalUserInfo().isNewUser()) {
+//                //user is new -- Account Created
+//
+//                HashMap<String, Object> userProfile = new HashMap<>();
+//
+//                userProfile.put(FULLNAME, fullName);
+//                userProfile.put(USER_EMAIL, email);
+//                userProfile.put(AVATAR, DEFAULT_VALUE);
+//                userProfile.put(DOB, DEFAULT_VALUE);
+//                userProfile.put(PHONE_NUMBER, DEFAULT_VALUE);
+//                userProfile.put(GENDER,OTHER);
+//                userProfile.put(LATITUDE,DEFAULT_RED_CODE);
+//                userProfile.put(LONGITUDE,DEFAULT_RED_CODE);
+//                userProfile.put(PROVINCE,DEFAULT_VALUE);
+//                userProfile.put(POSTAL_CODE,DEFAULT_VALUE);
+//                userProfile.put(DISTRICT,DEFAULT_VALUE);
+//                userProfile.put(WARD,DEFAULT_VALUE);
+//                userProfile.put(HOUSE_NUMBER,DEFAULT_VALUE);
+//
+//
+//                userProfile.put("userId", userID);
+//
+//                mRef.child("Users").child(userID).setValue(userProfile)
+//                        .addOnCompleteListener(task -> {
+//                            if (task.isSuccessful()) {
+//                                mAuth.getCurrentUser().sendEmailVerification()
+//                                        .addOnCompleteListener(task1 -> {
+//                                            loadDialog.hideLoadingDialog();
+//                                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
+//                                                    getString(R.string.txt_title_congratulation),
+//                                                    getString(R.string.txt_sub_title_sign_in_google),
+//                                                    getResources().getColor(R.color.green));
+//                                        });
+//                            }
+//
+//                        });
+//
+//            } else {
+//                loadDialog.hideLoadingDialog();
+//                Toast.makeText(LoginActivity.this, "Existing User with email: " + email, Toast.LENGTH_SHORT)
+//                        .show();
+//            }
+//            moveToHome();
+//        }).addOnFailureListener(e -> {
+//            loadDialog.hideLoadingDialog();
+//            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),
+//                    getString(R.string.txt_title_logged_failed),
+//                    e.getMessage(), getResources().getColor(R.color.red));
+//        });
+//    }
 
     @SuppressWarnings("deprecation")
     private void signInGoogle() {
@@ -359,6 +356,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 mRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userProfile).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        //If authentication successful -> show announcement via dialog
                         mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
                             loadDialog.hideLoadingDialog();
 
@@ -457,6 +455,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+    // verification the credential input
     private void validateInput() {
         String email = Objects.requireNonNull(Objects.requireNonNull(binding.tietEmailInput.getText()).toString());
         String password = Objects.requireNonNull(Objects.requireNonNull(binding.tietPasswordInput.getText()).toString());
