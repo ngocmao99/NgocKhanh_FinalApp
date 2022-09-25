@@ -133,5 +133,11 @@ dependencies {
     //Places SDK for Android
     implementation 'com.google.android.libraries.places:places:2.6.0'
 
+    //Constraint layout
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    //custom toast - https://github.com/GrenderG/Toasty
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
 
 }

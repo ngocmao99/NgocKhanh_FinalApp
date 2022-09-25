@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Enable softInputMode PAN
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         //Turn off header bar of android
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -108,9 +108,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //init DatabaseReference
         mRef = FirebaseDatabase.getInstance().getReference();
-
-        //init Facebook SDK
-//        FacebookSdk.sdkInitialize(LoginActivity.this);
 
         textWatcher();
 
@@ -133,124 +130,8 @@ public class LoginActivity extends AppCompatActivity {
             Animatoo.animateSlideRight(LoginActivity.this);
         });
 
-        // Configure sign-in to request the user's ID, email address, and basic profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))// Don't mention this error, when running app itself solve.
-                .requestEmail().build();
-
-        //Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
-
-//        signInGoogle();
-
-//        signInFacebook();
-
-
     }
 
-//    private void signInFacebook() {
-//        binding.facebookSignInBtn.setOnClickListener(v -> {
-//            //Init Facebook login button
-//            mCallbackManager = CallbackManager.Factory.create();
-//            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
-//                    Arrays.asList("email", "public_profile"));
-//            LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-//                @Override
-//                public void onSuccess(LoginResult loginResult) {
-//                    Log.d(FB_TAG, "onSuccess: " + loginResult);
-//                    handleFacebookAccessToken(loginResult.getAccessToken());
-//                }
-//
-//                @Override
-//                public void onCancel() {
-//                    Log.d(FB_TAG, "onCancel");
-//
-//                }
-//
-//                @Override
-//                public void onError(@NonNull FacebookException e) {
-//                    Log.d(FB_TAG, "onError: " + e.getMessage());
-//
-//                }
-//            });
-//        });
-//    }
-
-//    @SuppressLint("UseCompatLoadingForDrawables")
-//    private void handleFacebookAccessToken(AccessToken accessToken) {
-//        Log.d(FB_TAG, "handleFacebookToken: " + accessToken);
-//
-//        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
-//        mAuth.signInWithCredential(authCredential).addOnSuccessListener(authResult -> {
-//            loadDialog.showLoadingDialog();
-//            mUser = FirebaseAuth.getInstance().getCurrentUser();
-//
-//            //get user information through FirebaseUser
-//            String userID = Objects.requireNonNull(mUser.getUid());
-//            String email = Objects.requireNonNull(mUser.getEmail());
-//            String fullName = Objects.requireNonNull(mUser.getDisplayName());
-//
-//            //check if user is new or existing
-//            if (authResult.getAdditionalUserInfo().isNewUser()) {
-//                //user is new -- Account Created
-//
-//                HashMap<String, Object> userProfile = new HashMap<>();
-//
-//                userProfile.put(FULLNAME, fullName);
-//                userProfile.put(USER_EMAIL, email);
-//                userProfile.put(AVATAR, DEFAULT_VALUE);
-//                userProfile.put(DOB, DEFAULT_VALUE);
-//                userProfile.put(PHONE_NUMBER, DEFAULT_VALUE);
-//                userProfile.put(GENDER,OTHER);
-//                userProfile.put(LATITUDE,DEFAULT_RED_CODE);
-//                userProfile.put(LONGITUDE,DEFAULT_RED_CODE);
-//                userProfile.put(PROVINCE,DEFAULT_VALUE);
-//                userProfile.put(POSTAL_CODE,DEFAULT_VALUE);
-//                userProfile.put(DISTRICT,DEFAULT_VALUE);
-//                userProfile.put(WARD,DEFAULT_VALUE);
-//                userProfile.put(HOUSE_NUMBER,DEFAULT_VALUE);
-//
-//
-//                userProfile.put("userId", userID);
-//
-//                mRef.child("Users").child(userID).setValue(userProfile)
-//                        .addOnCompleteListener(task -> {
-//                            if (task.isSuccessful()) {
-//                                mAuth.getCurrentUser().sendEmailVerification()
-//                                        .addOnCompleteListener(task1 -> {
-//                                            loadDialog.hideLoadingDialog();
-//                                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check),
-//                                                    getString(R.string.txt_title_congratulation),
-//                                                    getString(R.string.txt_sub_title_sign_in_google),
-//                                                    getResources().getColor(R.color.green));
-//                                        });
-//                            }
-//
-//                        });
-//
-//            } else {
-//                loadDialog.hideLoadingDialog();
-//                Toast.makeText(LoginActivity.this, "Existing User with email: " + email, Toast.LENGTH_SHORT)
-//                        .show();
-//            }
-//            moveToHome();
-//        }).addOnFailureListener(e -> {
-//            loadDialog.hideLoadingDialog();
-//            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error),
-//                    getString(R.string.txt_title_logged_failed),
-//                    e.getMessage(), getResources().getColor(R.color.red));
-//        });
-//    }
-
-    @SuppressWarnings("deprecation")
-    private void signInGoogle() {
-        binding.googleSignInBtn.setOnClickListener(v -> {
-            //begin Google Sign In
-            Log.d(TAG, "onClick: begin Google Sign In");
-            Intent intent = mGoogleSignInClient.getSignInIntent();
-            startActivityForResult(intent, RC_SING_IN);
-        });
-    }
 
     @Override
     public void onStart() {
@@ -279,110 +160,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //Handle result of intent at line 112
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //Result returned from launching the intent at line 112- from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SING_IN) {
-            Log.d(TAG, "onActivityResult: Google SignIn intent result");
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                //Google SignIn success, auth with Firebase
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-            } catch (Exception e) {
-                //failed Google SignIn
-                Log.d(TAG, "onActivityResult: " + e.getMessage());
-            }
-        } else {
-            mCallbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
     private void moveToHome() {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class).addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
         Animatoo.animateSlideLeft(LoginActivity.this);
         finish();
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
-        Log.d(TAG, "firebaseAuthWithGoogleAccount: begin firebase auth with google account");
-        GoogleSignInAccount googleSignInAccount;
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        mAuth.signInWithCredential(credential).addOnSuccessListener(authResult -> {
-            loadDialog.showLoadingDialog();
-            //login successful
-            Log.d(TAG, "onSuccess: Logged In");
-
-            //get logged in user
-            FirebaseUser mUser = mAuth.getCurrentUser();
-
-            //get user Information
-            String uId = Objects.requireNonNull(mUser).getUid();
-            String email = Objects.requireNonNull(mUser.getEmail());
-            String fullName = Objects.requireNonNull(mUser.getDisplayName());
-
-            Log.d(TAG, "onSuccess: EMAIL: " + email);
-            Log.d(TAG, "onSuccess: UID: " + uId);
-
-            //check if user is new or existing
-
-            if (Objects.requireNonNull(authResult.getAdditionalUserInfo()).isNewUser()) {
-                //user is new -- Account Created
-                Log.d(TAG, "onSuccess: Account Created...\n" + email);
-                Toast.makeText(LoginActivity.this, "Account Created..." + email, Toast.LENGTH_SHORT).show();
-
-                HashMap<String, Object> userProfile = new HashMap<>();
-                userProfile.put(FULLNAME, fullName);
-                userProfile.put(USER_EMAIL, email);
-                userProfile.put(AVATAR, DEFAULT_VALUE);
-                userProfile.put(DOB, DEFAULT_VALUE);
-                userProfile.put(PHONE_NUMBER, DEFAULT_VALUE);
-                userProfile.put(GENDER,OTHER);
-                userProfile.put(LATITUDE,DEFAULT_RED_CODE);
-                userProfile.put(LONGITUDE,DEFAULT_RED_CODE);
-                userProfile.put(PROVINCE,DEFAULT_VALUE);
-                userProfile.put(POSTAL_CODE,DEFAULT_VALUE);
-                userProfile.put(DISTRICT,DEFAULT_VALUE);
-                userProfile.put(WARD,DEFAULT_VALUE);
-                userProfile.put(HOUSE_NUMBER,DEFAULT_VALUE);
-
-                userProfile.put("userId", uId);
-
-                mRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userProfile).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        //If authentication successful -> show announcement via dialog
-                        mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
-                            loadDialog.hideLoadingDialog();
-
-                            //Show dialog
-                            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_check), getString(R.string.txt_title_congratulation),
-                                    getString(R.string.txt_sub_title_sign_in_google), getResources().getColor(R.color.green));
-                            dialogCustom.hideLoadingDialogTime(3000);
-                            moveToHome();
-
-                        });
-                    }
-
-                });
-            } else {
-                //existing user -- Logged In
-                Log.d(TAG, "onSuccess: Existing User...\n" + email);
-                loadDialog.hideLoadingDialog();
-                moveToHome();
-            }
-        }).addOnFailureListener(e -> {
-            //login failed
-            Log.d(TAG, "onFailed: Logged Failed " + e.getMessage());
-            loadDialog.hideLoadingDialog();
-            dialogCustom.showLoadingDialog(getDrawable(R.drawable.ic_error), getString(R.string.txt_title_logged_failed),
-                    getString(R.string.sub_title_logged_failed), getResources().getColor(R.color.red));
-        });
     }
 
     private void textWatcher() {

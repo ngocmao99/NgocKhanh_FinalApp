@@ -1,355 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingHorizontal="10dp">
+    android:layout_height="match_parent"
+    android:background="@color/gray_200">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Birthday card view-->
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_birthday_cake"
-                tools:ignore="ContentDescription" />
+            android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/labAccountId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center_vertical"
-                android:text="@string/txt_birthday"
-                android:textColor="@color/first"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:text="@string/txt_account_id"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_textview_info"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:text="@string/txt_user_birthday"
-            android:textSize="13sp" />
-
-        <!-- Gender card view-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_gender"
-                tools:ignore="ContentDescription" />
-
-            <TextView
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labAccountId">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:id="@+id/labEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_email_profile"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="nguyenvana@gmail.com"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/labPersonalInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center_vertical"
-                android:text="@string/txt_gender"
-                android:textColor="@color/first"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:paddingHorizontal="20dp"
+                android:text="Personal Info"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewMail" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_textview_info"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:text="@string/txt_user_gender"
-            android:textSize="13sp" />
-
-        <!-- Email card view-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_mail_teal"
-                app:tint="@color/first"
-                tools:ignore="ContentDescription" />
-
-            <TextView
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewPersonalInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center_vertical"
-                android:text="@string/txt_email_profile"
-                android:textColor="@color/first"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/labPersonalInfo">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_textview_info"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:text="@string/txt_user_email"
-            android:textSize="13sp" />
+                    <!-- Name-->
+                    <TextView
+                        android:id="@+id/labUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_name"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-        <!-- Phone number card view-->
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Nguyen Van A"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_phone"
-                tools:ignore="ContentDescription" />
+                    <!-- Birthday-->
+
+                    <TextView
+                        android:id="@+id/labBirthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_birthday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userBirthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Sep 02, 1999"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
+
+                    <!-- Phone number-->
+
+                    <TextView
+                        android:id="@+id/labPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_phoneNumber"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="84915457260"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
+
+                    <!-- Gender-->
+                    <TextView
+                        android:id="@+id/labGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_gender"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Male"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/labAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center_vertical"
-                android:text="@string/txt_phoneNumber"
-                android:textColor="@color/first"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_textview_info"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:text="@string/txt_user_phoneNumber"
-            android:textSize="13sp" />
-
-        <!-- Location card view-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_location"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center_vertical"
                 android:text="@string/txt_address"
-                android:textColor="@color/first"
-                android:textSize="14sp" />
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewPersonalInfo" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/custom_textview_info"
-            android:layout_marginStart="35dp"
-            android:layout_marginBottom="10dp">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/carViewAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labAddress">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_houseNumber"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp">
 
-                <TextView
-                    android:id="@+id/userHouseNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="end"
-                    android:text="@string/txt_user_houseNumber"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/labHouseNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_houseNumber"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                    <TextView
+                        android:id="@+id/userHouseNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="123 Nguyen Van Troi"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_ward"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
 
-                <TextView
-                    android:id="@+id/userWard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="end"
-                    android:text="@string/txt_user_ward"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    <!-- Ward-->
+                    <TextView
+                        android:id="@+id/labWard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_ward"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                    <TextView
+                        android:id="@+id/userWard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="An Hai Dong"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_district"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
 
-                <TextView
-                    android:id="@+id/userDistrict"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="end"
-                    android:text="@string/txt_user_district"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    <!--District-->
+                    <TextView
+                        android:id="@+id/labDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_district"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                    <TextView
+                        android:id="@+id/userDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Son Tra"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_city"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
 
-                <TextView
-                    android:id="@+id/userCity"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="end"
-                    android:text="@string/txt_user_city"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    <!-- City/Province-->
+                    <TextView
+                        android:id="@+id/labProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_province_or_city"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                    <TextView
+                        android:id="@+id/userProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Da Nang"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_province"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
 
-                <TextView
-                    android:id="@+id/userProvince"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="end"
-                    android:text="@string/txt_user_province"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                    <!-- Zip code-->
+                    <TextView
+                        android:id="@+id/labZipCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="@string/txt_zip_code"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/userZipCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="550000"
+                        android:textColor="@color/first"
+                        android:textSize="12sp" />
 
-    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="10sp"
+                        android:background="@color/gray" />
+                </LinearLayout>
 
-</ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

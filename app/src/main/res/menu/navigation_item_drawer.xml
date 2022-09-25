@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/groupInfo"
         android:checkableBehavior="single">
+        <item android:id="@+id/itemSetting"
+            android:icon="@drawable/ic_settings_fill0_wght400_grad0_opsz48"
+            android:iconTint="@color/first"
+            android:title="@string/item_setting"/>
         <item
             android:id="@+id/itemAboutApp"
             android:icon="@drawable/ic_aboutapp"
