@@ -1125,4 +1125,5 @@
     <string name="txt_name">Name</string>
     <string name="txt_province_or_city">Province/City</string>
     <string name="txt_zip_code">Zip code</string>
+    <string name="error_invalid_format_password">Invalid format password!!!</string>
 </resources>

@@ -13,6 +13,7 @@ import static com.example.finalproject.utils.Constants.HOUSE_NUMBER;
 import static com.example.finalproject.utils.Constants.LATITUDE;
 import static com.example.finalproject.utils.Constants.LONGITUDE;
 import static com.example.finalproject.utils.Constants.OTHER;
+import static com.example.finalproject.utils.Constants.PASSWORD_REGEX;
 import static com.example.finalproject.utils.Constants.PHONE_NUMBER;
 import static com.example.finalproject.utils.Constants.POSTAL_CODE;
 import static com.example.finalproject.utils.Constants.PROVINCE;
@@ -63,6 +64,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
+
+import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
     //Declare viewBinding alternative for findViewById
@@ -186,21 +189,10 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if (editable.length() == 0) {
-                binding.tilPasswordInput.setErrorEnabled(true);
-                binding.tilPasswordInput.setError(getString(R.string.error_input_password_signup));
-                binding.tilPasswordInput.requestFocus();
-            }
-
-            if (editable.length() >= 0 && editable.length() < 8) {
-                binding.tilPasswordInput.setErrorEnabled(true);
-                binding.tilPasswordInput.setError(getString(R.string.error_password_less_than_six_letters));
-                binding.tilPasswordInput.requestFocus();
-            } else {
+            String password = editable.toString().trim();
+            if (editable.length() != 0) {
                 binding.tilPasswordInput.setErrorEnabled(false);
-
             }
-
         }
     };
 
@@ -219,21 +211,13 @@ public class LoginActivity extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
             String email = s.toString().trim();
 
-            if (s.length() == 0) {
-                binding.tilEmailInput.setErrorEnabled(true);
-                binding.tilEmailInput.setError(getString(R.string.error_input_email_empty));
-                binding.tilEmailInput.requestFocus();
-            }
-
-            if (!email.matches(EMAIL_REGEX)) {
-                binding.tilEmailInput.setErrorEnabled(true);
-                binding.tilEmailInput.setError(getString(R.string.error_invalid_email));
-                binding.tilEmailInput.requestFocus();
-
-            } else {
+            if (s.length() != 0) {
                 binding.tilEmailInput.setErrorEnabled(false);
             }
+            if (email.matches(EMAIL_REGEX)) {
+                binding.tilEmailInput.setErrorEnabled(false);
 
+            }
         }
     };
 
@@ -247,13 +231,23 @@ public class LoginActivity extends AppCompatActivity {
             binding.tilEmailInput.setError(getString(R.string.error_input_email_empty));
             binding.tilEmailInput.requestFocus();
         }
+        else if(!email.matches(EMAIL_REGEX)){
+            binding.tilEmailInput.setErrorEnabled(true);
+            binding.tilEmailInput.setError(getString(R.string.error_invalid_email));
+            binding.tilEmailInput.requestFocus();
+        }
         if (TextUtils.isEmpty(password)) {
             binding.tilPasswordInput.setErrorEnabled(true);
             binding.tilPasswordInput.setError(getString(R.string.error_input_password_signup));
             binding.tilPasswordInput.requestFocus();
         }
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(LoginActivity.this, getText(R.string.error_empty_credential), Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
+            binding.tilEmailInput.setErrorEnabled(true);
+            binding.tilEmailInput.setError(getString(R.string.error_input_email_empty));
+            binding.tilPasswordInput.setErrorEnabled(true);
+            binding.tilPasswordInput.setError(getString(R.string.error_input_password_signup));
+            Toasty.error(LoginActivity.this,getString(R.string.error_empty_credential),Toasty.LENGTH_SHORT).show();
+
         } else {
             loginWithCheck(email, password);
         }

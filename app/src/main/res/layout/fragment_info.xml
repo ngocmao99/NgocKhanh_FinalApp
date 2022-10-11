@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_200">
+    android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,353 +13,284 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp">
 
             <TextView
-                android:id="@+id/labAccountId"
+                android:id="@+id/labEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20sp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/nunito_bold"
-                android:gravity="center_vertical"
-                android:text="@string/txt_account_id"
-                android:textSize="13sp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Email address"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardViewMail"
+            <TextView
+                android:id="@+id/userEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="10dp"
+                android:drawableEnd="@drawable/ic_check_circle_fill0_wght400_grad0_opsz14"
+                android:drawableTint="@color/first"
+                android:text="quynh.dm1411@gmail.com"
+                android:textColor="@color/first"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/labAccountId">
+                app:layout_constraintTop_toBottomOf="@+id/labEmail" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp">
+            <View
+                android:id="@+id/lineOne"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
-                    <TextView
-                        android:id="@+id/labEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_email_profile"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/userEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="nguyenvana@gmail.com"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            <!--Name-->
+            <TextView
+                android:id="@+id/labName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineOne" />
 
             <TextView
-                android:id="@+id/labPersonalInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/nunito_bold"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="20dp"
-                android:text="Personal Info"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewMail" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardViewPersonalInfo"
+                android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/labPersonalInfo">
+                android:text="Manh Quynh"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labName" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp">
+            <View
+                android:id="@+id/lineTwo"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-                    <!-- Name-->
-                    <TextView
-                        android:id="@+id/labUserName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_name"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/userName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="Nguyen Van A"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
-
-                    <!-- Birthday-->
-
-                    <TextView
-                        android:id="@+id/labBirthday"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_birthday"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/userBirthday"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="Sep 02, 1999"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
-
-                    <!-- Phone number-->
-
-                    <TextView
-                        android:id="@+id/labPhoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_phoneNumber"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/userPhoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="84915457260"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
-
-                    <!-- Gender-->
-                    <TextView
-                        android:id="@+id/labGender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_gender"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/userGender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="Male"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            <!--Birthday-->
+            <TextView
+                android:id="@+id/labBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Date of birth"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineTwo" />
 
             <TextView
-                android:id="@+id/labAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20sp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/nunito_bold"
-                android:gravity="center_vertical"
-                android:text="@string/txt_address"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewPersonalInfo" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/carViewAddress"
+                android:id="@+id/userBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="10dp"
+                android:text="Sep 02, 1999"
+                android:textColor="@color/first"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/labAddress">
+                app:layout_constraintTop_toBottomOf="@+id/labBirthday" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp">
+            <View
+                android:id="@+id/lineThree"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userBirthday" />
 
-                    <TextView
-                        android:id="@+id/labHouseNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_houseNumber"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <!--Phone number-->
+            <TextView
+                android:id="@+id/labPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Phone number"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineThree" />
 
-                    <TextView
-                        android:id="@+id/userHouseNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="123 Nguyen Van Troi"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/userPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="84915457260"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labPhoneNumber" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
+            <View
+                android:id="@+id/lineFour"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userPhoneNumber" />
 
-                    <!-- Ward-->
-                    <TextView
-                        android:id="@+id/labWard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_ward"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <!--Gender-->
+            <TextView
+                android:id="@+id/labGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Gender"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineFour" />
 
-                    <TextView
-                        android:id="@+id/userWard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="An Hai Dong"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/userGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Male"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labGender" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userGender"
+                android:layout_marginTop="2dp"
+                android:id="@+id/lineFive"/>
 
-                    <!--District-->
-                    <TextView
-                        android:id="@+id/labDistrict"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_district"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <!--House Address-->
+            <TextView
+                android:id="@+id/labHouseAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="House Address"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineFive" />
 
-                    <TextView
-                        android:id="@+id/userDistrict"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="Son Tra"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/userHouseAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:inputType="textMultiLine"
+                android:text="51 Tran Bach Dang, My An, Ngu Hanh Son, Da Nang, Vietnam 550000"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labHouseAddress" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userHouseAddress"
+                android:layout_marginTop="2dp"
+                android:id="@+id/lineSix"/>
 
-                    <!-- City/Province-->
-                    <TextView
-                        android:id="@+id/labProvince"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_province_or_city"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <!--Zip code-->
+            <TextView
+                android:id="@+id/labPostalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Postal Code"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineSix" />
 
-                    <TextView
-                        android:id="@+id/userProvince"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="Da Nang"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/userPostalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="550000"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labPostalCode" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userPostalCode"
+                android:layout_marginTop="2dp"
+                android:id="@+id/lineSeven"/>
 
-                    <!-- Zip code-->
-                    <TextView
-                        android:id="@+id/labZipCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="@string/txt_zip_code"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <!-- Country/Region-->
+            <TextView
+                android:id="@+id/labCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Country"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineSeven" />
 
-                    <TextView
-                        android:id="@+id/userZipCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_regular"
-                        android:text="550000"
-                        android:textColor="@color/first"
-                        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/userCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Vietnam"
+                android:textColor="@color/first"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labCountry" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginVertical="10sp"
-                        android:background="@color/gray" />
-                </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_200"
+                app:layout_constraintTop_toBottomOf="@+id/userCountry"
+                android:layout_marginTop="2dp"
+                android:id="@+id/lineEigth"/>
 
-            </com.google.android.material.card.MaterialCardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

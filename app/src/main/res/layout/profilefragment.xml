@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/app_bar"
-        android:fitsSystemWindows="true"
+        android:layout_marginTop="?attr/actionBarSize"
         android:background="@android:color/transparent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -54,10 +54,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/nunito_bold"
                             android:text="@string/txt_user_full_name"
                             android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -77,21 +77,21 @@
                                     android:id="@+id/totalProperty"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_medium"
+                                    android:fontFamily="@font/nunito_bold"
                                     android:gravity="center"
                                     android:text="@string/txt_amount_default"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="16sp" />
 
                                 <TextView
                                     android:id="@+id/tit_totalProperty"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_light"
+                                    android:fontFamily="@font/nunito_regular"
                                     android:gravity="center"
                                     android:text="@string/txt_properties"
                                     android:textColor="@color/black"
-                                    android:textSize="13sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <!-- User's properties-->
@@ -106,21 +106,21 @@
                                     android:id="@+id/totalReviewPoint"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_medium"
+                                    android:fontFamily="@font/nunito_bold"
                                     android:gravity="center"
                                     android:text="@string/txt_amount_default"
                                     android:textColor="@color/black"
-                                    android:textSize="18sp" />
+                                    android:textSize="16sp" />
 
                                 <TextView
                                     android:id="@+id/tit_totalReviewPoint"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_light"
+                                    android:fontFamily="@font/nunito_regular"
                                     android:gravity="center"
                                     android:text="@string/txt_review_point"
                                     android:textColor="@color/black"
-                                    android:textSize="13sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -129,22 +129,21 @@
 
                 </LinearLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/editProfileBtn"
-                    style="@style/CustomButtonOutLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/nunito_bold"
                     android:text="@string/txt_edit_profile"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    app:cornerRadius="5dp"/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayoutProfile"
                     style="@style/Widget.MaterialComponents.TabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="10dp"
                     app:tabMode="fixed">
 
@@ -161,14 +160,15 @@
                 </com.google.android.material.tabs.TabLayout>
 
             </LinearLayout>
-            
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
