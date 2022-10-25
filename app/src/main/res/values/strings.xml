@@ -1126,4 +1126,10 @@
     <string name="txt_province_or_city">Province/City</string>
     <string name="txt_zip_code">Zip code</string>
     <string name="error_invalid_format_password">Invalid format password!!!</string>
+    <string name="email_address">Email address</string>
+    <string name="txt_user_name">Name</string>
+    <string name="txt_date_of_birth">Date of birth</string>
+    <string name="txt_house_address">House Address</string>
+    <string name="txt_postal_code">Postal Code</string>
+    <string name="txt_country">Country</string>
 </resources>

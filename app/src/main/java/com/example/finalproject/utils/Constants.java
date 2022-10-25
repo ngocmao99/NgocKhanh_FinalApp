@@ -73,7 +73,7 @@ public class Constants {
     public static final String HOUSE_NUMBER ="houseNumber";
 
     //Declare a constant variable for Users house number of Users tree on Firebase Database, the value depends on the user Model on Model package.
-    public static final String POSTAL_CODE ="postCode";
+    public static final String POSTAL_CODE ="postalCode";
 
     public static final String DEFAULT_VALUE ="";
 

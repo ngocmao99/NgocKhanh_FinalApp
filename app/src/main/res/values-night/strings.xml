@@ -2,4 +2,9 @@
 <resources>
     <string name="error_password_less_than_six">Must be at least 6 characters.</string>
     <string name="error_password_less_than_six_letters">Must be at least six characters.</string>
+    <string name="txt_user_name">Name</string>
+    <string name="txt_date_of_birth">Date of birth</string>
+    <string name="txt_house_address">House Address</string>
+    <string name="txt_postal_code">Postal Code</string>
+    <string name="txt_country">Country</string>
 </resources>

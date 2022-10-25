@@ -68,19 +68,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
-
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -131,118 +122,13 @@ public class EditProfileActivity extends BaseActivity {
         //Init Database Ref
         mPath = FirebaseDatabase.getInstance().getReference(PATH_USER);
 
-        //Init FusedLocationProviderClient
-        fLocation = LocationServices.getFusedLocationProviderClient(EditProfileActivity.this);
 
         //Init Alert Dialog;
         //TODO: ALert dialog to confirmation update user information
 
-        handleBackButton();
-
-        handleUploadAvatar();
-
-        showUserInfo();
-
-        //inside this method contain some method to handle upload avatar and upload information of user
-        validate();
-
-        validateFullName();
-
-        validateDob();
-
-        validateGender();
-
-        validatePhone();
-
-        auditPermission(); // Check ACCESS_FINE_LOCATION status: granted or not granted
-
-        handleMapButton();
-
-
     }
 
-    private void handleMapButton() {
-        binding.btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EditProfileActivity.this, MapActivity.class));
-                Animatoo.animateSlideLeft(EditProfileActivity.this);
-            }
-        });
-    }
 
-    private void auditPermission() {
-        Dexter.withContext(EditProfileActivity.this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
-            @Override
-            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                isPermissionGrant = true;
-                showToast("Permission Granted...!");
-
-            }
-
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Uri uri = Uri.fromParts("package", getPackageName(), "");
-                intent.setData(uri);
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                permissionToken.continuePermissionRequest();
-
-            }
-        }).check();
-    }
-
-    @SuppressLint("MissingPermission")
-    private void getUserLocation() {
-        fLocation.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful()) {
-
-                    hideLoading();
-                    //Init Location
-                    Location userLocation = task.getResult();
-
-                    try {
-                        //Init GeoCoder
-                        Geocoder gc = new Geocoder(EditProfileActivity.this, Locale.US);
-
-                        //Init address list
-                        List<Address> addressList = gc.getFromLocation(userLocation.getLatitude(), userLocation.getLongitude(), MAX_RESULT);
-
-                        String userAddress = addressList.get(POSITION_ADDRESS).getAddressLine(POSITION_ADDRESS);
-
-                        //handle user address - Assign userAddress into an array by split method
-                        String[] addressItems = userAddress.split("\\s*,\\s*");
-
-                        binding.mactvProvince.setText(addressList.get(POSITION_ADDRESS).getAdminArea());
-                        binding.mactvDist.setText(addressItems[2]);
-                        binding.mactvWard.setText(addressItems[1]);
-                        binding.tietHNumber.setText(addressItems[0]);
-                        postalCode = addressList.get(POSITION_ADDRESS).getPostalCode();
-                        latitude = addressList.get(POSITION_ADDRESS).getLatitude();
-                        longitude = addressList.get(POSITION_ADDRESS).getLongitude();
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    hideLoading();
-                    showToast("Can access your current location, please check GPS permission again...!");
-                }
-
-
-            }
-        });
-
-
-    }
 
     private void showUserInfo() {
         showLoading();
@@ -312,7 +198,7 @@ public class EditProfileActivity extends BaseActivity {
                             binding.mactvWard.setText(cUser.getWard().trim());
                             binding.tietHNumber.setText(cUser.getHouseNumber().trim());
                         }else{
-                            getUserLocation();
+//                            getUserLocation();
                         }
                     }
 
@@ -363,7 +249,7 @@ public class EditProfileActivity extends BaseActivity {
                     //TODO: Dialog
 
                     // method check case imageUri and userImageId
-                    handleUploadUserInfo();
+//                    handleUploadUserInfo();
                 }
 
             }
@@ -509,18 +395,11 @@ public class EditProfileActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String phoneNumbers = s.toString().trim();
-                if (s.length() == 0) {
-                    binding.tilPhoneNumber.setErrorEnabled(true);
-                    binding.tilPhoneNumber.setError(getString(R.string.error_empty_phoneNumber));
-                    binding.tilPhoneNumber.requestFocus();
-                } else if (s.length() > 0 && s.length() < 10 || phoneNumbers.matches(PHONE_REGEX)) {
-                    binding.tilPhoneNumber.setErrorEnabled(true);
-                    binding.tilPhoneNumber.setError(getString(R.string.error_not_match_pattern_phone));
-                    binding.tilPhoneNumber.requestFocus();
-                } else {
+                if (s.length() > 0) {
+                    binding.tilPhoneNumber.setErrorEnabled(false);
+                } else if (s.length() > 0 && s.length() < 12 || !phoneNumbers.matches(PHONE_REGEX)) {
                     binding.tilPhoneNumber.setErrorEnabled(false);
                 }
-
             }
         });
     }
@@ -588,21 +467,13 @@ public class EditProfileActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String name = s.toString().trim();
-                if (s.length() == 0) {
-                    binding.tilFullName.setErrorEnabled(true);
-                    binding.tilFullName.setError(getString(R.string.error_name_signup));
-                    binding.tilFullName.requestFocus();
-                } else if (!name.matches(NAME_REGEX1) || name.matches(NAME_REGEX2)) {
-                    binding.tilFullName.setErrorEnabled(true);
-                    binding.tilFullName.setError(getString(R.string.error_name_unique_signup));
-                    binding.tilFullName.requestFocus();
-                } else if (s.length() > 100) {
-                    binding.tilFullName.setErrorEnabled(true);
-                    binding.tilFullName.setError(getString(R.string.error_over_character));
-                } else {
+                if (s.length() > 0) {
+                    binding.tilFullName.setErrorEnabled(false);
+                } else if (name.matches(NAME_REGEX1) || !name.matches(NAME_REGEX2)) {
+                    binding.tilFullName.setErrorEnabled(false);
+                } else if (s.length() <= 100) {
                     binding.tilFullName.setErrorEnabled(false);
                 }
-
             }
         });
     }
