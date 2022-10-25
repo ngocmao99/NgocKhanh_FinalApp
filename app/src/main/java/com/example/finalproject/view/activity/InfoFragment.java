@@ -1,6 +1,6 @@
 package com.example.finalproject.view.activity;
 
-import static com.example.finalproject.utils.Constants.USER_ID;
+import static com.example.finalproject.utils.Constants.PATH_USER;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +16,6 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.FragmentInfoBinding;
 import com.example.finalproject.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import es.dmoral.toasty.Toasty;
 
 public class InfoFragment extends BaseFragment {
     private FragmentInfoBinding binding;
@@ -40,7 +36,6 @@ public class InfoFragment extends BaseFragment {
         binding = FragmentInfoBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -61,9 +56,9 @@ public class InfoFragment extends BaseFragment {
         String currentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //declare the location of user data on firebase realtime
-        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference("USER_PATH");
+        DatabaseReference mReference = FirebaseDatabase.getInstance().getReference();
 
-        mReference.orderByChild("userId").equalTo(currentId).addValueEventListener(new ValueEventListener() {
+        mReference.child(PATH_USER).orderByChild("userId").equalTo(currentId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()){
@@ -71,6 +66,20 @@ public class InfoFragment extends BaseFragment {
                 }
                 else{
                     Log.d("firebase","Data existed");
+                    for (DataSnapshot ds : snapshot.getChildren()){
+                        //retrieve data of current user from firebase real time
+                        User user = ds.getValue(User.class);
+
+                        //set user data on screen
+                        binding.userEmail.setText(user.getEmail());
+                        binding.userName.setText(user.getFullName());
+                        binding.userBirthday.setText(user.getDob());
+                        binding.userPhoneNumber.setText(user.getPhoneNumber());
+                        binding.userHouseAddress.setText(user.getHouseNumber());
+                        binding.userPostalCode.setText(user.getPostalCode());
+
+                        //TODO: user avatar and country
+                    }
                 }
             }
 
@@ -80,10 +89,7 @@ public class InfoFragment extends BaseFragment {
             }
         });
 
-
-
     }
-
     private boolean getCurrentUser() {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         return mUser != null;
