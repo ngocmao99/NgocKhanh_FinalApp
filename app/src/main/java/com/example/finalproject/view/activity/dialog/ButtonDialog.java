@@ -15,7 +15,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.databinding.ButtonDialogBinding;
 import com.example.finalproject.view.activity.LoginActivity;
 
-public class ButtonDialog{
+public class ButtonDialog {
 
     private final Context context;
     private AlertDialog dialog;
@@ -26,9 +26,9 @@ public class ButtonDialog{
         this.context = context;
     }
 
-    public void showLoadingDialog(Drawable image, String title, String subTitle,String btnNegative,
-                                  int negativeColor, String btnPositive,int positiveColor, int color) {
-        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(R.layout.button_dialog, null, false);
+    public void showLoadingDialog(Drawable image, String title, String subTitle, String btnNegative,
+                                  int negativeColor, String btnPositive, int positiveColor, int color) {
+        @SuppressLint("InflateParams" ) View view = LayoutInflater.from(context).inflate(R.layout.button_dialog, null, false);
 
         binding = ButtonDialogBinding.bind(view);
 
@@ -56,10 +56,9 @@ public class ButtonDialog{
 
         binding.btnNegative.setOnClickListener(v -> {
             Intent i = new Intent(context, LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(i);
             Animatoo.animateSlideLeft(context);
-
 
 
         });
@@ -72,7 +71,4 @@ public class ButtonDialog{
 
 
     }
-
-
-
 }

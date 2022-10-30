@@ -94,6 +94,9 @@ public class Constants {
     //Places Autocomplete
     public static final int AUTOCOMPLETE_REQUEST_CODE =100;
 
+    //Logcat
+    public static final String DEBUG_LOG = "debug";
+
 
 
 
