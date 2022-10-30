@@ -1,27 +1,34 @@
 package com.example.finalproject.view.activity.menu;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.HomefragmentBinding;
-import com.example.finalproject.models.Category;
-import com.example.finalproject.models.Property;
 
+import com.example.finalproject.models.Item;
+import com.example.finalproject.my_interface.IClickItemListener;
+import com.example.finalproject.view.activity.AddActivity;
+import com.example.finalproject.view.activity.DetailActivity;
 import com.example.finalproject.view.activity.HomeActivity;
-import com.example.finalproject.view.adapter.CategoryAdapter;
-import com.example.finalproject.view.adapter.PropertyAdapter;
+import com.example.finalproject.view.adapter.ItemAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,74 +36,98 @@ import java.util.List;
 public class Fragment_Home extends BaseFragment {
     //using view binding in fragment
     private HomefragmentBinding binding;
+    List<Item> itemList;
+    ItemAdapter itemAdapter;
+    RecyclerView recyclerView;
+    FirebaseDatabase mDatabase;
+    DatabaseReference mRef;
+    FirebaseStorage mStorage;
+    Button add;
 
-    private CategoryAdapter categoryAdapter;
-
-    private PropertyAdapter propertyAdapter;
-
-    private HomeActivity homeActivity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = HomefragmentBinding.inflate(inflater,container,false);
 
+
+        binding = HomefragmentBinding.inflate(inflater,container,false);
         return binding.getRoot();
+
+
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mDatabase=FirebaseDatabase.getInstance();
+        mRef=mDatabase.getReference().child("Item");
+        mStorage=FirebaseStorage.getInstance();
 
-        //category
-        categoryAdapter = new CategoryAdapter();
+        binding.rcvCategory1.setHasFixedSize(true);
+        binding.rcvCategory1.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        binding.rcvCategory1.setAdapter(itemAdapter);
+        itemList= new ArrayList<Item>();
+        itemAdapter = new ItemAdapter(itemList,new IClickItemListener(){
 
-        //Init gridviews
-        LinearLayoutManager mLinearManager = new LinearLayoutManager(homeActivity,LinearLayoutManager.HORIZONTAL,
-                false);
-        binding.rcvCategory1.setLayoutManager(mLinearManager);
-        binding.rcvCategory1.setFocusable(true);
-        binding.rcvCategory1.setNestedScrollingEnabled(false);
-        categoryAdapter.setData(getListCategory());
-        binding.rcvCategory1.setAdapter(categoryAdapter);
+            @Override
+            public void onClickItem(Item item) {
+                onClickGoToDetail(item);
+            }
+        });
 
-        //property
-        propertyAdapter = new PropertyAdapter();
-        Context context;
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(homeActivity,1);
-        binding.rcvCategory2.setLayoutManager(gridLayoutManager);
-        binding.rcvCategory2.setFocusable(false);
-        binding.rcvCategory2.setNestedScrollingEnabled(false);
-        propertyAdapter.setData(getListProperty());
-        binding.rcvCategory2.setAdapter(propertyAdapter);
+        mRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (snapshot.exists()){
+                Item item = snapshot.getValue(Item.class);
+                itemList.add(item);}
 
-    }
+                itemAdapter.notifyDataSetChanged();
+                binding.rcvCategory1.setAdapter(itemAdapter);
+            }
 
-    private List<Property> getListProperty() {
-        List<Property> mList = new ArrayList<>();
-        mList.add(new Property("1","Fluffy","Motel","123 NorthWay",R.drawable.firstpicture));
-        mList.add(new Property("2","Nancy","Villa","123 NorthWay",R.drawable.firstpicture));
-        mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
-        mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
-        mList.add(new Property("3","Danny","Studio","123 NorthWay",R.drawable.firstpicture));
-        return mList;
-    }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-    private List<Category> getListCategory() {
-        List<Category> mList = new ArrayList<>();
-        mList.add(new Category("1","Motel","motel",R.drawable.ic_motel_white));
-        mList.add(new Category("2","Apartment","motel",R.drawable.ic_townhouse_white));
-        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
-        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
-        mList.add(new Category("3","Townhouse","motel",R.drawable.ic_apartment_white));
-        return mList;
-    }
+            }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        binding.btnAddHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddActivity.class);
+                startActivity(intent);
+
+
+    }});
+
+
+
+
+}
+    private void onClickGoToDetail(Item item) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("item property",item);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

@@ -24,6 +24,7 @@ import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.databinding.HeaderDrawerBinding;
 import com.example.finalproject.view.activity.menu.AboutAppFragment;
+import com.example.finalproject.view.activity.menu.Fragment_Chat;
 import com.example.finalproject.view.activity.menu.Fragment_Favorite;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
@@ -162,8 +163,8 @@ public class HomeActivity extends BaseActivity{
                     fragment = new Fragment_Favorite();
                     break;
 
-                case R.id.itemRev:
-                    fragment = new CreateFragment();
+                case R.id.itemChat:
+                    fragment = new Fragment_Chat();
                     break;
 
                 case R.id.itemProf:

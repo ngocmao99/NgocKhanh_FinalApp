@@ -53,11 +53,9 @@
         <entry key="..\:/FinalProject/app/src/main/res/layout/profilefragment.xml" value="0.371875" />
         <entry key="..\:/FinalProject/app/src/main/res/menu/main_menu.xml" value="0.67" />
         <entry key="..\:/FinalProject/app/src/main/res/menu/menubottom.xml" value="0.264" />
-        <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout-v28/homefragment.xml" value="0.18541666666666667" />
         <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout/activity_edit_profile.xml" value="0.18489583333333334" />
         <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout/fragment_info.xml" value="0.4" />
         <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout/fragment_password_change.xml" value="0.1" />
-        <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout/homefragment.xml" value="0.18541666666666667" />
         <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/layout/profilefragment.xml" value="0.536" />
         <entry key="..\:/NgocKhanh/NgocKhanh_FinalApp/app/src/main/res/menu/navigation_item_drawer.xml" value="0.25" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/bedroom.xml" value="0.1515" />
@@ -80,6 +78,7 @@
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_balcony.xml" value="0.2915" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1985" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_baseline_account_circle_24_teal.xml" value="0.1985" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.212" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_bed.xml" value="0.2915" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/ic_bedroom.xml" value="0.2915" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/nav_bot_rounded.xml" value="0.1955" />
@@ -89,8 +88,11 @@
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/radio_selector.xml" value="0.2905" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/shadow.xml" value="0.259" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/drawable/text_color.xml" value="0.2905" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout-v28/homefragment.xml" value="0.176" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout-v28/homefragment.xml" value="0.33" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/Inbox_fragment.xml" value="0.35208333333333336" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_add.xml" value="0.35833333333333334" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_create.xml" value="0.3625" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_detail.xml" value="0.35208333333333336" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
@@ -101,6 +103,7 @@
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/app_bar_main.xml" value="0.21077383497221033" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/bedroom.xml" value="0.3625" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/button_dialog.xml" value="0.4" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/chat_fragment.xml" value="0.35208333333333336" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/content_main.xml" value="0.21077383497221033" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/create_property.xml" value="0.33" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/create_property2.xml" value="0.33" />
@@ -126,16 +129,17 @@
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/frame_textview.xml" value="0.3625" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/header.xml" value="0.21077383497221033" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/header_drawer.xml" value="0.2" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/homefragment.xml" value="0.2" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/homefragment.xml" value="0.33" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/item_category.xml" value="0.6" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/item_dropdownlist.xml" value="0.3625" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/item_property.xml" value="0.536" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/item_property.xml" value="0.33" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/main_item.xml" value="0.5" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/nav_bottom_main.xml" value="0.21077383497221033" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/profilefragment.xml" value="0.1" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/profilefragment.xml" value="0.33" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/layout/toolbar.xml" value="0.21077383497221033" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/main_menu.xml" value="0.21077383497221033" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/menu_nav_bot_owner.xml" value="0.1" />
-        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/nav_bottom_menu.xml" value="0.21077383497221033" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/menu_nav_bot_owner.xml" value="0.25" />
+        <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/nav_bottom_menu.xml" value="0.25" />
         <entry key="..\:/NgocKhanh_FinalApp/app/src/main/res/menu/navigation_item_drawer.xml" value="0.21077383497221033" />
       </map>
     </option>

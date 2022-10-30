@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".view.activity.HomeActivity"
     android:orientation="vertical">
 
         <LinearLayout
@@ -46,6 +47,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="5dp">
 
+
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rcv_category1"
                                 android:layout_width="match_parent"
@@ -55,47 +57,14 @@
                                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
                         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-                        <!--Property- For you-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <Button
+                            android:id="@+id/btn_add_home"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_gravity="center"
+                            android:text="select to add new item" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/poppins_bold"
-                                android:gravity="center_vertical"
-                                android:text="@string/txt_for_you"
-                                android:textColor="@color/first"
-                                android:textSize="18sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/poppins"
-                                android:gravity="end|center_vertical"
-                                android:text="@string/txt_view_all"
-                                android:textColor="@color/black_500"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-                        <androidx.coordinatorlayout.widget.CoordinatorLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rcv_category2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                app:layout_anchorGravity="center"
-                                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
-                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
                     </LinearLayout>
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

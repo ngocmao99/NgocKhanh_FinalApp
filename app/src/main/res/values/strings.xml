@@ -171,7 +171,6 @@
     </string-array>
 
 
-
     <string-array name="angiangdistricts">
         <item>Long Xuyen</item>
         <item>Chau Doc</item>
@@ -1132,4 +1131,5 @@
     <string name="txt_house_address">House Address</string>
     <string name="txt_postal_code">Postal Code</string>
     <string name="txt_country">Country</string>
+    <string name="inbox">chat</string>
 </resources>

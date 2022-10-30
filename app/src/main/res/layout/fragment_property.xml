@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.activity.PropertyFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,5 +13,12 @@
         android:text="Property Fragment"
         android:gravity="center"
         android:textSize="40dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_create_item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_rev"
 
+        app:layout_anchorGravity="bottom|right|end"/>
 </FrameLayout>

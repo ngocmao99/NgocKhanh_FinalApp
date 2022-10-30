@@ -6,20 +6,23 @@
         android:icon="@drawable/ic_home"
         android:title="@string/item_home"/>
 
+    <item android:id="@+id/itemChat"
+        android:enabled="true"
+        android:title="@string/inbox"
+        android:icon="@drawable/ic_chat"/>
+
     <item android:id="@+id/itemFavorite"
         android:enabled="true"
         android:title="@string/item_favorite"
         android:icon="@drawable/ic_fav"/>
 
-    <item android:id="@+id/itemRev"
-        android:enabled="true"
-        android:title="@string/item_review"
-        android:icon="@drawable/ic_rev"/>
+
 
     <item android:id="@+id/itemProf"
         android:enabled="true"
         android:title="@string/item_profile"
         android:icon="@drawable/ic_prof"/>
+
 
     <!-- Our invisible item -->
 

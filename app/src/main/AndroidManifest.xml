@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -15,10 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject.NoActionBar">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.MapActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.AddActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.ForgetPassword"
@@ -37,8 +41,8 @@
             android:exported="true" />
         <activity
             android:name=".view.activity.HomeActivity"
-            android:windowSoftInputMode="adjustResize|adjustPan"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".view.activity.LoginActivity"
             android:exported="true" />
@@ -49,11 +53,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/my_map_api" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
