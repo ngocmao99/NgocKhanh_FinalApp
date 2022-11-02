@@ -97,6 +97,11 @@ public class Constants {
     //Logcat
     public static final String DEBUG_LOG = "debug";
 
+    //Map
+    public static final String TAG_MAP = "MapActivity";
+    public static final int ERROR_DIALOG_REQUEST = 9001;
+
+
 
 
 

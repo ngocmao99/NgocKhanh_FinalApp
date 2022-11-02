@@ -34,6 +34,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.example.finalproject'
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -91,31 +94,26 @@ dependencies {
 
     //Google play service
     implementation 'com.google.android.gms:play-services-location:21.0.0'
-
     //enable request permission
     implementation 'com.karumi:dexter:6.2.3'
-
-    //Google Map SDK
-    implementation 'com.google.android.gms:play-services-maps:18.1.0'
-
-    //Places SDK for Android
-    implementation 'com.google.android.libraries.places:places:2.6.0'
-
     //Constraint layout
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
-
     //custom toast - https://github.com/GrenderG/Toasty
     implementation 'com.github.GrenderG:Toasty:1.5.2'
-
     // import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:31.0.1')
     //  add the dependency
     implementation 'com.google.firebase:firebase-database:20.1.0'
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-storage'
-
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
     //alert dialog - https://github.com/saadahmedscse/Android-Popup-Dialog
     implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
-    implementation 'com.squareup.picasso:picasso:2.8'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //Google play service location - Fused Location Provider for Android (includes activity recognition and geofencing)
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
+    //Google Map SDK
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    //Places SDK for Android
+    implementation 'com.google.android.libraries.places:places:2.6.0'
 }

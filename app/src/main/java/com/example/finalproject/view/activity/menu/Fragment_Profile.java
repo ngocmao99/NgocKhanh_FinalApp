@@ -5,6 +5,7 @@ import static com.example.finalproject.utils.Constants.PATH_USER;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.bumptech.glide.Glide;
 import com.example.finalproject.models.User;
 import com.example.finalproject.view.activity.EditProfileActivity;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.ProfilefragmentBinding;
 import com.example.finalproject.view.activity.LoginActivity;
 import com.example.finalproject.view.adapter.TabAdapter;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,12 +32,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.Locale;
 
 public class Fragment_Profile extends BaseFragment {
     private ProfilefragmentBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private FirebaseUser mUser;
+    private FirebaseStorage storage;
 
     @Nullable
     @Override
@@ -51,7 +59,8 @@ public class Fragment_Profile extends BaseFragment {
 
         //init variables
         mRef = FirebaseDatabase.getInstance().getReference();
-
+        //init firebase storage
+        storage = FirebaseStorage.getInstance();
         //handle TabLayout and ViewPager
         handleTabLayout();
 
@@ -62,7 +71,7 @@ public class Fragment_Profile extends BaseFragment {
             Animatoo.animateSlideLeft(getActivity());
         });
 
-        //User info - user name and avatar
+        //display user info consists user name and avatar
         showUserInfo();
 
     }
@@ -77,8 +86,18 @@ public class Fragment_Profile extends BaseFragment {
                         for (DataSnapshot ds : snapshot.getChildren()){
                             User currentUser = ds.getValue(User.class);
                             binding.userName.setText(currentUser.getFullName());
-
-                            //TODO: user image
+                            String imageId = currentUser.getUserImgId().trim();
+                            //declare reference storage
+                            StorageReference storageRef = storage.getReference();
+                            //
+                            storageRef.child("Avatars/"+imageId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    //get url and use trim() to clear the blank.
+                                    String imageUrl = uri.toString().trim();
+                                    Glide.with(getActivity()).load(imageUrl).centerCrop().into(binding.userImg);
+                                }
+                            });
                         }
                     }
                     else{

@@ -7,34 +7,28 @@
     tools:context=".view.activity.EditProfileActivity">
     <include layout="@layout/toolbar"
         android:id="@+id/toolBar"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         tools:ignore="UselessParent">
-
-
         <LinearLayout
             android:id="@+id/editForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-
             <!--User avatar-->
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAvatar"
                 style="@style/CustomCardViewProfile"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center_horizontal"
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 app:cardPreventCornerOverlap="false"
                 app:strokeColor="@color/first"
                 app:strokeWidth="1dp">
-
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/userImg"
                     android:layout_width="match_parent"
@@ -44,8 +38,7 @@
                     android:src="@drawable/ic_baseline_photo_camera_24"
                     app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
             </com.google.android.material.card.MaterialCardView>
-
-
+            <!--Full name field-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_fullName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -61,7 +54,6 @@
                 app:counterTextColor="@color/first"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_fullName"
                     android:layout_width="match_parent"
@@ -70,7 +62,6 @@
                     android:inputType="text"
                     android:scrollbars="horizontal" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <!--DOB-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_dob"
@@ -85,7 +76,6 @@
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first"
                 app:startIconDrawable="@drawable/ic_calendar">
-
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactv_dob"
                     android:layout_width="match_parent"
@@ -95,7 +85,6 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <!-- Gender -->
             <TextView
                 android:id="@+id/gender_tv"
@@ -106,14 +95,12 @@
                 android:text="@string/txt_gender"
                 android:textColor="@color/first"
                 android:textSize="20sp" />
-
             <RadioGroup
                 android:id="@+id/rgGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
-
                 <!--Female-->
                 <RadioButton
                     android:id="@+id/female"
@@ -123,7 +110,6 @@
                     android:buttonTint="@color/first"
                     android:fontFamily="@font/poppins"
                     android:text="@string/female" />
-
                 <!--Male-->
                 <RadioButton
                     android:id="@+id/male"
@@ -133,7 +119,6 @@
                     android:buttonTint="@color/first"
                     android:fontFamily="@font/poppins"
                     android:text="@string/male" />
-
                 <!--Other-->
                 <RadioButton
                     android:id="@+id/other"
@@ -142,9 +127,7 @@
                     android:buttonTint="@color/first"
                     android:fontFamily="@font/poppins"
                     android:text="@string/other" />
-
             </RadioGroup>
-
             <!--Error Text gender-->
             <TextView
                 android:id="@+id/tv_error"
@@ -156,7 +139,6 @@
                 android:textColor="@color/red"
                 android:textSize="12sp"
                 android:visibility="gone" />
-
             <!--Phone number -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_phoneNumber"
@@ -171,7 +153,6 @@
                 app:counterMaxLength="10"
                 app:counterTextColor="@color/first"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_phoneNumber"
                     android:layout_width="match_parent"
@@ -179,7 +160,6 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <!--Email -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
@@ -193,7 +173,6 @@
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="1dp"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_email"
                     android:layout_width="match_parent"
@@ -201,13 +180,12 @@
                     android:enabled="false"
                     android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
-
+            <!--Line-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_marginTop="25dp"
                 android:background="@color/first" />
-
             <!--Address-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -233,10 +211,8 @@
                     android:layout_weight="1"
                     android:src="@drawable/ic_map"
                     android:id="@+id/btnMap"/>
-
             </LinearLayout>
-
-
+            <!--Province field-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilProvince"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -249,7 +225,6 @@
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="1dp"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/mactvProvince"
                     android:layout_width="match_parent"
@@ -257,8 +232,7 @@
                     android:enabled="false"
                     android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- District-->
+            <!-- District field-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_dist"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -272,7 +246,6 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="dropdown_menu"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactv_dist"
                     android:layout_width="match_parent"
@@ -282,7 +255,7 @@
                     android:inputType="none"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
+            <!--Ward field-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilWard"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -295,7 +268,6 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="dropdown_menu"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactvWard"
                     android:layout_width="match_parent"
@@ -305,7 +277,6 @@
                     android:inputType="none"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <!--House number -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_hNumber"
@@ -320,7 +291,6 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_hNumber"
                     android:layout_width="match_parent"
@@ -331,7 +301,7 @@
                     android:scrollbars="horizontal"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
+            <!--Update button-->
             <Button
                 android:id="@+id/btnUpdate"
                 style="@style/Widget.MaterialComponents.Button"
@@ -345,10 +315,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
-
-
         </LinearLayout>
     </ScrollView>
-
-
 </RelativeLayout>

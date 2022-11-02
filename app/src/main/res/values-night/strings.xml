@@ -7,4 +7,8 @@
     <string name="txt_house_address">House Address</string>
     <string name="txt_postal_code">Postal Code</string>
     <string name="txt_country">Country</string>
+    <string name="error_password_format">This password doesn\'t reach the required format</string>
+    <string name="error_empty_form">Please fill out the required field!!!</string>
+    <string name="error_phonen_number_length">The phone number must contain 11 numbers.</string>
+    <string name="error_phone_number_format">The phone number must be contains number.</string>
 </resources>

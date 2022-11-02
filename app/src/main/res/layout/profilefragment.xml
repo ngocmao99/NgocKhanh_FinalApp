@@ -32,14 +32,23 @@
                     android:orientation="horizontal">
 
                     <!-- Profile Avatar-->
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/simAvatar"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvAvatar"
+                        style="@style/CustomCardViewProfile"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_baseline_account_circle_24"
-                        app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
+                        android:layout_gravity="center_horizontal"
+                        app:cardPreventCornerOverlap="false">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/userImg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_baseline_photo_camera_24"
+                            app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
+                    </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
                         android:id="@+id/rightHeader"
