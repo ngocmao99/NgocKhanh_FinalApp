@@ -19,11 +19,11 @@ public class DetailActivity extends AppCompatActivity {
         if(bundle == null){
             return;
         }
-        Item item = (Item) bundle.get("item property");
+        Item item = (Item) bundle.get("object item");
 
 
-        TextView tvNameItem = findViewById(R.id.tv_name_item);
 
-        tvNameItem.setText(item.getItemName());
+
+
     }
 }

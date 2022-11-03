@@ -6,10 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.MapActivity">
     <!--Map view-->
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:text="MAP"/>
+<!--    <com.google.android.gms.maps.MapView-->
+<!--        android:id="@+id/mapView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
     <!--Search box-->
 <!--    <androidx.cardview.widget.CardView-->
 <!--        android:layout_width="match_parent"-->

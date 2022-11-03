@@ -1,265 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.chauthai.swipereveallayout.SwipeRevealLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:mode="same_level"
     android:id="@+id/layout_item"
-    android:backgroundTint="@android:color/transparent">
+    app:dragEdge="right"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Info Card View-->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView_infoProperty"
-        android:layout_width="297dp"
-        android:layout_height="184dp"
-        android:layout_gravity="end"
-        android:elevation="4dp"
-        app:cardCornerRadius="18dp"
-
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/lo_info"
-            android:layout_width="236dp"
-            android:layout_height="match_parent"
-
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <!--First Line-->
-            <LinearLayout
-                android:id="@+id/lo_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txt_character"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="3dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="$"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/itemPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="3dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/txt_price"
-                    android:textColor="@color/first"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/perMonth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="@string/txt_per_month"
-                    android:textColor="@color/black_500"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/itemN"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingLeft="50dp"
-                android:text="@string/property_name"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/itemLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="@string/property_address"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-
-
-            <!--Info item-->
-            <LinearLayout
-                android:id="@+id/lo_sub_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <!--Area-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_sub_info"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:id="@+id/imgArea"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_are" />
-
-                    <TextView
-                        android:id="@+id/txtArea"
-                        android:layout_width="40dp"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="2dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="bottom"
-                        android:text="658 sqft"
-                        android:textColor="@color/white"
-                        android:textSize="8sp" />
-
-                </LinearLayout>
-
-                <!--Room-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_sub_info"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:id="@+id/imgRooms"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_bed" />
-
-                    <TextView
-                        android:id="@+id/txtRoom"
-                        android:layout_width="40dp"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="2dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="bottom"
-                        android:text="2 rooms"
-                        android:textColor="@color/white"
-                        android:textSize="8sp" />
-
-                </LinearLayout>
-
-                <!--Bathroom-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_sub_info"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:id="@+id/imgBedroom"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_bathroom" />
-
-                    <TextView
-                        android:id="@+id/txtBedroo"
-                        android:layout_width="40dp"
-                        android:layout_height="18dp"
-                        android:layout_marginStart="2dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="bottom"
-                        android:text="2 rooms"
-                        android:textColor="@color/white"
-                        android:textSize="8sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-        <!--Card view image-->
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView_image"
-        style="@style/CustomCardViewStyle"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="10dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/itemImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/firstpicture"
-            app:shapeAppearanceOverlay="@style/CustomePropertyImage" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Your secondary layout here -->
+    <LinearLayout
+        android:id="@+id/layout_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView_image"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="160dp"
-        android:elevation="8dp">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/custom_btn_rent"
-        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:paddingLeft="20dp"
-        android:text="@string/rentNow"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cardView_infoProperty"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_image"
-        app:layout_constraintVertical_bias="0.0" />
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/img_delete_item"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_delete_24" />
+        <TextView
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete" />
+
+    </LinearLayout>
+
+    <!-- Your main layout here -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView_infoProperty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:elevation="4dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="10dp"
+                app:cardUseCompatPadding="true"
+                >
+
+                <LinearLayout
+
+                    android:id="@+id/lo_info"
+                    android:layout_width="236dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <!--First Line-->
+                    <LinearLayout
+                        android:id="@+id/lo_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_character"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="3dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="$"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_price_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="3dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/txt_price"
+                            android:textColor="@color/first"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/perMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/poppins"
+                            android:gravity="center_vertical"
+                            android:text="@string/txt_per_month"
+                            android:textColor="@color/black_500"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_name_item"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+
+                        android:text="@string/property_name"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_address_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="@string/property_address"
+                        android:textColor="@color/black"
+                        android:textSize="11sp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--Info item-->
+                    <LinearLayout
+                        android:id="@+id/lo_sub_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <!--Area-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgArea"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_are" />
+
+                            <TextView
+                                android:id="@+id/tv_area_item"
+                                android:layout_width="40dp"
+                                android:layout_height="18dp"
+                                android:layout_marginStart="2dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="658 sqft"
+                                android:textColor="@color/white"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                        <!--Room-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgRooms"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_bed" />
+
+                            <TextView
+                                android:id="@+id/txtRoom"
+                                android:layout_width="40dp"
+                                android:layout_height="18dp"
+                                android:layout_marginStart="2dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="2 rooms"
+                                android:textColor="@color/white"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                        <!--Bathroom-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/custom_sub_info"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:id="@+id/imgBedroom"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_bathroom" />
+
+                            <TextView
+                                android:id="@+id/txtBedroo"
+                                android:layout_width="40dp"
+                                android:layout_height="18dp"
+                                android:layout_marginStart="2dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:gravity="bottom"
+                                android:text="2 rooms"
+                                android:textColor="@color/white"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <!--Card view image-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView_image"
+                style="@style/CustomCardViewStyle"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="false"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:paddingLeft="5dp"
+                    android:id="@+id/itemImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/firstpicture"
+                    app:shapeAppearanceOverlay="@style/CustomePropertyImage" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

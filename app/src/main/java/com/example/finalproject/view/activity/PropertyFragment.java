@@ -37,9 +37,9 @@ public class PropertyFragment extends BaseFragment {
         binding.btnCreateItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment CreateFrag = new CreateFragment();
-                FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
-                fm.replace(R.id.drawer_layout,CreateFrag).commit();
+//                Fragment CreateFrag = new CreateFragment();
+//                FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
+//                fm.replace(R.id.drawer_layout,CreateFrag).commit();
             }
         });
 }

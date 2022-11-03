@@ -3,25 +3,31 @@ package com.example.finalproject.models;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-     String location;
-     String itemName;
-     String image;
+    String itemAddress;
+    String itemName;
+    String image;
+    String itemPrice;
+    String itemArea;
+    int itemId;
 
     public Item() {
     }
 
-    public Item(String location, String itemName, String image) {
-        this.location = location;
+    public Item(String itemAddress, String itemName, String image, String itemPrice, String itemArea, int itemId) {
+        this.itemAddress = itemAddress;
         this.itemName = itemName;
         this.image = image;
+        this.itemPrice = itemPrice;
+        this.itemArea = itemArea;
+        this.itemId = itemId;
     }
 
-    public String getLocation() {
-        return location;
+    public String getItemAddress() {
+        return itemAddress;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setItemAddress(String itemAddress) {
+        this.itemAddress = itemAddress;
     }
 
     public String getItemName() {
@@ -39,4 +45,29 @@ public class Item implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(String itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public String getItemArea() {
+        return itemArea;
+    }
+
+    public void setItemArea(String itemArea) {
+        this.itemArea = itemArea;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
 }
+

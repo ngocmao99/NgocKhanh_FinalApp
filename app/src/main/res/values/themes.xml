@@ -68,6 +68,17 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeBottomRight">50dp</item>
     </style>
+    <!-- Customize Profile Image-->
+    <style name="CustomImageItem" parent="">
+        <item name="cornerFamilyTopLeft"> rounded </item>
+        <item name="cornerSizeTopLeft">150dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">150dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">150dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">150dp</item>
+    </style>
 
     <!-- Customize Card View Profile-->
     <style name="CustomCardViewProfile" parent="@style/Widget.MaterialComponents.CardView">

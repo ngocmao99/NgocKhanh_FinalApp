@@ -78,24 +78,17 @@ import es.dmoral.toasty.Toasty;
 public class EditProfileActivity extends BaseActivity {
 
     private ActivityEditProfileBinding binding;
-
     //Image Uri
     private Uri imageUri;
-
     //Image name
     private String imageName;
-
     private String uGender;
-
     //Declare a variable FirebaseStorage
     private StorageReference mStorageRef;
-
     //Declare a Database Reference variable
     private DatabaseReference mRef;
-
     //This variable contain the imageName that get from the Firebase Storage
     String userImageId;
-
     //alert dialog
     private AlertDialog alertDialog;
 
@@ -208,14 +201,12 @@ public class EditProfileActivity extends BaseActivity {
                     hideLoading();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.d(DEBUG_LOG, "No data found.");
             }
         });
     }
-
     //Validate information before upload them, to expect the issue missing important info.
     private void validate() {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -270,7 +261,6 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
-
     private void updateProfile() {
         if (imageUri != null && !userImageId.equals(imageName)) {
             //method upload avatar and info if user provide imageUri
@@ -287,7 +277,6 @@ public class EditProfileActivity extends BaseActivity {
             Log.d(DEBUG_LOG, "ImageUri doesn't contain any value" );
         }
     }
-
         //method upload avatar and info if users don't provide imageUri
         private void uploadInfoWithoutImage () {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -315,10 +304,8 @@ public class EditProfileActivity extends BaseActivity {
                     showToast("Update failed..!");
                 }
             });
-
-
         }
-
+        // Delete the old image
         private void deletePreviousAvatar () {
             StorageReference delRef = mStorageRef.child("Avatars/" + userImageId);
 
@@ -329,9 +316,7 @@ public class EditProfileActivity extends BaseActivity {
                     Log.d(DEBUG_LOG, "Delete Old Image is failed!");
                 }
             });
-
         }
-
         // push data to firebase realtime
         private void putUser () {
             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -359,9 +344,7 @@ public class EditProfileActivity extends BaseActivity {
                     showToast("Update failed..!");
                 }
             });
-
         }
-
         //get the gender from radio group
         private String getUserGender () {
             String gender = DEFAULT_VALUE;
@@ -377,7 +360,6 @@ public class EditProfileActivity extends BaseActivity {
                 return OTHER;
             }
         }
-
         //TextWatcher: phone number
         private void validatePhone () {
             binding.tietPhoneNumber.addTextChangedListener(new TextWatcher() {
@@ -400,7 +382,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             });
         }
-
         //Validate gender radio button group
         @SuppressLint("NonConstantResourceId")
         private void validateGender () {
@@ -423,7 +404,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             });
         }
-
         //DatePickerDialog - set the maximum date
         private void validateDob () {
             binding.mactvDob.setOnClickListener(v -> {
@@ -441,8 +421,7 @@ public class EditProfileActivity extends BaseActivity {
                 datePickerDialog.show();
             });
         }
-
-        //Text Watcher: fullname
+        //Text Watcher: full name
         private void validateFullName () {
             binding.tietFullName.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -464,7 +443,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             });
         }
-
         //TextWatcher: house number
         private void twHouseNumber () {
             binding.tietHNumber.addTextChangedListener(new TextWatcher() {
@@ -488,7 +466,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             });
         }
-
         //upload Avatar feature
         private void selectAvatar () {
             binding.userImg.setOnClickListener(view -> {
@@ -501,7 +478,6 @@ public class EditProfileActivity extends BaseActivity {
             });
 
         }
-
         //startActivityForResult(intent,RC_IMAGE);
         @Override
         protected void onActivityResult ( int requestCode, int resultCode, @Nullable Intent data){
@@ -513,7 +489,6 @@ public class EditProfileActivity extends BaseActivity {
                 Glide.with(EditProfileActivity.this).load(imageUri).centerCrop().into(binding.userImg);
             }
         }
-
         //put image to Firebase Storage feature
         private void putImageInStorage () {
             //Create formatter to apply into image name
@@ -537,7 +512,6 @@ public class EditProfileActivity extends BaseActivity {
                 }
             });
         }
-
         //Back button on tool bar
         private void handleBackButton () {
             binding.toolBar.toolBarBack.setOnClickListener(view -> {
@@ -546,7 +520,6 @@ public class EditProfileActivity extends BaseActivity {
                 onSupportNavigateUp();
             });
         }
-
         //move to map activity
         private void openMap(){
         binding.btnMap.setOnClickListener(new View.OnClickListener() {

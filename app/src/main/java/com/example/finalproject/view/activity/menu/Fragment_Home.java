@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.HomefragmentBinding;
@@ -28,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public class Fragment_Home extends BaseFragment {
     DatabaseReference mRef;
     FirebaseStorage mStorage;
     Button add;
+
 
 
     @Nullable
@@ -62,54 +65,39 @@ public class Fragment_Home extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //khai bao thu muc luu tru tren firestore
         mDatabase=FirebaseDatabase.getInstance();
         mRef=mDatabase.getReference().child("Item");
         mStorage=FirebaseStorage.getInstance();
 
-        binding.rcvCategory1.setHasFixedSize(true);
-        binding.rcvCategory1.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        binding.rcvCategory1.setAdapter(itemAdapter);
+
+      binding.rcvListItem.setHasFixedSize(true);
+      binding.rcvListItem.setLayoutManager(new GridLayoutManager(getActivity(),1));
+       binding.rcvListItem.setAdapter(itemAdapter);
         itemList= new ArrayList<Item>();
-        itemAdapter = new ItemAdapter(itemList,new IClickItemListener(){
+        itemAdapter = new ItemAdapter(getContext(),itemList);
 
+
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClickItem(Item item) {
-                onClickGoToDetail(item);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+              Item item = dataSnapshot.getValue(Item.class);
+              itemList.add(item);
             }
-        });
-
-        mRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if (snapshot.exists()){
-                Item item = snapshot.getValue(Item.class);
-                itemList.add(item);}
-
                 itemAdapter.notifyDataSetChanged();
-                binding.rcvCategory1.setAdapter(itemAdapter);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                binding.rcvListItem.setAdapter(itemAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
 
+
+
+        });
+        //button
         binding.btnAddHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +106,7 @@ public class Fragment_Home extends BaseFragment {
 
 
     }});
+
 
 
 

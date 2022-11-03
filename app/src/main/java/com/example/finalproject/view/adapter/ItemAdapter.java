@@ -2,21 +2,27 @@ package com.example.finalproject.view.adapter;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chauthai.swipereveallayout.SwipeRevealLayout;
+import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.finalproject.R;
 import com.example.finalproject.models.Item;
 import com.example.finalproject.my_interface.IClickItemListener;
 
+import com.example.finalproject.view.activity.DetailActivity;
+import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,16 +31,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     Context context;
     List<Item> itemList;
-    private IClickItemListener iClickItemListener;
-
-    public ItemAdapter(Context context, List<Item> itemList,IClickItemListener listener) {
+    private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
+    
+    public ItemAdapter(Context context, List<Item> itemList) {
         this.context = context;
         this.itemList = itemList;
-        this.iClickItemListener = listener;
+        ;
     }
 
-    public ItemAdapter(List<Item> itemList, IClickItemListener iClickItemListener) {
-    }
+
 
     @NonNull
     @Override
@@ -48,18 +53,39 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
 
         Item item= itemList.get(position);
-        holder.tvF.setText(item.getItemName());
-        holder.tvL.setText(item.getLocation());
+        viewBinderHelper.bind(holder.layoutItem,String.valueOf(item.getItemId()));
+        holder.layoutDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemList.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
+        holder.tvName.setText(item.getItemName());
+        holder.tvAddress.setText(item.getItemAddress());
+        holder.tvArea.setText(item.getItemArea());
+        holder.tvPrice.setText(item.getItemPrice());
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iClickItemListener.onClickItem(item);
+
+                onClickGoToDetail(item);
+            }
+
+            private void onClickGoToDetail(Item item) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object item",item);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
+
         String imageUri=null;
         imageUri=item.getImage();
         Picasso.get().load(imageUri).into(holder.imageView);
     }
+
 
 
 
@@ -71,15 +97,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ConstraintLayout layoutItem;
+        private SwipeRevealLayout layoutItem;
         ImageView imageView;
-        TextView tvF,tvL;
+        private LinearLayout layoutDelete;
+        TextView tvName,tvAddress,tvPrice,tvArea;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            layoutDelete=itemView.findViewById(R.id.layout_delete);
             layoutItem=itemView.findViewById(R.id.layout_item);
             imageView=itemView.findViewById(R.id.itemImg);
-            tvF=itemView.findViewById(R.id.itemN);
-            tvL=itemView.findViewById(R.id.itemLocation);
+            tvName=itemView.findViewById(R.id.tv_name_item);
+            tvAddress=itemView.findViewById(R.id.tv_address_item);
+            tvPrice=itemView.findViewById(R.id.tv_price_item);
+            tvArea=itemView.findViewById(R.id.tv_area_item);
 
         }
     }

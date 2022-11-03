@@ -34,8 +34,8 @@ public class AddActivity  extends AppCompatActivity {
     DatabaseReference mRef;
     FirebaseStorage mStorage;
     ImageView btn;
-    EditText edtfirst,edtlast;
-    Button btnadditem;
+    EditText edtN,edtAd,edtP,edtA;
+    Button btnAddItem;
     private static final int Gallery_code=1;
     Uri imageUrI=null;
     ProgressDialog progressDialog;
@@ -46,11 +46,12 @@ public class AddActivity  extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_add);
 
-        btn = findViewById(R.id.imageButton);
-        edtfirst = findViewById(R.id.edttext);
-        edtlast = findViewById(R.id.edttext2);
-
-        btnadditem = findViewById(R.id.btnInsert);
+        btn = findViewById(R.id.imgButton);
+        edtN = findViewById(R.id.tiet_name_item_input);
+        edtAd = findViewById(R.id.tiet_address_item_input);
+        edtA = findViewById(R.id.tiet_area_item_input);
+        edtP = findViewById(R.id.tiet_price_item_input);
+        btnAddItem = findViewById(R.id.btnInsert);
         mDatabase=FirebaseDatabase.getInstance();
         mRef=mDatabase.getReference().child("Item");
         mStorage=FirebaseStorage.getInstance();
@@ -75,13 +76,15 @@ public class AddActivity  extends AppCompatActivity {
             imageUrI=data.getData();
             btn.setImageURI(imageUrI);
         }
-        btnadditem.setOnClickListener(new View.OnClickListener() {
+        btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fn=edtfirst.getText().toString().trim();
-                String ln=edtlast.getText().toString().trim();
+                String itemName=edtN.getText().toString().trim();
+                String itemAddress=edtAd.getText().toString().trim();
+                String itemArea=edtA.getText().toString().trim();
+                String itemPrice=edtP.getText().toString().trim();
 
-                if(!(fn.isEmpty()&& ln.isEmpty()&& imageUrI==null)){
+                if(!(itemName.isEmpty()&&itemArea.isEmpty()&&itemAddress.isEmpty()&& itemPrice.isEmpty()&& imageUrI==null)){
                     progressDialog.setTitle("uploading....");
                     progressDialog.show();
 
@@ -94,8 +97,10 @@ public class AddActivity  extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String t=task.getResult().toString();
                                     DatabaseReference newPost=mRef.push();
-                                    newPost.child("Name").setValue(fn);
-                                    newPost.child("location").setValue(ln);
+                                    newPost.child("Name").setValue(itemName);
+                                    newPost.child("location").setValue(itemAddress);
+                                    newPost.child("Price").setValue(itemPrice);
+                                    newPost.child("Area").setValue(itemArea);
                                     newPost.child("image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
 
