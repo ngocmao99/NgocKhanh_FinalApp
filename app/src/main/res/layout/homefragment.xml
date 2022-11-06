@@ -20,7 +20,7 @@
 
                 <androidx.coordinatorlayout.widget.CoordinatorLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="521dp"
                     android:layout_marginTop="140dp"
                     android:background="@drawable/custome_background_home"
                     android:fitsSystemWindows="true">
@@ -52,6 +52,8 @@
                                 android:id="@+id/rcvListItem"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:orientation="horizontal"
                                 app:layout_anchorGravity="center"
                                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

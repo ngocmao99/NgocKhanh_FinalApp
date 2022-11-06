@@ -13,13 +13,12 @@ public class Item implements Serializable {
     public Item() {
     }
 
-    public Item(String itemAddress, String itemName, String image, String itemPrice, String itemArea, int itemId) {
+    public Item(String itemAddress, String itemName, String image, String itemPrice, String itemArea) {
         this.itemAddress = itemAddress;
         this.itemName = itemName;
         this.image = image;
         this.itemPrice = itemPrice;
         this.itemArea = itemArea;
-        this.itemId = itemId;
     }
 
     public String getItemAddress() {

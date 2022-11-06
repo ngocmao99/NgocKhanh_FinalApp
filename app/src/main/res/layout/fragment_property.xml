@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout class="androidx.appcompat.app.AlertController$RecycleListView" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.activity.PropertyFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Property Fragment"
-        android:gravity="center"
-        android:textSize="40dp"/>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_create_item1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_rev"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/txt_title_category"
+        android:textColor="@color/first"
+        android:textSize="18sp" />
 
-        app:layout_anchorGravity="bottom|right|end"/>
-</FrameLayout>
+    <!-- Recycler view Category-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:background="@color/gray_200">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvListItemCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layout_anchorGravity="center"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        </androidx.cardview.widget.CardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

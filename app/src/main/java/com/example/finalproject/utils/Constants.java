@@ -16,7 +16,7 @@ public class Constants {
     public static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
 
     public static final int RC_SING_IN = 100;
-    public static final String TAG = "GOOGLE_SIGN_IN_TAG";
+    public static final String TAG = "Item";
     public static final String FB_TAG = "FACEBOOK_SIGN_IN_TAG";
 
     public static final int FM_HOME =1;

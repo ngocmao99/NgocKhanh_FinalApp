@@ -97,10 +97,10 @@ public class AddActivity  extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     String t=task.getResult().toString();
                                     DatabaseReference newPost=mRef.push();
-                                    newPost.child("Name").setValue(itemName);
-                                    newPost.child("location").setValue(itemAddress);
-                                    newPost.child("Price").setValue(itemPrice);
-                                    newPost.child("Area").setValue(itemArea);
+                                    newPost.child("itemName").setValue(itemName);
+                                    newPost.child("itemAddress").setValue(itemAddress);
+                                    newPost.child("itemPrice").setValue(itemPrice);
+                                    newPost.child("itemArea").setValue(itemArea);
                                     newPost.child("image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
 

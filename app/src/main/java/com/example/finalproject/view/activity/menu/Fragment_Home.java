@@ -1,7 +1,10 @@
 package com.example.finalproject.view.activity.menu;
 
+import static com.example.finalproject.utils.Constants.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +36,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 public class Fragment_Home extends BaseFragment {
     //using view binding in fragment
@@ -81,12 +87,15 @@ public class Fragment_Home extends BaseFragment {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-              Item item = dataSnapshot.getValue(Item.class);
-              itemList.add(item);
-            }
-                itemAdapter.notifyDataSetChanged();
-                binding.rcvListItem.setAdapter(itemAdapter);
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                        Item item = dataSnapshot.getValue(Item.class);
+                        itemList.add(item);
+                    }
+
+
+                    itemAdapter.notifyDataSetChanged();
+                    binding.rcvListItem.setAdapter(itemAdapter);
+
             }
 
             @Override

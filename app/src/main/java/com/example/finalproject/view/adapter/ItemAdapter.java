@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -53,17 +54,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
 
         Item item= itemList.get(position);
-        viewBinderHelper.bind(holder.layoutItem,String.valueOf(item.getItemId()));
-        holder.layoutDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemList.remove(holder.getAdapterPosition());
-                notifyItemRemoved(holder.getAdapterPosition());
-            }
-        });
+
         holder.tvName.setText(item.getItemName());
         holder.tvAddress.setText(item.getItemAddress());
-        holder.tvArea.setText(item.getItemArea());
         holder.tvPrice.setText(item.getItemPrice());
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,21 +65,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 onClickGoToDetail(item);
             }
 
-            private void onClickGoToDetail(Item item) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("object item",item);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-            }
+
         });
+
 
         String imageUri=null;
         imageUri=item.getImage();
         Picasso.get().load(imageUri).into(holder.imageView);
     }
 
+    private void onClickGoToDetail(Item item) {
 
+            Intent intent = new Intent(context, DetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("object item",item);
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+    }
 
 
     @Override
@@ -97,19 +92,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private SwipeRevealLayout layoutItem;
+        private RelativeLayout layoutItem;
         ImageView imageView;
-        private LinearLayout layoutDelete;
-        TextView tvName,tvAddress,tvPrice,tvArea;
+        private ImageButton layoutDelete,layoutEdit;
+        TextView tvName,tvAddress,tvPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            layoutDelete=itemView.findViewById(R.id.layout_delete);
+            layoutDelete=itemView.findViewById(R.id.imgB_delete_item);
+            layoutEdit=itemView.findViewById(R.id.imgB_edit_item);
             layoutItem=itemView.findViewById(R.id.layout_item);
             imageView=itemView.findViewById(R.id.itemImg);
             tvName=itemView.findViewById(R.id.tv_name_item);
             tvAddress=itemView.findViewById(R.id.tv_address_item);
             tvPrice=itemView.findViewById(R.id.tv_price_item);
-            tvArea=itemView.findViewById(R.id.tv_area_item);
+
 
         }
     }

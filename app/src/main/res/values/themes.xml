@@ -41,7 +41,7 @@
 
     <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">18dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeTopLeft">18dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">18dp</item>
@@ -71,13 +71,35 @@
     <!-- Customize Profile Image-->
     <style name="CustomImageItem" parent="">
         <item name="cornerFamilyTopLeft"> rounded </item>
-        <item name="cornerSizeTopLeft">150dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeTopRight">150dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
         <item name="cornerFamilyBottomLeft">rounded</item>
-        <item name="cornerSizeBottomLeft">150dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
         <item name="cornerFamilyBottomRight">rounded</item>
-        <item name="cornerSizeBottomRight">150dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+    <!-- Customize Detail Image-->
+    <style name="CustomDetailItem" parent="">
+        <item name="cornerFamilyTopLeft"> rounded </item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+    <!-- Customize card -->
+    <style name="CustomcardlayoutItem" parent="">
+        <item name="cornerFamilyTopLeft"> rounded </item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
     <!-- Customize Card View Profile-->
