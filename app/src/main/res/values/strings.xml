@@ -103,6 +103,22 @@
     <string name="txt_province_city">Province / City*</string>
     <string name="txt_ward_create">Ward*</string>
     <string name="txt_houseNumber_create">House Number*</string>
+    <!--Property type-->
+    <string-array name="property_type">
+        <item>Bedsit</item>
+        <item>Apartment</item>
+        <item>Townhouse</item>
+        <item>Bungalow</item>
+        <item>Duplex</item>
+        <item>Villa</item>
+    </string-array>
+    <!--Floor-->
+    <string-array name="floor">
+        <item>1-2</item>
+        <item>2-4</item>
+        <item>4-6</item>
+        <item>> 7</item>
+    </string-array>
     <!--Province/City-->
     <string-array name="city_array">
         <item>An Giang</item>
@@ -1140,4 +1156,5 @@
 
     <string name="google_maps_API_key">AIzaSyAGOXlpwmCSSAlmUxL2wY_0TZKBrRHef10</string>
     <string name="area">Area</string>
+    <string name="property_type">Property Type</string>
 </resources>

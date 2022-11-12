@@ -7,14 +7,33 @@
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".view.activity.AddActivity">
-
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:fitsSystemWindows="true">
+        <ScrollView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <!--First -->
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvAvatar"
         style="@style/CustomCardViewProfile"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_gravity="center_horizontal"
         app:cardElevation="5dp"
         app:cardPreventCornerOverlap="false"
         app:strokeColor="@color/first"
@@ -22,13 +41,18 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/ic_house_item"
         app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
     </com.google.android.material.card.MaterialCardView>
-
+</LinearLayout>
+        <!--name -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -42,9 +66,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_name_item_input"
@@ -52,7 +73,12 @@
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
-
+        </LinearLayout>
+        <!--address -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <TextView
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
@@ -76,7 +102,12 @@
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
-
+        </LinearLayout>
+            <!--Area -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
     <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -100,7 +131,13 @@
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
+        <!--Price -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -124,19 +161,495 @@
             android:layout_height="wrap_content"
             />
     </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+            <!--Deposit -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deposit  *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_deposit_item_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <!--maintain> -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maintain  *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_maintain_item_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <!--Property type -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/tilCreateCity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/property_type"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    app:boxStrokeColor="@color/white"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="dropdown_menu"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/first"
+                    >
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actv_property_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="none"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <!--Property details -->
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property Detail *"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:orientation="vertical"
+                android:paddingRight="20dp"
+                >
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_baseline_bedroom_parent_24"
+                        android:layout_gravity="center_vertical">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="82dp"
+                        android:layout_height="wrap_content"
+                        android:text="Bedrooms"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:paddingLeft="5dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_Bedrooms_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_baseline_kitchen_24"
+                        android:layout_gravity="center_vertical">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="82dp"
+                        android:layout_height="wrap_content"
+                        android:text="Kitchen"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:paddingLeft="5dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_Kitchen_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        />
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_baseline_living_24"
+                        android:layout_gravity="center_vertical">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="82dp"
+                        android:layout_height="wrap_content"
+                        android:text="Living room"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:paddingLeft="5dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_Living_room_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:inputType="number"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_bathroom_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="82dp"
+                            android:layout_height="wrap_content"
+                            android:text="Bathroom"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:paddingLeft="5dp"/>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tiet_Bathrooms_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_balcony_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="82dp"
+                            android:layout_height="wrap_content"
+                            android:text="Balcony"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:paddingLeft="5dp"/>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tiet_Balcony_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:inputType="number"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_garage_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="82dp"
+                            android:layout_height="wrap_content"
+                            android:text="Garage"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:paddingLeft="5dp"/>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tiet_Garage_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:inputType="number"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Furnishing  -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Furnishing *"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginLeft="10dp">
+                    <RadioGroup
+                        android:layout_width="360dp"
+                        android:id="@+id/rgFurnishing"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/teal_200">
+                        <RadioButton
+                            android:id="@+id/rb_full_furn_item"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Full furnishing"
+                            android:paddingLeft="20dp"
+                            android:button="@color/teal_200"
+                            android:fontFamily="@font/nunito_italic"
+
+                            android:background="@drawable/radio_selector"
+                            android:textColor="@drawable/text_color"
+
+                            />
+                        <RadioButton
+                            android:id="@+id/rb_semi_furn_item"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Semi-furnishing"
+                            android:button="@color/teal_200"
+                            android:fontFamily="@font/nunito_italic"
+                            android:paddingLeft="10dp"
+                            android:background="@drawable/radio_selector"
+                            android:textColor="@drawable/text_color"
+                            />
+                        <RadioButton
+                            android:id="@+id/rb_un_furn_item"
+                            android:paddingLeft="20dp"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Unfurnishing"
+                            android:button="@color/teal_200"
+                            android:fontFamily="@font/nunito_italic"
+
+                            android:background="@drawable/radio_selector"
+                            android:textColor="@drawable/text_color"
+                            />
+
+
+                    </RadioGroup>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <!--Floor -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Floor *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    >
+                    <AutoCompleteTextView
+                        android:id="@+id/actv_floor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <!--Amenities -->
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amenities *"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:orientation="vertical"
+                    android:paddingRight="20dp"
+                    >
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_fitness_center_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <CheckBox
+                            android:id="@+id/checkbox_gym_item"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Gym"
+                            android:padding="5dp"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_local_gas_station_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <CheckBox
+                            android:id="@+id/checkbox_fuel_station_item"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Gas"
+                            android:padding="5dp"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_local_parking_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <CheckBox
+                            android:id="@+id/checkbox_car_parking_item"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Car Parking"
+                            android:padding="5dp"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_baseline_park_24"
+                            android:layout_gravity="center_vertical">
+                        </ImageView>
+                        <CheckBox
+                            android:id="@+id/checkbox_park_item"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Park"
+                            android:padding="5dp"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:button="@null"
+                            android:drawableRight="@drawable/checkbox"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+    </FrameLayout>
     <Button
+        android:layout_gravity="center"
         android:id="@+id/btnInsert"
-        android:layout_width="wrap_content"
+        android:layout_width="93dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        android:text="Create"
+        />
 </LinearLayout>
