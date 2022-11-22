@@ -94,12 +94,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout layoutItem;
         ImageView imageView;
-        private ImageButton layoutDelete,layoutEdit;
         TextView tvName,tvAddress,tvPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            layoutDelete=itemView.findViewById(R.id.imgB_delete_item);
-            layoutEdit=itemView.findViewById(R.id.imgB_edit_item);
             layoutItem=itemView.findViewById(R.id.layout_item);
             imageView=itemView.findViewById(R.id.itemImg);
             tvName=itemView.findViewById(R.id.tv_name_item);

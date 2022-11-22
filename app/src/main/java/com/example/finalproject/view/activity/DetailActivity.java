@@ -36,7 +36,22 @@ public class DetailActivity extends AppCompatActivity {
         tvAddressItem.setText(item.getItemAddress());
         TextView tvPriceItem = findViewById(R.id.tv_rentprice_item);
         tvPriceItem.setText(item.getItemPrice());
+        TextView tvDepositItem = findViewById(R.id.tv_deposite_item);
+        tvDepositItem.setText(item.getItemDeposit());
+        TextView tvMaintain = findViewById(R.id.tv_maintain_item);
+        tvMaintain.setText(item.getItemMaintainence());
+        TextView tvType = findViewById(R.id.tv_ptype_item);
+        tvType.setText(item.getItemType());
+        TextView tvbed = findViewById(R.id.tv_bedroom);
+        tvbed.setText(item.getItemBedrooms());
+        TextView tvbath = findViewById(R.id.tv_bathroom);
+        tvbath.setText(item.getItemBathrooms());
+        TextView tvkitchen = findViewById(R.id.tv_kitchen_item);
+        tvkitchen.setText(item.getItemKitchen());
+        TextView tvliv = findViewById(R.id.tv_livingroom_item);
+        tvliv.setText(item.getItemLivingroom());
 
+        
 
 
 

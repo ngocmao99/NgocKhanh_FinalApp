@@ -437,7 +437,7 @@
             </LinearLayout>
             <!-- Furnishing  -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
@@ -449,10 +449,10 @@
                     android:text="Furnishing *"/>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="8dp"
-                    android:layout_marginLeft="10dp">
+                    >
                     <RadioGroup
                         android:layout_width="360dp"
                         android:id="@+id/rgFurnishing"
@@ -463,11 +463,10 @@
                             android:id="@+id/rb_full_furn_item"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
-                            android:text="Full furnishing"
+                            android:text="Full-furnishing"
                             android:paddingLeft="20dp"
                             android:button="@color/teal_200"
                             android:fontFamily="@font/nunito_italic"
-
                             android:background="@drawable/radio_selector"
                             android:textColor="@drawable/text_color"
 
@@ -488,7 +487,7 @@
                             android:paddingLeft="20dp"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
-                            android:text="Unfurnishing"
+                            android:text="Un-furnishing"
                             android:button="@color/teal_200"
                             android:fontFamily="@font/nunito_italic"
 
@@ -526,120 +525,35 @@
                         android:inputType="none"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-            <!--Amenities -->
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amenities *"/>
+            <!--description -->
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:orientation="vertical"
-                    android:paddingRight="20dp"
+                    android:text="Description  *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     >
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_fitness_center_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <CheckBox
-                            android:id="@+id/checkbox_gym_item"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Gym"
-                            android:padding="5dp"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_local_gas_station_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <CheckBox
-                            android:id="@+id/checkbox_fuel_station_item"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Gas"
-                            android:padding="5dp"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_local_parking_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <CheckBox
-                            android:id="@+id/checkbox_car_parking_item"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Car Parking"
-                            android:padding="5dp"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_park_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <CheckBox
-                            android:id="@+id/checkbox_park_item"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:text="Park"
-                            android:padding="5dp"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            android:button="@null"
-                            android:drawableRight="@drawable/checkbox"/>
-                    </LinearLayout>
-                </LinearLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_des_item_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="230dp"
+                        android:gravity="start"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
         </ScrollView>
@@ -648,7 +562,7 @@
     <Button
         android:layout_gravity="center"
         android:id="@+id/btnInsert"
-        android:layout_width="93dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Create"
         />

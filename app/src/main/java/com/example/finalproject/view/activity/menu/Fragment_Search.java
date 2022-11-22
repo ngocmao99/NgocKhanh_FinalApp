@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.finalproject.R;
 
-public class Fragment_Chat extends Fragment {
+public class Fragment_Search extends Fragment {
 
     @Nullable
     @Override

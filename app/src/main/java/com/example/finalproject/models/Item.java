@@ -1,6 +1,8 @@
 package com.example.finalproject.models;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Item implements Serializable {
     String itemAddress;
@@ -19,17 +21,14 @@ public class Item implements Serializable {
     String itemGarage;
     String itemFurnishing;
     String itemFloor;
-    String itemGym;
-    String itemFuelstation;
-    String itemCarparking;
-    String itemPark;
+    String itemDescription;
     String itemMaintainence;
     String itemDeposit;
 
     public Item() {
     }
 
-    public Item(String itemAddress, String itemName, String image, String itemId, String itemPrice, String itemArea, String userId, String itemLivingroom, String itemType, String itemBedrooms, String itemBathrooms, String itemKitchen, String itemBalcony, String itemGarage, String itemFurnishing, String itemFloor, String itemGym, String itemFuelstation, String itemCarparking, String itemPark, String itemMaintainence, String itemDeposit) {
+    public Item(String itemAddress, String itemName, String image, String itemId, String itemPrice, String itemArea, String userId, String itemLivingroom, String itemType, String itemBedrooms, String itemBathrooms, String itemKitchen, String itemBalcony, String itemGarage, String itemFurnishing,String itemDescription, String itemFloor, String itemMaintainence, String itemDeposit) {
         this.itemAddress = itemAddress;
         this.itemName = itemName;
         this.image = image;
@@ -46,10 +45,7 @@ public class Item implements Serializable {
         this.itemGarage = itemGarage;
         this.itemFurnishing = itemFurnishing;
         this.itemFloor = itemFloor;
-        this.itemGym = itemGym;
-        this.itemFuelstation = itemFuelstation;
-        this.itemCarparking = itemCarparking;
-        this.itemPark = itemPark;
+        this.itemDescription = itemDescription;
         this.itemMaintainence = itemMaintainence;
         this.itemDeposit = itemDeposit;
     }
@@ -182,37 +178,15 @@ public class Item implements Serializable {
         this.itemFloor = itemFloor;
     }
 
-    public String getItemGym() {
-        return itemGym;
+    public String getItemDescription() {
+        return itemDescription;
     }
 
-    public void setItemGym(String itemGym) {
-        this.itemGym = itemGym;
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
-    public String getItemFuelstation() {
-        return itemFuelstation;
-    }
 
-    public void setItemFuelstation(String itemFuelstation) {
-        this.itemFuelstation = itemFuelstation;
-    }
-
-    public String getItemCarparking() {
-        return itemCarparking;
-    }
-
-    public void setItemCarparking(String itemCarparking) {
-        this.itemCarparking = itemCarparking;
-    }
-
-    public String getItemPark() {
-        return itemPark;
-    }
-
-    public void setItemPark(String itemPark) {
-        this.itemPark = itemPark;
-    }
 
     public String getItemMaintainence() {
         return itemMaintainence;
@@ -228,6 +202,13 @@ public class Item implements Serializable {
 
     public void setItemDeposit(String itemDeposit) {
         this.itemDeposit = itemDeposit;
+    }
+
+    public Map<String,Object> toMap(){
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("itemName",itemName);
+
+        return result;
     }
 }
 

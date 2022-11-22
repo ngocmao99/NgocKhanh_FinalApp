@@ -26,6 +26,7 @@ import com.example.finalproject.my_interface.IClickItemListener;
 import com.example.finalproject.view.activity.AddActivity;
 import com.example.finalproject.view.activity.DetailActivity;
 import com.example.finalproject.view.activity.HomeActivity;
+import com.example.finalproject.view.activity.PropertyActivity;
 import com.example.finalproject.view.adapter.ItemAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +40,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import es.dmoral.toasty.Toasty;
 
 public class Fragment_Home extends BaseFragment {
     //using view binding in fragment
@@ -76,10 +76,10 @@ public class Fragment_Home extends BaseFragment {
         mRef=mDatabase.getReference().child("Item");
         mStorage=FirebaseStorage.getInstance();
 
-
       binding.rcvListItem.setHasFixedSize(true);
       binding.rcvListItem.setLayoutManager(new GridLayoutManager(getActivity(),1));
        binding.rcvListItem.setAdapter(itemAdapter);
+
         itemList= new ArrayList<Item>();
         itemAdapter = new ItemAdapter(getContext(),itemList);
 
@@ -110,7 +110,7 @@ public class Fragment_Home extends BaseFragment {
         binding.btnAddHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddActivity.class);
+                Intent intent = new Intent(getActivity(), PropertyActivity.class);
                 startActivity(intent);
 
 

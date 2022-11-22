@@ -7,7 +7,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.activity.PropertyFragment">
+    tools:context=".view.activity.PropertyActivity">
     <LinearLayout
         android:layout_marginTop="50dp"
         android:orientation="vertical"

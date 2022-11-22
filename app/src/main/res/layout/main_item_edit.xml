@@ -106,16 +106,18 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="330dp"
+                    android:layout_marginLeft="280dp"
                     android:orientation="vertical"
                     >
 
                     <ImageButton
+                        android:background="@color/white"
                         android:id="@+id/imgB_edit_item"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_baseline_edit_24" />
                     <ImageButton
+                        android:background="@color/white"
                         android:id="@+id/imgB_delete_item"
                         android:layout_width="50dp"
                         android:layout_height="50dp"

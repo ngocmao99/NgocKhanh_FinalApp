@@ -24,8 +24,8 @@ import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.databinding.HeaderDrawerBinding;
 import com.example.finalproject.view.activity.menu.AboutAppFragment;
-import com.example.finalproject.view.activity.menu.Fragment_Chat;
-import com.example.finalproject.view.activity.menu.Fragment_Favorite;
+import com.example.finalproject.view.activity.menu.Fragment_Search;
+import com.example.finalproject.view.activity.menu.Fragment_Property;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
 import com.example.finalproject.view.activity.menu.HelpFragment;
@@ -160,11 +160,11 @@ public class HomeActivity extends BaseActivity{
                     break;
 
                 case R.id.itemFavorite:
-                    fragment = new Fragment_Favorite();
+                    fragment = new Fragment_Property();
                     break;
 
                 case R.id.itemChat:
-                    fragment = new Fragment_Chat();
+                    fragment = new Fragment_Search();
                     break;
 
                 case R.id.itemProf:

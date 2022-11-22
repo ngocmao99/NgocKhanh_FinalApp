@@ -117,4 +117,11 @@ dependencies {
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
     //like
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+    //dialog
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    //Loading Dialog
+    implementation 'com.kaopiz:kprogresshud:1.0.2'
+    //Flag dialog
+
+    implementation 'com.irozon.alertview:alertview:1.0.1'
 }

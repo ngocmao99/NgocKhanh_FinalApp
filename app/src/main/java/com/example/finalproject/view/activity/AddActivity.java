@@ -42,17 +42,18 @@ import com.google.firebase.storage.UploadTask;
 
 public class AddActivity  extends AppCompatActivity {
 
+
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
     FirebaseStorage mStorage;
     ImageView btn;
     private String userId;
-    EditText edtName,edtAddress,edtPrice,edtArea,edtBedrooms,edtBathroom,
+    EditText edtDescription,edtName,edtAddress,edtPrice,edtArea,edtBedrooms,edtBathroom,
             edtDeposit,edtMaintain,
             edtLivingroom,edtBalcony,edtGarage,edtKitchen;
     Button btnAddItem;
     RadioGroup rgFurnishing;
-    CheckBox cbGym,cbCarParking,cbFuelStation,cbPark;
+
     private static final int Gallery_code=1;
     Uri imageUrI=null;
     ProgressDialog progressDialog;
@@ -62,8 +63,9 @@ public class AddActivity  extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_add);
-        floor =findViewById(R.id.actv_floor);
-        propertyType =findViewById(R.id.actv_property_type);
+        //initialize view with xml-khai bao view ung voi id trong layout
+        floor           = findViewById(R.id.actv_floor);
+        propertyType    = findViewById(R.id.actv_property_type);
         btn             = findViewById(R.id.imgButton);
         edtName         = findViewById(R.id.tiet_name_item_input);
         edtAddress      = findViewById(R.id.tiet_address_item_input);
@@ -77,16 +79,14 @@ public class AddActivity  extends AppCompatActivity {
         edtBathroom     = findViewById(R.id.tiet_Bathrooms_item);
         edtMaintain     = findViewById(R.id.tiet_maintain_item_input);
         edtDeposit      = findViewById(R.id.tiet_deposit_item_input);
-        cbGym           = findViewById(R.id.checkbox_gym_item);
-        cbCarParking    = findViewById(R.id.checkbox_car_parking_item);
-        cbFuelStation   = findViewById(R.id.checkbox_fuel_station_item);
-        cbPark          = findViewById(R.id.checkbox_park_item);
+        edtDescription  = findViewById(R.id.tiet_des_item_input);
         rgFurnishing    = findViewById(R.id.rgFurnishing);
         btnAddItem = findViewById(R.id.btnInsert);
         mDatabase=FirebaseDatabase.getInstance();
         mRef=mDatabase.getReference().child("Item");
         mStorage=FirebaseStorage.getInstance();
         progressDialog = new ProgressDialog(this);
+        //set up radio group
         rgFurnishing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -111,6 +111,7 @@ public class AddActivity  extends AppCompatActivity {
                 startActivityForResult(intent,Gallery_code );
             }
         });
+        //dropdownlist property
         String[] propertyTypes = getResources().getStringArray(R.array.property_type);
         ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(AddActivity.this,R.layout.item_dropdownlist,propertyTypes);
         propertyType.setAdapter(provinceAdapter);
@@ -119,10 +120,12 @@ public class AddActivity  extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(AddActivity.this, "Item"+item, Toast.LENGTH_SHORT).show();
+                String itemTpye = parent.getItemAtPosition(position).toString();
+                Toast.makeText(AddActivity.this, "Item"+itemTpye, Toast.LENGTH_SHORT).show();
             }
         });
+
+        //dropdownlist floor
         String[] floors = getResources().getStringArray(R.array.floor);
         ArrayAdapter<String> floorAdapter = new ArrayAdapter<>(AddActivity.this,R.layout.item_dropdownlist,floors);
         floor.setAdapter(floorAdapter);
@@ -139,7 +142,7 @@ public class AddActivity  extends AppCompatActivity {
     }
             //Furn validate
 
-
+    //get user id
     private String getUserId() {
 
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -151,7 +154,7 @@ public class AddActivity  extends AppCompatActivity {
         return userId;
     }
 
-
+    //request to use gallery
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -161,6 +164,7 @@ public class AddActivity  extends AppCompatActivity {
             imageUrI=data.getData();
             btn.setImageURI(imageUrI);
         }
+        //push data
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +173,7 @@ public class AddActivity  extends AppCompatActivity {
                 String itemAddress=edtAddress.getText().toString().trim();
                 String itemArea=edtArea.getText().toString().trim();
                 String itemPrice=edtPrice.getText().toString().trim();
-                String itemType=propertyType.getText().toString().trim();
+                String itemType =   propertyType.getText().toString().trim();
                 String itemFloor= floor.getText().toString().trim();
                 String itemBedrooms =edtBedrooms.getText().toString().trim();
                 String itemKitchen = edtKitchen.getText().toString().trim();
@@ -179,10 +183,7 @@ public class AddActivity  extends AppCompatActivity {
                 String itemLivingroom = edtLivingroom.getText().toString().trim();
                 String itemMaintain = edtMaintain.getText().toString().trim();
                 String itemDeposit = edtDeposit.getText().toString().trim();
-                String itemGym = cbGym.getText().toString().trim();
-                String itemPark = cbPark.getText().toString().trim();
-                String itemCarParking = cbCarParking.getText().toString().trim();
-                String itemFuelStation = cbFuelStation.getText().toString().trim();
+                String itemDes  = edtDescription.getText().toString().trim();
                 String itemFurnishing =
                         ((RadioButton)findViewById(rgFurnishing.getCheckedRadioButtonId()))
                                 .getText().toString();
@@ -204,15 +205,11 @@ public class AddActivity  extends AppCompatActivity {
                                     newPost.child("itemPrice").setValue(itemPrice);
                                     newPost.child("itemArea").setValue(itemArea);
                                     newPost.child("itemLivingroom").setValue(itemLivingroom);
-                                    newPost.child("itemType").setValue(propertyType);
+                                    newPost.child("itemType").setValue(itemType);
                                     newPost.child("UserId").setValue(userId);
                                     newPost.child("itemId").setValue(itemId);
                                     newPost.child("itemFloor").setValue(itemFloor);
                                     newPost.child("itemFurnishing").setValue(itemFurnishing);
-                                    newPost.child("itemGym").setValue(itemGym);
-                                    newPost.child("itemFuelstation").setValue(itemFuelStation);
-                                    newPost.child("itemCarparking").setValue(itemCarParking);
-                                    newPost.child("itemPark").setValue(itemPark);
                                     newPost.child("itemDeposit").setValue(itemDeposit);
                                     newPost.child("itemMaintainence").setValue(itemMaintain);
                                     newPost.child("itemBedrooms").setValue(itemBedrooms);
@@ -220,6 +217,7 @@ public class AddActivity  extends AppCompatActivity {
                                     newPost.child("itemKitchen").setValue(itemKitchen);
                                     newPost.child("itemBalcony").setValue(itemBalcony);
                                     newPost.child("itemGarage").setValue(itemGarage);
+                                    newPost.child("itemDescription").setValue(itemDes);
                                     newPost.child("image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
                                     Intent intent= new Intent(AddActivity.this, HomeActivity.class);
