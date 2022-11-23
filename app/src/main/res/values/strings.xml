@@ -77,7 +77,7 @@
     <string name="rentNow">Rent Now</string>
     <string name="txt_title_category">Categories</string>
     <string name="txt_price">Price</string>
-    <string name="txt_per_month">/Month</string>
+    <string name="txt_per_month">Per Month</string>
     <string name="txt_hint_search_box">Search Best Place…</string>
     <string name="txt_for_you">For You</string>
     <string name="txt_view_all">View all</string>
@@ -123,117 +123,117 @@
         <item>> 7</item>
     </string-array>
     <!--Province/City-->
-    <string-array name="city_array">
-        <item>An Giang</item>
-        <item>Bà Rịa - Vũng Tàu</item>
-        <item>Bạc Liêu</item>
-        <item>Bắc Kạn</item>
-        <item>Bắc Giang</item>
-        <item>Bắc Ninh</item>
-        <item>Bến Tre</item>
-        <item>Bình Dương</item>
-        <item>Bình Định</item>
-        <item>Bình Phước</item>
-        <item>Bình Thuận</item>
-        <item>Cà Mau</item>
-        <item>Cao Bằng</item>
-        <item>Cần Thơ</item>
-        <item>Đà Nẵng</item>
-        <item>Đắk Lắk</item>
-        <item>Đắk Nông</item>
-        <item>Diện Biên</item>
-        <item>Đồng Nai</item>
-        <item>Đồng Tháp</item>
-        <item>Gia Lai</item>
-        <item>Hà Giang</item>
-        <item>Hà Nam</item>
-        <item>Hà Nội</item>
-        <item>Hà Tây</item>
-        <item>Hà Tĩnh</item>
-        <item>Hải Dương</item>
-        <item>Hải Phòng</item>
-        <item>Hòa Bình</item>
-        <item>Hồ Chí Minh</item>
-        <item>Hậu Giang</item>
-        <item>Hưng Yên</item>
-        <item>Khánh Hòa</item>
-        <item>Kiên Giang</item>
-        <item>Kon Tum</item>
-        <item>Lai Chêu</item>
-        <item>Lào Cai</item>
-        <item>Lạng Sơn</item>
-        <item>Lâm Đồng</item>
-        <item>Long An</item>
-        <item>Nam Định</item>
-        <item>Nghệ An</item>
-        <item>Ninh Bình</item>
-        <item>Ninh Thuận</item>
-        <item>Phú Thọ</item>
-        <item>Phú Yên</item>
-        <item>Quảng Bình</item>
-        <item>Quảng Ngãi</item>
-        <item>Quảng Ninh</item>
-        <item>Quảng Trị</item>
-        <item>Sóc Trăng</item>
-        <item>Sơn La</item>
-        <item>Tây Ninh</item>
-        <item>Thái Bình</item>
-        <item>Thái Nguyên</item>
-        <item>Thanh Hóa</item>
-        <item>Thừa Thiên - Huế</item>
-        <item>Tiền Giang</item>
-        <item>Trà Vinh</item>
-        <item>Tuyên Quang</item>
-        <item>Vĩnh Long</item>
-        <item>Vĩnh Phúc</item>
-        <item>Yên Bái</item>
+    <string-array name="DanhSachTinh">
+        <item >Hồ Chí Minh</item>
+        <item >Hà Nội</item>
+        <item >Hải Phòng</item>
+        <item >Đà Nẵng</item>
+        <item >Cần Thơ</item>
+        <item >Phú Yên</item>
+        <item >Yên Bái</item>
+        <item >Vĩnh Phúc</item>
+        <item >Vĩnh Long</item>
+        <item >Tuyên Quang</item>
+        <item >Trà Vinh</item>
+        <item >Tiền Giang</item>
+        <item >Thừa Thiên Huế</item>
+        <item >Thanh Hóa</item>
+        <item >Thái Nguyên</item>
+        <item >Thái Bình</item>
+        <item >Tây Ninh</item>
+        <item >Sơn La</item>
+        <item >Sóc Trăng</item>
+        <item >Quảng Trị</item>
+        <item >Quảng Ninh</item>
+        <item >Quảng Ngãi</item>
+        <item >Quảng Nam</item>
+        <item >Quảng Bình</item>
+        <item >Phú Thọ</item>
+        <item >Ninh Thuận</item>
+        <item >Ninh Bình</item>
+        <item >Nghệ An</item>
+        <item >Nam Định</item>
+        <item >Long An</item>
+        <item >Lào Cai</item>
+        <item >Lạng Sơn</item>
+        <item >Lâm Đồng</item>
+        <item >Lai Châu</item>
+        <item >Kon Tum</item>
+        <item >Kiên Giang</item>
+        <item >Khánh Hòa</item>
+        <item >Hưng Yên</item>
+        <item >Hòa Bình</item>
+        <item >Hậu Giang</item>
+        <item >Hải Dương</item>
+        <item >Hà Tĩnh</item>
+        <item >Hà Nam</item>
+        <item >Hà Giang</item>
+        <item >Gia Lai</item>
+        <item >Đồng Tháp</item>
+        <item >Đồng Nai</item>
+        <item >Điện Biên</item>
+        <item >Đắk Nông</item>
+        <item >Đắk Lắk</item>
+        <item >Cao Bằng</item>
+        <item >Cà Mau</item>
+        <item >Bình Thuận</item>
+        <item >Bình Phước</item>
+        <item >Bình Dương</item>
+        <item >Bình Định</item>
+        <item >Bến Tre</item>
+        <item >Bắc Ninh</item>
+        <item >Bạc Liêu</item>
+        <item >Bắc Kạn</item>
+        <item >Bắc Giang</item>
+        <item >Bà Rịa - Vũng Tàu</item>
+        <item >An Giang</item>
     </string-array>
 
 
     <string-array name="angiangdistricts">
-        <item>Long Xuyen</item>
-        <item>Chau Doc</item>
-        <item>Tan Chau</item>
-        <item>An Phu</item>
-        <item>Tinh Bien</item>
-        <item>Tri Ton</item>
-        <item>Chau Phu</item>
-        <item>Chau Thanh</item>
-        <item>Thoai Son</item>
-        <item>Cho Moi</item>
-        <item>Phu Tan</item>
+        <item>Long Xuyên</item>
+        <item>Châu Đốc</item>
+        <item>Tân Châu</item>
+        <item>An Phú</item>
+        <item>Tinh Biên</item>
+        <item>Trí Tôn</item>
+        <item>Châu Phú</item>
+        <item>Châu Thành</item>
+        <item>Thoại Sơn</item>
+        <item>Chợ Mới</item>
+        <item>Phú Tân</item>
     </string-array>
 
     <string-array name="bataudistricts">
-        <item>Vung Tau</item>
-        <item>Ba Ria</item>
-        <item>Chau Duc</item>
-        <item>Xuyen Moc</item>
-        <item>Long Dien</item>
-        <item>Dat Do</item>
-        <item>Phu My</item>
-        <item>Con Dao</item>
+        <item>Vũng Tàu</item>
+        <item>Bà Rịa</item>
+        <item>Châu Đức</item>
+        <item>Xuyên Mộc</item>
+        <item>Long Điền</item>
+        <item>Đất Đỏ</item>
+        <item>Phú Mỹ</item>
+        <item>Côn Đảo</item>
     </string-array>
 
     <string-array name="baclieudistricts">
-        <item>Bac Lieu</item>
+        <item>Bạc Liêu</item>
+        <item>Hồng Dân</item>
+        <item>Phước Long</item>
+        <item>Vĩnh Lợi</item>
         <item>Gia Rai</item>
-        <item>Hoa Binh</item>
-        <item>Dong Hai</item>
-        <item>Phuoc Long</item>
-        <item>Vinh Loi</item>
-        <item>Hong Dan</item>
+        <item>Đông Hải</item>
+        <item>Hòa Bình</item>
     </string-array>
 
     <string-array name="backandists">
-        <item>Bac Kan</item>
-        <item>Pac Nam</item>
-        <item>Ba Be</item>
-        <item>Ngan Son</item>
-        <item>Bach Thong</item>
-        <item>Cho Don</item>
-        <item>Cho Moi</item>
-        <item>Na Ri</item>
+        <item>Bắc Kạn</item>
+        <item>Pác Nặm</item>
+        <item>Ba Bể</item>
+        <item>Ngân Sơn</item>
+        <item>Bạch Thông</item>
+        <item>Chợ Đồn</item>
+        <item>Chợ Mới</item>
+        <item>Na Rì</item>
     </string-array>
 
     <string-array name="tuyenquangdist">
@@ -367,16 +367,16 @@
     </string-array>
 
     <string-array name="bacgiangdist">
-        <item>Bac Giang</item>
-        <item>Yen The</item>
+        <item>Bắc Giang</item>
+        <item>Yên Thế</item>
         <item>Tan Yen</item>
-        <item>Lang Giang</item>
-        <item>Luc Nam</item>
-        <item>Luc Ngan</item>
-        <item>Son Dong</item>
-        <item>Yen Dung</item>
-        <item>Viet Yen</item>
-        <item>Hiep Hoa</item>
+        <item>Lạng Giang</item>
+        <item>Lục Nam</item>
+        <item>Lục Ngạn</item>
+        <item>Sơn Động</item>
+        <item>Yên Dũng</item>
+        <item>Việt Yên</item>
+        <item>Hiệp Hòa</item>
     </string-array>
 
     <string-array name="phuthodist">
@@ -1089,6 +1089,106 @@
         <item>Ngoc Hien</item>
     </string-array>
 
+    <string-array name="canthodistrict">
+        <item>Ninh Kiều</item>
+        <item>Ô Môn</item>
+        <item>Bình Thuỷ</item>
+        <item>Cái Răng</item>
+        <item>Thốt Nốt</item>
+        <item>Vĩnh Thạnh</item>
+        <item>Cờ Đỏ</item>
+        <item>Phong Điền</item>
+        <item>Thới Lai</item>
+    </string-array>
+
+    <string-array name="danangdistrict">
+        <item>Liên Chiểu</item>
+        <item>Thanh Khê</item>
+        <item>Hải Châu</item>
+        <item>Sơn Trà</item>
+        <item>Ngũ Hành Sơn</item>
+        <item>Cẩm Lệ</item>
+        <item>Hòa Vang</item>
+        <item>Hoàng Sa</item>
+    </string-array>
+
+    <string-array name="hanoidistrict">
+        <item>Ba Đình</item>
+        <item>Hoàn Kiếm</item>
+        <item>Tây Hồ</item>
+        <item>Long Biên</item>
+        <item>Cầu Giấy</item>
+        <item>Đống Đa</item>
+        <item>Hai Bà Trưng</item>
+        <item>Hoàng Mai</item>
+        <item>Thanh Xuân</item>
+        <item>Sóc Sơn</item>
+        <item>Đông Anh</item>
+        <item>Gia Lâm</item>
+        <item>Nam Từ Liêm</item>
+        <item>Thanh Trì</item>
+        <item>Bắc Từ Liêm</item>
+        <item>Mê Linh</item>
+        <item>Hà Đông</item>
+        <item>Thị xã Sơn Tây</item>
+        <item>Ba Vì</item>
+        <item>Phúc Thọ</item>
+        <item>Đan Phượng</item>
+        <item>Hoài Đức</item>
+        <item>Quốc Oai</item>
+        <item>Thạch Thất</item>
+        <item>Chương Mỹ</item>
+        <item>Thanh Oai</item>
+        <item>Thường Tín</item>
+        <item>Phú Xuyên</item>
+        <item>Ứng Hòa</item>
+        <item>Mỹ Đức</item>
+    </string-array>
+
+    <string-array name="haiphongdistrict">
+        <item>Hồng Bàng</item>
+        <item>Ngô Quyền</item>
+        <item>Lê Chân</item>
+        <item>Hải An</item>
+        <item>Kiến An</item>
+        <item>Đồ Sơn</item>
+        <item>Dương Kinh</item>
+        <item>Thuỷ Nguyên</item>
+        <item>An Dương</item>
+        <item>An Lão</item>
+        <item>Kiến Thuỵ</item>
+        <item>Tiên Lãng</item>
+        <item>Vĩnh Bảo</item>
+        <item>Cát Hải</item>
+        <item>Bạch Long Vĩ</item>
+    </string-array>
+
+    <string-array name="hochiminhdistrict">
+        <item>Quận 1</item>
+        <item>Quận 12</item>
+        <item>Gò Vấp</item>
+        <item>Bình Thạnh</item>
+        <item>Tân Bình</item>
+        <item>Tân Phú</item>
+        <item>Phú Nhuận</item>
+        <item>Thủ Đức</item>
+        <item>Quận 3</item>
+        <item>Quận 10</item>
+        <item>Quận 11</item>
+        <item>Quận 4</item>
+        <item>Quận 5</item>
+        <item>Quận 6</item>
+        <item>Quận 8</item>
+        <item>Bình Tân</item>
+        <item>Quận 7</item>
+        <item>Củ Chi</item>
+        <item>Hóc Môn</item>
+        <item>Bình Chánh</item>
+        <item>Nhà Bè</item>
+        <item>Cần Giờ</item>
+
+    </string-array>
+
     <string name="txt_properties">Properties</string>
     <string name="txt_amount_default">0</string>
     <string name="txt_review_point">Points</string>
@@ -1160,4 +1260,8 @@
     <string name="google_maps_API_key">AIzaSyAGOXlpwmCSSAlmUxL2wY_0TZKBrRHef10</string>
     <string name="area">Area</string>
     <string name="property_type">Property Type</string>
+
+    <!--Mapbox-->
+    <string name="mapbox_access_token">sk.eyJ1IjoibmdvY2toYW5oMDIwOSIsImEiOiJjbGE1Y25rZWIwMmh2M3dueTVhcWhtNnJzIn0.d1_chtfgN7Bkg-W6x2-gnw</string>
+    <string name="btn_CurrentLocation">Get current location</string>
 </resources>

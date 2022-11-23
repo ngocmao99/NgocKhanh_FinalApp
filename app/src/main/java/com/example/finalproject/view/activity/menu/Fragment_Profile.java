@@ -5,7 +5,6 @@ import static com.example.finalproject.utils.Constants.PATH_USER;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,13 +16,12 @@ import androidx.annotation.Nullable;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
-import com.example.finalproject.models.User;
-import com.example.finalproject.view.activity.EditProfileActivity;
 import com.example.finalproject.base.BaseFragment;
 import com.example.finalproject.databinding.ProfilefragmentBinding;
+import com.example.finalproject.models.User;
+import com.example.finalproject.view.activity.EditProfileActivity;
 import com.example.finalproject.view.activity.LoginActivity;
 import com.example.finalproject.view.adapter.TabAdapter;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,8 +32,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.Locale;
 
 public class Fragment_Profile extends BaseFragment {
     private ProfilefragmentBinding binding;
@@ -90,13 +86,10 @@ public class Fragment_Profile extends BaseFragment {
                             //declare reference storage
                             StorageReference storageRef = storage.getReference();
                             //
-                            storageRef.child("Avatars/"+imageId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    //get url and use trim() to clear the blank.
-                                    String imageUrl = uri.toString().trim();
-                                    Glide.with(getActivity()).load(imageUrl).centerCrop().into(binding.userImg);
-                                }
+                            storageRef.child("Avatars/"+imageId).getDownloadUrl().addOnSuccessListener(uri -> {
+                                //get url and use trim() to clear the blank.
+                                String imageUrl = uri.toString().trim();
+                                Glide.with(getActivity()).load(imageUrl).centerCrop().into(binding.userImg);
                             });
                         }
                     }

@@ -1,5 +1,10 @@
 package com.example.finalproject.utils;
 
+import android.Manifest;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+
 public class Constants {
     public static final String EMAIL_REGEX = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
             + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
@@ -75,7 +80,10 @@ public class Constants {
     //Declare a constant variable for Users house number of Users tree on Firebase Database, the value depends on the user Model on Model package.
     public static final String POSTAL_CODE ="postalCode";
 
+    public final static String LOCAL = "Local";
+    public final static String PROVINCE_NAME = "name";
     public static final String DEFAULT_VALUE ="";
+    public static final String TAG_DISTRICT = "DISTRICT";
 
 
     //Declare a request code to open gallery of device
@@ -100,13 +108,15 @@ public class Constants {
     //Map
     public static final String TAG_MAP = "MapActivity";
     public static final int ERROR_DIALOG_REQUEST = 9001;
-
-
-
-
-
-
-
-
-
+    public static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    public static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    public static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    public static final float DEFAULT_ZOOM = 15f;
+    public static final String TAG_PLACE = "PlaceAutoCompleteAd";
+    public static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(new LatLng(-40, -168), new LatLng(71,136));
+    public static final int PAUSE_TIMEOUT = 500;
+    public static final String MAP_API_KEY = "AIzaSyAGOXlpwmCSSAlmUxL2wY_0TZKBrRHef10";
+    public static final int REQUEST_LOCATION_CODE = 44;
+    public static final String TAG_LOCATION = "LocationService";
+    public static final String TAG_PROVINCE = "Province";
 }

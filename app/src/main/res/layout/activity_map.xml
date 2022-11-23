@@ -5,37 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.MapActivity">
-    <!--Map view-->
-    <TextView
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="MAP"/>
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/mapView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-    <!--Search box-->
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:layout_marginHorizontal="5dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:cardCornerRadius="35dp">-->
+        tools:ignore="FragmentTagUsage" />
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/inputLocation"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginHorizontal="20dp"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:cursorVisible="false"-->
-<!--            android:drawableEnd="@drawable/ic_search"-->
-<!--            android:focusable="false"-->
-<!--            android:fontFamily="@font/poppins"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:hint="@string/txt_search_here"-->
-<!--            android:inputType="none"-->
-<!--            android:textSize="14sp" />-->
-<!--    </androidx.cardview.widget.CardView>-->
+    <!--GPS-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="360dp"
+            app:cardCornerRadius="5dp"
+            android:backgroundTint="@color/white">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_gps_fixed_24"
+                android:scaleType="centerInside"
+                app:tint="@color/black"
+                android:id="@+id/mGPS"/>
+        </androidx.cardview.widget.CardView>
 </FrameLayout>

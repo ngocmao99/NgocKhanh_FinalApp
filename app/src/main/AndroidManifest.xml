@@ -24,6 +24,12 @@
         <activity
             android:name=".view.activity.SearchActivity"
             android:exported="false">
+        android:theme="@style/Theme.FinalProject.NoActionBar"><![CDATA[
+
+        android:theme="@style/Theme.FinalProject.NoActionBar" >
+        ]]><activity
+            android:name=".view.activity.EditItemActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

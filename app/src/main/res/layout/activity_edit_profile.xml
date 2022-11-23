@@ -7,11 +7,13 @@
     tools:context=".view.activity.EditProfileActivity">
     <include layout="@layout/toolbar"
         android:id="@+id/toolBar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         tools:ignore="UselessParent">
+
         <LinearLayout
             android:id="@+id/editForm"
             android:layout_width="match_parent"
@@ -29,6 +31,7 @@
                 app:cardPreventCornerOverlap="false"
                 app:strokeColor="@color/first"
                 app:strokeWidth="1dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/userImg"
                     android:layout_width="match_parent"
@@ -54,13 +57,15 @@
                 app:counterTextColor="@color/first"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_fullName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
-                    android:scrollbars="horizontal" />
+                    android:scrollbars="horizontal"
+                    tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <!--DOB-->
             <com.google.android.material.textfield.TextInputLayout
@@ -76,6 +81,7 @@
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first"
                 app:startIconDrawable="@drawable/ic_calendar">
+
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactv_dob"
                     android:layout_width="match_parent"
@@ -83,7 +89,8 @@
                     android:cursorVisible="false"
                     android:focusableInTouchMode="false"
                     android:fontFamily="@font/poppins"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <!-- Gender -->
             <TextView
@@ -95,6 +102,7 @@
                 android:text="@string/txt_gender"
                 android:textColor="@color/first"
                 android:textSize="20sp" />
+
             <RadioGroup
                 android:id="@+id/rgGender"
                 android:layout_width="match_parent"
@@ -153,6 +161,7 @@
                 app:counterMaxLength="10"
                 app:counterTextColor="@color/first"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_phoneNumber"
                     android:layout_width="match_parent"
@@ -173,6 +182,7 @@
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="1dp"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_email"
                     android:layout_width="match_parent"
@@ -188,49 +198,56 @@
                 android:background="@color/first" />
             <!--Address-->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/addressBar"
-                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="10"
-                android:layout_marginTop="25dp">
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/address_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/txt_address"
                     android:textColor="@color/first"
                     android:textSize="20sp"
-                    android:layout_weight="9"/>
+                    tools:ignore="NestedWeights" />
 
-                <ImageButton
+                <TextView
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_map"
-                    android:id="@+id/btnMap"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/btn_CurrentLocation"
+                    android:textColor="@color/first"
+                    android:id="@+id/currentLocation"
+                    />
             </LinearLayout>
             <!--Province field-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilProvince"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:enabled="false"
+                android:enabled="true"
                 android:hint="@string/txt_province"
                 app:boxStrokeColor="@color/first"
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="1dp"
                 app:hintTextColor="@color/first">
-                <com.google.android.material.textfield.TextInputEditText
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactvProvince"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="false"
-                    android:fontFamily="@font/poppins" />
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <!-- District field-->
             <com.google.android.material.textfield.TextInputLayout
@@ -246,6 +263,7 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="dropdown_menu"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactv_dist"
                     android:layout_width="match_parent"
@@ -253,7 +271,9 @@
                     android:enabled="false"
                     android:fontFamily="@font/poppins"
                     android:inputType="none"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <!--Ward field-->
             <com.google.android.material.textfield.TextInputLayout
@@ -268,6 +288,7 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="dropdown_menu"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/mactvWard"
                     android:layout_width="match_parent"
@@ -275,7 +296,9 @@
                     android:enabled="false"
                     android:fontFamily="@font/poppins"
                     android:inputType="none"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <!--House number -->
             <com.google.android.material.textfield.TextInputLayout
@@ -291,6 +314,7 @@
                 app:boxStrokeWidth="1dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/first">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_hNumber"
                     android:layout_width="match_parent"
@@ -299,7 +323,8 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
                     android:scrollbars="horizontal"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
             <!--Update button-->
             <Button

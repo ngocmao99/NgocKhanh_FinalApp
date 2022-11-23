@@ -42,7 +42,6 @@ import com.google.firebase.storage.UploadTask;
 
 public class AddActivity  extends AppCompatActivity {
 
-
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
     FirebaseStorage mStorage;
