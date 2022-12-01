@@ -3,7 +3,6 @@ package com.example.finalproject.view.activity;
 import static com.example.finalproject.utils.Constants.AVATAR;
 import static com.example.finalproject.utils.Constants.DATE_FORMAT;
 import static com.example.finalproject.utils.Constants.DEBUG_LOG;
-import static com.example.finalproject.utils.Constants.DEFAULT_RED_CODE;
 import static com.example.finalproject.utils.Constants.DEFAULT_VALUE;
 import static com.example.finalproject.utils.Constants.DISTRICT;
 import static com.example.finalproject.utils.Constants.DOB;
@@ -27,7 +26,6 @@ import static com.example.finalproject.utils.Constants.PROVINCE_NAME;
 import static com.example.finalproject.utils.Constants.RC_IMAGE;
 import static com.example.finalproject.utils.Constants.REQUEST_LOCATION_CODE;
 import static com.example.finalproject.utils.Constants.TAG_DISTRICT;
-import static com.example.finalproject.utils.Constants.TAG_LOCATION;
 import static com.example.finalproject.utils.Constants.TAG_PROVINCE;
 import static com.example.finalproject.utils.Constants.USER_ID;
 import static com.example.finalproject.utils.Constants.WARD;
@@ -68,7 +66,6 @@ import com.example.finalproject.models.User;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -121,6 +118,10 @@ public class EditProfileActivity extends BaseActivity {
     private double lng;
     private Location currentLocation;
     private String postalCode;
+    private String uProvince;
+    private String uDistrict;
+    private String uWard;
+    private String houseNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,73 +140,128 @@ public class EditProfileActivity extends BaseActivity {
         //init fusedLocationProviderClient
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(EditProfileActivity.this);
 
-        init();
-
-    }
-
-    private void init() {
+        getLocationPermission();
         showUserInfo();
         selectAvatar();
         validate();
-        getLocationPermission();
+        validateFields();
+        handleBackButton();
+
+    }
+
+    private void validateFields(){
+        validateDob();
+        validateGender();
+        validatePhone();
+        validateAddress();
         handleProvinces();
     }
 
+    //drop-down menu - Provinces
+    private void handleProvinces() {
+        List<String> provincesName = new ArrayList<>();
+        mRef.child(LOCAL).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Log.d(TAG_PROVINCE, "getProvinceList: data was found ");
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        Province mProvince;
+                        mProvince = ds.getValue(Province.class);
+                        provincesName.add(mProvince.getName());
+                    }
+                    String province = binding.mactvProvince.getText().toString().trim();
+                    ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(EditProfileActivity.this, R.layout.item_dropdownlist, provincesName);
+                    binding.mactvProvince.setAdapter(provinceAdapter);
+                    if(!province.isEmpty()){
+                        // if province field doesn't empty => get the value and push value to method handleDistrict()
+                        handleDistrict(province);
+                    }
+                    else{
+                        binding.mactvProvince.setOnItemClickListener((adapterView, view, i, l) -> {
+                            String selectedItem = adapterView.getItemAtPosition(i).toString();
+                            uProvince = selectedItem;
+                            binding.mactvDist.getText().clear();
+                            handleDistrict(selectedItem);
+
+                        });
+                    }
+                } else {
+                    Log.d(TAG_PROVINCE, "getProvinceList: data not found ");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+    }
+
+    //drop-down menu - District
+    private void handleDistrict(String selectedProvince) {
+        mRef.child(LOCAL).orderByChild(PROVINCE_NAME).equalTo(selectedProvince).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    Log.d(TAG_PROVINCE, "handleDistrict: getProvinceCode: No data found");
+                } else {
+                    Log.d(TAG_PROVINCE, "handleDistrict: getProvinceCode: Data was found ");
+                    for (DataSnapshot mDs : snapshot.getChildren()) {
+                        Province sProvince = mDs.getValue(Province.class);
+                        String provinceId = sProvince.getCode();
+                        postalCode = sProvince.getZipCode();
+                        getDistrictsList(provinceId);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void getDistrictsList(String code) {
+        List<String> districtNameList = new ArrayList<>();
+        mRef.child("Districts").orderByChild("provinceId").equalTo(code).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    Log.d(TAG_DISTRICT, "getDistrict: No data found");
+                } else {
+                    Log.d(TAG_DISTRICT, "getDistricts: Data was found");
+                    for (DataSnapshot mSnapshot : snapshot.getChildren()) {
+                        District sDistrict = mSnapshot.getValue(District.class);
+                        String name = sDistrict.getName();
+                        districtNameList.add(name);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Districts","getDistrictList: was not found");
+            }
+        });
+        //setup drop-down menu for mact district
+        ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(this, R.layout.item_dropdownlist, districtNameList);
+        binding.mactvDist.setAdapter(districtAdapter);
+        binding.mactvDist.setThreshold(1);
+        binding.mactvDist.setOnItemClickListener((adapterView, view, i, l) -> {
+            uDistrict = adapterView.getItemAtPosition(i).toString();
+            binding.tietWard.getText().clear();
+        });
+    }
     //location permission granted - request to access the location on the user's device
     @SuppressLint("MissingPermission")
     private void getLocationPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_CODE);
-            return;
         }
-        getDeviceLocation();
-    }
-
-    @SuppressLint("MissingPermission")
-    private void getDeviceLocation() {
-        binding.currentLocation.setOnClickListener(view -> {
-            Task<Location> task = mFusedLocationProviderClient.getLastLocation();
-            task.addOnSuccessListener(location -> {
-                if (location != null) {
-                    currentLocation = location;
-
-                    //set red code of current location
-                    lat = currentLocation.getLatitude();
-                    lng = currentLocation.getLongitude();
-                    //get current address line from latlng
-                    getCurrentAddressLine(lat, lng);
-                } else {
-                    showToast("No location found");
-                }
-            });
-
-        });
 
     }
 
-    @SuppressLint("SetTextI18n")
-    private void getCurrentAddressLine(double lat, double lng) {
-        Geocoder geocoder = new Geocoder(EditProfileActivity.this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-            if (addresses != null && addresses.size() > 0) {
-                Address currentAddress = addresses.get(0);
-                StringBuilder stringBuilder = new StringBuilder();
-                Log.d(TAG_LOCATION, "getCurrentAddress: address line: " + stringBuilder.append(currentAddress.getAddressLine(0)));
-                String address = String.valueOf(stringBuilder.append(currentAddress.getAddressLine(0)));
-                String[] addressComponents = address.split(", ");
-                String[] provicePostal = addressComponents[3].split(" ");
-                postalCode = provicePostal[2];
-                binding.mactvProvince.setText(provicePostal[0] + " " + provicePostal[1]);
-                binding.mactvDist.setText(addressComponents[2]);
-                binding.mactvWard.setText(addressComponents[1]);
-                binding.tietHNumber.setText(addressComponents[0]);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     //Show user information
     private void showUserInfo() {
         showLoading();
@@ -224,12 +280,17 @@ public class EditProfileActivity extends BaseActivity {
                         binding.tietFullName.setText(user.getFullName());
                         binding.tietEmail.setText(user.getEmail());
                         binding.mactvDob.setText(user.getDob());
+                        binding.tietWard.setText(user.getWard());
+                        binding.tietHNumber.setText(user.getHouseNumber());
+                        binding.mactvProvince.setText(user.getProvince());
+                        binding.mactvDist.setText(user.getDistrict());
 
                         //handle phone number
-                        String userPhone = user.getPhoneNumber().trim();
-                        if (!userPhone.isEmpty()) {
-                            binding.tietPhoneNumber.setText(userPhone);
+                        String phoneNumber = user.getPhoneNumber().trim();
+                        if(!phoneNumber.isEmpty()){
+                            binding.tietPhoneNumber.setText(phoneNumber);
                         }
+
 
                         //handle user image
                         userImageId = user.getUserImgId().trim();
@@ -263,6 +324,8 @@ public class EditProfileActivity extends BaseActivity {
                         } else {
                             binding.rgGender.check(R.id.other);
                         }
+
+
                     }
                     hideLoading();
                 }
@@ -272,63 +335,147 @@ public class EditProfileActivity extends BaseActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.d(DEBUG_LOG, "No data found.");
             }
+
         });
     }
+
     //Validate information before upload them, to expect the issue missing important info.
     private void validate() {
-        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String fullName = Objects.requireNonNull(binding.tietFullName.getText().toString().trim());
-                String phoneNumber = Objects.requireNonNull(binding.tietPhoneNumber.getText().toString().trim());
-                //prevent empty fullname field and doesn't matches with the name format
-                if (TextUtils.isEmpty(fullName)) {
-                    binding.tilFullName.setErrorEnabled(true);
-                    binding.tilFullName.setError(getString(R.string.error_name_signup));
-                    binding.tilFullName.requestFocus();
-                }
-                //prevent empty phone numver field and doesn't matches with the format
-                if (TextUtils.isEmpty(phoneNumber)) {
-                    binding.tilPhoneNumber.setErrorEnabled(true);
-                    binding.tilPhoneNumber.setError(getString(R.string.error_empty_phoneNumber));
-                    binding.tilPhoneNumber.requestFocus();
-                } else if (phoneNumber.length() <= 0 && phoneNumber.length() > 12) {
-                    binding.tilPhoneNumber.setErrorEnabled(true);
-                    binding.tilPhoneNumber.setError(getString(R.string.error_phonen_number_length));
-                    binding.tilPhoneNumber.requestFocus();
-                } else if (!phoneNumber.matches(PHONE_REGEX)) {
-                    binding.tilPhoneNumber.setErrorEnabled(true);
-                    binding.tilPhoneNumber.setError(getString(R.string.error_phone_number_format));
-                    binding.tilPhoneNumber.requestFocus();
-                }
-                if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(phoneNumber)) {
-                    showToast(getString(R.string.error_blank_required_fields));
-                    binding.tietPhoneNumber.requestFocus();
-                } else {
-                    PopupDialog.getInstance(EditProfileActivity.this)
-                            .setStyle(Styles.STANDARD)
-                            .setHeading("Update information")
-                            .setHeading("Are you sure you want to update these information?")
-                            .setPopupDialogIcon(R.drawable.warning_icon)
-                            .setCancelable(false)
-                            .showDialog(new OnDialogButtonClickListener() {
-                                @Override
-                                public void onPositiveClicked(Dialog dialog) {
-                                    super.onPositiveClicked(dialog);
-                                    showLoading();
-                                    updateProfile();
-                                }
+        binding.btnUpdate.setOnClickListener(view -> {
+            String fullName = Objects.requireNonNull(binding.tietFullName.getText().toString().trim());
+            String phoneNumber = Objects.requireNonNull(binding.tietPhoneNumber.getText().toString().trim());
+            String province = Objects.requireNonNull(binding.mactvProvince.getText().toString().trim());
+            String district = Objects.requireNonNull(binding.mactvDist.getText().toString().trim());
+            String ward = Objects.requireNonNull(binding.tietWard.getText().toString().trim());
+            String houseNumbers = Objects.requireNonNull(binding.tietHNumber.getText().toString().trim());
 
-                                @Override
-                                public void onNegativeClicked(Dialog dialog) {
-                                    super.onNegativeClicked(dialog);
-                                    dialog.dismiss();
-                                }
-                            });
-                }
+            //prevent empty fullname field and doesn't matches with the name format
+            if (TextUtils.isEmpty(fullName)) {
+                binding.tilFullName.setErrorEnabled(true);
+                binding.tilFullName.setError(getString(R.string.error_name_signup));
+                binding.tilFullName.requestFocus();
+            }
+            //prevent empty phone numver field and doesn't matches with the format
+            if (TextUtils.isEmpty(phoneNumber)) {
+                binding.tilPhoneNumber.setErrorEnabled(true);
+                binding.tilPhoneNumber.setError(getString(R.string.error_empty_phoneNumber));
+                binding.tilPhoneNumber.requestFocus();
+            } else if (phoneNumber.length() <= 0 && phoneNumber.length() > 12) {
+                binding.tilPhoneNumber.setErrorEnabled(true);
+                binding.tilPhoneNumber.setError(getString(R.string.error_phonen_number_length));
+                binding.tilPhoneNumber.requestFocus();
+            } else if (phoneNumber.matches(PHONE_REGEX)) {
+                binding.tilPhoneNumber.setErrorEnabled(true);
+                binding.tilPhoneNumber.setError(getString(R.string.error_phone_number_format));
+                binding.tilPhoneNumber.requestFocus();
+            }
+            if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(phoneNumber)) {
+                showToast(getString(R.string.error_blank_required_fields));
+                binding.tietPhoneNumber.requestFocus();
+            }
+            //if the properties of address is empty => set lat and lng 0.0d
+            if (province.isEmpty() && district.isEmpty() && ward.isEmpty() && houseNumbers.isEmpty()) {
+                binding.tilProvince.setErrorEnabled(true);
+                binding.tilProvince.setError("District cannot be empty!");
+
+                binding.tilDist.setErrorEnabled(true);
+                binding.tilDist.setError("District cannot be empty!");
+
+                binding.tilWard.setErrorEnabled(true);
+                binding.tilWard.setError("Ward cannot be empty!");
+
+                binding.tilHNumber.setErrorEnabled(true);
+                binding.tilHNumber.setError("House numbers cannot be empty!");
+            } else {
+                getCoordinates();
             }
         });
     }
+
+    private void validateAddress() {
+        binding.mactvProvince.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String province = editable.toString().trim();
+                if (editable.length() > 0) {
+                    binding.tilProvince.setErrorEnabled(false);
+                }
+            }
+        });
+
+        binding.mactvDist.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String district = editable.toString().trim();
+                if (editable.length() > 0) {
+                    binding.tilDist.setErrorEnabled(false);
+                }
+
+            }
+        });
+
+        binding.tietWard.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String ward = editable.toString().trim();
+                if (editable.length() > 0) {
+                    binding.tilWard.setErrorEnabled(false);
+                }
+
+            }
+        });
+
+        binding.tietHNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    binding.tilHNumber.setErrorEnabled(false);
+                }
+
+            }
+        });
+    }
+
     private void updateProfile() {
         if (imageUri != null && !userImageId.equals(imageName)) {
             //method upload avatar and info if user provide imageUri
@@ -345,9 +492,12 @@ public class EditProfileActivity extends BaseActivity {
             Log.d(DEBUG_LOG, "ImageUri doesn't contain any value");
         }
     }
+
     //method upload avatar and info if users don't provide imageUri
     private void uploadInfoWithoutImage() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = mUser.getUid();
+        DatabaseReference userRef = mRef.child(PATH_USER).child(currentUserId);
 
         HashMap<String, Object> uUser = new HashMap<>();
         uUser.put(FULLNAME, binding.tietFullName.getText().toString().trim());
@@ -355,15 +505,15 @@ public class EditProfileActivity extends BaseActivity {
         uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
         uUser.put(GENDER, getUserGender());
         uUser.put(AVATAR, userImageId);
-        uUser.put(LATITUDE, DEFAULT_RED_CODE);
-        uUser.put(LONGITUDE, DEFAULT_RED_CODE);
+        uUser.put(LATITUDE, lat);
+        uUser.put(LONGITUDE, lng);
         uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
-        uUser.put(POSTAL_CODE, DEFAULT_VALUE);
+        uUser.put(POSTAL_CODE, postalCode);
         uUser.put(DISTRICT, binding.mactvDist.getText().toString().trim());
-        uUser.put(WARD, binding.mactvWard.getText().toString().trim());
+        uUser.put(WARD, binding.tietWard.getText().toString().trim());
         uUser.put(HOUSE_NUMBER, binding.tietHNumber.getText().toString().trim());
 
-        mRef.child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(task -> {
+        userRef.updateChildren(uUser).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 hideLoading();
                 showToast("Updated successful...!");
@@ -373,6 +523,7 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
+
     // Delete the old image
     private void deletePreviousAvatar() {
         StorageReference delRef = mStorageRef.child("Avatars/" + userImageId);
@@ -385,25 +536,28 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
+
     // push data to firebase realtime
     private void putUser() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = mUser.getUid();
+        DatabaseReference userRef = mRef.child(PATH_USER).child(currentUserId);
 
-        HashMap<String, Object> uUser = new HashMap<>();
-        uUser.put(FULLNAME, binding.tietFullName.getText().toString().trim());
-        uUser.put(DOB, binding.mactvDob.getText().toString().trim());
-        uUser.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
-        uUser.put(GENDER, getUserGender());
-        uUser.put(AVATAR, imageName);
-        uUser.put(LATITUDE, DEFAULT_RED_CODE);
-        uUser.put(LONGITUDE, DEFAULT_RED_CODE);
-        uUser.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
-        uUser.put(POSTAL_CODE, DEFAULT_VALUE);
-        uUser.put(DISTRICT, binding.mactvDist.getText().toString().trim());
-        uUser.put(WARD, binding.mactvWard.getText().toString().trim());
-        uUser.put(HOUSE_NUMBER, binding.tietHNumber.getText().toString().trim());
+        HashMap<String, Object> updateInfo = new HashMap<>();
+        updateInfo.put(FULLNAME, binding.tietFullName.getText().toString().trim());
+        updateInfo.put(DOB, binding.mactvDob.getText().toString().trim());
+        updateInfo.put(PHONE_NUMBER, binding.tietPhoneNumber.getText().toString().trim());
+        updateInfo.put(GENDER, getUserGender());
+        updateInfo.put(AVATAR, imageName);
+        updateInfo.put(LATITUDE, lat);
+        updateInfo.put(LONGITUDE, lng);
+        updateInfo.put(PROVINCE, binding.mactvProvince.getText().toString().trim());
+        updateInfo.put(POSTAL_CODE, postalCode);
+        updateInfo.put(DISTRICT, binding.mactvDist.getText().toString().trim());
+        updateInfo.put(WARD, binding.tietWard.getText().toString().trim());
+        updateInfo.put(HOUSE_NUMBER, binding.tietHNumber.getText().toString().trim());
 
-        mRef.child("Users").child(mUser.getUid()).updateChildren(uUser).addOnCompleteListener(task -> {
+        userRef.updateChildren(updateInfo).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 hideLoading();
                 showToast("Updated successful...!");
@@ -413,6 +567,7 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
+
     //get the gender from radio group
     private String getUserGender() {
         String gender = DEFAULT_VALUE;
@@ -428,6 +583,7 @@ public class EditProfileActivity extends BaseActivity {
             return OTHER;
         }
     }
+
     //TextWatcher: phone number
     private void validatePhone() {
         binding.tietPhoneNumber.addTextChangedListener(new TextWatcher() {
@@ -444,12 +600,13 @@ public class EditProfileActivity extends BaseActivity {
                 String phoneNumbers = s.toString().trim();
                 if (s.length() > 0) {
                     binding.tilPhoneNumber.setErrorEnabled(false);
-                } else if (s.length() > 0 && s.length() < 12 || phoneNumbers.matches(PHONE_REGEX)) {
+                } else if (s.length() > 0 && s.length() < 12 || !phoneNumbers.matches(PHONE_REGEX)) {
                     binding.tilPhoneNumber.setErrorEnabled(false);
                 }
             }
         });
     }
+
     //Validate gender radio button group
     @SuppressLint("NonConstantResourceId")
     private void validateGender() {
@@ -472,6 +629,7 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
+
     //DatePickerDialog - set the maximum date
     private void validateDob() {
         binding.mactvDob.setOnClickListener(v -> {
@@ -489,6 +647,7 @@ public class EditProfileActivity extends BaseActivity {
             datePickerDialog.show();
         });
     }
+
     //Text Watcher: full name
     private void validateFullName() {
         binding.tietFullName.addTextChangedListener(new TextWatcher() {
@@ -511,29 +670,7 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
-    //TextWatcher: house number
-    private void twHouseNumber() {
-        binding.tietHNumber.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String houseNumber = editable.toString().trim();
-                if (editable.length() > 0) {
-                    binding.tilHNumber.setErrorEnabled(false);
-                }
-                if (houseNumber.matches(NAME_REGEX1)) {
-                    binding.tilHNumber.setErrorEnabled(false);
-                }
-            }
-        });
-    }
     //upload Avatar feature
     private void selectAvatar() {
         binding.userImg.setOnClickListener(view -> {
@@ -546,6 +683,7 @@ public class EditProfileActivity extends BaseActivity {
         });
 
     }
+
     //startActivityForResult(intent,RC_IMAGE);
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -557,6 +695,7 @@ public class EditProfileActivity extends BaseActivity {
             Glide.with(EditProfileActivity.this).load(imageUri).centerCrop().into(binding.userImg);
         }
     }
+
     //put image to Firebase Storage feature
     private void putImageInStorage() {
         //Create formatter to apply into image name
@@ -580,90 +719,60 @@ public class EditProfileActivity extends BaseActivity {
             }
         });
     }
-    //drop-down menu - Provinces
-    private void handleProvinces() {
-        List<String> provincesName = new ArrayList<>();
-        mRef.child(LOCAL).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    Log.d(TAG_PROVINCE, "getProvinceList: data was found ");
-                    for (DataSnapshot ds : snapshot.getChildren()){
-                        Province mProvince;
-                        mProvince = ds.getValue(Province.class);
-                        provincesName.add(mProvince.getName());
 
 
-                    }
-                } else {
-                    Log.d(TAG_PROVINCE, "getProvinceList: data not found ");
-                }
+
+    //get location coordinates from address line
+    private void getCoordinates() {
+        String inputWard = binding.tietWard.getText().toString().trim();
+        String inputHouseNumbers = binding.tietHNumber.getText().toString().trim();
+        // get address
+        String address = inputHouseNumbers + ", " + inputWard + ", " + uDistrict + " ," + uProvince + " " + postalCode + ", " + "Vietnam";
+
+        Geocoder geoCoder = new Geocoder(EditProfileActivity.this, Locale.getDefault());
+        try {
+            List<Address> addressList = geoCoder.getFromLocationName(address, 1);
+            if (addressList != null && addressList.size() > 0) {
+                Address uAddress = addressList.get(0);
+                lat = uAddress.getLatitude();
+                lng = uAddress.getLongitude();
+                Log.d("Coordinates", "The user location coordinates: Lat: " + lat + ", Long: " + lng);
+
+                PopupDialog.getInstance(EditProfileActivity.this)
+                        .setStyle(Styles.STANDARD)
+                        .setHeading("Update information")
+                        .setHeading("Are you sure you want to update these information?")
+                        .setPopupDialogIcon(R.drawable.warning_icon)
+                        .setCancelable(false)
+                        .setNegativeButtonTextColor(R.color.first)
+                        .showDialog(new OnDialogButtonClickListener() {
+                            @Override
+                            public void onPositiveClicked(Dialog dialog) {
+                                super.onPositiveClicked(dialog);
+                                showLoading();
+                                updateProfile();
+                            }
+
+                            @Override
+                            public void onNegativeClicked(Dialog dialog) {
+                                super.onNegativeClicked(dialog);
+                                dialog.dismiss();
+                            }
+                        });
+
+                binding.tilProvince.setErrorEnabled(false);
+                binding.tilDist.setErrorEnabled(false);
+                binding.tilWard.setErrorEnabled(false);
+                binding.tilHNumber.setErrorEnabled(false);
+            } else {
+                showToast("Your address is invalid. Please re-check and fill out again!");
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(EditProfileActivity.this, R.layout.item_dropdownlist, provincesName);
-        binding.mactvProvince.setAdapter(provinceAdapter);
-        binding.mactvProvince.setOnItemClickListener((adapterView, view, i, l) -> {
-            String selectedProvice = adapterView.getItemAtPosition(i).toString();
-            showToast(selectedProvice + " is selected");
-            handleDistrict(selectedProvice);
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
-    //drop-down menu - District
-    private void handleDistrict(String selectedProvince){
-        mRef.child(LOCAL).orderByChild(PROVINCE_NAME).equalTo(selectedProvince).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()){
-                    Log.d(TAG_PROVINCE,"handleDistrict: getProvinceCode: No data found");
-                }
-                else {
-                    Log.d(TAG_PROVINCE,"handleDistrict: getProvinceCode: Data was found ");
-                    for (DataSnapshot mDs : snapshot.getChildren()){
-                        Province sProvince = mDs.getValue(Province.class);
-                        String provinceId = sProvince.getCode();
-                        String sZipCode = sProvince.getZipCode();
-                        getDistricts(provinceId);
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void getDistricts(String code){
-        List<String> districtNameList = new ArrayList<>();
-        mRef.child("Districts").orderByChild("provinceId").equalTo(code).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()){
-                    Log.d(TAG_DISTRICT,"getDistrict: No data found");
-                }
-                else {
-                    Log.d(TAG_DISTRICT,"getDistricts: Data was found");
-                    for (DataSnapshot mSnapshot : snapshot.getChildren()){
-                        District sDistrict = mSnapshot.getValue(District.class);
-                        String name = sDistrict.getName();
-                        districtNameList.add(name);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //setup drop-down menu for mact district
-        ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(this, R.layout.item_dropdownlist,districtNameList);
-        binding.mactvDist.setAdapter(districtAdapter);
-        binding.mactvDist.setThreshold(1);
-    }
     // Back button on tool bar
     private void handleBackButton() {
         binding.toolBar.toolBarBack.setOnClickListener(view -> {
@@ -671,6 +780,8 @@ public class EditProfileActivity extends BaseActivity {
             Animatoo.animateSlideRight(EditProfileActivity.this);
             onSupportNavigateUp();
         });
+        binding.toolBar.toolbarTitle.setText(getString(R.string.txt_account_infomation));
+        binding.toolBar.toolbarTitle.setVisibility(View.VISIBLE);
     }
 
 }

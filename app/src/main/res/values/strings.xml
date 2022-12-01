@@ -124,69 +124,69 @@
     </string-array>
     <!--Province/City-->
     <string-array name="DanhSachTinh">
-        <item >Hồ Chí Minh</item>
-        <item >Hà Nội</item>
-        <item >Hải Phòng</item>
-        <item >Đà Nẵng</item>
-        <item >Cần Thơ</item>
-        <item >Phú Yên</item>
-        <item >Yên Bái</item>
-        <item >Vĩnh Phúc</item>
-        <item >Vĩnh Long</item>
-        <item >Tuyên Quang</item>
-        <item >Trà Vinh</item>
-        <item >Tiền Giang</item>
-        <item >Thừa Thiên Huế</item>
-        <item >Thanh Hóa</item>
-        <item >Thái Nguyên</item>
-        <item >Thái Bình</item>
-        <item >Tây Ninh</item>
-        <item >Sơn La</item>
-        <item >Sóc Trăng</item>
-        <item >Quảng Trị</item>
-        <item >Quảng Ninh</item>
-        <item >Quảng Ngãi</item>
-        <item >Quảng Nam</item>
-        <item >Quảng Bình</item>
-        <item >Phú Thọ</item>
-        <item >Ninh Thuận</item>
-        <item >Ninh Bình</item>
-        <item >Nghệ An</item>
-        <item >Nam Định</item>
-        <item >Long An</item>
-        <item >Lào Cai</item>
-        <item >Lạng Sơn</item>
-        <item >Lâm Đồng</item>
-        <item >Lai Châu</item>
-        <item >Kon Tum</item>
-        <item >Kiên Giang</item>
-        <item >Khánh Hòa</item>
-        <item >Hưng Yên</item>
-        <item >Hòa Bình</item>
-        <item >Hậu Giang</item>
-        <item >Hải Dương</item>
-        <item >Hà Tĩnh</item>
-        <item >Hà Nam</item>
-        <item >Hà Giang</item>
-        <item >Gia Lai</item>
-        <item >Đồng Tháp</item>
-        <item >Đồng Nai</item>
-        <item >Điện Biên</item>
-        <item >Đắk Nông</item>
-        <item >Đắk Lắk</item>
-        <item >Cao Bằng</item>
-        <item >Cà Mau</item>
-        <item >Bình Thuận</item>
-        <item >Bình Phước</item>
-        <item >Bình Dương</item>
-        <item >Bình Định</item>
-        <item >Bến Tre</item>
-        <item >Bắc Ninh</item>
-        <item >Bạc Liêu</item>
-        <item >Bắc Kạn</item>
-        <item >Bắc Giang</item>
-        <item >Bà Rịa - Vũng Tàu</item>
-        <item >An Giang</item>
+        <item>Hồ Chí Minh</item>
+        <item>Hà Nội</item>
+        <item>Hải Phòng</item>
+        <item>Đà Nẵng</item>
+        <item>Cần Thơ</item>
+        <item>Phú Yên</item>
+        <item>Yên Bái</item>
+        <item>Vĩnh Phúc</item>
+        <item>Vĩnh Long</item>
+        <item>Tuyên Quang</item>
+        <item>Trà Vinh</item>
+        <item>Tiền Giang</item>
+        <item>Thừa Thiên Huế</item>
+        <item>Thanh Hóa</item>
+        <item>Thái Nguyên</item>
+        <item>Thái Bình</item>
+        <item>Tây Ninh</item>
+        <item>Sơn La</item>
+        <item>Sóc Trăng</item>
+        <item>Quảng Trị</item>
+        <item>Quảng Ninh</item>
+        <item>Quảng Ngãi</item>
+        <item>Quảng Nam</item>
+        <item>Quảng Bình</item>
+        <item>Phú Thọ</item>
+        <item>Ninh Thuận</item>
+        <item>Ninh Bình</item>
+        <item>Nghệ An</item>
+        <item>Nam Định</item>
+        <item>Long An</item>
+        <item>Lào Cai</item>
+        <item>Lạng Sơn</item>
+        <item>Lâm Đồng</item>
+        <item>Lai Châu</item>
+        <item>Kon Tum</item>
+        <item>Kiên Giang</item>
+        <item>Khánh Hòa</item>
+        <item>Hưng Yên</item>
+        <item>Hòa Bình</item>
+        <item>Hậu Giang</item>
+        <item>Hải Dương</item>
+        <item>Hà Tĩnh</item>
+        <item>Hà Nam</item>
+        <item>Hà Giang</item>
+        <item>Gia Lai</item>
+        <item>Đồng Tháp</item>
+        <item>Đồng Nai</item>
+        <item>Điện Biên</item>
+        <item>Đắk Nông</item>
+        <item>Đắk Lắk</item>
+        <item>Cao Bằng</item>
+        <item>Cà Mau</item>
+        <item>Bình Thuận</item>
+        <item>Bình Phước</item>
+        <item>Bình Dương</item>
+        <item>Bình Định</item>
+        <item>Bến Tre</item>
+        <item>Bắc Ninh</item>
+        <item>Bạc Liêu</item>
+        <item>Bắc Kạn</item>
+        <item>Bắc Giang</item>
+        <item>Bà Rịa - Vũng Tàu</item>
+        <item>An Giang</item>
     </string-array>
 
 
@@ -1200,10 +1200,12 @@
     <string name="txt_user_phoneNumber">User phone number</string>
     <string name="txt_address">Address</string>
     <string name="txt_user_address">User address</string>
-    <string name="txt_houseNumber">House number</string>
+    <string name="txt_houseNumber">House numbers</string>
+    <string name="txt_hint_house_numbers">i.e. 01 Hoàng Diệu</string>
     <string name="txt_email_profile">Email</string>
     <string name="txt_user_houseNumber">User house number</string>
     <string name="txt_ward">Ward</string>
+    <string name="txt_hint_ward">i.e. Đống Đa</string>
     <string name="txt_user_ward">User ward</string>
     <string name="txt_user_district">User district</string>
     <string name="txt_district">District</string>
@@ -1264,4 +1266,21 @@
     <!--Mapbox-->
     <string name="mapbox_access_token">sk.eyJ1IjoibmdvY2toYW5oMDIwOSIsImEiOiJjbGE1Y25rZWIwMmh2M3dueTVhcWhtNnJzIn0.d1_chtfgN7Bkg-W6x2-gnw</string>
     <string name="btn_CurrentLocation">Get current location</string>
+    <string name="txt_account">Account</string>
+    <string name="txt_setting">Setting</string>
+    <string name="txt_service">Services</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_contact">Contact</string>
+    <string name="tct_contact_us">Contact Us</string>
+    <string name="btn_search">Search Icon</string>
+    <string name="txt_account_infomation">Account Infomation</string>
+    <string name="txt_hello">"Hello, "</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_email_text">Kindly provide your information. We will contact as soon as possible.</string>
+    <string name="txt_message">Your message</string>
+    <string name="btn_send">Send</string>
+    <string name="txt_error_intent_email">Send mail failed</string>
+    <string name="txt_title_email_intent">Sending mail...</string>
+    <string name="txt_wishlist">Wish Lists</string>
+    <string name="txt_property_name_required">Property Name*</string>
 </resources>

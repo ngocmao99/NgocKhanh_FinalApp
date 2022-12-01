@@ -1,5 +1,6 @@
 package com.example.finalproject.view.activity;
 
+import static com.example.finalproject.R.color.first;
 import static com.example.finalproject.utils.Constants.PASSWORD_REGEX;
 
 import android.content.Intent;
@@ -7,22 +8,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.finalproject.R;
-import com.example.finalproject.base.BaseFragment;
-import com.example.finalproject.databinding.FragmentPasswordChangeBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.finalproject.base.BaseActivity;
+import com.example.finalproject.databinding.ActivityChangePasswordBinding;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,45 +23,31 @@ import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
-public class PasswordChangeFragment extends BaseFragment {
-    private FragmentPasswordChangeBinding binding;
-
+public class ChangePasswordActivity extends BaseActivity {
+    private ActivityChangePasswordBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentPasswordChangeBinding.inflate(inflater,container,false);
-        return binding.getRoot();
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityChangePasswordBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mAuth = FirebaseAuth.getInstance();
-
+        init();
         updatePassword();
         watcherInput();
+        handleBackButton();
     }
-
-    private void watcherInput(){
-        binding.tietCurrentPw.addTextChangedListener(tw_currentPw);
-        binding.tietNewPw.addTextChangedListener(tw_newPw);
-        binding.tietConfirmPw.addTextChangedListener(tw_confirmPw);
+    private void init(){
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private void updatePassword() {
-        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validate();
-            }
-        });
+        binding.btnUpdate.setOnClickListener(view -> validate());
     }
 
+    //validate input
     public void validate(){
         String currentPw = Objects.requireNonNull(binding.tietCurrentPw.getText().toString());
         String newPw = Objects.requireNonNull(binding.tietNewPw.getText().toString());
@@ -117,7 +95,7 @@ public class PasswordChangeFragment extends BaseFragment {
             binding.tilConfirmPw.setErrorEnabled(true);
             binding.tilConfirmPw.setError(getString(R.string.error_confirm_pw_empty));
 
-            Toasty.error(getActivity(),"Please fill out the required fields!",Toasty.LENGTH_SHORT).show();
+            Toasty.error(this,"Please fill out the required fields!",Toasty.LENGTH_SHORT).show();
         }
         else{
             setPassword(currentPw,newPw);
@@ -125,6 +103,7 @@ public class PasswordChangeFragment extends BaseFragment {
 
     }
 
+    //set new password
     private void setPassword(String currentPw, String newPw){
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null){
@@ -134,32 +113,41 @@ public class PasswordChangeFragment extends BaseFragment {
                 AuthCredential mCredential = EmailAuthProvider.getCredential(userEmail,currentPw);
 
                 //Prompt the user to re-provide their sign-in credentials
-                mUser.reauthenticate(mCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            // implement update password process
-                            mUser.updatePassword(newPw).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
-                                        Toasty.success(getActivity(), "The password is updated successfully.",Toasty.LENGTH_SHORT).show();
-                                        FirebaseAuth.getInstance().signOut();
-                                        moveToLoginScreeen();
-                                    }
-                                    else {
-                                        Toasty.error(getActivity(), "Update password failure because of incorrect password. Kindly re-check your current password",Toasty.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-                        else{
-                            Toasty.error(getActivity(),"Authentication failed!!!").show();
-                        }
+                mUser.reauthenticate(mCredential).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        // implement update password process
+                        mUser.updatePassword(newPw).addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()){
+                                Toasty.success(ChangePasswordActivity.this, "The password is updated successfully.",Toasty.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
+                                moveToLoginScreen();
+                            }
+                            else {
+                                Toasty.error(ChangePasswordActivity.this, "Update password failure because of incorrect password. Kindly re-check your current password",Toasty.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    else{
+                        Toasty.error(ChangePasswordActivity.this,"Authentication failed!!!").show();
                     }
                 });
             }
         }
+    }
+
+    //textChangeWatcher input
+    private void watcherInput(){
+        binding.tietCurrentPw.addTextChangedListener(tw_currentPw);
+        binding.tietNewPw.addTextChangedListener(tw_newPw);
+        binding.tietConfirmPw.addTextChangedListener(tw_confirmPw);
+    }
+
+    //after click Change Password Button and change success -> move to Login Screen
+    private void moveToLoginScreen(){
+        Intent intent = new Intent();
+        intent.setClass(this, LoginActivity.class);
+        startActivity(intent);
+        Animatoo.animateSlideRight(this);
     }
 
     private final TextWatcher tw_confirmPw = new TextWatcher() {
@@ -233,11 +221,17 @@ public class PasswordChangeFragment extends BaseFragment {
         }
     };
 
-    private void moveToLoginScreeen(){
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), LoginActivity.class);
-        getActivity().startActivity(intent);
-        Animatoo.animateSlideRight(getActivity());
+    // Back button on tool bar
+    private void handleBackButton(){
+        binding.toolBar.toolBarBack.setOnClickListener(view -> {
+            onBackPressed();
+            Animatoo.animateSlideRight(this);
+            onSupportNavigateUp();
+        });
+        binding.toolBar.toolbarTitle.setText(getString(R.string.txt_change_pass));
+        binding.toolBar.toolbarTitle.setVisibility(View.VISIBLE);
     }
+
+
 
 }

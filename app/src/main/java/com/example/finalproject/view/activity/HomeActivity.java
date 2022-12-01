@@ -23,7 +23,6 @@ import com.example.finalproject.R;
 import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.databinding.HeaderDrawerBinding;
-import com.example.finalproject.view.activity.menu.AboutAppFragment;
 import com.example.finalproject.view.activity.menu.Fragment_Search;
 import com.example.finalproject.view.activity.menu.Fragment_Property;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
@@ -65,14 +64,9 @@ public class HomeActivity extends BaseActivity{
         binding.appBarMain.navBottom.setSelectedItemId(R.id.itemHome);
         replaceframent(new Fragment_Home());
 
-        handleLogOutButton();
-
         roundedBotNav();
 
         handleBottomNavigation();
-
-        handleNavDrawer();
-
 
     }
 
@@ -81,10 +75,6 @@ public class HomeActivity extends BaseActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.itemAboutApp:
-                        replaceframent(new AboutAppFragment());
-                        currentFragment = FM_ABOUT_APP;
-                        break;
 
                     case R.id.itemHelp:
                         replaceframent(new HelpFragment());

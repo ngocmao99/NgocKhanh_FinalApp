@@ -103,8 +103,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
-    //alert dialog - https://github.com/saadahmedscse/Android-Popup-Dialog
-    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
+
     implementation 'com.squareup.picasso:picasso:2.71828'
     //Swipe reveal layout - https://github.com/chthai64/SwipeRevealLayout
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
@@ -118,11 +117,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     //like
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
     //dialog
     implementation 'com.orhanobut:dialogplus:1.11@aar'
-    //Loading Dialog
+    //Loading Dialog https://github.com/liangchengcheng/android-loading-dialog
     implementation 'com.kaopiz:kprogresshud:1.0.2'
-    //Flag dialog
-
-    implementation 'com.irozon.alertview:alertview:1.0.1'
+    //alert dialog - https://github.com/saadahmedscse/Android-Popup-Dialog
+    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
 }

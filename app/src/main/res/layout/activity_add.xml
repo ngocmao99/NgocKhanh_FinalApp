@@ -1,545 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
     android:orientation="vertical"
     tools:context=".view.activity.AddActivity">
-    <FrameLayout
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:fitsSystemWindows="true">
-        <ScrollView
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_card"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar">
+
         <LinearLayout
+            android:id="@+id/informationSession"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-        <!--First -->
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cvAvatar"
-        style="@style/CustomCardViewProfile"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:cardElevation="5dp"
-        app:cardPreventCornerOverlap="false"
-        app:strokeColor="@color/first"
-        app:strokeWidth="1dp">
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_house_item"
-        app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
-        <!--name -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name *"/>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_name_item_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-        <!--address -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Address  *"/>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_address_item_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-            <!--Area -->
-            <LinearLayout
-                android:orientation="vertical"
+
+            <ImageView
+                android:id="@+id/propertyImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Area *"/>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_area_item_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_camera_circle_primary" />
 
-        <!--Price -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price *"/>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_price_item_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-            <!--Deposit -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deposit  *"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_deposit_item_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <!--maintain> -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Maintain  *"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_maintain_item_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <!--Property type -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/tilCreateCity"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/property_type"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    app:boxStrokeColor="@color/white"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="dropdown_menu"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/first"
-                    >
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/actv_property_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/poppins"
-                        android:inputType="none"
-                        android:paddingTop="16dp"
-                        android:paddingBottom="16dp"
-                        android:layout_weight="1"
-                        android:textSize="15sp"
-                        android:textColor="@color/black"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <!--Property details -->
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Property Detail *"/>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:orientation="vertical"
-                android:paddingRight="20dp"
-                >
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_baseline_bedroom_parent_24"
-                        android:layout_gravity="center_vertical">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="82dp"
-                        android:layout_height="wrap_content"
-                        android:text="Bedrooms"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:paddingLeft="5dp"/>
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_Bedrooms_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:inputType="number"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_baseline_kitchen_24"
-                        android:layout_gravity="center_vertical">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="82dp"
-                        android:layout_height="wrap_content"
-                        android:text="Kitchen"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:paddingLeft="5dp"/>
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_Kitchen_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:inputType="number"
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_baseline_living_24"
-                        android:layout_gravity="center_vertical">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="82dp"
-                        android:layout_height="wrap_content"
-                        android:text="Living room"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:paddingLeft="5dp"/>
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_Living_room_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:inputType="number"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_bathroom_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <TextView
-                            android:layout_width="82dp"
-                            android:layout_height="wrap_content"
-                            android:text="Bathroom"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:paddingLeft="5dp"/>
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tiet_Bathrooms_item"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:inputType="number"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_balcony_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <TextView
-                            android:layout_width="82dp"
-                            android:layout_height="wrap_content"
-                            android:text="Balcony"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:paddingLeft="5dp"/>
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tiet_Balcony_item"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:inputType="number"
-                            />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_baseline_garage_24"
-                            android:layout_gravity="center_vertical">
-                        </ImageView>
-                        <TextView
-                            android:layout_width="82dp"
-                            android:layout_height="wrap_content"
-                            android:text="Garage"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:paddingLeft="5dp"/>
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tiet_Garage_item"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:inputType="number"
-                            />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
-            <!-- Furnishing  -->
-            <LinearLayout
+            <!--Property Name-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Furnishing *"/>
+                android:layout_marginHorizontal="10dp"
+                app:boxStrokeWidth="1dp"
+                android:hint="@string/txt_property_name_required"
+                app:endIconMode="clear_text"
+                android:layout_marginTop="10dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_name_item_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    >
-                    <RadioGroup
-                        android:layout_width="360dp"
-                        android:id="@+id/rgFurnishing"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/teal_200">
-                        <RadioButton
-                            android:id="@+id/rb_full_furn_item"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="Full-furnishing"
-                            android:paddingLeft="20dp"
-                            android:button="@color/teal_200"
-                            android:fontFamily="@font/nunito_italic"
-                            android:background="@drawable/radio_selector"
-                            android:textColor="@drawable/text_color"
-
-                            />
-                        <RadioButton
-                            android:id="@+id/rb_semi_furn_item"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="Semi-furnishing"
-                            android:button="@color/teal_200"
-                            android:fontFamily="@font/nunito_italic"
-                            android:paddingLeft="10dp"
-                            android:background="@drawable/radio_selector"
-                            android:textColor="@drawable/text_color"
-                            />
-                        <RadioButton
-                            android:id="@+id/rb_un_furn_item"
-                            android:paddingLeft="20dp"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="Un-furnishing"
-                            android:button="@color/teal_200"
-                            android:fontFamily="@font/nunito_italic"
-
-                            android:background="@drawable/radio_selector"
-                            android:textColor="@drawable/text_color"
-                            />
-
-
-                    </RadioGroup>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <!--Floor -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Floor *"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    >
-                    <AutoCompleteTextView
-                        android:id="@+id/actv_floor"
+                    android:layout_height="650dp"
+                    android:fitsSystemWindows="true">
+                    <ScrollView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_card"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    <!--First -->
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
             </LinearLayout>
-            <!--description -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <!--address -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description  *"/>
+                    android:text="Address  *"/>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
@@ -548,22 +102,480 @@
                     app:layout_constraintTop_toTopOf="parent"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_des_item_input"
+                        android:id="@+id/tiet_address_item_input"
                         android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:gravity="start"
+                        android:layout_height="wrap_content"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                    </LinearLayout>
+                        <!--Area -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Area *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_area_item_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                    <!--Price -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price *"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_price_item_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                        <!--Deposit -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Deposit  *"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                >
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_deposit_item_input"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <!--maintain> -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Maintain  *"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                >
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_maintain_item_input"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <!--Property type -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_marginTop="30dp"
+                                android:id="@+id/tilCreateCity"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/property_type"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                app:boxStrokeColor="@color/white"
+                                app:boxStrokeWidth="1dp"
+                                app:endIconMode="dropdown_menu"
+                                app:errorEnabled="true"
+                                app:hintTextColor="@color/first"
+                                >
+                                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                    android:id="@+id/actv_property_type"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/poppins"
+                                    android:inputType="none"
+                                    android:paddingTop="16dp"
+                                    android:paddingBottom="16dp"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/black"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <!--Property details -->
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Property Detail *"/>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:orientation="vertical"
+                            android:paddingRight="20dp"
+                            >
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_bedroom_parent_24"
+                                    android:layout_gravity="center_vertical">
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="82dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bedrooms"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:paddingLeft="5dp"/>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_Bedrooms_item"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:inputType="number"
+                                    />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_kitchen_24"
+                                    android:layout_gravity="center_vertical">
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="82dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Kitchen"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:paddingLeft="5dp"/>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_Kitchen_item"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:inputType="number"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_living_24"
+                                    android:layout_gravity="center_vertical">
+                                </ImageView>
+                                <TextView
+                                    android:layout_width="82dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Living room"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:paddingLeft="5dp"/>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_Living_room_item"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:inputType="number"
+                                    />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+                                <LinearLayout
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/ic_baseline_bathroom_24"
+                                        android:layout_gravity="center_vertical">
+                                    </ImageView>
+                                    <TextView
+                                        android:layout_width="82dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Bathroom"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center"
+                                        android:paddingLeft="5dp"/>
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_Bathrooms_item"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:inputType="number"
+                                        />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/ic_baseline_balcony_24"
+                                        android:layout_gravity="center_vertical">
+                                    </ImageView>
+                                    <TextView
+                                        android:layout_width="82dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Balcony"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center"
+                                        android:paddingLeft="5dp"/>
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_Balcony_item"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:inputType="number"
+                                        />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/ic_baseline_garage_24"
+                                        android:layout_gravity="center_vertical">
+                                    </ImageView>
+                                    <TextView
+                                        android:layout_width="82dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Garage"
+                                        android:textStyle="bold"
+                                        android:layout_gravity="center"
+                                        android:paddingLeft="5dp"/>
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tiet_Garage_item"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:inputType="number"
+                                        />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Furnishing  -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Furnishing *"/>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                >
+                                <RadioGroup
+                                    android:layout_width="360dp"
+                                    android:id="@+id/rgFurnishing"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:background="@color/teal_200">
+                                    <RadioButton
+                                        android:id="@+id/rb_full_furn_item"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Full-furnishing"
+                                        android:paddingLeft="20dp"
+                                        android:button="@color/teal_200"
+                                        android:fontFamily="@font/nunito_italic"
+                                        android:background="@drawable/radio_selector"
+                                        android:textColor="@drawable/text_color"
+
+                                        />
+                                    <RadioButton
+                                        android:id="@+id/rb_semi_furn_item"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Semi-furnishing"
+                                        android:button="@color/teal_200"
+                                        android:fontFamily="@font/nunito_italic"
+                                        android:paddingLeft="10dp"
+                                        android:background="@drawable/radio_selector"
+                                        android:textColor="@drawable/text_color"
+                                        />
+                                    <RadioButton
+                                        android:id="@+id/rb_un_furn_item"
+                                        android:paddingLeft="20dp"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Un-furnishing"
+                                        android:button="@color/teal_200"
+                                        android:fontFamily="@font/nunito_italic"
+
+                                        android:background="@drawable/radio_selector"
+                                        android:textColor="@drawable/text_color"
+                                        />
+
+
+                                </RadioGroup>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                        <!--Floor -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Floor *"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                                >
+                                <AutoCompleteTextView
+                                    android:id="@+id/actv_floor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="none"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <!--description -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Description  *"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                >
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tiet_des_item_input"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="230dp"
+                                    android:gravity="start"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    </ScrollView>
+                </androidx.cardview.widget.CardView>
+                </FrameLayout>
+
+
         </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
-    </FrameLayout>
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/btnInsert"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Create"
-        />
-</LinearLayout>
+
+
+    </ScrollView>
+
+    <!--    <Button-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:id="@+id/btnInsert"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Create"-->
+    <!--        />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

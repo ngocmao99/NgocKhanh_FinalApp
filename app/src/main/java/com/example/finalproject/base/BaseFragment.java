@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,14 +15,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.viewbinding.ViewBinding;
 
+import com.example.finalproject.dialog.LoadingDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public abstract class BaseFragment extends Fragment {
-    /**
-     * Show a toast
-     * @param message String
-     */
     protected void showToast(String message){
         Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }

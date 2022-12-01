@@ -1162,4 +1162,21 @@
     <!--Mapbox-->
     <string name="mapbox_access_token">sk.eyJ1IjoibmdvY2toYW5oMDIwOSIsImEiOiJjbGE1Y25rZWIwMmh2M3dueTVhcWhtNnJzIn0.d1_chtfgN7Bkg-W6x2-gnw</string>
     <string name="btn_CurrentLocation">Get current location</string>
+    <string name="txt_account">Account</string>
+    <string name="txt_setting">Setting</string>
+    <string name="txt_service">Services</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_contact">Contact</string>
+    <string name="tct_contact_us">Contact Us</string>
+    <string name="btn_search">Search Icon</string>
+    <string name="txt_account_infomation">Account Infomation</string>
+    <string name="txt_hello">"Hello, "</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_email_text">Kinldy provide your information. We will contact as soon as possible.</string>
+    <string name="txt_message">Your message</string>
+    <string name="btn_send">Send</string>
+    <string name="txt_error_intent_email">Send mail failed</string>
+    <string name="txt_title_email_intent">Sending mail...</string>
+    <string name="txt_wishlist">Wish Lists</string>
+    <string name="txt_property_name_required">Property Name*</string>
 </resources>

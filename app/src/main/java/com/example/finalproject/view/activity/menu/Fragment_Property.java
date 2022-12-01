@@ -37,14 +37,7 @@ public class Fragment_Property extends BaseFragment  {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentPropertyBinding.inflate(inflater,container,false);
         return binding.getRoot();
-
-
-
-
-
     }
-
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

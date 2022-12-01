@@ -136,4 +136,17 @@
         <item name="cornerSizeTopRight">32dp</item>
     </style>
 
+    <!-- Customize Card View Profile-->
+    <style name="CustomProfileHeader" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_profile_header</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay_card_profile_header" parent="">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">75dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">75dp</item>
+    </style>
+
 </resources>

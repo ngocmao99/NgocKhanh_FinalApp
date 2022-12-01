@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject.NoActionBar">
         <activity
+            android:name=".view.activity.SettingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.activity.NotificationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.activity.AboutAppActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.activity.ChangePasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.activity.PropertyActivity"
             android:exported="false">
             <meta-data
@@ -23,17 +52,7 @@
         </activity>
         <activity
             android:name=".view.activity.SearchActivity"
-            android:exported="false">
-        android:theme="@style/Theme.FinalProject.NoActionBar"><![CDATA[
-
-        android:theme="@style/Theme.FinalProject.NoActionBar" >
-        ]]><activity
-            android:name=".view.activity.EditItemActivity"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -50,7 +69,8 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.EditProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".view.activity.AddActivity"
             android:exported="false" />

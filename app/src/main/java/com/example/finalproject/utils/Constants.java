@@ -119,4 +119,8 @@ public class Constants {
     public static final int REQUEST_LOCATION_CODE = 44;
     public static final String TAG_LOCATION = "LocationService";
     public static final String TAG_PROVINCE = "Province";
+    public static final String MAIL_TO = "mailto:";
+    public static final String SUBJECT = "?subject=";
+    public static final String BODY_MAIL ="&body=";
+
 }
