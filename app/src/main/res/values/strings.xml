@@ -1306,9 +1306,13 @@
     <string name="txt_currency_unit">VND</string>
     <string name="txt_floor">Floor</string>
     <string name="txt_submit">Submit</string>
+    <string name="txt_unit">room</string>
     <string name="txt_add_address">Add Address*</string>
     <string name="txt_location_not_found">Location not found!</string>
-    <string name="error_empty_required_fields">Required field is empty!</string>
+    <string name="error_empty_required_fields">Required field is empty or invalid format input!</string>
     <string name="error_empty_property_location">Kindly touch \'Get location\' link to fill out!</string>
     <string name="error_not_choose_any_option">Kindly select one property type!</string>
+    <string name="error_description_length_is_smaller_than_ten">Kindly fill out description over 10 characters!</string>
+    <string name="txt_popup_dialog_subtitle_create">Are you sure you want to create this property?</string>
+    <string name="txt_title_popup_create">Create New</string>
 </resources>

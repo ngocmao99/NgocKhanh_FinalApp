@@ -34,6 +34,7 @@
 
             <!--Property Title-->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPropertyTitle"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,8 +42,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="@string/txt_property_name_required"
                 app:boxStrokeWidth="1dp"
-                app:endIconMode="clear_text"
-                android:id="@+id/tilPropertyTitle">
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/propertyTitle"
@@ -52,33 +52,35 @@
                     android:textColor="@color/black"
                     tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/txt_add_address"
                     android:textColor="@color/first"
-                    android:textSize="18sp"
-                    android:layout_weight="1"/>
+                    android:textSize="18sp" />
 
                 <Button
+                    android:id="@+id/btnGetLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/btn_CurrentLocation"
-                    android:textColor="@color/first"
-                    android:textSize="14sp"
                     android:layout_weight="1"
-                    android:gravity="end"
-                    android:id="@+id/btnGetLocation"
                     android:background="@android:color/transparent"
-                    android:textAllCaps="false"/>
+                    android:fontFamily="@font/poppins"
+                    android:gravity="end"
+                    android:text="@string/btn_CurrentLocation"
+                    android:textAllCaps="false"
+                    android:textColor="@color/first"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -102,10 +104,10 @@
                     android:drawableEnd="@drawable/ic_baseline_location_primary"
                     android:focusable="false"
                     android:fontFamily="@font/poppins"
-                    android:inputType="text"
                     android:imeOptions="actionDone"
-                    android:textColor="@color/black"
-                    android:scrollbars="horizontal" />
+                    android:inputType="text"
+                    android:scrollbars="horizontal"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -165,12 +167,11 @@
                     android:id="@+id/propertyType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/black"
-                    android:focusable="false"
                     android:cursorVisible="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
                     android:popupElevation="8dp"
-                    />
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -228,14 +229,15 @@
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
                     android:id="@+id/propertyDesciprion"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:fontFamily="@font/poppins"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/black"
                     android:textColorHint="#757575"
-                    tools:ignore="TextContrastCheck" />
+                    android:scrollbars="vertical"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Add Facilities-->
@@ -267,7 +269,7 @@
                     android:padding="10dp"
                     android:text="@string/txt_wifi"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
 
                 <com.example.finalproject.view.activity.customCheckbox
                     android:id="@+id/cbGrocery"
@@ -319,6 +321,7 @@
                 android:orientation="horizontal">
 
                 <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbEducation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@android:color/transparent"
@@ -327,8 +330,7 @@
                     android:padding="10dp"
                     android:text="@string/txt_nearest_education_institute"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
-                    android:id="@+id/cbEducation"/>
+                    android:textSize="15sp" />
 
                 <com.example.finalproject.view.activity.customCheckbox
                     android:id="@+id/cbAirConditioner"
@@ -355,6 +357,7 @@
                 android:orientation="horizontal">
 
                 <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbHospital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@android:color/transparent"
@@ -363,10 +366,10 @@
                     android:padding="10dp"
                     android:text="@string/txt_nearest_hospital"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
-                    android:id="@+id/cbHospital"/>
+                    android:textSize="15sp" />
 
                 <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbMarket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -376,10 +379,10 @@
                     android:padding="10dp"
                     android:text="@string/txt_nearest_market"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
-                    android:id="@+id/cbMarket"/>
+                    android:textSize="15sp" />
 
                 <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbPool"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -389,8 +392,7 @@
                     android:padding="10dp"
                     android:text="@string/txt_swimming_pool"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
-                    android:id="@+id/cbPool"/>
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -402,6 +404,7 @@
                 android:orientation="horizontal">
 
                 <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbGim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@android:color/transparent"
@@ -410,9 +413,18 @@
                     android:padding="10dp"
                     android:text="@string/txt_gim_facilities"
                     android:textColor="@color/dark_gray"
-                    android:textSize="15sp"
-                    android:id="@+id/cbGim"/>
+                    android:textSize="15sp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/erroCb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/poppins"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"/>
 
             <!-- Quantity Session-->
             <TextView
@@ -434,6 +446,7 @@
 
                 <!--Bedroom-->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBedroom"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -445,21 +458,22 @@
                     app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_bed_primary"
                     app:startIconTint="@color/first"
-                    app:suffixText="@string/txt_bed_room"
-                    android:id="@+id/tilBedroom">
+                    app:suffixText="@string/txt_unit">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bedRoom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:inputType="number"
                         android:textColor="@color/black"
                         android:textColorHint="#757575"
-                        android:id="@+id/bedRoom"/>
+                        android:drawablePadding="5dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!--Bathroom-->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBathroom"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -471,16 +485,16 @@
                     app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_bath_room_primary"
                     app:startIconTint="@color/first"
-                    android:id="@+id/tilBathroom">
+                    app:suffixText="@string/txt_unit">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bathRoom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:inputType="number"
                         android:textColor="@color/black"
-                        android:textColorHint="#757575"
-                        android:id="@+id/bathRoom"/>
+                        android:textColorHint="#757575" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -502,9 +516,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:hint="@string/txt_area_unit"
-                    app:prefixText="@string/txt_area_unit"
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="clear_text"
+                    app:suffixText="@string/txt_area_unit"
                     app:startIconDrawable="@drawable/ic_baseline_area_primary"
                     app:startIconTint="@color/first">
 
@@ -526,7 +540,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:hint="@string/txt_currency_unit"
+                    android:hint="@string/txt_price"
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="clear_text"
                     app:startIconDrawable="@drawable/ic_baseline_dollar"

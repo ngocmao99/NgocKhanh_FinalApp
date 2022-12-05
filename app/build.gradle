@@ -120,8 +120,6 @@ dependencies {
 
     //dialog
     implementation 'com.orhanobut:dialogplus:1.11@aar'
-    //Loading Dialog https://github.com/liangchengcheng/android-loading-dialog
-    implementation 'com.kaopiz:kprogresshud:1.0.2'
     //alert dialog - https://github.com/saadahmedscse/Android-Popup-Dialog
     implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
 }

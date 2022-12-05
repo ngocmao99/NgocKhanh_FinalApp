@@ -1,6 +1,8 @@
 package com.example.finalproject.models;
 
 public class Property {
+    private String propertyId;
+    private String userId;
     private String propertyName;
     private String propertyLocation;
     private double lat;
@@ -24,7 +26,9 @@ public class Property {
     public Property() {
     }
 
-    public Property(String propertyName, String propertyLocation, double lat, double lng, String province, String postalCode, String district, String ward, String houseNumber, String propertyImage, String propertyType, String propertyFloor, String propertyDescription, String propertyFacilities, int bedroom, int bathroom, double area, long price, long timestamp) {
+    public Property(String propertyId, String userId, String propertyName, String propertyLocation, double lat, double lng, String province, String postalCode, String district, String ward, String houseNumber, String propertyImage, String propertyType, String propertyFloor, String propertyDescription, String propertyFacilities, int bedroom, int bathroom, double area, long price, long timestamp) {
+        this.propertyId = propertyId;
+        this.userId = userId;
         this.propertyName = propertyName;
         this.propertyLocation = propertyLocation;
         this.lat = lat;
@@ -44,6 +48,22 @@ public class Property {
         this.area = area;
         this.price = price;
         this.timestamp = timestamp;
+    }
+
+    public String getPropertyId() {
+        return propertyId;
+    }
+
+    public void setPropertyId(String propertyId) {
+        this.propertyId = propertyId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public long getTimestamp() {

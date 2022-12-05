@@ -35,6 +35,8 @@ public class Constants {
     public static final String GITHUB_LINK = "https://github.com/ngocmao99/NgocKhanh_FinalApp";
     public static final int RB_V = -1;
 
+    public static final String ZERO ="0";
+
     //Declare a constant variable for Users path on Firebase Database
     public static final String PATH_USER = "Users";
 
@@ -108,6 +110,8 @@ public class Constants {
     public static final String DEBUG_LOG = "debug";
     public static final String TAG_TYPE ="PROPERTY_TYPE";
     public static final String TAG_FACILITY ="FACILITIES";
+    public static final String INPUT = "INPUT";
+    public static final String PUSH_DATA = "PUSH DATA";
 
     //Map
     public static final String TAG_MAP = "MapActivity";
@@ -129,5 +133,32 @@ public class Constants {
     public static final int RESULT_CODE = 1;
     public static final int GALLERY_CODE = 1;
     public static final int SELECTED_CODE = -1;
+
+
+    //Property model
+    public static final String P_ID ="propertyId";
+    public static final String P_CREATOR = "userId";
+    public static final String TITLE = "propertyName";
+    public static final String LOCATION = "propertyLocation";
+    public static final String P_LAT = "lat";
+    public static final String P_LNG = "long";
+    public static final String P_PROVINCE = "province";
+    public static final String P_POSTALCODE ="postalCode";
+    public static final String P_DISTRICT = "district";
+    public static final String P_WARD = "ward";
+    public static final String P_HN = "houseNumber";
+    public static final String P_IMG = "propertyImage";
+    public static final String P_TYPE= "propertyType";
+    public static final String FLOOR= "propertyFloor";
+    public static final String P_DESCRIPTION= "propertyDescription";
+    public static final String P_FACILITIES= "propertyFacilities";
+    public static final String BED= "bedroom";
+    public static final String BATH = "bathroom";
+    public static final String AREA = "area";
+    public static final String PRICE = "price";
+    public static final String TIME = "timestamp";
+
+
+
 
 }

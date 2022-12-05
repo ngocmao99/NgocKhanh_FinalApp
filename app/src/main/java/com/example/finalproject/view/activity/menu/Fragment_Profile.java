@@ -17,7 +17,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -54,7 +53,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.kaopiz.kprogresshud.KProgressHUD;
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
@@ -67,7 +65,6 @@ public class Fragment_Profile extends BaseFragment {
     private DatabaseReference mRef;
     private FirebaseUser mUser;
     private FirebaseStorage storage;
-    private KProgressHUD hud;
 
     @Nullable
     @Override
@@ -330,7 +327,6 @@ public class Fragment_Profile extends BaseFragment {
                                 super.onPositiveClicked(dialog);
                                 if (currentUserIsSignedIn()){
                                     FirebaseAuth.getInstance().signOut();
-                                    showLoadingDialog();
                                     startActivity(new Intent(getActivity(),LoginActivity.class));
                                     Animatoo.animateSlideRight(getActivity());
                                 }
@@ -390,20 +386,6 @@ public class Fragment_Profile extends BaseFragment {
     private boolean getCurrentUser() {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         return mUser != null;
-    }
-
-    private void showLoadingDialog(){
-        KProgressHUD.create(getActivity())
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Please wait")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f)
-                .show();
-    }
-    private void scheduleDismiss() {
-        Handler handler = new Handler();
-        handler.postDelayed(() -> hud.dismiss(), 2000);
     }
 
 }
