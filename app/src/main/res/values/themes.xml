@@ -57,6 +57,17 @@
         <item name="cornerSizeBottomLeft">10dp</item>
     </style>
 
+    <style name="CustomPropertyImage" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+    </style>
+
     <!-- Customize Profile Image-->
     <style name="CustomeProfileImage" parent="">
         <item name="cornerFamilyTopLeft">rounded</item>
@@ -114,6 +125,20 @@
         <item name="cornerSizeTopLeft">65dp</item>
         <item name="cornerSizeBottomRight">65dp</item>
         <item name="cornerSizeBottomLeft">65dp</item>
+    </style>
+
+    <!-- Customize Card View Property Image-->
+    <style name="CustomCardViewProperty" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_property_custom_corners</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay_card_property_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
     </style>
 
     <!-- Custom font family for text in nav drawer-->

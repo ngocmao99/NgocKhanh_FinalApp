@@ -1265,7 +1265,7 @@
 
     <!--Mapbox-->
     <string name="mapbox_access_token">sk.eyJ1IjoibmdvY2toYW5oMDIwOSIsImEiOiJjbGE1Y25rZWIwMmh2M3dueTVhcWhtNnJzIn0.d1_chtfgN7Bkg-W6x2-gnw</string>
-    <string name="btn_CurrentLocation">Get current location</string>
+    <string name="btn_CurrentLocation"> <u>Get location</u>.</string>
     <string name="txt_account">Account</string>
     <string name="txt_setting">Setting</string>
     <string name="txt_service">Services</string>
@@ -1282,5 +1282,33 @@
     <string name="txt_error_intent_email">Send mail failed</string>
     <string name="txt_title_email_intent">Sending mail...</string>
     <string name="txt_wishlist">Wish Lists</string>
-    <string name="txt_property_name_required">Property Name*</string>
+    <string name="txt_property_name_required">Write property title*</string>
+    <string name="txt_property_location">Add Location*</string>
+    <string name="txt_add_image">Add Images*</string>
+    <string name="txt_property_type">Property Type*</string>
+    <string name="txt_facilities">Add Facilities*</string>
+    <string name="txt_add_properties">Add Properties*</string>
+    <string name="txt_properties_description">Write Property description</string>
+    <string name="txt_wifi">Wifi</string>
+    <string name="txt_nearest_grocery">Nearest Grocery</string>
+    <string name="txt_spa">Spa</string>
+    <string name="txt_nearest_education_institute">Nearest Education Institute</string>
+    <string name="txt_hot_water">Hot Water</string>
+    <string name="txt_air_conditioner">Air Conditioner</string>
+    <string name="txt_nearest_hospital">Nearest Hospital</string>
+    <string name="txt_nearest_market">Nearest Market</string>
+    <string name="txt_gim_facilities">Gim facilities</string>
+    <string name="txt_swimming_pool">Swimming pool</string>
+    <string name="txt_add_quantity">Add Quantity</string>
+    <string name="txt_bed_room">Bed Room</string>
+    <string name="txt_bathroom">Bath Room</string>
+    <string name="txt_area_unit">Sqr m</string>
+    <string name="txt_currency_unit">VND</string>
+    <string name="txt_floor">Floor</string>
+    <string name="txt_submit">Submit</string>
+    <string name="txt_add_address">Add Address*</string>
+    <string name="txt_location_not_found">Location not found!</string>
+    <string name="error_empty_required_fields">Required field is empty!</string>
+    <string name="error_empty_property_location">Kindly touch \'Get location\' link to fill out!</string>
+    <string name="error_not_choose_any_option">Kindly select one property type!</string>
 </resources>

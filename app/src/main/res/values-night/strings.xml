@@ -115,78 +115,11 @@
     </string-array>
     <!--Floor-->
     <string-array name="floor">
-        <item>1-2</item>
-        <item>2-4</item>
-        <item>4-6</item>
+        <item>1–2</item>
+        <item>2–4</item>
+        <item>4–6</item>
         <item>> 7</item>
     </string-array>
-    <!--Province/City-->
-    <string-array name="city_array">
-        <item>An Giang</item>
-        <item>Bà Rịa - Vũng Tàu</item>
-        <item>Bạc Liêu</item>
-        <item>Bắc Kạn</item>
-        <item>Bắc Giang</item>
-        <item>Bắc Ninh</item>
-        <item>Bến Tre</item>
-        <item>Bình Dương</item>
-        <item>Bình Định</item>
-        <item>Bình Phước</item>
-        <item>Bình Thuận</item>
-        <item>Cà Mau</item>
-        <item>Cao Bằng</item>
-        <item>Cần Thơ</item>
-        <item>Đà Nẵng</item>
-        <item>Đắk Lắk</item>
-        <item>Đắk Nông</item>
-        <item>Diện Biên</item>
-        <item>Đồng Nai</item>
-        <item>Đồng Tháp</item>
-        <item>Gia Lai</item>
-        <item>Hà Giang</item>
-        <item>Hà Nam</item>
-        <item>Hà Nội</item>
-        <item>Hà Tây</item>
-        <item>Hà Tĩnh</item>
-        <item>Hải Dương</item>
-        <item>Hải Phòng</item>
-        <item>Hòa Bình</item>
-        <item>Hồ Chí Minh</item>
-        <item>Hậu Giang</item>
-        <item>Hưng Yên</item>
-        <item>Khánh Hòa</item>
-        <item>Kiên Giang</item>
-        <item>Kon Tum</item>
-        <item>Lai Chêu</item>
-        <item>Lào Cai</item>
-        <item>Lạng Sơn</item>
-        <item>Lâm Đồng</item>
-        <item>Long An</item>
-        <item>Nam Định</item>
-        <item>Nghệ An</item>
-        <item>Ninh Bình</item>
-        <item>Ninh Thuận</item>
-        <item>Phú Thọ</item>
-        <item>Phú Yên</item>
-        <item>Quảng Bình</item>
-        <item>Quảng Ngãi</item>
-        <item>Quảng Ninh</item>
-        <item>Quảng Trị</item>
-        <item>Sóc Trăng</item>
-        <item>Sơn La</item>
-        <item>Tây Ninh</item>
-        <item>Thái Bình</item>
-        <item>Thái Nguyên</item>
-        <item>Thanh Hóa</item>
-        <item>Thừa Thiên - Huế</item>
-        <item>Tiền Giang</item>
-        <item>Trà Vinh</item>
-        <item>Tuyên Quang</item>
-        <item>Vĩnh Long</item>
-        <item>Vĩnh Phúc</item>
-        <item>Yên Bái</item>
-    </string-array>
-
 
     <string-array name="angiangdistricts">
         <item>Long Xuyen</item>
@@ -1109,18 +1042,18 @@
     <string name="txt_city">City</string>
     <string name="txt_user_city">User city</string>
     <string name="txt_user_province">User province</string>
-    <string name="rbtn_nonselect">Please select at least one options...!</string>
+    <string name="rbtn_nonselect">Please select at least one options…!</string>
     <string name="fullName">Fullname</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="other">Other</string>
     <string name="btnUpdateInfo">Update Information</string>
-    <string name="txt_empty_field">Empty field...!</string>
+    <string name="txt_empty_field">Empty field…!</string>
     <string name="error_over_character">Full name just include less than 100 letters.</string>
-    <string name="error_empty_phoneNumber">Phone numer cannot be empty...!</string>
-    <string name="error_not_match_pattern_phone">Invalid phone number...!</string>
-    <string name="error_blank_required_fields">Please fill out the required fields...!</string>
-    <string name="error_invalid_format">Your input is invalid. Please check and update your infomation...!</string>
+    <string name="error_empty_phoneNumber">Phone numer cannot be empty…!</string>
+    <string name="error_not_match_pattern_phone">Invalid phone number…!</string>
+    <string name="error_blank_required_fields">Please fill out the required fields…!</string>
+    <string name="error_invalid_format">Your input is invalid. Please check and update your information…!</string>
     <string name="title_confirm_update">Confirmation Update</string>
     <string name="sub_title_update_info">Are you sure you want to update your personal information? If yes, select \"Yes\" to proceed, or Cancel to return to correct incorrect information.</string>
 
@@ -1159,8 +1092,6 @@
     <string name="area">Area</string>
     <string name="property_type">Property Type</string>
 
-    <!--Mapbox-->
-    <string name="mapbox_access_token">sk.eyJ1IjoibmdvY2toYW5oMDIwOSIsImEiOiJjbGE1Y25rZWIwMmh2M3dueTVhcWhtNnJzIn0.d1_chtfgN7Bkg-W6x2-gnw</string>
     <string name="btn_CurrentLocation">Get current location</string>
     <string name="txt_account">Account</string>
     <string name="txt_setting">Setting</string>
@@ -1179,4 +1110,32 @@
     <string name="txt_title_email_intent">Sending mail...</string>
     <string name="txt_wishlist">Wish Lists</string>
     <string name="txt_property_name_required">Property Name*</string>
+    <string name="txt_property_location">Add Location</string>
+    <string name="txt_add_image">Add Images</string>
+    <string name="txt_property_type">Property Type*</string>
+    <string name="txt_facilities">Add Facilities*</string>
+    <string name="txt_add_properties">Add Properties*</string>
+    <string name="txt_properties_description">Write Property description</string>
+    <string name="txt_wwifi">Wifi</string>
+    <string name="txt_nearest_grocery">Nearest Grocery</string>
+    <string name="txt_spa">Spa</string>
+    <string name="txt_nearest_education_instute">Nearest Education Institute</string>
+    <string name="txt_hot_water">Hot Water</string>
+    <string name="txt_air_conditioner">Air Conditioner</string>
+    <string name="txt_nearest_hospital">Nearest Hospital</string>
+    <string name="txt_nearest_market">Nearest Market</string>
+    <string name="txt_gim_facilities">Gim facilities</string>
+    <string name="txt_swiming_pool">Swiming pool</string>
+    <string name="txt_add_quantity">Add Quantity</string>
+    <string name="txt_bed_room">Bed Room</string>
+    <string name="txt_bathroom">Bath Room</string>
+    <string name="txt_area_unit">Sqr m</string>
+    <string name="txt_currency_unit">VND</string>
+    <string name="txt_floor">Floor</string>
+    <string name="txt_submit">Submit</string>
+    <string name="txt_add_address">Add Address</string>
+    <string name="txt_location_not_found">Location not found!</string>
+    <string name="error_empty_required_fields">Required field is empty!</string>
+    <string name="error_empty_property_location">Kindly touch \'Get location\' link to fill out!</string>
+    <string name="error_not_choose_any_option">Kindly select one property type!</string>
 </resources>

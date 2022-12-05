@@ -720,8 +720,6 @@ public class EditProfileActivity extends BaseActivity {
         });
     }
 
-
-
     //get location coordinates from address line
     private void getCoordinates() {
         String inputWard = binding.tietWard.getText().toString().trim();

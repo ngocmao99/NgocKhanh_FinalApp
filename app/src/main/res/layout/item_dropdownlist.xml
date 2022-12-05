@@ -7,4 +7,6 @@
     android:padding="16dp"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     android:textSize="15sp"
-    android:textColor="@color/black"/>
+    android:textColor="@color/black"
+    android:background="@drawable/itembg_dropdown"
+    />

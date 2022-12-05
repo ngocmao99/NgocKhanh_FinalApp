@@ -87,56 +87,7 @@ public class HomeActivity extends BaseActivity{
             }
         });
     }
-
     private void handleBottomNavigation() {
-        tenantRole();
-        headerBinding.role.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (group.getCheckedRadioButtonId() == RB_V) {
-                    headerBinding.tenant.setChecked(true);
-                    tenantRole();
-                }
-                switch (checkedId) {
-                    case R.id.tenant:
-                        tenantRole();
-                        break;
-
-                    case R.id.owner:
-                        ownerRole();
-                        break;
-
-                }
-            }
-        });
-    }
-
-    private void ownerRole() {
-        binding.appBarMain.navBottom.getMenu().clear();
-        binding.appBarMain.navBottom.inflateMenu(R.menu.menu_nav_bot_owner);
-        binding.appBarMain.navBottom.getMenu().findItem(R.id.itemProperty).setChecked(true);
-        replaceframent(new PropertyFragment());
-        binding.appBarMain.navBottom.setOnItemSelectedListener(item -> {
-            Fragment fragment = null;
-            switch (item.getItemId()) {
-                case R.id.itemProperty:
-                    fragment = new PropertyFragment();
-                    break;
-
-                case R.id.itemProf:
-                    fragment = new Fragment_Profile();
-                    break;
-
-            }
-            replaceframent(fragment);
-            unCheckAllMenuItems(binding.navView.getMenu());
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            return true;
-        });
-
-    }
-
-    private void tenantRole() {
         binding.appBarMain.navBottom.getMenu().clear();
         binding.appBarMain.navBottom.inflateMenu(R.menu.nav_bottom_menu);
         binding.appBarMain.navBottom.getMenu().findItem(R.id.itemHome).setChecked(true);

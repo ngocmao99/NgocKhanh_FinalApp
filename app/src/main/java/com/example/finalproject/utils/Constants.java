@@ -84,6 +84,8 @@ public class Constants {
     public final static String PROVINCE_NAME = "name";
     public static final String DEFAULT_VALUE ="";
     public static final String TAG_DISTRICT = "DISTRICT";
+    public static final String TYPE_PATH ="PropertyTypes";
+    public static final String NUMBER_VALID_FORMAT = "[0-9]*?[1-9][0-9]*";
 
 
     //Declare a request code to open gallery of device
@@ -104,6 +106,8 @@ public class Constants {
 
     //Logcat
     public static final String DEBUG_LOG = "debug";
+    public static final String TAG_TYPE ="PROPERTY_TYPE";
+    public static final String TAG_FACILITY ="FACILITIES";
 
     //Map
     public static final String TAG_MAP = "MapActivity";
@@ -122,5 +126,8 @@ public class Constants {
     public static final String MAIL_TO = "mailto:";
     public static final String SUBJECT = "?subject=";
     public static final String BODY_MAIL ="&body=";
+    public static final int RESULT_CODE = 1;
+    public static final int GALLERY_CODE = 1;
+    public static final int SELECTED_CODE = -1;
 
 }
