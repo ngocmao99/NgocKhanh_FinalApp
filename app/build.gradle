@@ -115,11 +115,12 @@ dependencies {
     //Google play service location - Fused Location Provider for Android (includes activity recognition and geofencing)
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
-    //like
+    //https://github.com/jd-alexander/LikeButton - Like button
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
     //dialog
     implementation 'com.orhanobut:dialogplus:1.11@aar'
     //alert dialog - https://github.com/saadahmedscse/Android-Popup-Dialog
     implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.1'
+
 }

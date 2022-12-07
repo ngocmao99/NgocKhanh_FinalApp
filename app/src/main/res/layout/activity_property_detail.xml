@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.onboardingfragment.PropertyDetailActivity">
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        android:id="@+id/detailInfo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15sp"
+            android:orientation="vertical">
+
+            <!-- Property Image -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.like.LikeButton
+                    android:id="@+id/favBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="25dp"
+                    app:anim_scale_factor="2.5"
+                    app:dots_primary_color="@color/white"
+                    app:icon_size="25dp"
+                    app:icon_type="heart" />
+
+                <!--propertyImage-->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvProperty"
+                    style="@style/CustomCardViewProperty"
+                    android:layout_width="365dp"
+                    android:layout_height="400dp"
+                    android:layout_gravity="center_horizontal"
+                    app:cardElevation="5dp"
+                    android:layout_marginTop="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    android:layout_marginBottom="5dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/propertyImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_baseline_photo_camera_24"
+                        app:shapeAppearanceOverlay="@style/CustomPropertyImage"
+                        tools:ignore="ImageContrastCheck" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <!--Price-->
+            <LinearLayout
+                android:id="@+id/layoutPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="142dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="end"
+                    android:text="@string/txt_exam_price"
+                    android:textColor="@color/first"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/suffixPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="start"
+                    android:text="@string/txt_suffix_price"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="18sp"
+                    tools:ignore="TextContrastCheck" />
+
+            </LinearLayout>
+
+            <!--Title-->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_exam_title"
+                android:textColor="@color/first"
+                android:textSize="20sp" />
+
+            <!--Location-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/txt_exam_location"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_location_primary"
+                tools:ignore="TextContrastCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+                <!--Bedroom-->
+                <TextView
+                    android:id="@+id/bedroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_quatity_item"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="5dp"
+                    android:text="@string/txt_suffix_bedroom"
+                    android:textAlignment="center"
+                    android:textColor="@color/first"
+                    android:textSize="13sp"
+                    app:drawableStartCompat="@drawable/ic_baseline_double_bed_primary"
+                    tools:ignore="UnusedAttribute"
+                    app:drawableTint="@color/first" />
+
+                <TextView
+                    android:id="@+id/bathroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_quatity_item"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="5dp"
+                    android:text="@string/txt_suffix_bathroom"
+                    android:textAlignment="center"
+                    android:textColor="@color/first"
+                    android:textSize="13sp"
+                    app:drawableStartCompat="@drawable/ic_baseline_bathroom_24"
+                    tools:ignore="UnusedAttribute"
+                    app:drawableTint="@color/first" />
+
+                <!--Area-->
+                <TextView
+                    android:id="@+id/area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_quatity_item"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="5dp"
+                    android:text="@string/txt_suffix_area"
+                    android:textAlignment="center"
+                    android:textColor="@color/first"
+                    android:textSize="13sp"
+                    app:drawableStartCompat="@drawable/ic_baseline_area_24"
+                    tools:ignore="UnusedAttribute"
+                    app:drawableTint="@color/first" />
+            </LinearLayout>
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_mapview"
+                android:contentDescription="@string/txt_sub_title_sign_in_google"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/labelDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_description"
+                android:textColor="@color/first"
+                android:textSize="18sp" />
+            <!--description-->
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/txt_lorem_ipsum"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp"
+                android:gravity="center_vertical"/>
+
+            <!--facilities-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/txt_facilities_detail"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/first"/>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_wifi"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbGrocery"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_grocery"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbSpa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_spa"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbHotWater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_hot_water"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_education_institute"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbAirConditioner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_air_conditioner"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbHospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_hospital"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbMarket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_market"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbPool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_swimming_pool"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="200dp">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbGim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_gim_facilities"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+     <!--Owner information-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounde_owner_info_fields"
+        android:elevation="10dp"
+        android:paddingHorizontal="15dp"
+        android:gravity="center_vertical">
+        <!-- owner avatar-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvAvatar"
+            style="@style/CustomCardViewProfile"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_vertical"
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:strokeColor="@color/first"
+            app:strokeWidth="1dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_photo_camera_24"
+                app:shapeAppearanceOverlay="@style/CustomeProfileImage" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- username-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_user_name"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/first"
+                android:id="@+id/userName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="@string/txt_owner"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp"
+                tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <!--mail button-->
+            <ImageButton
+                android:id="@+id/btnMail"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="15dp"
+                android:background="@null"
+                android:contentDescription="@string/txt_img_btn_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_mail_24"
+                tools:ignore="RedundantDescriptionCheck,DuplicateSpeakableTextCheck" />
+
+            <!--call button-->
+            <ImageButton
+                android:id="@+id/btnCall"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:contentDescription="@string/txt_img_btn_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_call_24"
+                tools:ignore="RedundantDescriptionCheck" />
+
+        </LinearLayout>
+
+
+
+
+
+        <!--call button-->
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

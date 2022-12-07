@@ -1315,4 +1315,16 @@
     <string name="error_description_length_is_smaller_than_ten">Kindly fill out description over 10 characters!</string>
     <string name="txt_popup_dialog_subtitle_create">Are you sure you want to create this property?</string>
     <string name="txt_title_popup_create">Create New</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_lorem_ipsum">Aliquam tincidunt, enim nec interdum luctus, purus risus tincidunt diam, id congue diam mauris at mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris rhoncus urna eget orci auctor, in pretium leo ultrices. Aliquam id metus tristique, tincidunt justo in, semper odio. Nullam in erat nec ex egestas suscipit quis non urna. Nullam a elementum tellus. Aliquam erat volutpat.</string>
+    <string name="txt_facilities_detail">Facilities</string>
+    <string name="txt_owner">Owner</string>
+    <string name="txt_exam_price">$Price</string>
+    <string name="txt_suffix_price">" /Month"</string>
+    <string name="txt_exam_title">Title</string>
+    <string name="txt_exam_location">Location</string>
+    <string name="txt_suffix_bedroom">Bedroom</string>
+    <string name="txt_suffix_bathroom">Bathroom</string>
+    <string name="txt_suffix_area">m2</string>
+    <string name="txt_img_btn_image">image button</string>
 </resources>
