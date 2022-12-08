@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject.NoActionBar">
         <activity
-            android:name=".PropertyDetailActivity"
+            android:name=".view.activity.PropertyDetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
