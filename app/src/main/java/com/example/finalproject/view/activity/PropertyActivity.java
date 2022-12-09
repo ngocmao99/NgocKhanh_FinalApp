@@ -34,9 +34,11 @@ import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityEditItemBinding;
 import com.example.finalproject.databinding.FragmentPropertyBinding;
 import com.example.finalproject.models.Item;
+import com.example.finalproject.models.Property;
 import com.example.finalproject.view.activity.menu.Fragment_Property;
 import com.example.finalproject.view.adapter.ItemAdapter;
 import com.example.finalproject.view.adapter.ItemEditAdapter;
+import com.example.finalproject.view.adapter.PropertyAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,13 +50,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-public class PropertyActivity extends AppCompatActivity implements ItemEditAdapter.OnItemClickListener {
+public class PropertyActivity extends AppCompatActivity implements PropertyAdapter.OnItemClickListener {
 
     private FragmentPropertyBinding binding;
-    ItemEditAdapter itemEditAdapter;
-    ItemAdapter itemAdapter;
-    List<Item> itemList;
+    PropertyAdapter propertyAdapter;
+    List<Property> properties;
     RecyclerView recyclerView1, recyclerView;
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
@@ -75,33 +77,33 @@ public class PropertyActivity extends AppCompatActivity implements ItemEditAdapt
         mRef = mDatabase.getReference().child("Item");
         mStorage = FirebaseStorage.getInstance();
         binding.rcvListItem1.setHasFixedSize(true);
-        binding.rcvListItem1.setLayoutManager(new GridLayoutManager(PropertyActivity.this, 1));
-        itemList = new ArrayList<Item>();
-        itemEditAdapter = new ItemEditAdapter( PropertyActivity.this, itemList,  this);
-        binding.rcvListItem1.setAdapter(itemEditAdapter);
+        binding.rcvListItem1.setLayoutManager(new GridLayoutManager(PropertyActivity.this, 2));
+        properties = new ArrayList<Property>();
+        propertyAdapter = new PropertyAdapter( PropertyActivity.this, properties, this);
+        binding.rcvListItem1.setAdapter(propertyAdapter);
 
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Item item = snapshot.getValue(Item.class);
-                if (item!= null){
-                    itemList.add(item);
-                    itemEditAdapter.notifyDataSetChanged();
+                Property property = snapshot.getValue(Property.class);
+                if (property!= null){
+                    properties.add(property);
+                    propertyAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Item item = snapshot.getValue(Item.class);
-                if(  itemList==null|| itemList.isEmpty()){
+                Property property = snapshot.getValue(Property.class);
+                if(  properties==null|| properties.isEmpty()){
                     return;
                 }
-                for (int i=0;i<itemList.size();i++){
-                    if (item ==null ||item.getItemId() == itemList.get(i).getItemId()){
-                        itemList.set(i,item);
+                for (int i=0;i<properties.size();i++){
+                    if (property ==null ||property.getPropertyId() == properties.get(i).getPropertyId()){
+                        properties.set(i,property);
                     }
                 }
-                itemEditAdapter.notifyDataSetChanged();
+                propertyAdapter.notifyDataSetChanged();
 
             }
 
@@ -168,13 +170,7 @@ public class PropertyActivity extends AppCompatActivity implements ItemEditAdapt
         });
 
     }
-    private void onClickGoToDetail(Item item) {
-        Intent intent = new Intent(PropertyActivity.this, DetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("item property",item);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
+
 
 
 
@@ -253,7 +249,22 @@ public class PropertyActivity extends AppCompatActivity implements ItemEditAdapt
     }
 
 
+    @Override
+    public void onClickGoToDetailProperty(Property property) {
 
+
+        Intent intent = new Intent(PropertyActivity.this, PropertyDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("item property",property);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
 }
 
 

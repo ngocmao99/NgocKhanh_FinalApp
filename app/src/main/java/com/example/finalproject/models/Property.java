@@ -1,6 +1,8 @@
 package com.example.finalproject.models;
 
-public class Property {
+import java.io.Serializable;
+
+public class Property implements Serializable {
     private String propertyId;
     private String userId;
     private String propertyName;

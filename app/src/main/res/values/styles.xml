@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="tooltips" parent="Widget.MaterialComponents.Tooltip">
+        <item name="shapeAppearanceOverlay">@style/tooltipsOverlay</item>
+        <item name="backgroundTint">@color/first</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+
+    <style name="tooltipsOverlay">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

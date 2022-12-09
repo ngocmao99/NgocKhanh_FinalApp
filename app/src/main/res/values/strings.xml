@@ -1327,4 +1327,7 @@
     <string name="txt_suffix_bathroom">Bathroom</string>
     <string name="txt_suffix_area">m2</string>
     <string name="txt_img_btn_image">image button</string>
+    <string name="Findtext">Find the best property</string>
+    <string name="filter">Filter</string>
+    <string name="txt_property_type_find">Property Type</string>
 </resources>

@@ -107,7 +107,9 @@
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:scrollbars="horizontal"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#757575"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -139,7 +141,8 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_baseline_photo_camera_24"
-                    app:shapeAppearanceOverlay="@style/CustomPropertyImage" />
+                    app:shapeAppearanceOverlay="@style/CustomPropertyImage"
+                    tools:ignore="ImageContrastCheck,ImageContrastCheck" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -170,8 +173,10 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:fontFamily="@font/poppins"
+                    android:hint="@string/app_name"
                     android:popupElevation="8dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -496,66 +501,67 @@
                         android:textColor="@color/black"
                         android:textColorHint="#757575" />
                 </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <!-- Area -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:baselineAligned="false"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilArea"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <!-- Area -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/txt_area_unit"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
-                    app:suffixText="@string/txt_area_unit"
-                    app:startIconDrawable="@drawable/ic_baseline_area_primary"
-                    app:startIconTint="@color/first">
+                    android:layout_marginBottom="50dp"
+                    android:baselineAligned="false"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/area"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilArea"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:inputType="numberDecimal"
-                        android:textColor="@color/black"
-                        android:textColorHint="#757575" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_area_unit"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:suffixText="@string/txt_area_unit"
+                        app:startIconDrawable="@drawable/ic_baseline_area_primary"
+                        app:startIconTint="@color/first">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilPrice"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/txt_price"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_baseline_dollar"
-                    app:startIconTint="@color/first">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/price"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilPrice"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:inputType="numberDecimal"
-                        android:textColor="@color/black"
-                        android:textColorHint="#757575" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_price"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_baseline_dollar"
+                        app:startIconTint="@color/first">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
             </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

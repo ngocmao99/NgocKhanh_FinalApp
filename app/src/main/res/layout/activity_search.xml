@@ -1,9 +1,502 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.SearchActivity">
+    <!-- Property type autocomplete textview-->
+    <TextView
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/filter"
+        android:textSize="30sp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/txt_property_type_find"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPropertyType"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="dropdown_menu">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/propertyTypeFind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:popupElevation="8dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Property type autocomplete textview-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/txt_province"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPropertyTypeFind"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="dropdown_menu">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/cityFind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:fontFamily="@font/poppins"
+                android:popupElevation="8dp"
+                android:textColor="@color/black"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Property type autocomplete textview-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/txt_district"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_districtfind"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="dropdown_menu">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/districtFind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:fontFamily="@font/poppins"
+                android:popupElevation="8dp"
+                android:textColor="@color/black"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+
+            android:id="@+id/lo_energy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <TextView
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/txt_energy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Budget"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+
+            <LinearLayout
+                android:id="@+id/lo_slider_budget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/sliderBudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0"
+                    android:stepSize="10.0"
+                    android:valueTo="100"
+                    app:values="@array/hello"
+                    app:labelStyle="@style/tooltips"
+                    />
+            </LinearLayout>
+            <!--Add Facilities-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_facilities"
+                android:textColor="@color/first"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_wifi"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbGrocery"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_grocery"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbSpa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_spa"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbHotWater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_hot_water"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_education_institute"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbAirConditioner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_air_conditioner"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFind"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/txt_submit"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    app:cornerRadius="5dp"
+                    app:elevation="8dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbHospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_hospital"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbMarket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_nearest_market"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbPool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_swimming_pool"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facilitiesItemsLineFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.example.finalproject.view.activity.customCheckbox
+                    android:id="@+id/cbGim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_gim_facilities"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/erroCb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/poppins"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"/>
+
+            <!-- Quantity Session-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_add_quantity"
+                android:textColor="@color/first"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <!--Bedroom-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBedroom"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/txt_bed_room"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/ic_baseline_bed_primary"
+                    app:startIconTint="@color/first"
+                    app:suffixText="@string/txt_unit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bedRoom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textColorHint="#757575"
+                        android:drawablePadding="5dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Bathroom-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBathroom"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/txt_bathroom"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/ic_baseline_bath_room_primary"
+                    app:startIconTint="@color/first"
+                    app:suffixText="@string/txt_unit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bathRoom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <!-- Area -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:baselineAligned="false"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilArea"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_area_unit"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:suffixText="@string/txt_area_unit"
+                        app:startIconDrawable="@drawable/ic_baseline_area_primary"
+                        app:startIconTint="@color/first">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilPrice"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_price"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_baseline_dollar"
+                        app:startIconTint="@color/first">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/Find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</LinearLayout>

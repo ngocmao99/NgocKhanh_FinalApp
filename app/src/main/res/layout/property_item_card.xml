@@ -54,6 +54,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvNameProperty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/property_name"
@@ -63,6 +64,7 @@
                 android:layout_marginTop="10dp"/>
 
             <TextView
+                android:id="@+id/tvAddressProperty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_location"
@@ -70,7 +72,7 @@
                 android:drawablePadding="5dp"
                 android:textSize="16sp"
                 android:text="01 Trần Hưng Đạo, Đà Nẵng"
-                android:id="@+id/address"/>
+                />
 
             <LinearLayout
                 android:id="@+id/layoutPrice"
@@ -96,7 +98,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:gravity="start"
                     android:text="@string/txt_suffix_price"
                     android:textAlignment="center"
                     android:textColor="@color/dark_gray"

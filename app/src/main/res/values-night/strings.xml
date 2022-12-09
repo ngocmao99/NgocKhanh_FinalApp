@@ -1116,16 +1116,16 @@
     <string name="txt_facilities">Add Facilities*</string>
     <string name="txt_add_properties">Add Properties*</string>
     <string name="txt_properties_description">Write Property description</string>
-    <string name="txt_wwifi">Wifi</string>
+
     <string name="txt_nearest_grocery">Nearest Grocery</string>
     <string name="txt_spa">Spa</string>
-    <string name="txt_nearest_education_instute">Nearest Education Institute</string>
+
     <string name="txt_hot_water">Hot Water</string>
     <string name="txt_air_conditioner">Air Conditioner</string>
     <string name="txt_nearest_hospital">Nearest Hospital</string>
     <string name="txt_nearest_market">Nearest Market</string>
     <string name="txt_gim_facilities">Gim facilities</string>
-    <string name="txt_swiming_pool">Swiming pool</string>
+
     <string name="txt_add_quantity">Add Quantity</string>
     <string name="txt_bed_room">Bed Room</string>
     <string name="txt_bathroom">Bath Room</string>
@@ -1153,4 +1153,7 @@
     <string name="txt_suffix_bathroom">Bathroom</string>
     <string name="txt_suffix_area">m2</string>
     <string name="txt_img_btn_image">image button</string>
+    <string name="Findtext">Find the best property</string>
+    <string name="filter">Filter</string>
+    <string name="txt_property_type_find">Property Type</string>
 </resources>

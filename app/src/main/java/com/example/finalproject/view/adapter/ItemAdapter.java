@@ -32,7 +32,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     Context context;
     List<Item> itemList;
-    private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
+
     
     public ItemAdapter(Context context, List<Item> itemList) {
         this.context = context;

@@ -58,7 +58,7 @@
                     android:layout_marginBottom="5dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/propertyImage"
+                        android:id="@+id/propertyImageD"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
@@ -89,12 +89,11 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/suffixPrice"
+                    android:id="@+id/suffixPriceD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
-                    android:gravity="start"
                     android:text="@string/txt_suffix_price"
                     android:textAlignment="center"
                     android:textColor="@color/dark_gray"
@@ -105,7 +104,7 @@
 
             <!--Title-->
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/title_detailP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
