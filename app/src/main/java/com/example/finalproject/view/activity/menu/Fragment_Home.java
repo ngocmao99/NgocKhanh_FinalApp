@@ -46,7 +46,7 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 
-public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnItemClickListener, ItemAdapter.OnItemClickListener {
+public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnItemClickListener{
     //using view binding in fragment
     private HomefragmentBinding binding;
     private List<Property> itemList;
@@ -55,8 +55,6 @@ public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnIt
     private FirebaseStorage mStorage;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private double latitude, longitude;
-
-    private ItemAdapter propertyAdapter;
     private List<Property> properties;
 
     @Nullable
@@ -86,11 +84,11 @@ public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnIt
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         binding.rcvProperties.setLayoutManager(layoutManager);
-        binding.rcvProperties.setAdapter(propertyAdapter);
+        binding.rcvProperties.setAdapter(itemAdapter);
 
         properties = new ArrayList<Property>();
 
-        propertyAdapter = new ItemAdapter(getContext(),properties,this);
+        itemAdapter = new MPropertyAdapter(getContext(),itemList,this);
 
         mRef.child(PATH_PROPERTIES).addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,8 +99,8 @@ public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnIt
                         Property property = ds.getValue(Property.class);
                         properties.add(property);
                     }
-                    binding.rcvProperties.setAdapter(propertyAdapter);
-                    propertyAdapter.notifyDataSetChanged();
+                    binding.rcvProperties.setAdapter(itemAdapter);
+                    itemAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -207,23 +205,14 @@ public class Fragment_Home extends BaseFragment implements MPropertyAdapter.OnIt
 
     }
 
-
     @Override
-    public void onClickGoToDetailProperty(Property property) {
+    public void onClickGoToDetailVerticalProperty(Property property) {
         Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable(DETAIL_KEY, property);
+        bundle.putParcelable(DETAIL_KEY,property);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    @Override
-    public void onClickEditProperty(Property property) {
-
-    }
-
-    @Override
-    public void onClickRemoveProperty(Property property) {
+        Animatoo.animateSlideLeft(getContext());
 
     }
 }

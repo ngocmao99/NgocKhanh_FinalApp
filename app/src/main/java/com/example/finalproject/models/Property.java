@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 public class Property implements Parcelable {
     private String propertyId;
     private String userId;
@@ -53,6 +55,30 @@ public class Property implements Parcelable {
         this.area = area;
         this.price = price;
         this.timestamp = timestamp;
+    }
+
+    protected Property(Parcel in) {
+        propertyId = in.readString();
+        userId = in.readString();
+        propertyName = in.readString();
+        propertyLocation = in.readString();
+        lat = in.readDouble();
+        lng = in.readDouble();
+        province = in.readString();
+        postalCode = in.readString();
+        district = in.readString();
+        ward = in.readString();
+        houseNumber = in.readString();
+        propertyImage = in.readString();
+        propertyType = in.readString();
+        propertyFloor = in.readString();
+        propertyDescription = in.readString();
+        propertyFacilities = in.readString();
+        bedroom = in.readInt();
+        bathroom = in.readInt();
+        area = in.readDouble();
+        price = in.readLong();
+        timestamp = in.readLong();
     }
 
     public static final Creator<Property> CREATOR = new Creator<Property>() {
@@ -245,6 +271,7 @@ public class Property implements Parcelable {
         parcel.writeString(propertyId);
         parcel.writeString(userId);
         parcel.writeString(propertyName);
+        parcel.writeString(propertyLocation);
         parcel.writeDouble(lat);
         parcel.writeDouble(lng);
         parcel.writeString(province);
@@ -253,42 +280,14 @@ public class Property implements Parcelable {
         parcel.writeString(ward);
         parcel.writeString(houseNumber);
         parcel.writeString(propertyImage);
+        parcel.writeString(propertyType);
+        parcel.writeString(propertyFloor);
+        parcel.writeString(propertyDescription);
+        parcel.writeString(propertyFacilities);
         parcel.writeInt(bedroom);
         parcel.writeInt(bathroom);
-        parcel.writeLong(timestamp);
         parcel.writeDouble(area);
         parcel.writeLong(price);
-
+        parcel.writeLong(timestamp);
     }
-
-    protected Property(Parcel in) {
-        super();
-        readFromParcel(in);
-
-    }
-    public void readFromParcel(Parcel in){
-
-        propertyId = in.readString();
-        userId = in.readString();
-        propertyName = in.readString();
-        propertyLocation = in.readString();
-        lat = in.readDouble();
-        lng = in.readDouble();
-        province = in.readString();
-        postalCode = in.readString();
-        district = in.readString();
-        ward = in.readString();
-        houseNumber = in.readString();
-        propertyImage = in.readString();
-        propertyType = in.readString();
-        propertyFloor = in.readString();
-        propertyDescription = in.readString();
-        propertyFacilities = in.readString();
-        bedroom = in.readInt();
-        bathroom = in.readInt();
-        timestamp = in.readLong();
-        area = in.readDouble();
-        price = in.readLong();
-    }
-
 }

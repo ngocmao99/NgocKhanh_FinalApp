@@ -3,6 +3,7 @@ package com.example.finalproject.view.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -52,12 +53,7 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
     }
     public interface OnItemClickListener {
 
-        void onClickGoToDetailProperty(Property property);
-
-        void onClickEditProperty(Property property);
-
-        void onClickRemoveProperty(Property property);
-
+        void onClickGoToDetailVerticalProperty(Property property);
 
     }
 
@@ -73,13 +69,11 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
         private final MPropertyAdapter.OnItemClickListener onItemClickListener;
         private final ProppertyCardViewBinding propertyBinding;
 
-        public ViewHolder(MPropertyAdapter.OnItemClickListener onItemClickListener, ProppertyCardViewBinding propertyBinding) {
+        public ViewHolder( MPropertyAdapter.OnItemClickListener onItemClickListener, ProppertyCardViewBinding propertyBinding) {
             super(propertyBinding.getRoot());
             this.onItemClickListener = onItemClickListener;
             this.propertyBinding = propertyBinding;
         }
-
-
 
 
         @SuppressLint("SetTextI18n")
@@ -92,7 +86,7 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
                     .into(propertyBinding.propertyImage);
             String price = String.valueOf(property.getPrice());
             propertyBinding.price.setText("$ " + price);
-            propertyBinding.propertyItem.setOnClickListener(v -> mListener.onClickGoToDetailProperty(property));
+            propertyBinding.propertyItem.setOnClickListener(v -> mListener.onClickGoToDetailVerticalProperty(property));
         }
     }
 }

@@ -112,7 +112,7 @@ public class Fragment_Search extends BaseFragment implements PropertyAdapter.OnI
     public void onClickGoToDetailProperty(Property property) {
         Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable(DETAIL_KEY, property);
+        bundle.putParcelable("item property", property);
         intent.putExtras(bundle);
         startActivity(intent);
 
