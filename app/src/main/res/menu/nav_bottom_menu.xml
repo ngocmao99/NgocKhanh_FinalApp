@@ -8,15 +8,8 @@
 
     <item android:id="@+id/itemChat"
         android:enabled="true"
-        android:title="@string/inbox"
-        android:icon="@drawable/ic_chat"/>
-
-    <item android:id="@+id/itemFavorite"
-        android:enabled="true"
-        android:title="@string/item_favorite"
-        android:icon="@drawable/ic_fav"/>
-
-
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"/>
 
     <item android:id="@+id/itemProf"
         android:enabled="true"

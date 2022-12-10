@@ -275,6 +275,9 @@ public class UpdatePropertyActivity extends BaseActivity {
 
     private void updateUriGeo(String title, String address, Uri propertyUri, String type, String description, String facilities, String bedroom, String bathroom, String area, String price) {
         //init a storage filepath to contain property image
+        if (facilities.isEmpty()){
+            facilities = currentFac;
+        }
         StorageReference propertyImgRef = mStorageReference.child("PropertyImages").child(propertyUri.getLastPathSegment());
         //put property image to path storage / PropertyImages
         propertyImgRef.putFile(propertyUri).addOnSuccessListener(taskSnapshot -> {
@@ -286,8 +289,7 @@ public class UpdatePropertyActivity extends BaseActivity {
                 String currentUserId = mUser.getUid().trim();
                 //declare property path
                 DatabaseReference propertyRef = mRef.child("Properties");
-                //get property ID
-                String pId = propertyRef.push().getKey();
+
                 //push property detail to real-time database - init a hash map to contain details property
                 HashMap<String,Object> property = new HashMap<>();
                 property.put(P_ID,pId);
@@ -305,7 +307,7 @@ public class UpdatePropertyActivity extends BaseActivity {
                 property.put(P_TYPE,type);
                 property.put(FLOOR,binding.tietFloor.getText().toString().trim());
                 property.put(P_DESCRIPTION,description);
-                property.put(P_FACILITIES,facilities);
+                property.put(P_FACILITIES,handleFacilities());
                 property.put(BED,Integer.parseInt(bedroom));
                 property.put(BATH,Integer.parseInt(bathroom));
                 property.put(AREA,Double.parseDouble(area));
@@ -333,6 +335,9 @@ public class UpdatePropertyActivity extends BaseActivity {
         //declare property path
         DatabaseReference propertyRef = mRef.child("Properties");
         //push property detail to real-time database - init a hash map to contain details property
+        if (facilities.isEmpty()){
+            facilities = currentFac;
+        }
         HashMap<String,Object> property = new HashMap<>();
         property.put(P_ID,pId);
         property.put(P_CREATOR,currentUserId);
@@ -349,7 +354,7 @@ public class UpdatePropertyActivity extends BaseActivity {
         property.put(P_TYPE,type);
         property.put(FLOOR,binding.tietFloor.getText().toString().trim());
         property.put(P_DESCRIPTION,description);
-        property.put(P_FACILITIES,facilities);
+        property.put(P_FACILITIES,handleFacilities());
         property.put(BED,Integer.parseInt(bedroom));
         property.put(BATH,Integer.parseInt(bathroom));
         property.put(AREA,Double.parseDouble(area));
@@ -370,6 +375,9 @@ public class UpdatePropertyActivity extends BaseActivity {
 
     private void updateUri(String title, String address, Uri propertyUri, String type, String description, String facilities, String bedroom, String bathroom, String area, String price) {
         //init a storage filepath to contain property image
+        if (facilities.isEmpty()){
+            facilities = currentFac;
+        }
         StorageReference propertyImgRef = mStorageReference.child("PropertyImages").child(propertyUri.getLastPathSegment());
         //put property image to path storage / PropertyImages
         propertyImgRef.putFile(propertyUri).addOnSuccessListener(taskSnapshot -> {
@@ -398,7 +406,7 @@ public class UpdatePropertyActivity extends BaseActivity {
                 property.put(P_TYPE,type);
                 property.put(FLOOR,binding.tietFloor.getText().toString().trim());
                 property.put(P_DESCRIPTION,description);
-                property.put(P_FACILITIES,facilities);
+                property.put(P_FACILITIES,handleFacilities());
                 property.put(BED,Integer.parseInt(bedroom));
                 property.put(BATH,Integer.parseInt(bathroom));
                 property.put(AREA,Double.parseDouble(area));
@@ -425,6 +433,9 @@ public class UpdatePropertyActivity extends BaseActivity {
         String currentUserId = mUser.getUid().trim();
         //declare property path
         DatabaseReference propertyRef = mRef.child("Properties");
+        if (facilities.isEmpty()){
+            facilities = currentFac;
+        }
         //push property detail to real-time database - init a hash map to contain details property
         HashMap<String,Object> property = new HashMap<>();
         property.put(P_ID,pId);
@@ -442,7 +453,7 @@ public class UpdatePropertyActivity extends BaseActivity {
         property.put(P_TYPE,type);
         property.put(FLOOR,binding.tietFloor.getText().toString().trim());
         property.put(P_DESCRIPTION,description);
-        property.put(P_FACILITIES,facilities);
+        property.put(P_FACILITIES,handleFacilities());
         property.put(BED,Integer.parseInt(bedroom));
         property.put(BATH,Integer.parseInt(bathroom));
         property.put(AREA,Double.parseDouble(area));
@@ -466,6 +477,9 @@ public class UpdatePropertyActivity extends BaseActivity {
         String currentUserId = mUser.getUid().trim();
         //declare property path
         DatabaseReference propertyRef = mRef.child("Properties");
+        if (facilities.isEmpty()){
+            facilities = currentFac;
+        }
         //push property detail to real-time database - init a hash map to contain details property
         HashMap<String,Object> property = new HashMap<>();
         property.put(P_ID,pId);
@@ -483,7 +497,7 @@ public class UpdatePropertyActivity extends BaseActivity {
         property.put(P_TYPE,type);
         property.put(FLOOR,binding.tietFloor.getText().toString().trim());
         property.put(P_DESCRIPTION,description);
-        property.put(P_FACILITIES,facilities);
+        property.put(P_FACILITIES,handleFacilities());
         property.put(BED,Integer.parseInt(bedroom));
         property.put(BATH,Integer.parseInt(bathroom));
         property.put(AREA,Double.parseDouble(area));
@@ -525,6 +539,7 @@ public class UpdatePropertyActivity extends BaseActivity {
                 item.setOnCheckedChangeListener((compoundButton, b) -> {
                      if (compoundButton.isChecked()){
                         String selectedItem = compoundButton.getText().toString().trim();
+                        Toasty.normal(UpdatePropertyActivity.this,selectedItem,Toasty.LENGTH_LONG).show();
                         // if check box is checked -> add to facilities list
                         facilities.add(selectedItem);
                     }
@@ -902,7 +917,7 @@ public class UpdatePropertyActivity extends BaseActivity {
                 .setHeading(getString(R.string.txt_subtile_dialog_leave_update))
                 .setPopupDialogIcon(R.drawable.warning_icon)
                 .setCancelable(false)
-                .setPositiveButtonText(getString(R.string.txt_yes))
+                .setPositiveButtonText(getString(R.string.txt_yes_yes))
                 .setNegativeButtonTextColor(R.color.first)
                 .showDialog(new OnDialogButtonClickListener() {
                     @Override

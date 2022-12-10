@@ -1173,4 +1173,6 @@
     <string name="txt_popup_dialog_subtitle_update">Are you sure you want to update these infor</string>
     <string name="txt_recomended">Recommended</string>
     <string name="txt_all_property">Properties</string>
+    <string name="txt_yes_yes">Yes</string>
+    <string name="search">Search</string>
 </resources>

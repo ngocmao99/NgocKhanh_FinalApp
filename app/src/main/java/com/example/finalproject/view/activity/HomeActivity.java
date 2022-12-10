@@ -17,7 +17,6 @@ import com.example.finalproject.base.BaseActivity;
 import com.example.finalproject.databinding.ActivityHomeBinding;
 import com.example.finalproject.view.activity.menu.Fragment_Home;
 import com.example.finalproject.view.activity.menu.Fragment_Profile;
-import com.example.finalproject.view.activity.menu.Fragment_Property;
 import com.example.finalproject.view.activity.menu.Fragment_Search;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
@@ -57,10 +56,6 @@ public class HomeActivity extends BaseActivity {
             switch (item.getItemId()) {
                 case R.id.itemHome:
                     fragment = new Fragment_Home();
-                    break;
-
-                case R.id.itemFavorite:
-                    fragment = new Fragment_Property();
                     break;
 
                 case R.id.itemChat:

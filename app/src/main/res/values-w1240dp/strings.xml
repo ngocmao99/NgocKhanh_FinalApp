@@ -2,4 +2,6 @@
 <resources>
     <string name="txt_recomended">Recommended</string>
     <string name="txt_all_property">Properties</string>
+    <string name="txt_yes_yes">Yes</string>
+    <string name="search">Search</string>
 </resources>

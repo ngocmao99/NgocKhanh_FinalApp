@@ -1,7 +1,10 @@
 package com.example.finalproject.view.activity;
 
+import static com.example.finalproject.utils.Constants.BODY_MAIL;
 import static com.example.finalproject.utils.Constants.DETAIL_KEY;
+import static com.example.finalproject.utils.Constants.MAIL_TO;
 import static com.example.finalproject.utils.Constants.PATH_USER;
+import static com.example.finalproject.utils.Constants.SUBJECT;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
 import android.annotation.SuppressLint;
@@ -10,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -105,54 +109,8 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        
-        //ge phone number and email address
-        getPhoneAndMail(ownerId);
-        
-        //call button
-        callToOwner(phoneNumber);
-        
-        //send email 
-        sendMailToOwner(email);
-    }
 
-    private void sendMailToOwner(String email) {
-    }
 
-    private void callToOwner(String phoneNumber) {
-        binding.btnCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (phoneNumber.isEmpty()){
-                    Toasty.error(PropertyDetailActivity.this,"Cannot call to owner. Kindly send mail for him/her",Toasty.LENGTH_SHORT).show();
-                }else {
-                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",phoneNumber,null)));
-                    Animatoo.animateSlideLeft(PropertyDetailActivity.this);
-                }
-
-            }
-        });
-    }
-
-    private void getPhoneAndMail(String userId){
-        DatabaseReference userRef = mRef.child(PATH_USER);
-        userRef.orderByChild(USER_ID).equalTo(userId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot ds : snapshot.getChildren()){
-                        User owner = ds.getValue(User.class);
-                        phoneNumber = owner.getPhoneNumber();
-                        email = owner.getEmail();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void handleFacility(String facilities) {
@@ -196,7 +154,7 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         User owner = ds.getValue(User.class);
 
-                        binding.userName.setText(owner.getFullName());
+                        binding.name.setText(owner.getFullName());
                         //handle user image
                         String userImageId = owner.getUserImgId().trim();
                         if (!userImageId.isEmpty()) {
@@ -210,6 +168,38 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
                                     .centerInside()
                                     .into(binding.userImg);
                         }
+
+                        // call btn
+                        String phonenumber = owner.getPhoneNumber().trim();
+                        binding.btnCall.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (!phonenumber.isEmpty()){
+                                    startActivity(new Intent(Intent.ACTION_DIAL,Uri.fromParts("tel",phonenumber,null)));
+                                    Animatoo.animateSlideLeft(PropertyDetailActivity.this);
+                                }
+                            }
+                        });
+
+                        //mail btn
+                        String email = owner.getEmail().trim();
+                        binding.btnMail.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String subject = "You have a message at Fluffy Home from ";
+                                String bodyMail = subject+":"+"You have a message at Fluffy Home from";
+                                Intent i = new Intent(Intent.ACTION_SENDTO, Uri.parse(MAIL_TO + email + SUBJECT + subject
+                                        + BODY_MAIL + bodyMail));
+                                try {
+                                    startActivity(Intent.createChooser(i, getString(R.string.txt_title_email_intent)));
+
+                                } catch (android.content.ActivityNotFoundException ex) {
+                                    Toasty.error(PropertyDetailActivity.this, getString(R.string.txt_error_intent_email),Toast.LENGTH_SHORT).show();;
+                                }
+                            }
+                        });
+
+
                     }
 
                 }

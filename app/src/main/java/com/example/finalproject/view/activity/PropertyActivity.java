@@ -156,7 +156,7 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
 
     @Override
     public void onClickEditProperty(Property property) {
-        Intent intent = new Intent(PropertyActivity.this, PropertyDetailActivity.class);
+        Intent intent = new Intent(PropertyActivity.this, UpdatePropertyActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(DETAIL_KEY,property);
         intent.putExtras(bundle);
