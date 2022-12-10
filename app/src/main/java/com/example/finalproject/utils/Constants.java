@@ -160,6 +160,7 @@ public class Constants {
     public static final String TIME = "timestamp";
 
     public static final String DETAIL_KEY = "item property";
+    public static final String UPDATE_DB = "Update Property";
 
 
 

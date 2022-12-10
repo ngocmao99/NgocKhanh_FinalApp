@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.orhanobut:dialogplus:1.11@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/6c0882b1bb7f90165ee7f8603f1ffd60/transformed/jetified-dialogplus-1.11/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/6c0882b1bb7f90165ee7f8603f1ffd60/transformed/jetified-dialogplus-1.11/res" />
+      <root url="file://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/6c0882b1bb7f90165ee7f8603f1ffd60/transformed/jetified-dialogplus-1.11/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../gradleAndroid/caches/modules-2/files-2.1/com.orhanobut/dialogplus/1.11/56e6feff7f932fdd9308821b59da17d3987bec3/dialogplus-1.11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradleAndroid/caches/modules-2/files-2.1/com.orhanobut/dialogplus/1.11/dae75f1a1cd49e7334e10cfd8c02735c18e255c8/dialogplus-1.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

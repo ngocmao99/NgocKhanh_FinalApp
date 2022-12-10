@@ -47,8 +47,6 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
     private double lng;
     private String title;
     private String facilities;
-
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

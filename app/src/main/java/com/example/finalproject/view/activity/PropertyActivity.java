@@ -8,12 +8,8 @@ import static com.example.finalproject.utils.Constants.P_ID;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -25,9 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseActivity;
+import com.example.finalproject.databinding.ActivityEditItemBinding;
 import com.example.finalproject.databinding.ActivityPropertyBinding;
 import com.example.finalproject.models.Property;
 import com.example.finalproject.view.adapter.PropertyAdapter;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -57,6 +55,19 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
     private FirebaseUser mUser;
     private String currentUserId;
     private String propertyID;
+    private ActivityEditItemBinding itemBinding;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private double lat, lng;
+    private String propertyAddress;
+    private String postalCode;
+    private String province;
+    private String district;
+    private String ward;
+    private String propertyImage;
+    private String houseNumber;
+    private Uri propertyUri;
+    private String propertyFacilities;
+    private Dialog updateDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +81,15 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
 
         //get current User Id
         currentUserId = mUser.getUid();
+
+        //Inflate dialog updating
+        itemBinding = ActivityEditItemBinding.inflate(getLayoutInflater());
+
+        //Init dialog
+        updateDialog = new Dialog(this);
+
+        //set view
+        updateDialog.setContentView(itemBinding.getRoot());
 
         //config recycle view
         binding.rcvListItem1.setHasFixedSize(true);
@@ -141,21 +161,15 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
 
     @Override
     public void onClickEditProperty(Property property) {
-        openDialogUpdateProperty(property);
+        Intent intent = new Intent(PropertyActivity.this, UpdatePropertyActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(DETAIL_KEY,property);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        Animatoo.animateSlideLeft(PropertyActivity.this);
 
     }
 
-    //open a dialog to update property information
-    private void openDialogUpdateProperty(Property property) {
-        final Dialog updateDialog = new Dialog(this);
-        updateDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        updateDialog.setContentView(R.layout.activity_edit_item);
-        Window window = updateDialog.getWindow();
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        updateDialog.setCancelable(false);
-
-    }
 
     @Override
     public void onClickRemoveProperty(Property property) {
@@ -203,10 +217,6 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
 
 
 
-
-    }
-
-    public void showPopup(View v){
 
     }
 

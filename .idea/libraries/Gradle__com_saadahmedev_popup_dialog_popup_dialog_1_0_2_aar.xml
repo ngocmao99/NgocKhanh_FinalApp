@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.saadahmedev.popup-dialog:popup-dialog:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/69a7f00eb178af8719b6ba3be52b0668/transformed/jetified-popup-dialog-1.0.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/69a7f00eb178af8719b6ba3be52b0668/transformed/jetified-popup-dialog-1.0.2/res" />
+      <root url="file://$PROJECT_DIR$/../../gradleAndroid/caches/transforms-3/69a7f00eb178af8719b6ba3be52b0668/transformed/jetified-popup-dialog-1.0.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../gradleAndroid/caches/modules-2/files-2.1/com.saadahmedev.popup-dialog/popup-dialog/1.0.2/858652906dab0594f085a2ba1049032bf05af232/popup-dialog-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.finalproject.databinding.PropertyItemCardBinding;
 import com.example.finalproject.models.Property;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHolder>{
@@ -24,6 +25,11 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
         this.mContext = mContext;
         this.properties = properties;
         this.listener = listener;
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    public void searchDataList(ArrayList<Property> searchList){
+        properties=searchList;
+        notifyDataSetChanged();
     }
 
     public void setOnItemClickListener(PropertyAdapter.OnItemClickListener onItemClickListener) {

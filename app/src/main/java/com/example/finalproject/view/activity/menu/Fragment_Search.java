@@ -6,28 +6,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.R;
 import com.example.finalproject.base.BaseFragment;
-import com.example.finalproject.databinding.FragmentPropertyBinding;
 import com.example.finalproject.databinding.SearchFragmentBinding;
-import com.example.finalproject.models.Item;
-import com.example.finalproject.view.activity.DetailActivity;
-import com.example.finalproject.view.activity.PropertyActivity;
+import com.example.finalproject.models.Property;
+import com.example.finalproject.view.activity.PropertyDetailActivity;
 import com.example.finalproject.view.activity.SearchActivity;
-import com.example.finalproject.view.adapter.ItemAdapter;
-import com.example.finalproject.view.adapter.ItemEditAdapter;
 import com.example.finalproject.view.adapter.PropertyAdapter;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +28,11 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class Fragment_Search extends BaseFragment implements ItemEditAdapter.OnItemClickListener {
+public class Fragment_Search extends BaseFragment implements PropertyAdapter.OnItemClickListener {
     private SearchFragmentBinding binding;
-    private List<Item> itemList;
-    private ItemEditAdapter itemAdapter;
+    private List<Property> itemList;
+    private PropertyAdapter itemAdapter;
     private RecyclerView recyclerView;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
@@ -67,8 +57,8 @@ public class Fragment_Search extends BaseFragment implements ItemEditAdapter.OnI
         binding.rcvSearch.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         binding.rcvSearch.setAdapter(itemAdapter);
 
-        itemList = new ArrayList<Item>();
-        itemAdapter = new ItemEditAdapter(getContext(), itemList,  this);
+        itemList = new ArrayList<Property>();
+        itemAdapter = new PropertyAdapter(getContext(), itemList,  this);
 
 
         mRef.addValueEventListener(new ValueEventListener() {
@@ -76,7 +66,7 @@ public class Fragment_Search extends BaseFragment implements ItemEditAdapter.OnI
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Item item = dataSnapshot.getValue(Item.class);
+                    Property item = dataSnapshot.getValue(Property.class);
                     itemList.add(item);
                 }
                 itemAdapter.notifyDataSetChanged();
@@ -105,9 +95,9 @@ public class Fragment_Search extends BaseFragment implements ItemEditAdapter.OnI
         });
     }
     public void searchList(String text){
-        ArrayList<Item> searchList= new ArrayList<>();
-        for (Item item:itemList){
-            if(item.getItemName().toLowerCase().contains(text.toLowerCase())){
+        ArrayList<Property> searchList= new ArrayList<>();
+        for (Property item:itemList){
+            if(item.getPropertyName().toLowerCase().contains(text.toLowerCase())){
                 searchList.add(item);
             }
         }
@@ -115,28 +105,23 @@ public class Fragment_Search extends BaseFragment implements ItemEditAdapter.OnI
     }
 
 
-
-
-
-
-
-
-    private void onClickGoToDetail(Item item) {
-        Intent intent = new Intent(getActivity(), DetailActivity.class);
+    @Override
+    public void onClickGoToDetailProperty(Property property) {
+        Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("item property", item);
+        bundle.putSerializable("item property", property);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-
-    @Override
-    public void onItemEditClicked(Item item) {
 
     }
 
     @Override
-    public void onItemDeleteClicked(Item item) {
+    public void onClickEditProperty(Property property) {
+
+    }
+
+    @Override
+    public void onClickRemoveProperty(Property property) {
 
     }
 }

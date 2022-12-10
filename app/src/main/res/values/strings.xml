@@ -1338,6 +1338,14 @@
     <string name="txt_popup_dialog_subtitle_delete">Are you sure want delete this property?</string>
     <string name="txt_yes">Delete</string>
     <string name="txt_successful_remove_propety">Property was deleted successful!</string>
+    <string name="txt_update_propperty_details">Edit Property Details</string>
+    <string name="txt_title_dialog_leave">Leave create new property</string>
+    <string name="txt_subtile_dialog_leave">Are you sure you want to leave now?</string>
+    <string name="txt_title_dialog_leave_update">Leave update property</string>
+    <string name="txt_subtile_dialog_leave_update">Are you sure you want to leave?</string>
+    <string name="txt_create_new_property">Create New Property</string>
+    <string name="txt_title_popup_update">Update property details</string>
+    <string name="txt_popup_dialog_subtitle_update">Are you sure you want to update these infor</string>
     <string name="OB1w">Looking for the perfect home for you. In a few touches without losing time.</string>
     <string name="OB1">Search</string>
     <string name="OB2w">Once you have found the perfect home contract the seller and receive an answer in a few hours.</string>

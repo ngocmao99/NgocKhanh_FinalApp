@@ -48,6 +48,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
@@ -219,15 +220,11 @@ public class AddActivity extends BaseActivity {
                 binding.tilPrice.requestFocus();
             }
 
-            if (TextUtils.isEmpty(facilities)) {
-                Toasty.error(AddActivity.this, "Choose at least one facility option!").show();
-            }
-
             if (propertyUri == null) {
                 Toasty.error(AddActivity.this, "Kindly select a image for your property!").show();
             }
 
-            if (TextUtils.isEmpty(title) || TextUtils.isEmpty(address) || TextUtils.isEmpty(type) || TextUtils.isEmpty(description) || TextUtils.isEmpty(facilities) ||
+            if (TextUtils.isEmpty(title) || TextUtils.isEmpty(address) || TextUtils.isEmpty(type) || TextUtils.isEmpty(description)||
                     TextUtils.isEmpty(bedroom) || bedroom.equals(ZERO) || TextUtils.isEmpty(bathroom) || bathroom.equals(ZERO) || TextUtils.isEmpty(area) || !area.matches(NUMBER_VALID_FORMAT) ||
                     propertyUri == null) {
                 Toasty.error(AddActivity.this, getString(R.string.error_empty_required_fields)).show();
@@ -669,6 +666,35 @@ public class AddActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION_CODE);
         }
 
+    }
+
+    private void handleToolbar() {
+        binding.toolBar.toolBarBack.setOnClickListener(view -> PopupDialog.getInstance(AddActivity.this)
+                .setStyle(Styles.STANDARD)
+                .setHeading(getString(R.string.txt_title_dialog_leave))
+                .setHeading(getString(R.string.txt_subtile_dialog_leave))
+                .setPopupDialogIcon(R.drawable.warning_icon)
+                .setCancelable(false)
+                .setPositiveButtonText(getString(R.string.txt_yes))
+                .setNegativeButtonTextColor(R.color.first)
+                .showDialog(new OnDialogButtonClickListener() {
+                    @Override
+                    public void onPositiveClicked(Dialog dialog) {
+                        super.onPositiveClicked(dialog);
+                        showLoading();
+                        onBackPressed();
+                        Animatoo.animateSlideRight(AddActivity.this);
+                        onSupportNavigateUp();
+                    }
+
+                    @Override
+                    public void onNegativeClicked(Dialog dialog) {
+                        super.onNegativeClicked(dialog);
+                        dialog.dismiss();
+                    }
+                }));
+        binding.toolBar.toolbarTitle.setText(getString(R.string.txt_create_new_property));
+        binding.toolBar.toolbarTitle.setVisibility(View.VISIBLE);
     }
 
 
