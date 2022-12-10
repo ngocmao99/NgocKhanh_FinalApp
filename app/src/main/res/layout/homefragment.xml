@@ -1,135 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.HomeActivity"
     android:orientation="vertical">
-
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:ignore="UselessParent">
+            android:paddingTop="15dp"
+            android:paddingStart="10dp">
 
-
-            <FrameLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Nearby"
+                android:textColor="@color/first"/>
 
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="521dp"
-                    android:layout_marginTop="140dp"
-                    android:background="@drawable/custome_background_home"
-                    android:fitsSystemWindows="true">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvListItem"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="15dp"
-                        android:paddingTop="40dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_all_property"
+                android:textColor="@color/first"
+                android:layout_marginTop="20dp"/>
 
-                        <!--Category-->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="@string/txt_title_category"
-                            android:textColor="@color/first"
-                            android:textSize="18sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvProperties"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" />
 
-                        <!-- Recycler view Category-->
-                        <androidx.coordinatorlayout.widget.CoordinatorLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="5dp">
-
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rcvListItem"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:orientation="horizontal"
-                                app:layout_anchorGravity="center"
-                                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                        <Button
-                            android:id="@+id/btn_add_home"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="select to add new item" />
-
-
-                    </LinearLayout>
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                <!--Search Bar-->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="110dp"
-                    android:backgroundTint="@color/black_500"
-                    android:outlineAmbientShadowColor="@color/black_500"
-                    android:outlineSpotShadowColor="@color/black"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp"
-                    tools:ignore="UnusedAttribute">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                            android:layout_width="0dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:hint="@string/txt_hint_search_box"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxStrokeWidth="0dp"
-                            app:boxStrokeWidthFocused="0.5dp"
-                            app:endIconMode="clear_text"
-                            app:startIconDrawable="@drawable/ic_search">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/poppins"
-                                android:inputType="text"
-                                android:textColor="@color/black_500"
-                                android:textSize="14sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:elevation="20dp"
-                            android:outlineAmbientShadowColor="@color/black_500"
-                            android:outlineSpotShadowColor="@color/black">
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                style="@style/CustomeFilterImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_filter" />
-
-                        </com.google.android.material.card.MaterialCardView>
-
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </FrameLayout>
         </LinearLayout>
-</RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -5,6 +5,8 @@ import static com.example.finalproject.utils.Constants.PATH_USER;
 import static com.example.finalproject.utils.Constants.USER_ID;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +38,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCallback {
     private ActivityPropertyDetailBinding binding;
     private String propertyTitle;
@@ -47,6 +51,9 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
     private double lng;
     private String title;
     private String facilities;
+    private String phoneNumber;
+    private String email;
+    private String ownerId;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +70,7 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
         showLoading();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            Property property = (Property) bundle.get(DETAIL_KEY);
+            Property property = (Property) bundle.getParcelable(DETAIL_KEY);
             propertyTitle = property.getPropertyName();
             Picasso.get().load(property.getPropertyImage()).into(binding.propertyImage);
             binding.price.setText("$ " + property.getPrice());
@@ -85,11 +92,12 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
             getOwnerInfo(userId);
             //get facilities
             facilities = property.getPropertyFacilities();
-            handleFacility(facilities);
             hideLoading();
         } else {
             return;
         }
+
+        handleFacility(facilities);
         //handle back button and toolbar
         handleToolbar();
 
@@ -97,6 +105,54 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        
+        //ge phone number and email address
+        getPhoneAndMail(ownerId);
+        
+        //call button
+        callToOwner(phoneNumber);
+        
+        //send email 
+        sendMailToOwner(email);
+    }
+
+    private void sendMailToOwner(String email) {
+    }
+
+    private void callToOwner(String phoneNumber) {
+        binding.btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (phoneNumber.isEmpty()){
+                    Toasty.error(PropertyDetailActivity.this,"Cannot call to owner. Kindly send mail for him/her",Toasty.LENGTH_SHORT).show();
+                }else {
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",phoneNumber,null)));
+                    Animatoo.animateSlideLeft(PropertyDetailActivity.this);
+                }
+
+            }
+        });
+    }
+
+    private void getPhoneAndMail(String userId){
+        DatabaseReference userRef = mRef.child(PATH_USER);
+        userRef.orderByChild(USER_ID).equalTo(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for (DataSnapshot ds : snapshot.getChildren()){
+                        User owner = ds.getValue(User.class);
+                        phoneNumber = owner.getPhoneNumber();
+                        email = owner.getEmail();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void handleFacility(String facilities) {
@@ -120,6 +176,7 @@ public class PropertyDetailActivity extends BaseActivity implements OnMapReadyCa
 
 
     }
+    
 
     private void handleToolbar() {
         binding.toolBar.toolBarBack.setOnClickListener(view -> {

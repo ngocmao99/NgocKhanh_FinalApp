@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
         <FrameLayout
             android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_height="160dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,8 +24,8 @@
             android:layout_marginTop="8dp">
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/propertyImage"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_baseline_photo_camera_24"

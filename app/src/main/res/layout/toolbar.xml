@@ -43,7 +43,15 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_search"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:contentDescription="@string/btn_search" />
+
+        <ImageView
+            android:id="@+id/tookBarAdd"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_plus_primary"
+            android:visibility="gone"
+            android:contentDescription="my property" />
     </FrameLayout>
 </androidx.appcompat.widget.Toolbar>

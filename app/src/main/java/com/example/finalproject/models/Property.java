@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 public class Property implements Parcelable {
     private String propertyId;
     private String userId;
@@ -56,6 +54,18 @@ public class Property implements Parcelable {
         this.price = price;
         this.timestamp = timestamp;
     }
+
+    public static final Creator<Property> CREATOR = new Creator<Property>() {
+        @Override
+        public Property createFromParcel(Parcel in) {
+            return new Property(in);
+        }
+
+        @Override
+        public Property[] newArray(int size) {
+            return new Property[size];
+        }
+    };
 
     public String getPropertyId() {
         return propertyId;
@@ -232,6 +242,53 @@ public class Property implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(propertyId);
+        parcel.writeString(userId);
+        parcel.writeString(propertyName);
+        parcel.writeDouble(lat);
+        parcel.writeDouble(lng);
+        parcel.writeString(province);
+        parcel.writeString(postalCode);
+        parcel.writeString(district);
+        parcel.writeString(ward);
+        parcel.writeString(houseNumber);
+        parcel.writeString(propertyImage);
+        parcel.writeInt(bedroom);
+        parcel.writeInt(bathroom);
+        parcel.writeLong(timestamp);
+        parcel.writeDouble(area);
+        parcel.writeLong(price);
 
     }
+
+    protected Property(Parcel in) {
+        super();
+        readFromParcel(in);
+
+    }
+    public void readFromParcel(Parcel in){
+
+        propertyId = in.readString();
+        userId = in.readString();
+        propertyName = in.readString();
+        propertyLocation = in.readString();
+        lat = in.readDouble();
+        lng = in.readDouble();
+        province = in.readString();
+        postalCode = in.readString();
+        district = in.readString();
+        ward = in.readString();
+        houseNumber = in.readString();
+        propertyImage = in.readString();
+        propertyType = in.readString();
+        propertyFloor = in.readString();
+        propertyDescription = in.readString();
+        propertyFacilities = in.readString();
+        bedroom = in.readInt();
+        bathroom = in.readInt();
+        timestamp = in.readLong();
+        area = in.readDouble();
+        price = in.readLong();
+    }
+
 }

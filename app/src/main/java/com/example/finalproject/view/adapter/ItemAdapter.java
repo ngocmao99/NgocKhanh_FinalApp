@@ -9,18 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.finalproject.databinding.ProppertyCardViewBinding;
+import com.example.finalproject.databinding.MainItemBinding;
 import com.example.finalproject.models.Property;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.ViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+
     private final Context mContext;
     List<Property> propertyList;
-    private OnItemClickListener mListener;
+    private ItemAdapter.OnItemClickListener mListener;
 
-    public MPropertyAdapter(Context mContext, List<Property> propertyList, OnItemClickListener mListener) {
+    public ItemAdapter(Context mContext, List<Property> propertyList, ItemAdapter.OnItemClickListener mListener) {
         this.mContext = mContext;
         this.propertyList = propertyList;
         this.mListener = mListener;
@@ -32,20 +33,20 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
         notifyDataSetChanged();
     }
 
-    public void setOnItemClickListener(MPropertyAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(ItemAdapter.OnItemClickListener onItemClickListener) {
         mListener = onItemClickListener;
     }
 
     @NonNull
     @Override
-    public MPropertyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ProppertyCardViewBinding propertyBinding = ProppertyCardViewBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        return new MPropertyAdapter.ViewHolder(mListener,propertyBinding);
+    public ItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        MainItemBinding propertyBinding = MainItemBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        return new ItemAdapter.ViewHolder(mListener,propertyBinding);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull MPropertyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
         Property item = propertyList.get(position);
         holder.bind(item);
 
@@ -53,11 +54,6 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
     public interface OnItemClickListener {
 
         void onClickGoToDetailProperty(Property property);
-
-        void onClickEditProperty(Property property);
-
-        void onClickRemoveProperty(Property property);
-
 
     }
 
@@ -70,30 +66,27 @@ public class MPropertyAdapter extends RecyclerView.Adapter<MPropertyAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final MPropertyAdapter.OnItemClickListener onItemClickListener;
-        private final ProppertyCardViewBinding propertyBinding;
+        private final ItemAdapter.OnItemClickListener onItemClickListener;
+        private final MainItemBinding propertyBinding;
 
-        public ViewHolder(MPropertyAdapter.OnItemClickListener onItemClickListener, ProppertyCardViewBinding propertyBinding) {
+        public ViewHolder(ItemAdapter.OnItemClickListener onItemClickListener, MainItemBinding propertyBinding) {
             super(propertyBinding.getRoot());
             this.onItemClickListener = onItemClickListener;
             this.propertyBinding = propertyBinding;
         }
 
 
-
-
         @SuppressLint("SetTextI18n")
         public void bind(Property property) {
-            propertyBinding.tvNameProperty.setText(property.getPropertyName());
-            propertyBinding.tvAddressProperty.setText(property.getHouseNumber() +
+            propertyBinding.tvNameItem.setText(property.getPropertyName());
+            propertyBinding.tvAddressItem.setText(property.getHouseNumber() +
                     ", " + property.getProvince());
             Glide.with(mContext).load(property.getPropertyImage())
                     .centerCrop()
-                    .into(propertyBinding.propertyImage);
+                    .into(propertyBinding.itemImg);
             String price = String.valueOf(property.getPrice());
-            propertyBinding.price.setText("$ " + price);
-            propertyBinding.propertyItem.setOnClickListener(v -> mListener.onClickGoToDetailProperty(property));
+            propertyBinding.tvPriceItem.setText("$ " + price);
+            propertyBinding.layoutItem.setOnClickListener(v -> mListener.onClickGoToDetailProperty(property));
         }
     }
 }
-

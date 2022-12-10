@@ -1,5 +1,8 @@
 package com.example.finalproject.view.activity.menu;
 
+import static com.example.finalproject.utils.Constants.DETAIL_KEY;
+import static com.example.finalproject.utils.Constants.PATH_PROPERTIES;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,11 +53,11 @@ public class Fragment_Search extends BaseFragment implements PropertyAdapter.OnI
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference().child("Item");
+        mRef = mDatabase.getReference().child(PATH_PROPERTIES);
         mStorage = FirebaseStorage.getInstance();
         binding.search.clearFocus();
         binding.rcvSearch.setHasFixedSize(true);
-        binding.rcvSearch.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        binding.rcvSearch.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.rcvSearch.setAdapter(itemAdapter);
 
         itemList = new ArrayList<Property>();
@@ -109,7 +112,7 @@ public class Fragment_Search extends BaseFragment implements PropertyAdapter.OnI
     public void onClickGoToDetailProperty(Property property) {
         Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("item property", property);
+        bundle.putParcelable(DETAIL_KEY, property);
         intent.putExtras(bundle);
         startActivity(intent);
 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_recomended">Recommended</string>
+    <string name="txt_all_property">Properties</string>
+</resources>
