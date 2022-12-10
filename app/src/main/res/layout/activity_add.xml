@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,11 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/svInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -239,10 +238,9 @@
                     android:layout_height="200dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="textMultiLine"
-                    android:textColor="@color/black"
-                    android:textColorHint="#757575"
                     android:scrollbars="vertical"
-                    />
+                    android:textColor="@color/black"
+                    android:textColorHint="#757575" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Add Facilities-->
@@ -387,7 +385,7 @@
                     android:textSize="15sp" />
 
                 <com.example.finalproject.view.activity.customCheckbox
-                    android:id="@+id/cbPool"
+                    android:id="@+id/cbGim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -395,9 +393,10 @@
                     android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/txt_swimming_pool"
+                    android:text="@string/txt_gim_facilities"
                     android:textColor="@color/dark_gray"
                     android:textSize="15sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -409,16 +408,17 @@
                 android:orientation="horizontal">
 
                 <com.example.finalproject.view.activity.customCheckbox
-                    android:id="@+id/cbGim"
+                    android:id="@+id/cbPool"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@android:color/transparent"
                     android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/txt_gim_facilities"
+                    android:text="@string/txt_swimming_pool"
                     android:textColor="@color/dark_gray"
                     android:textSize="15sp" />
+
             </LinearLayout>
 
             <TextView
@@ -426,10 +426,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:textColor="@color/red"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins"
-                android:visibility="gone"
-                android:layout_marginTop="5dp"/>
+                android:textColor="@color/red"
+                android:visibility="gone" />
 
             <!-- Quantity Session-->
             <TextView
@@ -445,62 +445,68 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <!--Bedroom-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilBedroom"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/txt_bed_room"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_baseline_bed_primary"
-                    app:startIconTint="@color/first"
-                    app:suffixText="@string/txt_unit">
+                    android:baselineAligned="false"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/bedRoom"
+                    <!--Bedroom-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilBedroom"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:inputType="number"
-                        android:textColor="@color/black"
-                        android:textColorHint="#757575"
-                        android:drawablePadding="5dp"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_bed_room"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_baseline_bed_primary"
+                        app:startIconTint="@color/first"
+                        app:suffixText="@string/txt_unit">
 
-                <!--Bathroom-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilBathroom"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/txt_bathroom"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_baseline_bath_room_primary"
-                    app:startIconTint="@color/first"
-                    app:suffixText="@string/txt_unit">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/bedRoom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/bathRoom"
+                    <!--Bathroom-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilBathroom"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:inputType="number"
-                        android:textColor="@color/black"
-                        android:textColorHint="#757575" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/txt_bathroom"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_baseline_bath_room_primary"
+                        app:startIconTint="@color/first"
+                        app:suffixText="@string/txt_unit">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/bathRoom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="number"
+                            android:textColor="@color/black"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
                 <!-- Area -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -521,9 +527,9 @@
                         android:hint="@string/txt_area_unit"
                         app:boxStrokeWidth="1dp"
                         app:endIconMode="clear_text"
-                        app:suffixText="@string/txt_area_unit"
                         app:startIconDrawable="@drawable/ic_baseline_area_primary"
-                        app:startIconTint="@color/first">
+                        app:startIconTint="@color/first"
+                        app:suffixText="@string/txt_area_unit">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/area"
@@ -561,25 +567,22 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="50dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/txt_submit"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="5dp"
+                app:elevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/toolBar"
+                app:layout_constraintStart_toEndOf="@+id/toolBar"
+                app:layout_constraintTop_toBottomOf="@+id/svInfo" />
         </LinearLayout>
-    </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="50dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/txt_submit"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        app:cornerRadius="5dp"
-        app:elevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toolBar"
-        app:layout_constraintStart_toEndOf="@+id/toolBar"
-        app:layout_constraintTop_toBottomOf="@+id/svInfo" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

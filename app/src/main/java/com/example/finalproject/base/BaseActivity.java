@@ -1,9 +1,7 @@
 package com.example.finalproject.base;
 
 
-
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -17,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.finalproject.dialog.LoadingDialog;
 import com.example.finalproject.view.activity.dialog.DialogCustom;
 import com.example.finalproject.view.activity.dialog.LoadingDialogCustom;
 import com.google.firebase.auth.FirebaseAuth;
@@ -108,7 +105,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void hideLoading() {
-        loadingDialog.hideLoadingDialog();
+        if (loadingDialog != null){
+            loadingDialog.hideLoadingDialog();
+        }
     }
 
     protected void showDialog(Drawable image, String title, String subTitle, int color){
@@ -146,4 +145,5 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void handleUserSignOut(FirebaseUser mUser){
     }
+
 }

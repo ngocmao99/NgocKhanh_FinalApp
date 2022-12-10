@@ -1,29 +1,22 @@
 package com.example.finalproject.view.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.finalproject.databinding.PropertyItemCardBinding;
-import com.example.finalproject.models.Item;
 import com.example.finalproject.models.Property;
-import com.example.finalproject.view.activity.DetailActivity;
-import com.example.finalproject.view.activity.PropertyActivity;
-import com.example.finalproject.view.activity.PropertyDetailActivity;
-import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHolder>{
 
-    private Context mContext;
+    private final Context mContext;
     List<Property> properties;
     private OnItemClickListener listener;
 
@@ -33,7 +26,7 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
         this.listener = listener;
     }
 
-    public void setOnItemClickListener(PropertyAdapter.OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(PropertyAdapter.OnItemClickListener onItemClickListener) {
         listener = onItemClickListener;
     }
 
@@ -52,22 +45,26 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
         holder.bind(item);
 
     }
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
 
         void onClickGoToDetailProperty(Property property);
 
+        void onClickEditProperty(Property property);
+
+        void onClickRemoveProperty(Property property);
 
 
     }
 
     @Override
     public int getItemCount() {
-        if(properties!=null){
-            return properties.size();}
+        if (properties != null) {
+            return properties.size();
+        }
         return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private final PropertyAdapter.OnItemClickListener onItemClickListener;
         private final PropertyItemCardBinding propertyBinding;
 
@@ -76,33 +73,23 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
             this.onItemClickListener = onItemClickListener;
             this.propertyBinding = propertyBinding;
         }
-            public void bind(Property property) {
 
-                propertyBinding.tvNameProperty.setText(property.getPropertyName());
-                propertyBinding.tvAddressProperty.setText(property.getPropertyLocation());
-                propertyBinding.propertyItem.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+        @SuppressLint("SetTextI18n")
+        public void bind(Property property) {
 
-                        listener.onClickGoToDetailProperty(property);
-                    }
-
-                });
-
-
-
-
-                String imageUri=null;
-                imageUri=property.getPropertyImage();
-                Picasso.get().load(imageUri).into(propertyBinding.propertyImage);
-
-
-
-            }
-
-
+            propertyBinding.tvNameProperty.setText(property.getPropertyName());
+            propertyBinding.tvAddressProperty.setText(property.getHouseNumber() +
+                    ", " + property.getProvince());
+            Glide.with(mContext).load(property.getPropertyImage())
+                    .centerCrop()
+                    .into(propertyBinding.propertyImage);
+            String price = String.valueOf(property.getPrice());
+            propertyBinding.price.setText("$ " + price);
+            propertyBinding.propertyItem.setOnClickListener(v -> listener.onClickGoToDetailProperty(property));
+            propertyBinding.btnEdit.setOnClickListener(v -> listener.onClickEditProperty(property));
+            propertyBinding.btnDelete.setOnClickListener(v -> listener.onClickRemoveProperty(property));
+        }
     }
-
 
 
 }

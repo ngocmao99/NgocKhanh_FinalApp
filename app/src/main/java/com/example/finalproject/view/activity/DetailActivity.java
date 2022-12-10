@@ -1,10 +1,10 @@
 package com.example.finalproject.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalproject.R;
 import com.example.finalproject.models.Item;
@@ -22,8 +22,6 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
         Item item = (Item) bundle.get("object item");
-
-
         TextView tvNameItem = findViewById(R.id.name_detail);
         tvNameItem.setText(item.getItemName());
         ImageView view = findViewById(R.id.img_detail);
@@ -50,11 +48,5 @@ public class DetailActivity extends AppCompatActivity {
         tvkitchen.setText(item.getItemKitchen());
         TextView tvliv = findViewById(R.id.tv_livingroom_item);
         tvliv.setText(item.getItemLivingroom());
-
-        
-
-
-
-
     }
 }

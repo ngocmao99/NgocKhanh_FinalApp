@@ -1330,4 +1330,12 @@
     <string name="Findtext">Find the best property</string>
     <string name="filter">Filter</string>
     <string name="txt_property_type_find">Property Type</string>
+    <string name="map_key_api">AIzaSyANta5vL4jM32qNDWz5pYVEOYxSSS2rMFQ</string>
+    <string name="txt_type">Property Type</string>
+    <string name="txt_edit">Edit</string>
+    <string name="txt_delete">Delete</string>
+    <string name="txt_title_popup_remove">Delete property</string>
+    <string name="txt_popup_dialog_subtitle_delete">Are you sure want delete this property?</string>
+    <string name="txt_yes">Delete</string>
+    <string name="txt_successful_remove_propety">Property was deleted successful!</string>
 </resources>

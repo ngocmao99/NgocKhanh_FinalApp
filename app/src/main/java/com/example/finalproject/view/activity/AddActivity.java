@@ -54,6 +54,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.example.finalproject.R;
 import com.example.finalproject.base.BaseActivity;
@@ -61,8 +62,6 @@ import com.example.finalproject.databinding.ActivityAddBinding;
 import com.example.finalproject.models.PropertyType;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -247,6 +246,7 @@ public class AddActivity extends BaseActivity {
                             @Override
                             public void onPositiveClicked(Dialog dialog) {
                                 super.onPositiveClicked(dialog);
+                                showLoading();
                                 uploadProperty(title, address, propertyUri, type, description, facilities, bedroom, bathroom, area, price);
                             }
 
@@ -301,18 +301,15 @@ public class AddActivity extends BaseActivity {
                 property.put(TIME, ServerValue.TIMESTAMP);
 
                 //using push method to push data
-                propertyRef.child(pId).setValue(property).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        //if create and push data successful
-                        Toasty.success(AddActivity.this,"Property is created successful").show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toasty.error(AddActivity.this,"Created Failed!").show();
-                        Log.d(PUSH_DATA, e.getMessage().trim());
-                    }
+                propertyRef.child(pId).setValue(property).addOnSuccessListener(unused -> {
+                    //if create and push data successful
+                    Toasty.success(AddActivity.this,"Property is created successful").show();
+                    hideLoading();
+                    startActivity(new Intent(AddActivity.this,PropertyActivity.class));
+                    Animatoo.animateSlideRight(AddActivity.this);
+                }).addOnFailureListener(e -> {
+                    Toasty.error(AddActivity.this,"Created Failed!").show();
+                    Log.d(PUSH_DATA, e.getMessage().trim());
                 });
             });
         });

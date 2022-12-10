@@ -39,6 +39,7 @@ public class Constants {
 
     //Declare a constant variable for Users path on Firebase Database
     public static final String PATH_USER = "Users";
+    public static final String PATH_PROPERTIES = "Properties";
 
     //Declare a constant variable for Users ID of Users tree on Firebase Database, the value depends on the user Model on Model package.
     public static final String USER_ID = "userId";
@@ -141,7 +142,7 @@ public class Constants {
     public static final String TITLE = "propertyName";
     public static final String LOCATION = "propertyLocation";
     public static final String P_LAT = "lat";
-    public static final String P_LNG = "long";
+    public static final String P_LNG = "lng";
     public static final String P_PROVINCE = "province";
     public static final String P_POSTALCODE ="postalCode";
     public static final String P_DISTRICT = "district";
@@ -157,6 +158,8 @@ public class Constants {
     public static final String AREA = "area";
     public static final String PRICE = "price";
     public static final String TIME = "timestamp";
+
+    public static final String DETAIL_KEY = "item property";
 
 
 

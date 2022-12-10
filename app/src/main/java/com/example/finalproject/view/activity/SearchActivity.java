@@ -1,9 +1,9 @@
 package com.example.finalproject.view.activity;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 
 import com.example.finalproject.R;
 import com.google.android.material.slider.LabelFormatter;
@@ -15,7 +15,6 @@ import java.util.Currency;
 public class SearchActivity extends AppCompatActivity {
 
     RangeSlider rangeSlider;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
