@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject.databinding.MainItemEditBinding;
 import com.example.finalproject.models.Item;
 import com.example.finalproject.view.activity.DetailActivity;
+import com.example.finalproject.view.activity.menu.Fragment_Search;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -22,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemEditAdapter extends RecyclerView.Adapter<ItemEditAdapter.ViewHolder> implements Filterable {
+public class ItemEditAdapter extends RecyclerView.Adapter<ItemEditAdapter.ViewHolder> {
 
     Context context;
     List<Item> itemList;
@@ -86,11 +87,17 @@ public class ItemEditAdapter extends RecyclerView.Adapter<ItemEditAdapter.ViewHo
 
 
 
+
+
     @Override
     public int getItemCount() {
         if(itemList!=null){
         return itemList.size();}
         return 0;
+    }
+    public void searchDataList(ArrayList<Item>searchList){
+        itemList=searchList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -139,38 +146,9 @@ public class ItemEditAdapter extends RecyclerView.Adapter<ItemEditAdapter.ViewHo
 
             }
 
-    }
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String strSearch = constraint.toString();
-                if(strSearch.isEmpty()){
-                    itemList= itemListOld;
 
-                }
-                else {
-                    List<Item> list= new ArrayList<>();
-                    for (Item item : itemListOld){
-                        if (item.getItemName().toLowerCase().contains(strSearch.toLowerCase())){
-                            list.add(item);
-                        }
-                    }
-                    itemList = list;
-                }
-                FilterResults filterResults=new FilterResults();
-                filterResults.values = itemList;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                itemList = (List<Item>) results.values;
-                notifyDataSetChanged();
-            }
-        };
     }
+
 
 }
 

@@ -103,7 +103,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
-
+    implementation 'com.firebaseui:firebase-ui-database:8.0.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     //Swipe reveal layout - https://github.com/chthai64/SwipeRevealLayout
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
