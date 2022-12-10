@@ -123,7 +123,7 @@
                 app:boxStrokeWidthFocused="1.5dp"
                 app:endIconCheckable="true"
                 app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_baseline_mail_24">
+                app:startIconDrawable="@drawable/ic_mail_teal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_emailRegisterInput"

@@ -133,7 +133,7 @@ public class PropertyActivity extends BaseActivity implements PropertyAdapter.On
     public void onClickGoToDetailProperty(Property property) {
         Intent intent = new Intent(PropertyActivity.this, PropertyDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(DETAIL_KEY,property);
+        bundle.putParcelable(DETAIL_KEY,property);
         intent.putExtras(bundle);
         startActivity(intent);
         Animatoo.animateSlideLeft(PropertyActivity.this);

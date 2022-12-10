@@ -28,13 +28,13 @@ public class ItemEditAdapter extends RecyclerView.Adapter<ItemEditAdapter.ViewHo
     Context context;
     List<Item> itemList;
     private OnItemClickListener listener;
-    List<Item> itemListOld;
+
 
     public ItemEditAdapter(Context context, List<Item> itemList,OnItemClickListener listener) {
         this.context = context;
         this.itemList = itemList;
         this.listener = listener;
-        this.itemListOld = itemList;
+
 
     }
     public void removeItem(int position) {

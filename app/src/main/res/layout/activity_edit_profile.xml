@@ -284,7 +284,7 @@
                     android:scrollbars="horizontal"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:hint="@string/txt_hint_ward"/>
+                    />
             </com.google.android.material.textfield.TextInputLayout>
             <!--House number -->
             <com.google.android.material.textfield.TextInputLayout
@@ -309,7 +309,7 @@
                     android:inputType="textMultiLine"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:hint="@string/txt_hint_house_numbers"/>
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Update button-->

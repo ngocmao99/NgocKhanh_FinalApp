@@ -1,8 +1,13 @@
 package com.example.finalproject.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
-public class Property implements Serializable {
+public class Property implements Parcelable {
     private String propertyId;
     private String userId;
     private String propertyName;
@@ -218,5 +223,15 @@ public class Property implements Serializable {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+
     }
 }

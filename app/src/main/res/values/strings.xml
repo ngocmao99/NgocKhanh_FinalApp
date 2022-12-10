@@ -1338,4 +1338,19 @@
     <string name="txt_popup_dialog_subtitle_delete">Are you sure want delete this property?</string>
     <string name="txt_yes">Delete</string>
     <string name="txt_successful_remove_propety">Property was deleted successful!</string>
+    <string name="OB1w">Looking for the perfect home for you. In a few touches without losing time.</string>
+    <string name="OB1">Search</string>
+    <string name="OB2w">Once you have found the perfect home contract the seller and receive an answer in a few hours.</string>
+    <string name="OB3w">What else? Now enjoy your home and invite friends for a party</string>
+    <string name="txt_search_empty">All the field must be inform</string>
+    <string name="title_activity_result_search">ResultSearch</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="txt_not_have_fit_item">There are no such item</string>
 </resources>

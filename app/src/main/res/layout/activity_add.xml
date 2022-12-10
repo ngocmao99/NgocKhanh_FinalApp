@@ -172,7 +172,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:fontFamily="@font/poppins"
-                    android:hint="@string/app_name"
+                    android:hint="@string/property_type"
                     android:popupElevation="8dp"
                     android:textColor="@color/black"
                     tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />

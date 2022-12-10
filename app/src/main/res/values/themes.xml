@@ -184,4 +184,12 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeBottomRight">25dp</item>
     </style>
+    <style name="Theme.FinalProject.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FinalProject.NoActionBar.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FinalProject.NoActionBar.PopupOverlay"
+        parent="ThemeOverlay.AppCompat.Light" />
 </resources>
